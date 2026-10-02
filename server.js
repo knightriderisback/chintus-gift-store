@@ -7,8 +7,8 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(cors());
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: '25mb' }));
+app.use(express.urlencoded({ limit: '25mb', extended: true }));
 
 const PRODUCTS_FILE = path.join(__dirname, 'data', 'products.json');
 const ORDERS_FILE = path.join(__dirname, 'data', 'orders.json');
@@ -175,6 +175,58 @@ app.post('/api/auth/google-client-id', (req, res) => {
   settings.googleClientId = clientId.trim();
   writeJSON(SETTINGS_FILE, settings);
   res.json({ success: true, message: 'Google Client ID saved successfully', googleClientId: settings.googleClientId });
+});
+
+// Protected: Image Upload Endpoint (Admin Only)
+app.post('/api/upload', requireAdmin, (req, res) => {
+  const { image, filename } = req.body;
+  if (!image) {
+    return res.status(400).json({ success: false, message: 'Image data is required' });
+  }
+
+  const uploadsDir = path.join(__dirname, 'assets', 'uploads');
+  
+  let ext = 'jpg';
+  let base64Data = image;
+
+  const matches = image.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+  if (matches && matches.length === 3) {
+    const mime = matches[1];
+    base64Data = matches[2];
+    if (mime.includes('png')) ext = 'png';
+    else if (mime.includes('webp')) ext = 'webp';
+    else if (mime.includes('svg')) ext = 'svg';
+    else if (mime.includes('gif')) ext = 'gif';
+    else ext = 'jpg';
+  }
+
+  const cleanName = filename ? filename.toLowerCase().replace(/[^a-z0-9_-]/g, '_').slice(0, 30) : 'upload';
+  const newFilename = `${cleanName}-${Date.now()}.${ext}`;
+
+  try {
+    if (!fs.existsSync(uploadsDir)) {
+      fs.mkdirSync(uploadsDir, { recursive: true });
+    }
+    const filePath = path.join(uploadsDir, newFilename);
+    const buffer = Buffer.from(base64Data, 'base64');
+    fs.writeFileSync(filePath, buffer);
+
+    const publicUrl = `assets/uploads/${newFilename}`;
+    return res.json({
+      success: true,
+      message: 'Image uploaded successfully',
+      url: publicUrl,
+      filename: newFilename
+    });
+  } catch (err) {
+    console.warn("Filesystem write warning:", err.message);
+    return res.json({
+      success: true,
+      message: 'Image processed successfully',
+      url: image,
+      filename: newFilename
+    });
+  }
 });
 
 // --- PRODUCTS API ---
