@@ -62,12 +62,86 @@ async function loadStoreSettings() {
 }
 
 function applyStoreSettings(settings) {
+  window.currentStoreSettings = settings;
+
+  // 1. Theme and Aesthetic Styling
+  document.body.classList.remove('theme-sakura-pink', 'theme-lavender-dream', 'theme-peach-coral', 'theme-cotton-candy', 'theme-matcha-mint');
+  if (settings.theme) {
+    document.body.classList.add(settings.theme);
+  }
+  document.body.classList.remove('blur-soft', 'blur-normal', 'blur-strong');
+  if (settings.blurIntensity) {
+    document.body.classList.add('blur-' + settings.blurIntensity);
+  }
+  if (settings.floatingStickers === false) {
+    document.body.classList.add('hide-stickers');
+  } else {
+    document.body.classList.remove('hide-stickers');
+  }
+
+  // 2. Branding (Store Name, Logo, Tagline)
+  if (settings.storeName) {
+    document.title = `${settings.storeName} | Dalli Rajhara`;
+  }
+  if (settings.brandShort) {
+    document.querySelectorAll(".store-brand-title").forEach(el => el.textContent = settings.brandShort);
+  }
+  if (settings.brandTagline) {
+    document.querySelectorAll(".store-brand-tagline").forEach(el => el.textContent = settings.brandTagline);
+  }
+  if (settings.storeLogo) {
+    document.querySelectorAll(".store-logo-img").forEach(el => el.src = settings.storeLogo);
+  }
+
+  // 3. Top Announcement & Offers
   const annEl = document.getElementById("announcement-text");
   if (annEl && settings.announcement) annEl.textContent = settings.announcement;
 
-  document.querySelectorAll(".store-phone-display").forEach(el => el.textContent = STORE_DISPLAY_PHONE);
-  document.querySelectorAll(".store-phone-link").forEach(el => el.href = `tel:+91${STORE_PHONE}`);
-  document.querySelectorAll(".store-wa-link").forEach(el => el.href = `https://wa.me/${STORE_WA}`);
+  if (settings.deliveryNotice) {
+    document.querySelectorAll(".store-delivery-notice").forEach(el => el.textContent = settings.deliveryNotice);
+  }
+
+  // 4. Hero Section Customization
+  if (settings.heroBadge) {
+    const badgeEl = document.getElementById("hero-badge-text");
+    if (badgeEl) badgeEl.textContent = settings.heroBadge;
+  }
+  if (settings.heroHeading) {
+    const headingEl = document.getElementById("hero-heading");
+    if (headingEl) headingEl.innerHTML = settings.heroHeading.includes('<span') ? settings.heroHeading : `${settings.heroHeading} <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600">Subhash Chowk</span>`;
+  }
+  if (settings.heroSubtitle) {
+    const subEl = document.getElementById("hero-subtitle");
+    if (subEl) subEl.textContent = settings.heroSubtitle;
+  }
+  if (settings.heroImage) {
+    const heroImg = document.getElementById("hero-main-img");
+    if (heroImg) heroImg.src = settings.heroImage;
+  }
+  if (settings.heroCtaText) {
+    const ctaText = document.getElementById("hero-cta-btn-text");
+    if (ctaText) ctaText.textContent = settings.heroCtaText;
+  }
+
+  // 5. Contact, Address & Location
+  const phone = settings.phone || STORE_PHONE;
+  const dispPhone = settings.displayPhone || STORE_DISPLAY_PHONE;
+  const wa = settings.whatsapp || STORE_WA;
+
+  document.querySelectorAll(".store-phone-display").forEach(el => el.textContent = dispPhone);
+  document.querySelectorAll(".store-phone-link").forEach(el => el.href = `tel:+91${phone}`);
+  document.querySelectorAll(".store-wa-link").forEach(el => el.href = `https://wa.me/${wa}`);
+
+  if (settings.address) {
+    document.querySelectorAll(".store-address-text").forEach(el => el.textContent = settings.address);
+  }
+  if (settings.mapsUrl) {
+    document.querySelectorAll(".store-maps-link").forEach(el => el.href = settings.mapsUrl);
+  }
+  if (settings.instagramHandle) {
+    const handleClean = settings.instagramHandle.replace('@', '');
+    document.querySelectorAll(".store-insta-link").forEach(el => el.href = `https://instagram.com/${handleClean}`);
+  }
 }
 
 // Fetch products from backend REST API
@@ -583,16 +657,30 @@ function applyCoupon() {
   if (!input) return;
   const code = input.value.trim().toUpperCase();
 
-  if (code === "CHINTU10") {
-    activeDiscount = 10;
-    discountCode = "CHINTU10";
-    showToast("Coupon 'CHINTU10' applied! 10% OFF 🌸");
+  const cfgCode = (window.currentStoreSettings?.couponCode || "CHINTU10").toUpperCase();
+  const cfgDiscount = Number(window.currentStoreSettings?.couponDiscount) || 10;
+  const cfgMinOrder = Number(window.currentStoreSettings?.couponMinOrder) || 0;
+
+  const currentSubtotal = cart.reduce((acc, it) => acc + (it.price * it.quantity), 0);
+  if (cfgMinOrder > 0 && currentSubtotal < cfgMinOrder) {
+    showToast(`Coupon requires minimum order of ₹${cfgMinOrder}!`, "error");
+    return;
+  }
+
+  if (code === cfgCode) {
+    activeDiscount = cfgDiscount;
+    discountCode = cfgCode;
+    showToast(`Coupon '${cfgCode}' applied! ${cfgDiscount}% OFF 🌸`);
   } else if (code === "FIRSTGIFT") {
     activeDiscount = 15;
     discountCode = "FIRSTGIFT";
     showToast("Coupon 'FIRSTGIFT' applied! 15% OFF 🎉");
+  } else if (code === "CHINTU10") {
+    activeDiscount = 10;
+    discountCode = "CHINTU10";
+    showToast("Coupon 'CHINTU10' applied! 10% OFF 🌸");
   } else {
-    showToast("Invalid code! Try CHINTU10", "error");
+    showToast(`Invalid code! Try ${cfgCode}`, "error");
     return;
   }
   updateCartUI();

@@ -13,7 +13,13 @@
     "customizable": true,
     "customType": "lamp",
     "description": "Premium laser-cut frosted pink acrylic night lamp featuring an adorable cartoon bear hugging an illuminated glowing heart. Custom name and anniversary/birthday date engraved. Multi-color warm pastel glow with touch switch.",
-    "specs": ["Cast Pink Frosted Acrylic 5mm", "Soft Touch Pastel Base", "Warm Golden / Soft Pink LED", "USB Powered (5V)", "Dimensions: 7.5 x 8 inches"],
+    "specs": [
+      "Cast Pink Frosted Acrylic 5mm",
+      "Soft Touch Pastel Base",
+      "Warm Golden / Soft Pink LED",
+      "USB Powered (5V)",
+      "Dimensions: 7.5 x 8 inches"
+    ],
     "inStock": true
   },
   {
@@ -29,7 +35,12 @@
     "badge": "Bestseller",
     "customizable": false,
     "description": "Complete dream stationery hamper! Includes 1 pastel hardcover secret diary with golden lock and key, 4 cute bear-shaped pastel highlighters, 6 roll decorative washi tapes, sticky notes, and aesthetic sticker sheets.",
-    "specs": ["Diary with Solid Metal Lock & 2 Keys", "4 Bear Pastel Highlighters", "6 Washi Tape Rolls", "3 Kawaii Sticker Sheets"],
+    "specs": [
+      "Diary with Solid Metal Lock & 2 Keys",
+      "4 Bear Pastel Highlighters",
+      "6 Washi Tape Rolls",
+      "3 Kawaii Sticker Sheets"
+    ],
     "inStock": true
   },
   {
@@ -39,13 +50,18 @@
     "category": "toys",
     "price": 899,
     "originalPrice": 1599,
-    "rating": 5.0,
+    "rating": 5,
     "reviewsCount": 67,
     "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
     "badge": "Super Huggable",
     "customizable": false,
     "description": "Ultra-soft micro-plush giant teddy bear in gentle pastel blush pink. Stuffed with 100% hypoallergenic virgin PP cotton. Perfect for birthday surprises, Valentine's gifts, and cozy bedroom decor.",
-    "specs": ["Height: 90 cm (3 Feet)", "Ultra-soft Velvet Plush", "100% Non-toxic PP Cotton", "Satin Bow Ribbon Included"],
+    "specs": [
+      "Height: 90 cm (3 Feet)",
+      "Ultra-soft Velvet Plush",
+      "100% Non-toxic PP Cotton",
+      "Satin Bow Ribbon Included"
+    ],
     "inStock": true
   },
   {
@@ -61,7 +77,12 @@
     "badge": "Trending",
     "customizable": false,
     "description": "Viral sweet smiling Boba cup plushie with embroidered tapioca pearls and cute 3D straw. Super squishy stress-relief companion for desks and beds.",
-    "specs": ["Size: 35 cm", "Super Elastic Spandex Plush", "Down Cotton Filling", "Machine Washable"],
+    "specs": [
+      "Size: 35 cm",
+      "Super Elastic Spandex Plush",
+      "Down Cotton Filling",
+      "Machine Washable"
+    ],
     "inStock": true
   },
   {
@@ -77,7 +98,12 @@
     "badge": "Study Must",
     "customizable": false,
     "description": "Japanese style non-bleed soft pastel highlighters in dreamy shades: Macaron Pink, Lavender Mist, Mint Green, Butter Yellow, Peach Cream, and Sky Blue. Chisel and fine tips.",
-    "specs": ["Set of 6 Pastel Shades", "Dual Chisel & Bullet Tip", "Quick-Dry Anti-Smear Ink", "Clear Acrylic Case"],
+    "specs": [
+      "Set of 6 Pastel Shades",
+      "Dual Chisel & Bullet Tip",
+      "Quick-Dry Anti-Smear Ink",
+      "Clear Acrylic Case"
+    ],
     "inStock": true
   },
   {
@@ -94,7 +120,12 @@
     "customizable": true,
     "customType": "mug",
     "description": "Black ceramic mug that magically reveals your uploaded photo and cute cartoon greetings when hot chai, coffee, or milk is poured! Food safe and microwave safe.",
-    "specs": ["325ml Premium Ceramic", "Thermosensitive High Gloss Coat", "Microwave & Dishwasher Safe", "Custom Photo Print"],
+    "specs": [
+      "325ml Premium Ceramic",
+      "Thermosensitive High Gloss Coat",
+      "Microwave & Dishwasher Safe",
+      "Custom Photo Print"
+    ],
     "inStock": true
   },
   {
@@ -110,7 +141,12 @@
     "badge": "Super Cute",
     "customizable": false,
     "description": "Smooth 0.5mm black gel pens topped with super cute mini plush heads of bunnies, kitties, and bears. Smooth smudge-free writing for students and office notes.",
-    "specs": ["4 Different Kawaii Toppers", "0.5mm Japanese Black Gel Ink", "Comfort Soft Grip", "Refillable Body"],
+    "specs": [
+      "4 Different Kawaii Toppers",
+      "0.5mm Japanese Black Gel Ink",
+      "Comfort Soft Grip",
+      "Refillable Body"
+    ],
     "inStock": true
   },
   {
@@ -127,7 +163,12 @@
     "customizable": true,
     "customType": "plaque",
     "description": "Crystal acrylic glass with gentle rose-tinted edge, scannable Spotify song code, couple photo, and your song title. Plays your song directly on phone camera scan!",
-    "specs": ["Cast Acrylic Plaque 6x8 Inch", "UV High-Def Color Printing", "Natural Solid Pine Stand", "Scannable Working Spotify Barcode"],
+    "specs": [
+      "Cast Acrylic Plaque 6x8 Inch",
+      "UV High-Def Color Printing",
+      "Natural Solid Pine Stand",
+      "Scannable Working Spotify Barcode"
+    ],
     "inStock": true
   },
   {
@@ -144,7 +185,12 @@
     "customizable": true,
     "customType": "box",
     "description": "Multi-layer pastel explosion box packed with 24 photo slots, pop-up heartfelt cartoon greeting cards, assorted chocolates, and a center cute mini teddy bear surprise!",
-    "specs": ["Handmade Thick Pastel Cardstock", "3 Pop-Open Cascading Layers", "Center Pocket with Mini Teddy", "Includes 24 Photo Slots"],
+    "specs": [
+      "Handmade Thick Pastel Cardstock",
+      "3 Pop-Open Cascading Layers",
+      "Center Pocket with Mini Teddy",
+      "Includes 24 Photo Slots"
+    ],
     "inStock": true
   },
   {
@@ -160,7 +206,12 @@
     "badge": "Trendy",
     "customizable": false,
     "description": "Chubby cartoon bear shaped water bottle with silicone pop-up straw, leak-proof lock, motivational time markers, and cute adjustable rainbow shoulder carrying strap.",
-    "specs": ["800ml Capacity", "BPA-Free Food Grade Tritan", "Pop-up Soft Silicone Straw", "Adjustable Shoulder Strap"],
+    "specs": [
+      "800ml Capacity",
+      "BPA-Free Food Grade Tritan",
+      "Pop-up Soft Silicone Straw",
+      "Adjustable Shoulder Strap"
+    ],
     "inStock": true
   },
   {
@@ -170,13 +221,18 @@
     "category": "toys",
     "price": 449,
     "originalPrice": 799,
-    "rating": 5.0,
+    "rating": 5,
     "reviewsCount": 53,
     "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
     "badge": "Fan Favorite",
     "customizable": false,
     "description": "Silky soft pastel pink bunny with extra-long floppy ears and embroidered smiling face. Washable and irresistible to cuddle for kids and girls.",
-    "specs": ["Size: 40 cm", "Silky Cloud Velvet", "Safety Embroidered Eyes", "Washable Fabric"],
+    "specs": [
+      "Size: 40 cm",
+      "Silky Cloud Velvet",
+      "Safety Embroidered Eyes",
+      "Washable Fabric"
+    ],
     "inStock": true
   },
   {
@@ -192,7 +248,12 @@
     "badge": "Organize",
     "customizable": false,
     "description": "Cute pastel pink acrylic desk caddy with 6 compartments and 2 pull-out clear drawers. Keeps your pens, highlighters, tapes, clips, and cosmetics neat and aesthetic.",
-    "specs": ["High Impact Pink Acrylic/ABS", "2 Transparent Mini Drawers", "6 Pen & Brush Slots", "Non-Slip Base Feet"],
+    "specs": [
+      "High Impact Pink Acrylic/ABS",
+      "2 Transparent Mini Drawers",
+      "6 Pen & Brush Slots",
+      "Non-Slip Base Feet"
+    ],
     "inStock": true
   },
   {
@@ -208,7 +269,12 @@
     "badge": "Romantic",
     "customizable": false,
     "description": "Timeless 24K gold foil rose encased inside a clear glass dome surrounded by warm micro fairy LED string lights. Operates on 3 AAA batteries.",
-    "specs": ["Borosilicate Glass Dome", "24K Gold Foil Plated Rose", "Micro Copper String LEDs", "Wood Texture Base"],
+    "specs": [
+      "Borosilicate Glass Dome",
+      "24K Gold Foil Plated Rose",
+      "Micro Copper String LEDs",
+      "Wood Texture Base"
+    ],
     "inStock": true
   },
   {
@@ -225,7 +291,12 @@
     "customizable": true,
     "customType": "keychain",
     "description": "Laser-cut 3D pink frosted acrylic keychain customized with your name or nickname, adorned with a pastel star charm and golden key ring clasp.",
-    "specs": ["4mm Pink Cast Acrylic", "Golden Lobster Swivel Clasp", "Permanent Laser Engraved Name", "Mini Acrylic Charm Included"],
+    "specs": [
+      "4mm Pink Cast Acrylic",
+      "Golden Lobster Swivel Clasp",
+      "Permanent Laser Engraved Name",
+      "Mini Acrylic Charm Included"
+    ],
     "inStock": true
   },
   {
@@ -241,7 +312,12 @@
     "badge": "Girl Favorite",
     "customizable": false,
     "description": "Super soft elastic makeup & skincare headband with plush bear ears plus 2 pastel satin cloud hair scrunchies. Ultra comfortable and fashionable.",
-    "specs": ["Elastic Soft Microfiber", "3D Cute Plush Bear Ears", "Includes 2 Pastel Scrunchies", "Gentle on Hair"],
+    "specs": [
+      "Elastic Soft Microfiber",
+      "3D Cute Plush Bear Ears",
+      "Includes 2 Pastel Scrunchies",
+      "Gentle on Hair"
+    ],
     "inStock": true
   },
   {
@@ -251,14 +327,19 @@
     "category": "birthday",
     "price": 999,
     "originalPrice": 1799,
-    "rating": 5.0,
+    "rating": 5,
     "reviewsCount": 61,
     "image": "assets/images/kawaii_hero.jpg",
     "badge": "Mega Hamper",
     "customizable": true,
     "customType": "hamper",
     "description": "The showstopper gift basket! Contains 1 Fluffy Bunny Plushie, 1 Pastel Locked Diary, 1 Magic Mug with custom photo, 1 Kawaii Gel Pen, assorted chocolates, fairy lights, and a customized greeting card.",
-    "specs": ["Pastel Acrylic Gift Basket", "Plushie + Mug + Diary + Pen", "Includes Fairy Lights & Chocolates", "Free Handwritten Greeting Card"],
+    "specs": [
+      "Pastel Acrylic Gift Basket",
+      "Plushie + Mug + Diary + Pen",
+      "Includes Fairy Lights & Chocolates",
+      "Free Handwritten Greeting Card"
+    ],
     "inStock": true
   }
 ]

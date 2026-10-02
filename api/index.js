@@ -355,7 +355,8 @@ app.post('/api/auth/google', (req, res) => {
   }
 
   // Master Owner Code option (Emergency / Staging backup / Claim ownership)
-  if (masterCode && (masterCode === 'chintu8269' || masterCode === process.env.ADMIN_MASTER_CODE)) {
+  const validMasterPin = settings.masterPin || process.env.ADMIN_MASTER_CODE || 'chintu8269';
+  if (masterCode && (masterCode === validMasterPin || masterCode === 'chintu8269')) {
     if (email && email.includes('@')) {
       settings.authorizedAdminEmail = email.toLowerCase().trim();
       writeData(SETTINGS_FILE, settings);
@@ -440,6 +441,48 @@ app.get('/api/products/:id', (req, res) => {
   const product = products.find(p => p.id === req.params.id);
   if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
   res.json({ success: true, data: product });
+});
+
+// Protected: Bulk Add Products (Admin only)
+app.post('/api/products/bulk', requireAdmin, (req, res) => {
+  const { products } = req.body;
+  if (!Array.isArray(products) || products.length === 0) {
+    return res.status(400).json({ success: false, message: 'Array of products is required' });
+  }
+
+  const existing = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+  const added = [];
+
+  products.forEach((p, idx) => {
+    if (!p.name || (!p.price && p.price !== 0)) return;
+    const newProd = {
+      id: `prod-${Date.now()}-${idx}-${Math.floor(Math.random() * 1000)}`,
+      name: String(p.name).trim(),
+      hindiName: String(p.hindiName || p['hindi name'] || p['Hindi Name'] || '').trim(),
+      category: String(p.category || 'stationery').toLowerCase().trim(),
+      price: Number(p.price) || 0,
+      originalPrice: Number(p.originalPrice || p['original price'] || p['Original Price'] || Number(p.price) * 1.5) || 0,
+      rating: 5.0,
+      reviewsCount: 1,
+      image: p.image || p['image url'] || p['Image URL'] || 'assets/images/kawaii_stationery.jpg',
+      badge: p.badge || p['Badge'] || 'New Arrival',
+      customizable: Boolean(p.customizable === true || p.customizable === 'true' || p.customizable === 'yes' || p.customizable === 1),
+      customType: p.customType || p['custom type'] || 'stationery',
+      description: String(p.description || '').trim(),
+      specs: Array.isArray(p.specs) ? p.specs : (p.specs ? String(p.specs).split(',').map(s => s.trim()) : []),
+      inStock: p.inStock !== undefined ? (p.inStock === true || p.inStock === 'true' || p.inStock === 'yes' || p.inStock === 1) : true
+    };
+    added.push(newProd);
+    existing.unshift(newProd);
+  });
+
+  writeData(PRODUCTS_FILE, existing);
+  res.status(201).json({
+    success: true,
+    message: `Successfully imported ${added.length} products into catalogue!`,
+    count: added.length,
+    data: added
+  });
 });
 
 app.post('/api/products', requireAdmin, (req, res) => {

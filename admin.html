@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
   
+  <!-- SheetJS Library for Excel (.xlsx, .xls, .csv) Bulk Upload & Template Generation -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  
   <!-- Google Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -187,6 +190,13 @@
             <span class="hidden sm:inline">Store</span>
           </a>
 
+          <!-- Bulk Upload Excel/CSV Button -->
+          <button onclick="openBulkUploadModal()" class="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] sm:text-xs font-black flex items-center gap-1.5 shadow-sm shrink-0 transition" title="Bulk Import Products from Excel/CSV">
+            <i class="fa-solid fa-file-excel text-[11px]"></i>
+            <span class="hidden sm:inline">Bulk Upload</span>
+            <span class="sm:hidden">Bulk</span>
+          </button>
+
           <!-- Add Product Button -->
           <button onclick="openAddProductModal()" class="kawaii-btn-pink px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-black flex items-center gap-1 shadow-sm shrink-0">
             <i class="fa-solid fa-plus text-[10px]"></i>
@@ -243,7 +253,7 @@
           <i class="fa-solid fa-receipt"></i> Customer Orders
         </button>
         <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-sliders"></i> Store Settings
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Store & Page Customizer
         </button>
       </div>
 
@@ -265,6 +275,11 @@
               <option value="birthday">🎂 Birthday & Hampers</option>
               <option value="novelties">🎒 Novelties & Accessories</option>
             </select>
+
+            <button onclick="openBulkUploadModal()" class="px-3 sm:px-3.5 py-2 text-xs font-black rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+              <i class="fa-solid fa-file-excel"></i>
+              <span>Bulk Upload (Excel/CSV)</span>
+            </button>
 
             <button onclick="openAddProductModal()" class="kawaii-btn-pink px-3.5 py-2 text-xs font-bold whitespace-nowrap shadow-sm">
               <i class="fa-solid fa-plus mr-1"></i> New Item
@@ -293,54 +308,352 @@
         </div>
       </section>
 
-      <!-- TAB 3: STORE SETTINGS -->
+      <!-- TAB 3: STORE SETTINGS & LANDING PAGE CUSTOMIZER -->
       <section id="tab-settings" class="tab-content hidden">
-        <div class="pink-acrylic p-4 sm:p-6 max-w-2xl mx-auto">
-          <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun mb-1 flex items-center gap-2">
-            <i class="fa-solid fa-gear text-pink-500"></i> Store Info & Authorized Owner Email
-          </h3>
-          <p class="text-xs text-pink-900/70 mb-5">Manage contact number, authorized Google Account email, and announcement notice.</p>
-
-          <form id="settings-form" onsubmit="event.preventDefault(); saveStoreSettings();" class="space-y-3 sm:space-y-4">
+        <div class="max-w-4xl mx-auto space-y-6">
+          
+          <!-- Section Header -->
+          <div class="pink-acrylic p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-pink-200">
             <div>
-              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Authorized Owner Google Email</label>
-              <input type="email" id="setting-google-email" placeholder="owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
-              <p class="text-[10px] text-pink-700 mt-1">Only this Google email will be allowed to log into this Admin Panel.</p>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Google OAuth Client ID</label>
-              <input type="text" id="setting-google-client-id" placeholder="xxxxx.apps.googleusercontent.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
-              <p class="text-[10px] text-pink-700 mt-1">Required to launch the official Google login page on this website.</p>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Store Phone Number (All WhatsApp & Calls)</label>
-              <input type="text" id="setting-phone" value="8269212182" readonly class="w-full px-3.5 py-2 rounded-xl bg-pink-100 border border-pink-200 text-xs font-bold text-pink-950 cursor-not-allowed">
-              <p class="text-[10px] text-pink-700 mt-1">Permanently locked to: 8269212182</p>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Top Announcement Notice</label>
-              <textarea id="setting-announcement" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
-            </div>
-
-            <div class="grid grid-cols-2 gap-2.5">
-              <div>
-                <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Opening Time</label>
-                <input type="text" id="setting-open" value="10:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-[11px] font-black uppercase mb-1">
+                <i class="fa-solid fa-wand-magic-sparkles text-pink-600"></i> Storefront Customizer
               </div>
-              <div>
-                <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Closing Time</label>
-                <input type="text" id="setting-close" value="20:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
-              </div>
+              <h3 class="text-lg sm:text-2xl font-black text-pink-700 font-fun">
+                Landing Page & Store Profile
+              </h3>
+              <p class="text-xs text-pink-900/80">Customize your entire customer-facing store: Themes, Logo, Coupons, Hero banner, Contact, Address & Security.</p>
             </div>
 
-            <div class="pt-3 border-t border-pink-200 flex justify-end">
-              <button type="submit" class="kawaii-btn-pink px-5 py-2 text-xs font-black shadow-md">
-                Save Store Settings
+            <div class="flex items-center gap-2">
+              <a href="index.html" target="_blank" class="px-3.5 py-2 rounded-xl bg-white hover:bg-pink-50 text-pink-800 border border-pink-300 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>Preview Store</span>
+              </a>
+              <button onclick="saveStoreSettings()" class="kawaii-btn-pink px-4 sm:px-5 py-2 text-xs font-black shadow-md flex items-center gap-1.5">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Save All Changes</span>
               </button>
             </div>
+          </div>
+
+          <form id="customizer-form" onsubmit="event.preventDefault(); saveStoreSettings();" class="space-y-6">
+            
+            <!-- CARD 1: THEME & AESTHETICS -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">🎨</span> Website Theme & Visual Aesthetics
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Choose a kawaii pastel palette. Your customer storefront updates immediately with authentic gradients & accents.</p>
+
+              <!-- Hidden input for selected theme class -->
+              <input type="hidden" id="setting-theme" value="theme-sakura-pink">
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-4">
+                <!-- Theme Option 1: Sakura Pink (Default) -->
+                <div onclick="selectTheme('theme-sakura-pink')" id="theme-card-theme-sakura-pink" class="theme-card cursor-pointer p-3 rounded-2xl border-2 border-pink-500 bg-pink-50 shadow-sm transition hover:scale-[1.02] text-center relative">
+                  <div class="w-full h-8 rounded-xl bg-gradient-to-r from-pink-400 via-rose-300 to-pink-200 mb-2 border border-pink-300"></div>
+                  <div class="text-xs font-black text-pink-700">🌸 Sakura Pink</div>
+                  <div class="text-[10px] text-pink-900/70 font-medium">Default Sweet Pink</div>
+                  <div class="theme-active-badge mt-1.5 inline-block text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-pink-600 text-white">Active</div>
+                </div>
+
+                <!-- Theme Option 2: Lavender Dream -->
+                <div onclick="selectTheme('theme-lavender-dream')" id="theme-card-theme-lavender-dream" class="theme-card cursor-pointer p-3 rounded-2xl border-2 border-transparent bg-white shadow-sm transition hover:scale-[1.02] text-center relative">
+                  <div class="w-full h-8 rounded-xl bg-gradient-to-r from-purple-400 via-purple-300 to-indigo-200 mb-2 border border-purple-200"></div>
+                  <div class="text-xs font-black text-purple-700">💜 Lavender Dream</div>
+                  <div class="text-[10px] text-purple-900/70 font-medium">Soft Lilac Magic</div>
+                  <div class="theme-active-badge mt-1.5 hidden text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-purple-600 text-white">Active</div>
+                </div>
+
+                <!-- Theme Option 3: Peach Coral -->
+                <div onclick="selectTheme('theme-peach-coral')" id="theme-card-theme-peach-coral" class="theme-card cursor-pointer p-3 rounded-2xl border-2 border-transparent bg-white shadow-sm transition hover:scale-[1.02] text-center relative">
+                  <div class="w-full h-8 rounded-xl bg-gradient-to-r from-orange-400 via-amber-300 to-rose-200 mb-2 border border-orange-200"></div>
+                  <div class="text-xs font-black text-orange-700">🍑 Peach Sorbet</div>
+                  <div class="text-[10px] text-orange-900/70 font-medium">Warm & Cozy Coral</div>
+                  <div class="theme-active-badge mt-1.5 hidden text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-orange-600 text-white">Active</div>
+                </div>
+
+                <!-- Theme Option 4: Cotton Candy Sky -->
+                <div onclick="selectTheme('theme-cotton-candy')" id="theme-card-theme-cotton-candy" class="theme-card cursor-pointer p-3 rounded-2xl border-2 border-transparent bg-white shadow-sm transition hover:scale-[1.02] text-center relative">
+                  <div class="w-full h-8 rounded-xl bg-gradient-to-r from-sky-400 via-pink-300 to-cyan-200 mb-2 border border-sky-200"></div>
+                  <div class="text-xs font-black text-sky-700">🍬 Cotton Candy</div>
+                  <div class="text-[10px] text-sky-900/70 font-medium">Sky Cyan & Pastel</div>
+                  <div class="theme-active-badge mt-1.5 hidden text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-sky-600 text-white">Active</div>
+                </div>
+
+                <!-- Theme Option 5: Matcha Mint -->
+                <div onclick="selectTheme('theme-matcha-mint')" id="theme-card-theme-matcha-mint" class="theme-card cursor-pointer p-3 rounded-2xl border-2 border-transparent bg-white shadow-sm transition hover:scale-[1.02] text-center relative">
+                  <div class="w-full h-8 rounded-xl bg-gradient-to-r from-emerald-400 via-teal-300 to-green-200 mb-2 border border-emerald-200"></div>
+                  <div class="text-xs font-black text-emerald-700">🍵 Matcha Mint</div>
+                  <div class="text-[10px] text-emerald-900/70 font-medium">Fresh Forest Pastel</div>
+                  <div class="theme-active-badge mt-1.5 hidden text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-600 text-white">Active</div>
+                </div>
+              </div>
+
+              <!-- Visual Effects Options -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3 border-t border-pink-200">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Glassmorphic Blur Intensity</label>
+                  <select id="setting-blur" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900 focus:outline-none focus:border-pink-500">
+                    <option value="blur-normal">Standard Acrylic Blur (Default)</option>
+                    <option value="blur-soft">Soft Light Blur (Subtle)</option>
+                    <option value="blur-strong">Frosted Glass (High Blur)</option>
+                  </select>
+                </div>
+
+                <div class="flex items-center gap-2 pt-4">
+                  <input type="checkbox" id="setting-floating-stickers" checked class="w-4 h-4 text-pink-600 rounded">
+                  <label for="setting-floating-stickers" class="text-xs font-bold text-pink-900 cursor-pointer">
+                    Show Floating Decorative Stickers 🧸
+                  </label>
+                </div>
+
+                <div class="flex items-center gap-2 pt-4">
+                  <input type="checkbox" id="setting-festive-confetti" checked class="w-4 h-4 text-pink-600 rounded">
+                  <label for="setting-festive-confetti" class="text-xs font-bold text-pink-900 cursor-pointer">
+                    Show Confetti Celebration on Order 🎉
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 2: BRANDING & LOGO -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">🧸</span> Store Branding & Logo
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Set your brand name, short abbreviation for mobile navbars, and official logo image.</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                <div class="sm:col-span-2">
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Store Full Name</label>
+                  <input type="text" id="setting-store-name" value="Chintu's Gift & Kawaii Store" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Brand Short Name</label>
+                  <input type="text" id="setting-brand-short" value="CHINTU'S" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-black text-pink-600 focus:outline-none focus:border-pink-500">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Brand Tagline / Subtitle</label>
+                <input type="text" id="setting-brand-tagline" value="Gift & Kawaii Store • Dalli Rajhara" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <!-- Store Logo URL with Live Preview & Presets -->
+              <div class="p-3 rounded-2xl bg-white/70 border border-pink-200">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Store Logo Image URL</label>
+                <div class="flex items-center gap-3">
+                  <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-pink-400 bg-white shrink-0 shadow-sm">
+                    <img id="logo-preview-img" src="assets/images/kawaii_logo.jpg" alt="Logo Preview" class="w-full h-full object-cover">
+                  </div>
+                  <input type="text" id="setting-store-logo" oninput="updateLogoPreview(this.value)" value="assets/images/kawaii_logo.jpg" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+                
+                <div class="flex items-center gap-1.5 mt-2 flex-wrap">
+                  <span class="text-[10px] text-pink-800 font-bold">Quick Presets:</span>
+                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_logo.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🌸 Kawaii Mascot</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/chintus_logo_badge.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🎀 Classic Badge</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🧸 Plushies Icon</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 3: COUPONS & PROMOTIONS -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">🎟️</span> Coupons, Discounts & Announcement Banners
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Control active coupon codes, discounts, and the marquee announcements shown to visitors.</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Coupon Promo Code</label>
+                  <input type="text" id="setting-coupon-code" value="CHINTU10" placeholder="e.g. CHINTU10" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-black uppercase text-pink-600 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-0.5">Customers can enter this at checkout.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Discount Percentage (%)</label>
+                  <input type="number" id="setting-coupon-discount" value="10" min="1" max="90" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-0.5">e.g. 10 = 10% instant discount.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Min Order Amount (₹)</label>
+                  <input type="number" id="setting-coupon-min-order" value="499" min="0" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-purple-700 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-0.5">Minimum cart total to apply.</p>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Top Announcement Marquee Bar</label>
+                  <textarea id="setting-announcement" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500" placeholder="🌸 Cute Offer: Use Code CHINTU10 for 10% OFF | Free Home Delivery across Dalli Rajhara | WhatsApp: 8269212182 ✨"></textarea>
+                  <p class="text-[10px] text-pink-700 mt-0.5">Shown across the top of the entire website.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Store Delivery Notice Bar</label>
+                  <input type="text" id="setting-delivery-notice" value="⚡ Ultra-fast local delivery in Dalli Rajhara • WhatsApp Instant Updates" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 4: HERO SECTION CUSTOMIZER -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">✨</span> Landing Page Hero Section
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Edit the big welcome banner headline, promotional badge, main showcase image, and CTA button text.</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Hero Badge Tag</label>
+                  <input type="text" id="setting-hero-badge" value="✨ 100% Authentic Cute Kawaii Stuff" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-600 focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">CTA Button Text</label>
+                  <input type="text" id="setting-hero-cta" value="Explore Cute Gifts 🛍️" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Main Headline</label>
+                <input type="text" id="setting-hero-heading" value="Spread Joy with Cute & Custom Gifts!" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-black text-purple-950 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div class="mb-3">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Hero Subtitle</label>
+                <textarea id="setting-hero-subtitle" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">Discover Dalli Rajhara's happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.</textarea>
+              </div>
+
+              <!-- Hero Showcase Image URL with Live Preview & Presets -->
+              <div class="p-3 rounded-2xl bg-white/70 border border-pink-200">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Hero Showcase Image URL</label>
+                <div class="flex items-center gap-3">
+                  <div class="w-16 h-16 rounded-2xl overflow-hidden border-2 border-pink-400 bg-white shrink-0 shadow-sm">
+                    <img id="hero-preview-img" src="assets/images/kawaii_hero.jpg" alt="Hero Preview" class="w-full h-full object-cover">
+                  </div>
+                  <input type="text" id="setting-hero-image" oninput="updateHeroPreview(this.value)" value="assets/images/kawaii_hero.jpg" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+                
+                <div class="flex items-center gap-1.5 mt-2 flex-wrap">
+                  <span class="text-[10px] text-pink-800 font-bold">Quick Presets:</span>
+                  <button type="button" onclick="setHeroPreset('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🧸 Plushies Hamper</button>
+                  <button type="button" onclick="setHeroPreset('assets/images/kawaii_stationery.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">✍️ Fancy Stationery</button>
+                  <button type="button" onclick="setHeroPreset('assets/images/pink_acrylic_lamp.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">💡 Acrylic Lamp</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 5: CONTACT, ADDRESS & TIMINGS -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">📍</span> Store Contact, Address & Location
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Official contact details for customers, WhatsApp checkout ordering, and Google Maps directions.</p>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Store Phone (Primary Hotline)</label>
+                  <input type="text" id="setting-phone" value="8269212182" readonly class="w-full px-3.5 py-2 rounded-xl bg-pink-100 border border-pink-300 text-xs font-bold text-pink-950 cursor-not-allowed">
+                  <p class="text-[10px] text-pink-700 mt-0.5">Primary Hotline locked to 8269212182</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">WhatsApp Orders Number</label>
+                  <input type="text" id="setting-whatsapp" value="918269212182" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-0.5">Country code + number without plus (e.g. 918269212182)</p>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Physical Store Address</label>
+                <textarea id="setting-address" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">Shop No. 2 (House 01), Shubhash Chowk, Near Bharat Petroleum, Ward Number 19, Dalli Rajhara, Chhattisgarh 491228</textarea>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Google Maps Link</label>
+                  <input type="url" id="setting-maps-url" value="https://maps.google.com/?q=Dalli+Rajhara+Chhattisgarh" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Instagram Link / Handle</label>
+                  <input type="url" id="setting-instagram" value="https://instagram.com/chintusgiftstore" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Opening Time</label>
+                  <input type="text" id="setting-open" value="10:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Closing Time</label>
+                  <input type="text" id="setting-close" value="20:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Weekly Status</label>
+                  <input type="text" id="setting-closed-day" value="Open 7 Days a Week" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700">
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD 6: OWNER SECURITY & PROFILE -->
+            <div class="pink-acrylic p-4 sm:p-6 border border-pink-200">
+              <h4 class="text-sm sm:text-base font-black text-pink-800 font-fun mb-1 flex items-center gap-2">
+                <span class="text-lg">🔐</span> Owner Security & Google Access
+              </h4>
+              <p class="text-xs text-pink-900/70 mb-4">Manage access credentials for this admin dashboard. Restrict access strictly to your Google account.</p>
+
+              <div class="space-y-3">
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Authorized Owner Google Email</label>
+                  <input type="email" id="setting-google-email" placeholder="your-email@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-1">Only this Google email will be granted access to this Admin Studio.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Google OAuth Client ID</label>
+                  <input type="text" id="setting-google-client-id" placeholder="xxxxx.apps.googleusercontent.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                  <p class="text-[10px] text-pink-700 mt-1">Required to launch Google's official popup login window.</p>
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Update Master Owner PIN</label>
+                  <div class="relative">
+                    <input type="password" id="setting-master-pin" placeholder="Enter new Master PIN (or leave blank to keep unchanged)" class="w-full px-3.5 py-2 pr-10 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                    <button type="button" onclick="togglePasswordVisibility('setting-master-pin', this)" class="absolute right-3 top-1/2 -translate-y-1/2 text-pink-400 hover:text-pink-600 text-xs">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                  <p class="text-[10px] text-pink-700 mt-1">Emergency offline backup PIN to sign in without Google OAuth.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sticky Save Bar -->
+            <div class="sticky bottom-4 z-20 pink-acrylic p-4 rounded-2xl shadow-xl border-2 border-pink-300 flex items-center justify-between gap-3">
+              <span class="text-xs font-bold text-pink-900 hidden sm:inline">
+                🌸 Changes will immediately reflect on the live storefront!
+              </span>
+              <div class="flex items-center gap-2 ml-auto">
+                <a href="index.html" target="_blank" class="px-4 py-2 rounded-full bg-white hover:bg-pink-50 text-pink-800 border border-pink-300 text-xs font-bold shadow-sm">
+                  View Store 🏪
+                </a>
+                <button type="submit" class="kawaii-btn-pink px-6 py-2.5 rounded-full text-xs font-black shadow-lg flex items-center gap-1.5">
+                  <i class="fa-solid fa-floppy-disk"></i>
+                  <span>Save All Settings</span>
+                </button>
+              </div>
+            </div>
+
           </form>
         </div>
       </section>
@@ -435,6 +748,147 @@
       </div>
     </div>
 
+    <!-- BULK UPLOAD MODAL (EXCEL / SPREADSHEET / CSV) -->
+    <div id="bulk-upload-modal" class="hidden fixed inset-0 z-[1250] bg-purple-950/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-4xl max-h-[92vh] overflow-y-auto p-4 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300">
+        
+        <button onclick="closeBulkUploadModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold text-sm shadow-sm transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="flex items-center gap-2.5 mb-1">
+          <div class="w-9 h-9 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-lg shadow-sm border border-emerald-300">
+            <i class="fa-solid fa-file-excel"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun">
+              Bulk Product Upload (Excel & Spreadsheet)
+            </h3>
+            <p class="text-xs text-pink-900/80">
+              Upload multiple items in 1-click using an Excel file (.xlsx, .xls, .csv) or copy-paste from Google Sheets.
+            </p>
+          </div>
+        </div>
+
+        <!-- Download Template and Quick Instructions Bar -->
+        <div class="my-4 p-3.5 rounded-2xl bg-white/80 border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+          <div>
+            <div class="text-xs font-black text-emerald-800 flex items-center gap-1.5">
+              <span>💡</span> Need a ready-to-use template with sample products?
+            </div>
+            <p class="text-[11px] text-pink-900/70 mt-0.5">
+              Download our pre-styled template, fill in your stock items in Excel or Google Sheets, and drop it here.
+            </p>
+          </div>
+          <button type="button" onclick="downloadSampleExcel()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black shadow-sm flex items-center gap-1.5 shrink-0 transition">
+            <i class="fa-solid fa-download"></i>
+            <span>Download Sample Excel (.xlsx)</span>
+          </button>
+        </div>
+
+        <!-- Mode Switcher Tabs -->
+        <div class="flex items-center gap-2 mb-3 border-b border-pink-200 pb-2">
+          <button type="button" onclick="switchBulkTab('file')" id="bulk-tab-btn-file" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-file-arrow-up"></i> Upload Excel / CSV File
+          </button>
+          <button type="button" onclick="switchBulkTab('paste')" id="bulk-tab-btn-paste" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-white text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-paste"></i> Copy-Paste from Sheets
+          </button>
+        </div>
+
+        <!-- TAB 1: FILE DROP ZONE -->
+        <div id="bulk-content-file" class="space-y-3">
+          <div id="bulk-drop-zone" onclick="document.getElementById('bulk-file-input').click()" class="border-2 border-dashed border-emerald-400 hover:border-emerald-600 bg-white/70 hover:bg-emerald-50/50 rounded-2xl p-6 sm:p-8 text-center cursor-pointer transition flex flex-col items-center justify-center group">
+            <input type="file" id="bulk-file-input" accept=".xlsx, .xls, .csv" onchange="handleBulkFileSelect(event)" class="hidden">
+            
+            <div class="w-14 h-14 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-2xl mb-2.5 group-hover:scale-110 transition shadow-inner">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+            </div>
+            <div class="text-xs sm:text-sm font-extrabold text-pink-950 mb-1">
+              Click to select or drag & drop your Excel file here
+            </div>
+            <div class="text-[11px] text-pink-800/70 font-medium">
+              Supports <strong>.xlsx</strong>, <strong>.xls</strong>, and <strong>.csv</strong> spreadsheets
+            </div>
+          </div>
+        </div>
+
+        <!-- TAB 2: PASTE TEXT -->
+        <div id="bulk-content-paste" class="hidden space-y-2">
+          <label class="block text-[11px] font-bold text-pink-900 uppercase">
+            Paste rows copied directly from Google Sheets / Excel:
+          </label>
+          <textarea id="bulk-paste-text" rows="5" placeholder="Paste data here (Tab or comma separated)...&#10;Name	Category	Price	Image URL&#10;Pastel Diary	stationery	299	assets/images/kawaii_stationery.jpg" class="w-full px-3.5 py-2.5 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
+          <div class="flex justify-end">
+            <button type="button" onclick="parsePastedSpreadsheet()" class="px-4 py-1.5 rounded-xl bg-pink-600 text-white text-xs font-black hover:bg-pink-700 shadow-sm transition flex items-center gap-1.5">
+              <i class="fa-solid fa-magnifying-glass"></i> Parse Pasted Rows
+            </button>
+          </div>
+        </div>
+
+        <!-- Column Help Guide (Collapsible) -->
+        <details class="my-3 text-xs text-pink-900 bg-white/60 p-2.5 rounded-xl border border-pink-200">
+          <summary class="font-extrabold text-pink-700 cursor-pointer flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info text-pink-500"></i>
+            <span>Supported Columns & Categories Guide</span>
+          </summary>
+          <div class="mt-2 text-[11px] space-y-1.5 text-pink-950/80">
+            <p><strong>Supported Columns:</strong> <code>Name</code> (or Title), <code>Hindi Name</code>, <code>Category</code>, <code>Price</code> (Selling ₹), <code>Original Price</code> (MRP ₹), <code>Image URL</code>, <code>Badge</code>, <code>In Stock</code> (TRUE/FALSE), <code>Customizable</code> (TRUE/FALSE), <code>Description</code>.</p>
+            <p><strong>Valid Categories:</strong> <code>toys</code> (Soft Toys), <code>stationery</code> (Aesthetic Stationery), <code>personalized</code> (Custom Acrylic / Lamps), <code>birthday</code> (Hampers & Boxes), <code>novelties</code> (Accessories).</p>
+          </div>
+        </details>
+
+        <!-- DATA PREVIEW TABLE SECTION -->
+        <div id="bulk-preview-section" class="hidden mt-4 pt-4 border-t border-pink-200 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black text-pink-800 font-fun">Data Preview:</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-pink-100 text-pink-700 border border-pink-300" id="preview-total-badge">0 items found</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-emerald-100 text-emerald-800 border border-emerald-300" id="preview-valid-badge">0 valid</span>
+              <span class="px-2.5 py-0.5 rounded-full text-[11px] font-black bg-amber-100 text-amber-800 border border-amber-300 hidden" id="preview-warning-badge">0 warnings</span>
+            </div>
+
+            <button type="button" onclick="clearBulkParsedData()" class="text-xs text-rose-600 hover:text-rose-800 font-bold flex items-center gap-1">
+              <i class="fa-solid fa-trash-can text-[10px]"></i> Clear
+            </button>
+          </div>
+
+          <!-- Preview Table -->
+          <div class="max-h-60 overflow-y-auto rounded-2xl border border-pink-200 bg-white shadow-inner">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead class="bg-pink-100/80 sticky top-0 text-[10px] uppercase font-black text-pink-900 border-b border-pink-200">
+                <tr>
+                  <th class="py-2 px-3">#</th>
+                  <th class="py-2 px-3">Product Name</th>
+                  <th class="py-2 px-3">Category</th>
+                  <th class="py-2 px-3">Price</th>
+                  <th class="py-2 px-3">Original</th>
+                  <th class="py-2 px-3">Stock</th>
+                  <th class="py-2 px-3">Status</th>
+                </tr>
+              </thead>
+              <tbody id="bulk-preview-tbody" class="divide-y divide-pink-100 text-pink-950 font-medium">
+                <!-- Rows injected dynamically -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Modal Footer Actions -->
+        <div class="mt-5 pt-3.5 border-t border-pink-200 flex items-center justify-between gap-2">
+          <button type="button" onclick="closeBulkUploadModal()" class="px-4 py-2 rounded-xl bg-white hover:bg-slate-50 text-pink-800 text-xs font-bold border border-pink-200 shadow-sm transition">
+            Close
+          </button>
+
+          <button type="button" id="bulk-import-btn" onclick="executeBulkImport()" disabled class="px-6 py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-lg disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2 transition">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            <span id="bulk-import-label">Select File to Import</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <!-- Toast Notification Container -->
@@ -447,9 +901,11 @@
     let allProducts = [];
     let allOrders = [];
     let currentSettings = {};
+    let bulkParsedProducts = [];
 
     document.addEventListener("DOMContentLoaded", () => {
       checkExistingSession();
+      setupBulkDragDrop();
     });
 
     function checkExistingSession() {
@@ -702,11 +1158,103 @@
         const data = await res.json();
         if (data.success) {
           currentSettings = data.data;
-          document.getElementById('setting-google-email').value = currentSettings.authorizedAdminEmail || "";
-          document.getElementById('setting-google-client-id').value = currentSettings.googleClientId || localStorage.getItem('chintu_google_client_id') || "";
-          document.getElementById('setting-announcement').value = currentSettings.announcement || "";
-          document.getElementById('setting-open').value = currentSettings.openTime || "10:30";
-          document.getElementById('setting-close').value = currentSettings.closeTime || "20:30";
+          
+          // Theme & visual
+          const activeTheme = currentSettings.theme || 'theme-sakura-pink';
+          selectTheme(activeTheme);
+          if (document.getElementById('setting-blur')) {
+            document.getElementById('setting-blur').value = currentSettings.blurIntensity || 'blur-normal';
+          }
+          if (document.getElementById('setting-floating-stickers')) {
+            document.getElementById('setting-floating-stickers').checked = currentSettings.floatingStickers !== false;
+          }
+          if (document.getElementById('setting-festive-confetti')) {
+            document.getElementById('setting-festive-confetti').checked = currentSettings.festiveConfetti !== false;
+          }
+
+          // Branding
+          if (document.getElementById('setting-store-name')) {
+            document.getElementById('setting-store-name').value = currentSettings.name || currentSettings.storeName || "Chintu's Gift & Kawaii Store";
+          }
+          if (document.getElementById('setting-brand-short')) {
+            document.getElementById('setting-brand-short').value = currentSettings.brandShort || "CHINTU'S";
+          }
+          if (document.getElementById('setting-brand-tagline')) {
+            document.getElementById('setting-brand-tagline').value = currentSettings.brandTagline || "Gift & Kawaii Store • Dalli Rajhara";
+          }
+          if (document.getElementById('setting-store-logo')) {
+            document.getElementById('setting-store-logo').value = currentSettings.storeLogo || "assets/images/kawaii_logo.jpg";
+            updateLogoPreview(currentSettings.storeLogo || "assets/images/kawaii_logo.jpg");
+          }
+
+          // Coupons & Promotions
+          if (document.getElementById('setting-coupon-code')) {
+            document.getElementById('setting-coupon-code').value = currentSettings.couponCode || "CHINTU10";
+          }
+          if (document.getElementById('setting-coupon-discount')) {
+            document.getElementById('setting-coupon-discount').value = currentSettings.couponDiscount || 10;
+          }
+          if (document.getElementById('setting-coupon-min-order')) {
+            document.getElementById('setting-coupon-min-order').value = currentSettings.couponMinOrder || 499;
+          }
+          if (document.getElementById('setting-announcement')) {
+            document.getElementById('setting-announcement').value = currentSettings.announcement || "";
+          }
+          if (document.getElementById('setting-delivery-notice')) {
+            document.getElementById('setting-delivery-notice').value = currentSettings.deliveryNotice || "⚡ Ultra-fast local delivery in Dalli Rajhara • WhatsApp Instant Updates";
+          }
+
+          // Hero Section
+          if (document.getElementById('setting-hero-badge')) {
+            document.getElementById('setting-hero-badge').value = currentSettings.heroBadge || "✨ 100% Authentic Cute Kawaii Stuff";
+          }
+          if (document.getElementById('setting-hero-heading')) {
+            document.getElementById('setting-hero-heading').value = currentSettings.heroHeading || "Spread Joy with Cute & Custom Gifts!";
+          }
+          if (document.getElementById('setting-hero-subtitle')) {
+            document.getElementById('setting-hero-subtitle').value = currentSettings.heroSubtitle || "Discover Dalli Rajhara's happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.";
+          }
+          if (document.getElementById('setting-hero-image')) {
+            document.getElementById('setting-hero-image').value = currentSettings.heroImage || "assets/images/kawaii_hero.jpg";
+            updateHeroPreview(currentSettings.heroImage || "assets/images/kawaii_hero.jpg");
+          }
+          if (document.getElementById('setting-hero-cta')) {
+            document.getElementById('setting-hero-cta').value = currentSettings.heroCtaText || "Explore Cute Gifts 🛍️";
+          }
+
+          // Contact & Physical Location
+          if (document.getElementById('setting-phone')) {
+            document.getElementById('setting-phone').value = currentSettings.phone || "8269212182";
+          }
+          if (document.getElementById('setting-whatsapp')) {
+            document.getElementById('setting-whatsapp').value = currentSettings.whatsapp || "918269212182";
+          }
+          if (document.getElementById('setting-address')) {
+            document.getElementById('setting-address').value = currentSettings.address || "Shop No. 2 (House 01), Shubhash Chowk, Near Bharat Petroleum, Ward Number 19, Dalli Rajhara, Chhattisgarh 491228";
+          }
+          if (document.getElementById('setting-maps-url')) {
+            document.getElementById('setting-maps-url').value = currentSettings.mapsUrl || "https://maps.google.com/?q=Dalli+Rajhara+Chhattisgarh";
+          }
+          if (document.getElementById('setting-instagram')) {
+            document.getElementById('setting-instagram').value = currentSettings.instagramHandle || "https://instagram.com/chintusgiftstore";
+          }
+          if (document.getElementById('setting-open')) {
+            document.getElementById('setting-open').value = currentSettings.openTime || "10:30";
+          }
+          if (document.getElementById('setting-close')) {
+            document.getElementById('setting-close').value = currentSettings.closeTime || "20:30";
+          }
+          if (document.getElementById('setting-closed-day')) {
+            document.getElementById('setting-closed-day').value = currentSettings.closedDay || "Open 7 Days a Week";
+          }
+
+          // Security
+          if (document.getElementById('setting-google-email')) {
+            document.getElementById('setting-google-email').value = currentSettings.authorizedAdminEmail || "";
+          }
+          if (document.getElementById('setting-google-client-id')) {
+            document.getElementById('setting-google-client-id').value = currentSettings.googleClientId || localStorage.getItem('chintu_google_client_id') || "";
+          }
         }
       } catch (e) {
         console.error(e);
@@ -954,17 +1502,49 @@
     }
 
     async function saveStoreSettings() {
-      const clientId = document.getElementById('setting-google-client-id').value.trim();
+      const clientId = (document.getElementById('setting-google-client-id')?.value || "").trim();
+      const masterPin = (document.getElementById('setting-master-pin')?.value || "").trim();
+      
       const payload = {
+        theme: document.getElementById('setting-theme')?.value || 'theme-sakura-pink',
+        blurIntensity: document.getElementById('setting-blur')?.value || 'blur-normal',
+        floatingStickers: document.getElementById('setting-floating-stickers')?.checked ?? true,
+        festiveConfetti: document.getElementById('setting-festive-confetti')?.checked ?? true,
+
+        name: (document.getElementById('setting-store-name')?.value || "Chintu's Gift & Kawaii Store").trim(),
+        brandShort: (document.getElementById('setting-brand-short')?.value || "CHINTU'S").trim(),
+        brandTagline: (document.getElementById('setting-brand-tagline')?.value || "").trim(),
+        storeLogo: (document.getElementById('setting-store-logo')?.value || "assets/images/kawaii_logo.jpg").trim(),
+
+        couponCode: (document.getElementById('setting-coupon-code')?.value || "CHINTU10").trim().toUpperCase(),
+        couponDiscount: Number(document.getElementById('setting-coupon-discount')?.value) || 10,
+        couponMinOrder: Number(document.getElementById('setting-coupon-min-order')?.value) || 499,
+        announcement: (document.getElementById('setting-announcement')?.value || "").trim(),
+        deliveryNotice: (document.getElementById('setting-delivery-notice')?.value || "").trim(),
+
+        heroBadge: (document.getElementById('setting-hero-badge')?.value || "").trim(),
+        heroHeading: (document.getElementById('setting-hero-heading')?.value || "").trim(),
+        heroSubtitle: (document.getElementById('setting-hero-subtitle')?.value || "").trim(),
+        heroImage: (document.getElementById('setting-hero-image')?.value || "assets/images/kawaii_hero.jpg").trim(),
+        heroCtaText: (document.getElementById('setting-hero-cta')?.value || "Explore Cute Gifts 🛍️").trim(),
+
         phone: "8269212182",
         displayPhone: "+91 82692 12182",
-        whatsapp: "918269212182",
-        authorizedAdminEmail: document.getElementById('setting-google-email').value.trim(),
-        googleClientId: clientId,
-        announcement: document.getElementById('setting-announcement').value.trim(),
-        openTime: document.getElementById('setting-open').value.trim(),
-        closeTime: document.getElementById('setting-close').value.trim()
+        whatsapp: (document.getElementById('setting-whatsapp')?.value || "918269212182").trim(),
+        address: (document.getElementById('setting-address')?.value || "").trim(),
+        mapsUrl: (document.getElementById('setting-maps-url')?.value || "").trim(),
+        instagramHandle: (document.getElementById('setting-instagram')?.value || "").trim(),
+        openTime: (document.getElementById('setting-open')?.value || "10:30").trim(),
+        closeTime: (document.getElementById('setting-close')?.value || "20:30").trim(),
+        closedDay: (document.getElementById('setting-closed-day')?.value || "Open 7 Days a Week").trim(),
+
+        authorizedAdminEmail: (document.getElementById('setting-google-email')?.value || "").trim().toLowerCase(),
+        googleClientId: clientId
       };
+
+      if (masterPin) {
+        payload.masterPin = masterPin;
+      }
 
       if (clientId) {
         localStorage.setItem('chintu_google_client_id', clientId);
@@ -978,12 +1558,444 @@
         });
         const data = await res.json();
         if (data.success) {
-          showToast("Store settings & authorized Google email saved! 🌸");
+          showToast("Store settings, theme & landing page saved successfully! 🌸");
+          if (masterPin) {
+            document.getElementById('setting-master-pin').value = '';
+          }
           fetchSettings();
+        } else {
+          showToast(data.message || "Failed to save settings", "error");
         }
       } catch (e) {
         console.error(e);
+        showToast("Network error saving settings", "error");
       }
+    }
+
+    // ================= CUSTOMIZER HELPERS =================
+    function selectTheme(themeName) {
+      const input = document.getElementById('setting-theme');
+      if (input) input.value = themeName;
+
+      document.querySelectorAll('.theme-card').forEach(card => {
+        card.classList.remove('border-pink-500', 'bg-pink-50');
+        card.classList.add('border-transparent', 'bg-white');
+        const badge = card.querySelector('.theme-active-badge');
+        if (badge) badge.classList.add('hidden');
+      });
+
+      const activeCard = document.getElementById(`theme-card-${themeName}`);
+      if (activeCard) {
+        activeCard.classList.remove('border-transparent', 'bg-white');
+        activeCard.classList.add('border-pink-500', 'bg-pink-50');
+        const badge = activeCard.querySelector('.theme-active-badge');
+        if (badge) badge.classList.remove('hidden');
+      }
+    }
+
+    function updateLogoPreview(url) {
+      const img = document.getElementById('logo-preview-img');
+      if (img && url) img.src = url;
+    }
+
+    function setLogoPreset(url) {
+      const input = document.getElementById('setting-store-logo');
+      if (input) {
+        input.value = url;
+        updateLogoPreview(url);
+      }
+    }
+
+    function updateHeroPreview(url) {
+      const img = document.getElementById('hero-preview-img');
+      if (img && url) img.src = url;
+    }
+
+    function setHeroPreset(url) {
+      const input = document.getElementById('setting-hero-image');
+      if (input) {
+        input.value = url;
+        updateHeroPreview(url);
+      }
+    }
+
+    function togglePasswordVisibility(inputId, btn) {
+      const input = document.getElementById(inputId);
+      if (!input) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+      } else {
+        input.type = 'password';
+        btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
+      }
+    }
+
+    // ================= BULK PRODUCT UPLOAD FUNCTIONS =================
+    function openBulkUploadModal() {
+      document.getElementById('bulk-upload-modal').classList.remove('hidden');
+      switchBulkTab('file');
+      clearBulkParsedData();
+    }
+
+    function closeBulkUploadModal() {
+      document.getElementById('bulk-upload-modal').classList.add('hidden');
+    }
+
+    function switchBulkTab(tab) {
+      const btnFile = document.getElementById('bulk-tab-btn-file');
+      const btnPaste = document.getElementById('bulk-tab-btn-paste');
+      const contentFile = document.getElementById('bulk-content-file');
+      const contentPaste = document.getElementById('bulk-content-paste');
+
+      if (tab === 'file') {
+        btnFile.className = "px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-1.5 transition";
+        btnPaste.className = "px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-white text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 transition";
+        contentFile.classList.remove('hidden');
+        contentPaste.classList.add('hidden');
+      } else {
+        btnPaste.className = "px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-1.5 transition";
+        btnFile.className = "px-3.5 py-1.5 rounded-xl text-xs font-extrabold bg-white text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 transition";
+        contentPaste.classList.remove('hidden');
+        contentFile.classList.add('hidden');
+      }
+    }
+
+    function setupBulkDragDrop() {
+      const dropZone = document.getElementById('bulk-drop-zone');
+      if (!dropZone) return;
+
+      ['dragenter', 'dragover'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.add('border-emerald-600', 'bg-emerald-100/50');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(name => {
+        dropZone.addEventListener(name, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          dropZone.classList.remove('border-emerald-600', 'bg-emerald-100/50');
+        }, false);
+      });
+
+      dropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files && files.length > 0) {
+          parseSpreadsheetFile(files[0]);
+        }
+      }, false);
+    }
+
+    function handleBulkFileSelect(e) {
+      const file = e.target.files && e.target.files[0];
+      if (file) {
+        parseSpreadsheetFile(file);
+      }
+    }
+
+    function parseSpreadsheetFile(file) {
+      if (!window.XLSX) {
+        showToast("Spreadsheet engine loading, please try again", "error");
+        return;
+      }
+      showToast(`Reading ${file.name}... ⏳`);
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const data = new Uint8Array(e.target.result);
+          const workbook = XLSX.read(data, { type: 'array' });
+          const firstSheetName = workbook.SheetNames[0];
+          const worksheet = workbook.Sheets[firstSheetName];
+          const rawRows = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+          processParsedProducts(rawRows);
+        } catch (err) {
+          console.error("Excel parse error:", err);
+          showToast("Failed to parse Excel file: " + err.message, "error");
+        }
+      };
+      reader.readAsArrayBuffer(file);
+    }
+
+    function parsePastedSpreadsheet() {
+      const text = document.getElementById('bulk-paste-text').value.trim();
+      if (!text) {
+        showToast("Please paste rows into the box first", "error");
+        return;
+      }
+      if (!window.XLSX) {
+        showToast("Spreadsheet engine loading, please try again", "error");
+        return;
+      }
+
+      try {
+        const workbook = XLSX.read(text, { type: 'string' });
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const rawRows = XLSX.utils.sheet_to_json(worksheet, { defval: "" });
+        processParsedProducts(rawRows);
+      } catch (err) {
+        console.error("Pasted text parse error:", err);
+        showToast("Failed to parse pasted data: " + err.message, "error");
+      }
+    }
+
+    function processParsedProducts(rawRows) {
+      if (!Array.isArray(rawRows) || rawRows.length === 0) {
+        showToast("No product rows found in spreadsheet", "error");
+        clearBulkParsedData();
+        return;
+      }
+
+      bulkParsedProducts = [];
+      let validCount = 0;
+      let warningCount = 0;
+
+      rawRows.forEach((row, idx) => {
+        const getVal = (possibleKeys) => {
+          for (const key of Object.keys(row)) {
+            const cleanKey = key.trim().toLowerCase();
+            for (const pk of possibleKeys) {
+              if (cleanKey === pk.toLowerCase()) {
+                return row[key];
+              }
+            }
+          }
+          return "";
+        };
+
+        const name = String(getVal(['name', 'title', 'product name', 'product', 'item'])).trim();
+        const hindiName = String(getVal(['hindi name', 'hindiname', 'hindi'])).trim();
+        let category = String(getVal(['category', 'cat', 'type'])).toLowerCase().trim() || 'stationery';
+        
+        if (category.includes('toy') || category.includes('plush')) category = 'toys';
+        else if (category.includes('station') || category.includes('pen') || category.includes('diary')) category = 'stationery';
+        else if (category.includes('person') || category.includes('custom') || category.includes('lamp') || category.includes('acrylic')) category = 'personalized';
+        else if (category.includes('birth') || category.includes('hamp') || category.includes('box')) category = 'birthday';
+        else if (category.includes('novel') || category.includes('bag') || category.includes('access')) category = 'novelties';
+        else if (!['toys', 'stationery', 'personalized', 'birthday', 'novelties'].includes(category)) category = 'stationery';
+
+        const rawPrice = getVal(['price', 'selling price', 'rate', 'sellingprice']);
+        const price = Number(rawPrice);
+        const rawOriginal = getVal(['original price', 'originalprice', 'mrp', 'cut price']);
+        const originalPrice = Number(rawOriginal) || (price ? Math.round(price * 1.5) : 0);
+
+        const image = String(getVal(['image', 'image url', 'img', 'photo', 'picture'])).trim() || 'assets/images/kawaii_stationery.jpg';
+        const badge = String(getVal(['badge', 'tag', 'label'])).trim() || 'New Arrival';
+        const rawStock = String(getVal(['in stock', 'instock', 'stock', 'available'])).toLowerCase().trim();
+        const inStock = !(rawStock === 'false' || rawStock === 'no' || rawStock === '0' || rawStock === 'out');
+        const rawCustom = String(getVal(['customizable', 'custom', 'personalized'])).toLowerCase().trim();
+        const customizable = (rawCustom === 'true' || rawCustom === 'yes' || rawCustom === '1');
+        const description = String(getVal(['description', 'desc', 'details'])).trim();
+
+        const isValid = name.length > 0 && !isNaN(price) && price > 0;
+        if (isValid) {
+          validCount++;
+        } else {
+          warningCount++;
+        }
+
+        bulkParsedProducts.push({
+          idx: idx + 1,
+          name: name || `(Unnamed Item #${idx + 1})`,
+          hindiName,
+          category,
+          price: isNaN(price) ? 0 : price,
+          originalPrice,
+          image,
+          badge,
+          inStock,
+          customizable,
+          description,
+          isValid,
+          reason: !name ? 'Missing Name' : (isNaN(price) || price <= 0 ? 'Missing/Zero Price' : 'Ready')
+        });
+      });
+
+      document.getElementById('bulk-preview-section').classList.remove('hidden');
+      document.getElementById('preview-total-badge').textContent = `${bulkParsedProducts.length} items found`;
+      document.getElementById('preview-valid-badge').textContent = `${validCount} ready to import`;
+      
+      const warningBadge = document.getElementById('preview-warning-badge');
+      if (warningCount > 0) {
+        warningBadge.textContent = `${warningCount} warnings`;
+        warningBadge.classList.remove('hidden');
+      } else {
+        warningBadge.classList.add('hidden');
+      }
+
+      const tbody = document.getElementById('bulk-preview-tbody');
+      tbody.innerHTML = bulkParsedProducts.map(p => `
+        <tr class="hover:bg-pink-50/50 ${p.isValid ? '' : 'bg-rose-50/70'}">
+          <td class="py-2 px-3 text-pink-700 font-mono text-[11px]">${p.idx}</td>
+          <td class="py-2 px-3 font-bold truncate max-w-[200px]" title="${p.name}">
+            <div class="flex items-center gap-1.5">
+              <img src="${p.image}" class="w-6 h-6 rounded-md object-cover border border-pink-200 shrink-0" onerror="this.src='assets/images/kawaii_stationery.jpg'">
+              <span class="truncate">${p.name}</span>
+            </div>
+          </td>
+          <td class="py-2 px-3">
+            <span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-pink-100 text-pink-700 capitalize">${p.category}</span>
+          </td>
+          <td class="py-2 px-3 font-extrabold text-emerald-600">₹${p.price}</td>
+          <td class="py-2 px-3 text-slate-400 line-through">₹${p.originalPrice}</td>
+          <td class="py-2 px-3">
+            <span class="text-[10px] font-bold ${p.inStock ? 'text-emerald-700' : 'text-rose-600'}">
+              ${p.inStock ? 'In Stock' : 'Out'}
+            </span>
+          </td>
+          <td class="py-2 px-3">
+            ${p.isValid 
+              ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-emerald-100 text-emerald-800">✅ Ready</span>`
+              : `<span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-rose-100 text-rose-800">⚠️ ${p.reason}</span>`
+            }
+          </td>
+        </tr>
+      `).join('');
+
+      const importBtn = document.getElementById('bulk-import-btn');
+      const importLabel = document.getElementById('bulk-import-label');
+
+      if (validCount > 0) {
+        importBtn.disabled = false;
+        importLabel.textContent = `✨ Import ${validCount} Products Now`;
+      } else {
+        importBtn.disabled = true;
+        importLabel.textContent = "No Valid Products to Import";
+      }
+    }
+
+    function clearBulkParsedData() {
+      bulkParsedProducts = [];
+      const tbody = document.getElementById('bulk-preview-tbody');
+      if (tbody) tbody.innerHTML = '';
+      const previewSec = document.getElementById('bulk-preview-section');
+      if (previewSec) previewSec.classList.add('hidden');
+      const fileInput = document.getElementById('bulk-file-input');
+      if (fileInput) fileInput.value = '';
+      const pasteText = document.getElementById('bulk-paste-text');
+      if (pasteText) pasteText.value = '';
+      const importBtn = document.getElementById('bulk-import-btn');
+      if (importBtn) {
+        importBtn.disabled = true;
+        document.getElementById('bulk-import-label').textContent = "Select File to Import";
+      }
+    }
+
+    async function executeBulkImport() {
+      const validItems = bulkParsedProducts.filter(p => p.isValid);
+      if (validItems.length === 0) {
+        showToast("No valid products to import", "error");
+        return;
+      }
+
+      const importBtn = document.getElementById('bulk-import-btn');
+      importBtn.disabled = true;
+      document.getElementById('bulk-import-label').textContent = `Importing ${validItems.length} items... ⏳`;
+
+      try {
+        const res = await fetch('/api/products/bulk', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({ products: validItems })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          showToast(`🎉 Successfully imported ${data.count} items into catalogue!`);
+          closeBulkUploadModal();
+          fetchProducts();
+        } else {
+          showToast(data.message || "Bulk import failed", "error");
+          importBtn.disabled = false;
+          document.getElementById('bulk-import-label').textContent = `✨ Import ${validItems.length} Products Now`;
+        }
+      } catch (err) {
+        console.error("Bulk import error:", err);
+        showToast("Network error executing bulk import", "error");
+        importBtn.disabled = false;
+        document.getElementById('bulk-import-label').textContent = `✨ Import ${validItems.length} Products Now`;
+      }
+    }
+
+    function downloadSampleExcel() {
+      if (!window.XLSX) {
+        showToast("Excel generator loading, please try again", "error");
+        return;
+      }
+
+      const sampleRows = [
+        {
+          "Name": "Pastel Bunny Plushie 30cm",
+          "Hindi Name": "पेस्टल बनी प्लशी",
+          "Category": "toys",
+          "Price": 599,
+          "Original Price": 999,
+          "Image URL": "assets/images/kawaii_hero.jpg",
+          "Badge": "Bestseller",
+          "In Stock": "TRUE",
+          "Customizable": "FALSE",
+          "Description": "Super soft marshmallow plush toy with kawaii embroidered ears."
+        },
+        {
+          "Name": "Aesthetic Pastel Gel Pen Set (6 Pcs)",
+          "Hindi Name": "पेस्टल जेल पेन सेट",
+          "Category": "stationery",
+          "Price": 199,
+          "Original Price": 349,
+          "Image URL": "assets/images/kawaii_stationery.jpg",
+          "Badge": "Kawaii Hot",
+          "In Stock": "TRUE",
+          "Customizable": "FALSE",
+          "Description": "Smooth 0.5mm black ink gel pens with comfortable soft grip."
+        },
+        {
+          "Name": "Personalized 3D LED Acrylic Lamp",
+          "Hindi Name": "पर्सनलाइज्ड ऐक्रेलिक लैंप",
+          "Category": "personalized",
+          "Price": 799,
+          "Original Price": 1299,
+          "Image URL": "assets/images/pink_acrylic_lamp.jpg",
+          "Badge": "Trending",
+          "In Stock": "TRUE",
+          "Customizable": "TRUE",
+          "Description": "Warm glowing night light engraved with couple name or birthday message."
+        },
+        {
+          "Name": "Deluxe Birthday Hamper Box",
+          "Hindi Name": "डीलक्स बर्थडे हैंपर",
+          "Category": "birthday",
+          "Price": 1499,
+          "Original Price": 2299,
+          "Image URL": "assets/images/kawaii_hero.jpg",
+          "Badge": "Mega Hamper",
+          "In Stock": "TRUE",
+          "Customizable": "TRUE",
+          "Description": "Complete gift box with plushie, chocolates, diary, fairy lights, and custom card."
+        }
+      ];
+
+      const ws = XLSX.utils.json_to_sheet(sampleRows);
+      ws['!cols'] = [
+        { wch: 35 },
+        { wch: 25 },
+        { wch: 15 },
+        { wch: 10 },
+        { wch: 15 },
+        { wch: 40 },
+        { wch: 15 },
+        { wch: 10 },
+        { wch: 15 },
+        { wch: 50 }
+      ];
+
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Products_Template");
+      XLSX.writeFile(wb, "Chintus_Store_Product_Import_Template.xlsx");
+      showToast("Sample Excel template downloaded! 📥 Fill it and drop back here.");
     }
 
     function showToast(message, type = "success") {

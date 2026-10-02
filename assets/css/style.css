@@ -365,3 +365,85 @@ h1, h2, h3, h4, h5, h6, .font-fun {
   background: #f472b6;
   border-radius: 4px;
 }
+
+/* ================= THEME PALETTES ================= */
+
+/* 1. Sakura Pink (Default) */
+body.theme-sakura-pink {
+  --primary-pink: #ec4899;
+  --primary-rose: #f43f5e;
+  --pastel-pink: #fdf2f8;
+  --acrylic-border: rgba(244, 114, 182, 0.35);
+  background: linear-gradient(135deg, #fff5f7 0%, #ffe4ec 35%, #fff0f5 70%, #fdf2f8 100%);
+}
+
+/* 2. Lavender Dream */
+body.theme-lavender-dream {
+  --primary-pink: #8b5cf6;
+  --primary-rose: #a855f7;
+  --pastel-pink: #f5f3ff;
+  --acrylic-border: rgba(192, 132, 252, 0.38);
+  --text-primary: #2e1065;
+  --text-secondary: #581c87;
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 35%, #f5f3ff 70%, #fdf4ff 100%);
+}
+body.theme-lavender-dream .kawaii-btn-pink {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%) !important;
+}
+
+/* 3. Peach Sorbet */
+body.theme-peach-coral {
+  --primary-pink: #f97316;
+  --primary-rose: #fb923c;
+  --pastel-pink: #fff7ed;
+  --acrylic-border: rgba(251, 146, 60, 0.38);
+  --text-primary: #431407;
+  --text-secondary: #7c2d12;
+  background: linear-gradient(135deg, #fffaf5 0%, #ffedd5 35%, #fff7ed 70%, #fff1f2 100%);
+}
+body.theme-peach-coral .kawaii-btn-pink {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%) !important;
+}
+
+/* 4. Cotton Candy Sky */
+body.theme-cotton-candy {
+  --primary-pink: #06b6d4;
+  --primary-rose: #ec4899;
+  --pastel-pink: #ecfeff;
+  --acrylic-border: rgba(103, 232, 249, 0.38);
+  --text-primary: #083344;
+  --text-secondary: #155e75;
+  background: linear-gradient(135deg, #ecfeff 0%, #fce7f3 35%, #f0fdf4 70%, #fdf2f8 100%);
+}
+body.theme-cotton-candy .kawaii-btn-pink {
+  background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%) !important;
+}
+
+/* 5. Matcha Cream & Mint */
+body.theme-matcha-mint {
+  --primary-pink: #10b981;
+  --primary-rose: #059669;
+  --pastel-pink: #ecfdf5;
+  --acrylic-border: rgba(110, 231, 183, 0.38);
+  --text-primary: #064e3b;
+  --text-secondary: #065f46;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 35%, #f0fdfa 70%, #fefce8 100%);
+}
+body.theme-matcha-mint .kawaii-btn-pink {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
+}
+
+/* Blur Intensities */
+body.blur-soft .pink-acrylic, body.blur-soft .pink-acrylic-nav {
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+body.blur-strong .pink-acrylic, body.blur-strong .pink-acrylic-nav {
+  backdrop-filter: blur(28px) !important;
+  -webkit-backdrop-filter: blur(28px) !important;
+}
+
+/* Toggle Floating Cartoon Stickers */
+body.hide-stickers .decorative-sticker {
+  display: none !important;
+}

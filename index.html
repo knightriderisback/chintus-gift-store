@@ -95,14 +95,14 @@
       <!-- Logo & Brand with Cartoon Mascot -->
       <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group">
         <div class="relative w-11 h-11 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-pink-400 shadow-md group-hover:scale-105 transition animate-float">
-          <img src="assets/images/kawaii_logo.jpg" alt="Chintu's Mascot Logo" class="w-full h-full object-cover">
+          <img src="assets/images/kawaii_logo.jpg" alt="Chintu's Mascot Logo" class="store-logo-img w-full h-full object-cover">
         </div>
         <div>
           <div class="flex items-center gap-1.5">
-            <span class="text-lg sm:text-2xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
+            <span class="store-brand-title text-lg sm:text-2xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
             <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-extrabold uppercase border border-pink-200">Kawaii</span>
           </div>
-          <p class="text-[10px] sm:text-xs text-pink-800/80 font-bold truncate max-w-[170px] sm:max-w-none">
+          <p class="store-brand-tagline text-[10px] sm:text-xs text-pink-800/80 font-bold truncate max-w-[170px] sm:max-w-none">
             🧸 Soft Toys & Fancy Stationery
           </p>
         </div>
@@ -159,10 +159,10 @@
   <section id="home" class="relative overflow-hidden pt-6 pb-12 sm:py-16 px-3 sm:px-6">
     
     <!-- Floating Cartoon Decorative Stickers -->
-    <div class="absolute top-4 left-4 text-3xl sm:text-4xl animate-float pointer-events-none select-none opacity-80">🐰</div>
-    <div class="absolute top-12 right-6 text-3xl sm:text-4xl animate-cartoon-bounce pointer-events-none select-none opacity-80">🍓</div>
-    <div class="absolute bottom-6 left-8 text-3xl sm:text-4xl animate-float pointer-events-none select-none opacity-70">🧸</div>
-    <div class="absolute bottom-10 right-10 text-3xl sm:text-4xl animate-cartoon-bounce pointer-events-none select-none opacity-70">✨</div>
+    <div class="decorative-sticker absolute top-4 left-4 text-3xl sm:text-4xl animate-float pointer-events-none select-none opacity-80">🐰</div>
+    <div class="decorative-sticker absolute top-12 right-6 text-3xl sm:text-4xl animate-cartoon-bounce pointer-events-none select-none opacity-80">🍓</div>
+    <div class="decorative-sticker absolute bottom-6 left-8 text-3xl sm:text-4xl animate-float pointer-events-none select-none opacity-70">🧸</div>
+    <div class="decorative-sticker absolute bottom-10 right-10 text-3xl sm:text-4xl animate-cartoon-bounce pointer-events-none select-none opacity-70">✨</div>
 
     <div class="max-w-7xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -173,19 +173,19 @@
           <!-- Cute Kawaii Pill -->
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/80 border border-pink-300 shadow-sm text-pink-700 text-xs sm:text-sm font-extrabold mb-4 animate-cartoon-bounce">
             <span>🧸</span>
-            <span>Dalli Rajhara's Cutest Gift Boutique</span>
+            <span id="hero-badge-text">Dalli Rajhara's Cutest Gift Boutique</span>
             <span>🎀</span>
           </div>
 
           <!-- Main Heading -->
-          <h1 class="text-3xl sm:text-5xl md:text-6xl font-black text-purple-950 font-fun leading-tight mb-4">
+          <h1 id="hero-heading" class="text-3xl sm:text-5xl md:text-6xl font-black text-purple-950 font-fun leading-tight mb-4">
             Soft Toys, Fancy Stationery <br>
             <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600">
               & Custom Pink Acrylic Gifts!
             </span>
           </h1>
 
-          <p class="text-xs sm:text-base text-pink-900/80 font-semibold max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
+          <p id="hero-subtitle" class="text-xs sm:text-base text-pink-900/80 font-semibold max-w-xl mx-auto lg:mx-0 mb-6 leading-relaxed">
             Giant cuddly teddy bears, aesthetic pastel diaries with locks, cute bear highlighters, 3D acrylic LED lamps & surprise explosion boxes — Subhash Chowk, Dalli Rajhara.
           </p>
 
@@ -193,7 +193,7 @@
           <div class="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 mb-8">
             <a href="#customizer-studio" class="px-6 sm:px-7 py-3 rounded-full kawaii-btn-pink text-xs sm:text-sm font-black shadow-lg flex items-center gap-2">
               <i class="fa-solid fa-wand-magic-sparkles"></i>
-              <span>Pink Custom Studio</span>
+              <span id="hero-cta-btn-text">Pink Custom Studio</span>
             </a>
 
             <a href="#catalog" class="px-5 sm:px-6 py-3 rounded-full pink-acrylic hover:bg-white text-pink-800 text-xs sm:text-sm font-black transition flex items-center gap-2 border border-pink-300">
@@ -201,9 +201,9 @@
               <span>Explore Toys & Stationery</span>
             </a>
 
-            <a href="https://wa.me/918269212182?text=Hello%20Chintu's,%20please%20share%20soft%20toys%20and%20stationery%20catalog!" target="_blank" class="px-5 sm:px-6 py-3 rounded-full kawaii-btn-green text-xs sm:text-sm font-black shadow-md flex items-center gap-2">
+            <a href="https://wa.me/918269212182?text=Hello%20Chintu's,%20please%20share%20soft%20toys%20and%20stationery%20catalog!" target="_blank" class="store-wa-link px-5 sm:px-6 py-3 rounded-full kawaii-btn-green text-xs sm:text-sm font-black shadow-md flex items-center gap-2">
               <i class="fa-brands fa-whatsapp text-base"></i>
-              <span>WhatsApp: 8269212182</span>
+              <span class="store-phone-display">WhatsApp: 8269212182</span>
             </a>
           </div>
 
@@ -212,7 +212,7 @@
             <div class="pink-acrylic p-3 rounded-2xl flex items-center gap-2.5">
               <div class="text-xl sm:text-2xl animate-cartoon-bounce">⚡</div>
               <div class="min-w-0">
-                <div class="text-[11px] font-extrabold text-pink-950 truncate">Same-Day Delivery</div>
+                <div class="text-[11px] font-extrabold text-pink-950 truncate store-delivery-notice">Same-Day Delivery</div>
                 <div class="text-[10px] text-pink-700/80 truncate">In Dalli Rajhara</div>
               </div>
             </div>
@@ -247,7 +247,7 @@
         <!-- Right Hero Banner (Kawaii Store Showcase) -->
         <div class="lg:col-span-5 flex justify-center">
           <div class="relative w-full max-w-md aspect-[4/3] rounded-3xl overflow-hidden pink-acrylic p-2 sm:p-3 shadow-2xl border-2 border-pink-300 animate-float">
-            <img src="assets/images/kawaii_hero.jpg" alt="Kawaii Soft Toys and Stationery" class="w-full h-full object-cover rounded-2xl">
+            <img id="hero-main-img" src="assets/images/kawaii_hero.jpg" alt="Kawaii Soft Toys and Stationery" class="w-full h-full object-cover rounded-2xl">
             <!-- Cute Floating Pill Overlay -->
             <div class="absolute bottom-4 left-4 right-4 pink-acrylic p-2.5 rounded-2xl flex items-center justify-between shadow-lg">
               <div class="flex items-center gap-2">
