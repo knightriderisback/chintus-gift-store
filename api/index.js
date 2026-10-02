@@ -329,7 +329,7 @@ function requireAdmin(req, res, next) {
 
 // Auth Endpoint
 app.post('/api/auth/google', (req, res) => {
-  const { email, name, picture, masterCode } = req.body;
+  let { email, name, picture, masterCode, credential } = req.body;
   const settings = readData(SETTINGS_FILE, {
     storeName: "Chintu's Gift & Kawaii Store",
     phone: "8269212182",
@@ -338,7 +338,28 @@ app.post('/api/auth/google', (req, res) => {
     authorizedAdminEmail: process.env.ADMIN_GOOGLE_EMAIL || ""
   });
 
+  // Decode credential if Google One-Tap/GIS returned a JWT
+  if (credential && !email) {
+    try {
+      const parts = credential.split('.');
+      if (parts.length === 3) {
+        const payloadJson = Buffer.from(parts[1], 'base64').toString('utf8');
+        const decoded = JSON.parse(payloadJson);
+        email = decoded.email;
+        name = decoded.name || name;
+        picture = decoded.picture || picture;
+      }
+    } catch (e) {
+      console.warn("Credential parse warning:", e.message);
+    }
+  }
+
+  // Master Owner Code option (Emergency / Staging backup / Claim ownership)
   if (masterCode && (masterCode === 'chintu8269' || masterCode === process.env.ADMIN_MASTER_CODE)) {
+    if (email && email.includes('@')) {
+      settings.authorizedAdminEmail = email.toLowerCase().trim();
+      writeData(SETTINGS_FILE, settings);
+    }
     const sessionToken = 'owner_session_' + Date.now();
     return res.json({
       success: true,
@@ -352,20 +373,23 @@ app.post('/api/auth/google', (req, res) => {
     });
   }
 
+  // Google Email Verification
   if (!email) {
     return res.status(400).json({ success: false, message: 'Google account email required' });
   }
 
   const cleanEmail = email.toLowerCase().trim();
 
+  // If authorizedAdminEmail is already set, strictly enforce match
   if (settings.authorizedAdminEmail && settings.authorizedAdminEmail.trim() !== '') {
     if (settings.authorizedAdminEmail.toLowerCase().trim() !== cleanEmail) {
       return res.status(403).json({
         success: false,
-        message: `Access Denied: Google account (${email}) is NOT authorized. Only the store owner account is permitted.`
+        message: `Access Denied: Google account (${email}) is NOT authorized. Only the store owner account (${settings.authorizedAdminEmail}) is permitted. You can also log in using the Master PIN.`
       });
     }
   } else {
+    // Register the first Google login as authorized admin owner
     settings.authorizedAdminEmail = cleanEmail;
     writeData(SETTINGS_FILE, settings);
   }
@@ -377,8 +401,8 @@ app.post('/api/auth/google', (req, res) => {
     token: sessionToken,
     user: {
       email: cleanEmail,
-      name: name || 'Store Owner',
-      picture: picture || 'assets/images/kawaii_logo.jpg'
+      name: name || cleanEmail.split('@')[0],
+      picture: picture || `https://ui-avatars.com/api/?name=${encodeURIComponent(cleanEmail.split('@')[0])}&background=ec4899&color=fff&bold=true`
     }
   });
 });

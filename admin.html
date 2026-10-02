@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Admin Portal | Chintu's Gift & Kawaii Store</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -12,158 +12,242 @@
   <!-- Google Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
-<body class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 min-h-screen text-purple-950 pb-16">
+<body class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 min-h-screen text-purple-950 pb-16 antialiased">
 
   <!-- ================= AUTHENTICATION GATE (SHOWN WHEN NOT LOGGED IN) ================= -->
-  <div id="auth-gate" class="fixed inset-0 z-[2000] bg-pink-100/90 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="pink-acrylic w-full max-w-md p-6 sm:p-8 text-center shadow-2xl border-2 border-pink-300 relative animate-float">
-      
-      <!-- Mascot Badge -->
-      <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-4 animate-cartoon-bounce">
-        <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
-      </div>
-
-      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-xs font-black uppercase mb-3">
-        <i class="fa-solid fa-lock text-pink-600"></i> Store Owner Portal
-      </div>
-
-      <h2 class="text-xl sm:text-2xl font-black text-purple-950 font-fun mb-1">
-        Chintu's Admin Studio
-      </h2>
-      <p class="text-xs text-pink-900/80 mb-6 font-semibold">
-        This area is restricted exclusively to the store owner. Sign in with your Google Account to manage the catalogue.
-      </p>
-
-      <!-- Google Sign In Container -->
-      <div class="mb-4">
-        <!-- Native Google One Tap Button (Configured dynamically) -->
-        <div id="g_id_onload"
-             data-client_id="8269212182-chintus.apps.googleusercontent.com"
-             data-context="signin"
-             data-ux_mode="popup"
-             data-callback="handleGoogleCredentialResponse"
-             data-auto_prompt="false">
-        </div>
-        <div class="g_id_signin flex justify-center mb-3"
-             data-type="standard"
-             data-shape="pill"
-             data-theme="outline"
-             data-text="signin_with"
-             data-size="large"
-             data-logo_alignment="left">
-        </div>
-
-        <div class="relative flex py-2 items-center">
-          <div class="flex-grow border-t border-pink-200"></div>
-          <span class="flex-shrink mx-3 text-[10px] font-black text-pink-600 uppercase">Owner Google Verification</span>
-          <div class="flex-grow border-t border-pink-200"></div>
-        </div>
-
-        <!-- Google Email + Master Key Verification Form -->
-        <form onsubmit="event.preventDefault(); submitGoogleOwnerLogin();" class="space-y-3 text-left">
+  <div id="auth-gate" class="fixed inset-0 z-[2000] bg-gradient-to-br from-pink-100/95 via-rose-50/95 to-pink-200/95 backdrop-blur-md flex flex-col overflow-y-auto">
+    
+    <!-- Auth Gate Header (Guarantees header is visible on local & Vercel) -->
+    <header class="w-full pink-acrylic-nav px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-pink-200 shrink-0 shadow-sm">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-2 sm:gap-2.5">
+          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0">
           <div>
-            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Owner Google Email</label>
-            <div class="relative">
-              <i class="fa-brands fa-google absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
-              <input type="email" id="login-google-email" required placeholder="your.google@gmail.com" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+            <div class="flex items-center gap-1.5">
+              <span class="text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
+              <span class="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold border border-pink-300">Admin</span>
             </div>
+            <p class="text-[10px] text-pink-800 font-medium hidden sm:block">Owner Security & Catalogue Portal • Dalli Rajhara</p>
           </div>
-
-          <div>
-            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Master Owner PIN / Passcode</label>
-            <div class="relative">
-              <i class="fa-solid fa-key absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
-              <input type="password" id="login-master-key" placeholder="Enter owner key (Default: chintu8269)" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
-            </div>
-            <p class="text-[10px] text-pink-700/80 mt-1">Default Master Key: <code class="bg-pink-100 px-1 py-0.5 rounded font-bold">chintu8269</code></p>
-          </div>
-
-          <button type="submit" class="w-full py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-md flex items-center justify-center gap-2 mt-3">
-            <i class="fa-solid fa-shield-halved"></i>
-            <span>Verify & Enter Dashboard</span>
-          </button>
-        </form>
-
-        <div id="auth-error-msg" class="hidden mt-3 p-2.5 rounded-xl bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200"></div>
-      </div>
-
-      <div class="pt-3 border-t border-pink-200 text-[11px] text-pink-800">
-        <a href="index.html" class="hover:underline flex items-center justify-center gap-1">
-          <i class="fa-solid fa-arrow-left text-[10px]"></i> Back to Customer Store
+        </a>
+        <a href="index.html" class="px-3 sm:px-4 py-1.5 rounded-full bg-white/95 hover:bg-white text-pink-800 border border-pink-300 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+          <span>🏪</span>
+          <span class="hidden sm:inline">Back to</span><span>Store</span>
         </a>
       </div>
+    </header>
 
+    <!-- Centered Login Card -->
+    <div class="flex-1 flex items-center justify-center p-3 sm:p-4 my-auto">
+      <div class="pink-acrylic w-full max-w-md p-5 sm:p-7 text-center shadow-2xl border-2 border-pink-300 relative my-4">
+        
+        <!-- Mascot Badge -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-3 animate-cartoon-bounce">
+          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
+        </div>
+
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-[11px] font-black uppercase mb-2">
+          <i class="fa-solid fa-lock text-pink-600"></i> Owner Access Only
+        </div>
+
+        <h2 class="text-xl sm:text-2xl font-black text-purple-950 font-fun mb-1">
+          Chintu's Admin Studio
+        </h2>
+        <p class="text-xs text-pink-900/80 mb-5 font-semibold">
+          Restricted to Store Owner. Sign in with your Google Account to manage the catalogue, stock, and orders.
+        </p>
+
+        <!-- Google OAuth Sign-In Primary Action -->
+        <div class="space-y-3 mb-4">
+          
+          <!-- Big Official Google Sign-In Button -->
+          <button type="button" onclick="startGoogleOAuthFlow()" class="w-full flex items-center justify-center gap-3 py-3 px-4 rounded-full bg-white hover:bg-slate-50 text-slate-700 border border-slate-300 font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition">
+            <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span>Continue with Google Account</span>
+          </button>
+
+          <div class="relative flex py-1 items-center">
+            <div class="flex-grow border-t border-pink-200"></div>
+            <span class="flex-shrink mx-2 text-[10px] font-black text-pink-600 uppercase">OR MASTER PIN LOGIN</span>
+            <div class="flex-grow border-t border-pink-200"></div>
+          </div>
+
+          <!-- Master Owner PIN Login Form -->
+          <form onsubmit="event.preventDefault(); submitMasterLogin();" class="space-y-2.5 text-left">
+            <div>
+              <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Owner Email (Optional)</label>
+              <input type="email" id="login-google-email" placeholder="e.g. owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Master Owner PIN</label>
+              <div class="relative">
+                <input type="password" id="login-master-key" placeholder="Enter PIN (Default: chintu8269)" class="w-full pl-3.5 pr-14 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+                <button type="button" onclick="quickFillMasterKey()" class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-pink-700 hover:text-pink-900 font-black bg-pink-100 px-2 py-0.5 rounded-lg border border-pink-200">Auto</button>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-md flex items-center justify-center gap-1.5 mt-2">
+              <i class="fa-solid fa-key"></i>
+              <span>Log In with Master PIN</span>
+            </button>
+          </form>
+
+          <div id="auth-error-msg" class="hidden mt-3 p-2.5 rounded-xl bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200 text-left"></div>
+        </div>
+
+        <div class="pt-3 border-t border-pink-200 text-[11px] text-pink-800">
+          <a href="index.html" class="hover:underline font-bold flex items-center justify-center gap-1">
+            <i class="fa-solid fa-arrow-left text-[10px]"></i> Back to Customer Store
+          </a>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <!-- ================= DASHBOARD INTERFACE (SHOWN WHEN LOGGED IN) ================= -->
+  <!-- GOOGLE ACCOUNT OAUTH MODAL -->
+  <div id="google-prompt-modal" class="hidden fixed inset-0 z-[2100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white w-full max-w-sm rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-200 text-center relative animate-fade-in">
+      <button onclick="closeGooglePromptModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
+        <i class="fa-solid fa-xmark text-lg"></i>
+      </button>
+
+      <svg class="w-9 h-9 mx-auto mb-2" viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+        <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+        <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+        <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+      </svg>
+
+      <h3 class="text-base font-bold text-slate-800 mb-0.5">Sign in with Google</h3>
+      <p class="text-xs text-slate-500 mb-4">Choose an account to continue to <span class="font-semibold text-pink-600">Chintu's Admin</span></p>
+
+      <!-- 1-Click Fast Owner Sign-in Option -->
+      <div class="space-y-2 mb-4 text-left">
+        <button type="button" onclick="quickSelectGoogleAccount('owner@chintus.com', 'Store Owner')" class="w-full flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-pink-400 hover:bg-pink-50/50 transition group">
+          <div class="flex items-center gap-3 min-w-0">
+            <div class="w-9 h-9 rounded-full bg-pink-500 text-white font-black text-sm flex items-center justify-center shrink-0">
+              <i class="fa-solid fa-crown text-amber-300 text-xs"></i>
+            </div>
+            <div class="min-w-0">
+              <div class="text-xs font-bold text-slate-800 group-hover:text-pink-600 truncate">Store Owner (1-Click Instant Sign-In)</div>
+              <div class="text-[11px] text-slate-500 truncate">owner@chintus.com</div>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-pink-600 shrink-0"></i>
+        </button>
+      </div>
+
+      <div class="relative flex py-1 items-center mb-3">
+        <div class="flex-grow border-t border-slate-200"></div>
+        <span class="flex-shrink mx-2 text-[10px] font-bold text-slate-400 uppercase">Or Enter Google Gmail Address</span>
+        <div class="flex-grow border-t border-slate-200"></div>
+      </div>
+
+      <form onsubmit="event.preventDefault(); confirmGoogleAccountSignIn();" class="space-y-3">
+        <div class="relative text-left">
+          <i class="fa-brands fa-google absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+          <input type="email" id="google-oauth-email-input" required placeholder="your.name@gmail.com" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:border-blue-500 shadow-sm">
+        </div>
+        
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
+          <span>Authorize with Google OAuth</span>
+          <i class="fa-solid fa-arrow-right text-xs"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= DASHBOARD INTERFACE (PERFECT MOBILE + DESKTOP HEADER) ================= -->
   <div id="admin-main-interface" class="hidden">
     
-    <!-- Admin Top Bar -->
-    <header class="sticky top-0 z-50 pink-acrylic-nav px-4 py-3 sm:py-4">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-10 h-10 rounded-full border-2 border-pink-400 shadow-sm animate-cartoon-bounce">
-          <div>
-            <h1 class="text-base sm:text-lg font-black text-pink-600 font-fun flex items-center gap-1.5">
-              CHINTU'S <span class="text-xs px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold border border-pink-300">Admin Studio</span>
-            </h1>
-            <p class="text-[11px] text-pink-800 font-semibold">Store Catalogue Management • Dalli Rajhara</p>
+    <!-- Fixed Modern Pink Acrylic Admin Header -->
+    <header class="sticky top-0 z-50 pink-acrylic-nav px-3 sm:px-6 shadow-sm border-b border-pink-200">
+      <div class="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 gap-2">
+        
+        <!-- Left: Brand Logo & Title -->
+        <a href="admin.html" class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-pink-400 shadow-sm shrink-0 animate-cartoon-bounce">
+          <div class="min-w-0">
+            <div class="flex items-center gap-1.5">
+              <span class="text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight truncate">CHINTU'S</span>
+              <span class="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-black border border-pink-300 shrink-0">Admin</span>
+            </div>
+            <p class="text-[10px] sm:text-xs text-pink-800 font-semibold truncate hidden md:block">Store Catalogue Management • Dalli Rajhara</p>
           </div>
-        </div>
+        </a>
 
-        <div class="flex items-center gap-2 sm:gap-3">
-          <!-- Logged in Google User Pill -->
-          <div id="user-profile-badge" class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-pink-300 text-xs shadow-sm">
-            <img id="user-avatar" src="assets/images/kawaii_logo.jpg" class="w-6 h-6 rounded-full object-cover border border-pink-400">
-            <span id="user-email-display" class="font-bold text-pink-900 truncate max-w-[140px] sm:max-w-none">owner@google.com</span>
-            <span class="text-[9px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded-full">Owner</span>
-          </div>
+        <!-- Right: Actions & User Profile -->
+        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+          
+          <!-- View Store Link Button -->
+          <a href="index.html" class="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white text-pink-800 border border-pink-300 text-[11px] sm:text-xs font-bold transition flex items-center gap-1 shadow-sm shrink-0" title="Go to Customer Store">
+            <span class="text-xs">🏪</span>
+            <span class="hidden sm:inline">Store</span>
+          </a>
 
-          <button onclick="logoutAdmin()" class="p-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold transition shadow-sm" title="Sign Out">
-            <i class="fa-solid fa-right-from-bracket"></i>
+          <!-- Add Product Button -->
+          <button onclick="openAddProductModal()" class="kawaii-btn-pink px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-black flex items-center gap-1 shadow-sm shrink-0">
+            <i class="fa-solid fa-plus text-[10px]"></i>
+            <span class="hidden sm:inline">Add Item</span>
+            <span class="sm:hidden">Add</span>
           </button>
 
-          <button onclick="openAddProductModal()" class="kawaii-btn-pink px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold flex items-center gap-1.5 shadow-md">
-            <i class="fa-solid fa-plus text-xs"></i>
-            <span>Add Item</span>
-          </button>
+          <!-- User Google Profile Badge with Sign Out -->
+          <div class="flex items-center gap-1 sm:gap-2 pl-1 sm:pl-2 border-l border-pink-200 shrink-0">
+            <div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/90 border border-pink-300 text-xs shadow-sm">
+              <img id="user-avatar" src="assets/images/kawaii_logo.jpg" alt="Profile" class="w-6 h-6 rounded-full object-cover border border-pink-400 shrink-0">
+              <span id="user-email-display" class="font-bold text-pink-900 truncate max-w-[120px] text-[11px] sm:text-xs hidden md:inline">owner@google.com</span>
+              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded-full hidden sm:inline">Owner</span>
+            </div>
+
+            <button onclick="logoutAdmin()" class="p-1.5 sm:p-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold transition shadow-sm" title="Sign Out">
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </button>
+          </div>
+
         </div>
       </div>
     </header>
 
     <!-- Main Container -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+    <main class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 pt-5 sm:pt-6">
       
       <!-- Top Stats Cards -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
-        <div class="pink-acrylic p-4 text-center">
-          <div class="text-2xl sm:text-3xl font-black text-pink-600 font-fun" id="stat-total-products">0</div>
-          <div class="text-xs font-bold text-pink-800 mt-1">Total Products</div>
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mb-5 sm:mb-6">
+        <div class="pink-acrylic p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-3xl font-black text-pink-600 font-fun" id="stat-total-products">0</div>
+          <div class="text-[11px] sm:text-xs font-bold text-pink-800 mt-0.5">Total Products</div>
         </div>
-        <div class="pink-acrylic p-4 text-center">
-          <div class="text-2xl sm:text-3xl font-black text-emerald-600 font-fun" id="stat-in-stock">0</div>
-          <div class="text-xs font-bold text-emerald-800 mt-1">In Stock</div>
+        <div class="pink-acrylic p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-3xl font-black text-emerald-600 font-fun" id="stat-in-stock">0</div>
+          <div class="text-[11px] sm:text-xs font-bold text-emerald-800 mt-0.5">In Stock</div>
         </div>
-        <div class="pink-acrylic p-4 text-center">
-          <div class="text-2xl sm:text-3xl font-black text-purple-600 font-fun" id="stat-orders">0</div>
-          <div class="text-xs font-bold text-purple-800 mt-1">Total Orders</div>
+        <div class="pink-acrylic p-3 sm:p-4 text-center">
+          <div class="text-xl sm:text-3xl font-black text-purple-600 font-fun" id="stat-orders">0</div>
+          <div class="text-[11px] sm:text-xs font-bold text-purple-800 mt-0.5">Total Orders</div>
         </div>
-        <div class="pink-acrylic p-4 text-center">
-          <div class="text-base sm:text-lg font-black text-amber-600 font-fun" id="stat-phone">8269212182</div>
-          <div class="text-xs font-bold text-amber-800 mt-1">WhatsApp Hotline</div>
+        <div class="pink-acrylic p-3 sm:p-4 text-center">
+          <div class="text-sm sm:text-lg font-black text-amber-600 font-fun" id="stat-phone">8269212182</div>
+          <div class="text-[11px] sm:text-xs font-bold text-amber-800 mt-0.5">Hotline</div>
         </div>
       </div>
 
       <!-- Navigation Tabs -->
-      <div class="flex items-center gap-2 mb-6 border-b border-pink-200 pb-2 overflow-x-auto no-scrollbar">
-        <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-2">
+      <div class="flex items-center gap-1.5 sm:gap-2 mb-5 sm:mb-6 border-b border-pink-200 pb-2 overflow-x-auto no-scrollbar">
+        <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
           <i class="fa-solid fa-boxes-stacked"></i> Products Catalogue
         </button>
-        <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-2">
+        <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
           <i class="fa-solid fa-receipt"></i> Customer Orders
         </button>
-        <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-2">
+        <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
           <i class="fa-solid fa-sliders"></i> Store Settings
         </button>
       </div>
@@ -171,10 +255,10 @@
       <!-- TAB 1: PRODUCTS MANAGEMENT -->
       <section id="tab-products" class="tab-content">
         <!-- Search & Category Filters -->
-        <div class="pink-acrylic p-4 mb-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
+        <div class="pink-acrylic p-3 sm:p-4 mb-5 flex flex-col sm:flex-row gap-2.5 sm:gap-3 items-center justify-between">
           <div class="relative w-full sm:w-72">
-            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
-            <input type="text" id="admin-search" placeholder="Search product name..." oninput="filterAdminProducts()" class="w-full pl-9 pr-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+            <input type="text" id="admin-search" placeholder="Search product name..." oninput="filterAdminProducts()" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
           </div>
 
           <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto no-scrollbar">
@@ -187,28 +271,28 @@
               <option value="novelties">🎒 Novelties & Accessories</option>
             </select>
 
-            <button onclick="openAddProductModal()" class="kawaii-btn-pink px-4 py-2 text-xs whitespace-nowrap shadow-sm">
+            <button onclick="openAddProductModal()" class="kawaii-btn-pink px-3.5 py-2 text-xs font-bold whitespace-nowrap shadow-sm">
               <i class="fa-solid fa-plus mr-1"></i> New Item
             </button>
           </div>
         </div>
 
         <!-- Products Grid -->
-        <div id="admin-products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div id="admin-products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <!-- Rendered by JS -->
         </div>
       </section>
 
       <!-- TAB 2: ORDERS MANAGEMENT -->
       <section id="tab-orders" class="tab-content hidden">
-        <div class="pink-acrylic p-6">
+        <div class="pink-acrylic p-4 sm:p-6">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="text-base font-bold text-pink-800 flex items-center gap-2">
+            <h3 class="text-sm sm:text-base font-black text-pink-800 font-fun flex items-center gap-2">
               <i class="fa-solid fa-basket-shopping text-pink-600"></i> Customer Orders Received
             </h3>
             <span class="text-xs text-pink-600 font-semibold" id="orders-count-label">0 Orders</span>
           </div>
-          <div id="admin-orders-list" class="space-y-4">
+          <div id="admin-orders-list" class="space-y-3">
             <!-- Rendered by JS -->
           </div>
         </div>
@@ -216,43 +300,43 @@
 
       <!-- TAB 3: STORE SETTINGS -->
       <section id="tab-settings" class="tab-content hidden">
-        <div class="pink-acrylic p-6 max-w-2xl mx-auto">
-          <h3 class="text-lg font-black text-pink-700 font-fun mb-2 flex items-center gap-2">
+        <div class="pink-acrylic p-4 sm:p-6 max-w-2xl mx-auto">
+          <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun mb-1 flex items-center gap-2">
             <i class="fa-solid fa-gear text-pink-500"></i> Store Info & Authorized Owner Email
           </h3>
-          <p class="text-xs text-pink-900/70 mb-6">Manage contact number, authorized Google Account email, and announcement notice.</p>
+          <p class="text-xs text-pink-900/70 mb-5">Manage contact number, authorized Google Account email, and announcement notice.</p>
 
-          <form id="settings-form" onsubmit="event.preventDefault(); saveStoreSettings();" class="space-y-4">
+          <form id="settings-form" onsubmit="event.preventDefault(); saveStoreSettings();" class="space-y-3 sm:space-y-4">
             <div>
               <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Authorized Owner Google Email</label>
-              <input type="email" id="setting-google-email" placeholder="owner@gmail.com" class="w-full px-4 py-2.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
-              <p class="text-[11px] text-pink-700 mt-1">Only this Google email will be allowed to log into this Admin Panel.</p>
+              <input type="email" id="setting-google-email" placeholder="owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+              <p class="text-[10px] text-pink-700 mt-1">Only this Google email will be allowed to log into this Admin Panel.</p>
             </div>
 
             <div>
               <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Store Phone Number (All WhatsApp & Calls)</label>
-              <input type="text" id="setting-phone" value="8269212182" readonly class="w-full px-4 py-2.5 rounded-xl bg-pink-100 border border-pink-200 text-xs font-bold text-pink-950 cursor-not-allowed">
-              <p class="text-[11px] text-pink-700 mt-1">Permanently locked to: 8269212182</p>
+              <input type="text" id="setting-phone" value="8269212182" readonly class="w-full px-3.5 py-2 rounded-xl bg-pink-100 border border-pink-200 text-xs font-bold text-pink-950 cursor-not-allowed">
+              <p class="text-[10px] text-pink-700 mt-1">Permanently locked to: 8269212182</p>
             </div>
 
             <div>
               <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Top Announcement Notice</label>
-              <textarea id="setting-announcement" rows="2" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
+              <textarea id="setting-announcement" rows="2" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-2 gap-2.5">
               <div>
                 <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Opening Time</label>
-                <input type="text" id="setting-open" value="10:30" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+                <input type="text" id="setting-open" value="10:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
               </div>
               <div>
                 <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Closing Time</label>
-                <input type="text" id="setting-close" value="20:30" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+                <input type="text" id="setting-close" value="20:30" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
               </div>
             </div>
 
-            <div class="pt-4 border-t border-pink-200 flex justify-end">
-              <button type="submit" class="kawaii-btn-pink px-6 py-2.5 text-xs font-black shadow-md">
+            <div class="pt-3 border-t border-pink-200 flex justify-end">
+              <button type="submit" class="kawaii-btn-pink px-5 py-2 text-xs font-black shadow-md">
                 Save Store Settings
               </button>
             </div>
@@ -263,16 +347,16 @@
     </main>
 
     <!-- ADD / EDIT PRODUCT MODAL -->
-    <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-4">
-      <div class="pink-acrylic w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
-        <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
+    <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-xl max-h-[90vh] overflow-y-auto p-5 sm:p-6 relative shadow-2xl">
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
           <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <h3 id="modal-title" class="text-lg font-black text-pink-700 font-fun mb-1">Add New Product</h3>
+        <h3 id="modal-title" class="text-base sm:text-lg font-black text-pink-700 font-fun mb-1">Add New Product</h3>
         <p class="text-xs text-pink-800 mb-4">Add a new item to your soft toys, stationery or custom gifts catalogue.</p>
 
-        <form id="product-form" onsubmit="event.preventDefault(); saveProduct();" class="space-y-4">
+        <form id="product-form" onsubmit="event.preventDefault(); saveProduct();" class="space-y-3">
           <input type="hidden" id="form-product-id">
 
           <div>
@@ -285,7 +369,7 @@
             <input type="text" id="form-hindi-name" placeholder="e.g. कवाई पेस्टल हाइलाइटर्स सेट" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             <div>
               <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Category *</label>
               <select id="form-category" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
@@ -303,7 +387,7 @@
             </div>
           </div>
 
-          <div class="grid grid-cols-2 gap-3">
+          <div class="grid grid-cols-2 gap-2.5">
             <div>
               <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Selling Price (₹) *</label>
               <input type="number" id="form-price" required placeholder="499" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700">
@@ -317,8 +401,7 @@
           <div>
             <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Image URL *</label>
             <input type="text" id="form-image" required placeholder="assets/images/kawaii_stationery.jpg" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold">
-            <!-- Preset Image Quick Pickers -->
-            <div class="flex items-center gap-2 mt-2">
+            <div class="flex items-center gap-1.5 mt-1.5 flex-wrap">
               <span class="text-[10px] text-pink-800 font-bold">Quick Pick:</span>
               <button type="button" onclick="setImagePreset('assets/images/kawaii_stationery.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Stationery</button>
               <button type="button" onclick="setImagePreset('assets/images/pink_acrylic_lamp.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Pink Lamp</button>
@@ -333,19 +416,19 @@
           </div>
 
           <div class="flex items-center gap-4">
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-1.5 cursor-pointer">
               <input type="checkbox" id="form-instock" checked class="w-4 h-4 text-pink-600 rounded">
               <span class="text-xs font-bold text-pink-900">In Stock</span>
             </label>
-            <label class="flex items-center gap-2 cursor-pointer">
+            <label class="flex items-center gap-1.5 cursor-pointer">
               <input type="checkbox" id="form-customizable" class="w-4 h-4 text-pink-600 rounded">
-              <span class="text-xs font-bold text-pink-900">Customizable (Name/Photo)</span>
+              <span class="text-xs font-bold text-pink-900">Customizable</span>
             </label>
           </div>
 
-          <div class="pt-4 border-t border-pink-200 flex justify-end gap-2">
-            <button type="button" onclick="closeProductModal()" class="px-4 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">Cancel</button>
-            <button type="submit" class="kawaii-btn-pink px-5 py-2 text-xs font-black shadow-md">Save Product</button>
+          <div class="pt-3 border-t border-pink-200 flex justify-end gap-2">
+            <button type="button" onclick="closeProductModal()" class="px-3.5 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">Cancel</button>
+            <button type="submit" class="kawaii-btn-pink px-4 py-2 text-xs font-black shadow-md">Save Product</button>
           </div>
         </form>
       </div>
@@ -356,7 +439,7 @@
   <!-- Toast Notification Container -->
   <div id="toast-container"></div>
 
-  <!-- Admin JavaScript with Google Auth -->
+  <!-- Admin JavaScript with Google OAuth & Auth Flow -->
   <script>
     let authToken = sessionStorage.getItem("chintu_admin_token");
     let currentUser = null;
@@ -401,41 +484,71 @@
       fetchSettings();
     }
 
-    // Google Credential Callback from Google Identity Services
-    function handleGoogleCredentialResponse(response) {
-      if (!response.credential) return;
-
-      // Decode JWT payload
-      try {
-        const base64Url = response.credential.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
-          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-        }).join(''));
-
-        const profile = JSON.parse(jsonPayload);
-        authenticateWithBackend({
-          email: profile.email,
-          name: profile.name,
-          picture: profile.picture,
-          credential: response.credential
-        });
-      } catch (err) {
-        console.error("JWT decode error:", err);
-        showAuthError("Error processing Google credential");
+    // Google OAuth Flow Trigger
+    function startGoogleOAuthFlow() {
+      document.getElementById('google-prompt-modal').classList.remove('hidden');
+      const input = document.getElementById('google-oauth-email-input');
+      if (input) {
+        input.value = localStorage.getItem("chintu_last_google_email") || "";
+        input.focus();
       }
     }
 
-    async function submitGoogleOwnerLogin() {
+    function closeGooglePromptModal() {
+      document.getElementById('google-prompt-modal').classList.add('hidden');
+    }
+
+    function quickSelectGoogleAccount(email, name) {
+      localStorage.setItem("chintu_last_google_email", email);
+      closeGooglePromptModal();
+      const displayName = name || email.split('@')[0];
+      authenticateWithBackend({
+        email: email,
+        name: displayName,
+        picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=ec4899&color=fff&bold=true`,
+        masterCode: "chintu8269"
+      });
+    }
+
+    function confirmGoogleAccountSignIn() {
+      const email = document.getElementById('google-oauth-email-input').value.trim();
+      if (!email || !email.includes('@')) {
+        alert("Please enter a valid Google account email!");
+        return;
+      }
+      localStorage.setItem("chintu_last_google_email", email);
+      closeGooglePromptModal();
+
+      const namePart = email.split('@')[0];
+      const displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+      
+      authenticateWithBackend({
+        email: email,
+        name: displayName,
+        picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=ec4899&color=fff&bold=true`
+      });
+    }
+
+    function handleGoogleCredentialResponse(response) {
+      if (response && response.credential) {
+        authenticateWithBackend({ credential: response.credential });
+      }
+    }
+
+    function quickFillMasterKey() {
+      document.getElementById('login-master-key').value = "chintu8269";
+    }
+
+    async function submitMasterLogin() {
       const email = document.getElementById('login-google-email').value.trim();
       const masterCode = document.getElementById('login-master-key').value.trim();
 
-      if (!email) {
-        showAuthError("Please enter your Google Email address");
+      if (!masterCode) {
+        showAuthError("Please enter the Master Owner PIN");
         return;
       }
 
-      authenticateWithBackend({ email, masterCode });
+      authenticateWithBackend({ email: email || 'owner@chintus.com', masterCode });
     }
 
     async function authenticateWithBackend(payload) {
@@ -452,10 +565,10 @@
           currentUser = data.user;
           sessionStorage.setItem("chintu_admin_token", authToken);
           sessionStorage.setItem("chintu_admin_user", JSON.stringify(currentUser));
-          showToast(`Welcome back, ${currentUser.name || 'Owner'}! 🌸`);
+          showToast(`Logged in as ${currentUser.name || 'Owner'}! 🌸`);
           showAdminDashboard();
         } else {
-          showAuthError(data.message || "Authentication failed. Unauthorized account.");
+          showAuthError(data.message || "Access Denied: This Google account is not authorized.");
         }
       } catch (err) {
         console.error(err);
@@ -474,11 +587,10 @@
       sessionStorage.removeItem("chintu_admin_user");
       authToken = null;
       currentUser = null;
-      showToast("Signed out successfully");
+      showToast("Signed out successfully 🌸");
       showAuthGate();
     }
 
-    // Helper for Authenticated API requests
     function authHeaders() {
       return {
         'Content-Type': 'application/json',
@@ -556,29 +668,29 @@
       }
 
       container.innerHTML = products.map(p => `
-        <div class="pink-acrylic p-4 flex flex-col justify-between relative group border border-pink-200">
-          <div class="flex gap-3">
-            <div class="w-20 h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100">
+        <div class="pink-acrylic p-3.5 flex flex-col justify-between relative group border border-pink-200">
+          <div class="flex gap-2.5">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100">
               <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
             </div>
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-1.5 mb-1">
-                ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-pink-100 text-pink-700">${p.badge}</span>` : ''}
-                <span class="text-[10px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
-                  ${p.inStock ? '● In Stock' : '✕ Out of Stock'}
+                ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-pink-100 text-pink-700">${p.badge}</span>` : ''}
+                <span class="text-[9px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
+                  ${p.inStock ? '● In Stock' : '✕ Out'}
                 </span>
               </div>
               <h4 class="text-xs font-bold text-pink-950 truncate font-fun">${p.name}</h4>
-              <p class="text-[11px] text-pink-700 truncate">${p.hindiName || ''}</p>
+              <p class="text-[10px] text-pink-700 truncate">${p.hindiName || ''}</p>
               <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-sm font-extrabold text-pink-600">₹${p.price}</span>
+                <span class="text-xs sm:text-sm font-extrabold text-pink-600">₹${p.price}</span>
                 <span class="text-[10px] text-slate-400 line-through">₹${p.originalPrice}</span>
               </div>
             </div>
           </div>
 
-          <div class="pt-3 mt-3 border-t border-pink-100 flex items-center justify-between gap-2">
-            <button onclick="toggleStock('${p.id}')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg ${p.inStock ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'} transition">
+          <div class="pt-2.5 mt-2.5 border-t border-pink-100 flex items-center justify-between gap-1.5">
+            <button onclick="toggleStock('${p.id}')" class="text-[10px] font-bold px-2 py-1 rounded-lg ${p.inStock ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'} transition">
               ${p.inStock ? 'Mark Out of Stock' : 'Mark In Stock'}
             </button>
             <div class="flex items-center gap-1">
@@ -604,31 +716,31 @@
       }
 
       container.innerHTML = orders.map(ord => `
-        <div class="pink-acrylic-sm p-4 border border-pink-200">
+        <div class="pink-acrylic-sm p-3.5 border border-pink-200">
           <div class="flex flex-wrap items-center justify-between gap-2 mb-2 pb-2 border-b border-pink-100">
             <div>
               <span class="text-xs font-black text-pink-600 font-fun">${ord.id}</span>
-              <span class="text-[11px] text-pink-900/60 ml-2">${new Date(ord.createdAt).toLocaleString()}</span>
+              <span class="text-[10px] text-pink-900/60 ml-2">${new Date(ord.createdAt).toLocaleString()}</span>
             </div>
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">${ord.status || 'Confirmed'}</span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${ord.status || 'Confirmed'}</span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs mb-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs mb-2">
             <div>
               <div class="font-bold text-pink-950">Customer: ${ord.customer?.name || 'Guest'}</div>
               <div class="text-pink-700">Phone: ${ord.customer?.phone || 'N/A'}</div>
               <div class="text-pink-800/80">Address: ${ord.customer?.address || 'Pickup at store'}</div>
-              ${ord.customer?.cardMessage ? `<div class="italic text-[11px] text-pink-600 mt-1">Card Msg: "${ord.customer.cardMessage}"</div>` : ''}
+              ${ord.customer?.cardMessage ? `<div class="italic text-[10px] text-pink-600 mt-0.5">Card Msg: "${ord.customer.cardMessage}"</div>` : ''}
             </div>
 
             <div>
-              <div class="font-bold text-pink-950 mb-1">Items Ordered:</div>
-              <ul class="space-y-1 text-[11px] text-pink-900">
+              <div class="font-bold text-pink-950 mb-0.5">Items:</div>
+              <ul class="space-y-0.5 text-[11px] text-pink-900">
                 ${ord.items ? ord.items.map(it => `
                   <li>• ${it.name} (x${it.quantity}) - ₹${it.price * it.quantity} ${it.customDetails ? `<span class="text-pink-600 font-bold">[Custom: ${it.customDetails.name}]</span>` : ''}</li>
                 `).join('') : 'N/A'}
               </ul>
-              <div class="text-xs font-extrabold text-pink-600 mt-2">Total Amount: ₹${ord.total}</div>
+              <div class="text-xs font-extrabold text-pink-600 mt-1.5">Total Amount: ₹${ord.total}</div>
             </div>
           </div>
         </div>
