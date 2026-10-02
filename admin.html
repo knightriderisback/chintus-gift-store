@@ -77,19 +77,16 @@
             <div class="flex-grow border-t border-pink-200"></div>
           </div>
 
-          <!-- Master Owner PIN Login Form -->
+          <!-- Master Owner PIN Login Form (Secure: No password exposed) -->
           <form onsubmit="event.preventDefault(); submitMasterLogin();" class="space-y-2.5 text-left">
             <div>
               <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Owner Email (Optional)</label>
-              <input type="email" id="login-google-email" placeholder="e.g. owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+              <input type="email" id="login-google-email" placeholder="owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
             </div>
 
             <div>
               <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Master Owner PIN</label>
-              <div class="relative">
-                <input type="password" id="login-master-key" placeholder="Enter PIN (Default: chintu8269)" class="w-full pl-3.5 pr-14 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
-                <button type="button" onclick="quickFillMasterKey()" class="absolute right-2 top-1/2 -translate-y-1/2 text-[10px] text-pink-700 hover:text-pink-900 font-black bg-pink-100 px-2 py-0.5 rounded-lg border border-pink-200">Auto</button>
-              </div>
+              <input type="password" id="login-master-key" placeholder="Enter Master PIN" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
             </div>
 
             <button type="submit" class="w-full py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-md flex items-center justify-center gap-1.5 mt-2">
@@ -111,56 +108,54 @@
     </div>
   </div>
 
-  <!-- GOOGLE ACCOUNT OAUTH MODAL -->
+  <!-- GOOGLE OAUTH CONFIGURATION MODAL (Shown when Google Client ID is needed) -->
   <div id="google-prompt-modal" class="hidden fixed inset-0 z-[2100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-white w-full max-w-sm rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-200 text-center relative animate-fade-in">
+    <div class="bg-white w-full max-w-md rounded-3xl p-5 sm:p-6 shadow-2xl border border-slate-200 text-center relative animate-fade-in max-h-[90vh] overflow-y-auto">
       <button onclick="closeGooglePromptModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-1">
         <i class="fa-solid fa-xmark text-lg"></i>
       </button>
 
-      <svg class="w-9 h-9 mx-auto mb-2" viewBox="0 0 24 24">
+      <svg class="w-10 h-10 mx-auto mb-2" viewBox="0 0 24 24">
         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
         <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
         <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
         <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
       </svg>
 
-      <h3 class="text-base font-bold text-slate-800 mb-0.5">Sign in with Google</h3>
-      <p class="text-xs text-slate-500 mb-4">Choose an account to continue to <span class="font-semibold text-pink-600">Chintu's Admin</span></p>
+      <h3 class="text-base font-bold text-slate-800 mb-1">Connect Google Account Sign-In</h3>
+      <p class="text-xs text-slate-600 mb-4">
+        To launch Google's official login page on this site, connect your Google OAuth 2.0 Client ID:
+      </p>
 
-      <!-- 1-Click Fast Owner Sign-in Option -->
-      <div class="space-y-2 mb-4 text-left">
-        <button type="button" onclick="quickSelectGoogleAccount('owner@chintus.com', 'Store Owner')" class="w-full flex items-center justify-between p-3 rounded-2xl border border-slate-200 hover:border-pink-400 hover:bg-pink-50/50 transition group">
-          <div class="flex items-center gap-3 min-w-0">
-            <div class="w-9 h-9 rounded-full bg-pink-500 text-white font-black text-sm flex items-center justify-center shrink-0">
-              <i class="fa-solid fa-crown text-amber-300 text-xs"></i>
-            </div>
-            <div class="min-w-0">
-              <div class="text-xs font-bold text-slate-800 group-hover:text-pink-600 truncate">Store Owner (1-Click Instant Sign-In)</div>
-              <div class="text-[11px] text-slate-500 truncate">owner@chintus.com</div>
-            </div>
-          </div>
-          <i class="fa-solid fa-chevron-right text-xs text-slate-400 group-hover:text-pink-600 shrink-0"></i>
-        </button>
-      </div>
-
-      <div class="relative flex py-1 items-center mb-3">
-        <div class="flex-grow border-t border-slate-200"></div>
-        <span class="flex-shrink mx-2 text-[10px] font-bold text-slate-400 uppercase">Or Enter Google Gmail Address</span>
-        <div class="flex-grow border-t border-slate-200"></div>
-      </div>
-
-      <form onsubmit="event.preventDefault(); confirmGoogleAccountSignIn();" class="space-y-3">
-        <div class="relative text-left">
-          <i class="fa-brands fa-google absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-          <input type="email" id="google-oauth-email-input" required placeholder="your.name@gmail.com" class="w-full pl-8 pr-3 py-2.5 rounded-xl border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:border-blue-500 shadow-sm">
+      <form onsubmit="event.preventDefault(); saveAndLaunchGoogleOAuth();" class="space-y-3 text-left">
+        <div>
+          <label class="block text-[11px] font-bold text-slate-700 uppercase mb-1">Google OAuth Client ID</label>
+          <input type="text" id="setup-google-client-id" required placeholder="xxxxx.apps.googleusercontent.com" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-xs font-mono text-slate-800 focus:outline-none focus:border-blue-500 shadow-sm">
         </div>
         
         <button type="submit" class="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md transition flex items-center justify-center gap-2">
-          <span>Authorize with Google OAuth</span>
-          <i class="fa-solid fa-arrow-right text-xs"></i>
+          <i class="fa-brands fa-google text-sm"></i>
+          <span>Save & Open Google Login Page</span>
         </button>
       </form>
+
+      <div class="mt-4 pt-4 border-t border-slate-200 text-left">
+        <details class="text-xs text-slate-600" open>
+          <summary class="font-bold text-blue-600 cursor-pointer hover:underline mb-2">
+            ℹ️ Free Google Client ID Setup (Quick):
+          </summary>
+          <ol class="list-decimal pl-4 space-y-1.5 text-[11px] text-slate-600">
+            <li>Visit <a href="https://console.cloud.google.com/apis/credentials" target="_blank" class="text-blue-600 underline font-semibold">console.cloud.google.com</a> &gt; <strong>Create Credentials</strong> &gt; <strong>OAuth client ID</strong>.</li>
+            <li>Select Application type: <strong>Web application</strong>.</li>
+            <li>Under <strong>Authorized JavaScript origins</strong>, add:
+              <div class="bg-slate-100 p-1 rounded mt-0.5 font-mono text-[10px] break-all select-all">https://chintus-gift-store.vercel.app</div>
+              <div class="bg-slate-100 p-1 rounded mt-0.5 font-mono text-[10px] break-all select-all">http://localhost:8080</div>
+            </li>
+            <li>Copy the <strong>Client ID</strong> and paste above!</li>
+          </ol>
+        </details>
+      </div>
+
     </div>
   </div>
 
@@ -311,6 +306,12 @@
               <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Authorized Owner Google Email</label>
               <input type="email" id="setting-google-email" placeholder="owner@gmail.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
               <p class="text-[10px] text-pink-700 mt-1">Only this Google email will be allowed to log into this Admin Panel.</p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Google OAuth Client ID</label>
+              <input type="text" id="setting-google-client-id" placeholder="xxxxx.apps.googleusercontent.com" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+              <p class="text-[10px] text-pink-700 mt-1">Required to launch the official Google login page on this website.</p>
             </div>
 
             <div>
@@ -484,12 +485,39 @@
       fetchSettings();
     }
 
-    // Google OAuth Flow Trigger
-    function startGoogleOAuthFlow() {
+    function hideAuthError() {
+      const el = document.getElementById('auth-error-msg');
+      if (el) el.classList.add('hidden');
+    }
+
+    // Google OAuth Flow: Opens Google's Official Login Popup
+    async function startGoogleOAuthFlow() {
+      hideAuthError();
+      let clientId = (currentSettings && currentSettings.googleClientId) || localStorage.getItem('chintu_google_client_id');
+
+      if (!clientId) {
+        try {
+          const cfgRes = await fetch('/api/auth/config');
+          const cfgData = await cfgRes.json();
+          if (cfgData.success && cfgData.googleClientId) {
+            clientId = cfgData.googleClientId;
+            localStorage.setItem('chintu_google_client_id', clientId);
+          }
+        } catch (_) {}
+      }
+
+      if (clientId) {
+        launchRealGoogleOAuth(clientId);
+      } else {
+        openGoogleConfigModal();
+      }
+    }
+
+    function openGoogleConfigModal() {
       document.getElementById('google-prompt-modal').classList.remove('hidden');
-      const input = document.getElementById('google-oauth-email-input');
+      const input = document.getElementById('setup-google-client-id');
       if (input) {
-        input.value = localStorage.getItem("chintu_last_google_email") || "";
+        input.value = localStorage.getItem("chintu_google_client_id") || "";
         input.focus();
       }
     }
@@ -498,35 +526,76 @@
       document.getElementById('google-prompt-modal').classList.add('hidden');
     }
 
-    function quickSelectGoogleAccount(email, name) {
-      localStorage.setItem("chintu_last_google_email", email);
-      closeGooglePromptModal();
-      const displayName = name || email.split('@')[0];
-      authenticateWithBackend({
-        email: email,
-        name: displayName,
-        picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=ec4899&color=fff&bold=true`,
-        masterCode: "chintu8269"
-      });
-    }
-
-    function confirmGoogleAccountSignIn() {
-      const email = document.getElementById('google-oauth-email-input').value.trim();
-      if (!email || !email.includes('@')) {
-        alert("Please enter a valid Google account email!");
+    async function saveAndLaunchGoogleOAuth() {
+      const clientId = document.getElementById('setup-google-client-id').value.trim();
+      if (!clientId) {
+        alert("Please enter your Google OAuth Client ID!");
         return;
       }
-      localStorage.setItem("chintu_last_google_email", email);
+      localStorage.setItem('chintu_google_client_id', clientId);
       closeGooglePromptModal();
 
-      const namePart = email.split('@')[0];
-      const displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
-      
-      authenticateWithBackend({
-        email: email,
-        name: displayName,
-        picture: `https://ui-avatars.com/api/?name=${encodeURIComponent(displayName)}&background=ec4899&color=fff&bold=true`
-      });
+      try {
+        await fetch('/api/auth/google-client-id', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ clientId })
+        });
+      } catch (_) {}
+
+      launchRealGoogleOAuth(clientId);
+    }
+
+    function launchRealGoogleOAuth(clientId) {
+      if (!window.google || !window.google.accounts || !window.google.accounts.oauth2) {
+        showAuthError("Google Identity Services library is still loading. Please check your internet connection and try again.");
+        return;
+      }
+
+      try {
+        const tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: clientId,
+          scope: 'https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid',
+          prompt: 'select_account',
+          callback: async (tokenResponse) => {
+            if (tokenResponse.error) {
+              console.error("Google Auth Error:", tokenResponse);
+              showAuthError("Google Sign-In was cancelled or failed: " + (tokenResponse.error_description || tokenResponse.error));
+              return;
+            }
+            if (tokenResponse.access_token) {
+              await handleGoogleAccessToken(tokenResponse.access_token);
+            }
+          }
+        });
+
+        tokenClient.requestAccessToken({ prompt: 'select_account' });
+      } catch (err) {
+        console.error("Failed to launch Google OAuth popup:", err);
+        showAuthError("Google OAuth Error: " + err.message);
+      }
+    }
+
+    async function handleGoogleAccessToken(accessToken) {
+      try {
+        showToast("Verifying with Google... ⏳");
+        const userRes = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        if (!userRes.ok) {
+          throw new Error("Could not retrieve Google profile.");
+        }
+        const profile = await userRes.json();
+        authenticateWithBackend({
+          email: profile.email,
+          name: profile.name,
+          picture: profile.picture,
+          googleSub: profile.sub
+        });
+      } catch (err) {
+        console.error("Google profile verification error:", err);
+        showAuthError("Failed to verify Google account profile: " + err.message);
+      }
     }
 
     function handleGoogleCredentialResponse(response) {
@@ -535,16 +604,13 @@
       }
     }
 
-    function quickFillMasterKey() {
-      document.getElementById('login-master-key').value = "chintu8269";
-    }
-
     async function submitMasterLogin() {
+      hideAuthError();
       const email = document.getElementById('login-google-email').value.trim();
       const masterCode = document.getElementById('login-master-key').value.trim();
 
       if (!masterCode) {
-        showAuthError("Please enter the Master Owner PIN");
+        showAuthError("Please enter your Master Owner PIN");
         return;
       }
 
@@ -637,6 +703,7 @@
         if (data.success) {
           currentSettings = data.data;
           document.getElementById('setting-google-email').value = currentSettings.authorizedAdminEmail || "";
+          document.getElementById('setting-google-client-id').value = currentSettings.googleClientId || localStorage.getItem('chintu_google_client_id') || "";
           document.getElementById('setting-announcement').value = currentSettings.announcement || "";
           document.getElementById('setting-open').value = currentSettings.openTime || "10:30";
           document.getElementById('setting-close').value = currentSettings.closeTime || "20:30";
@@ -887,15 +954,21 @@
     }
 
     async function saveStoreSettings() {
+      const clientId = document.getElementById('setting-google-client-id').value.trim();
       const payload = {
         phone: "8269212182",
         displayPhone: "+91 82692 12182",
         whatsapp: "918269212182",
         authorizedAdminEmail: document.getElementById('setting-google-email').value.trim(),
+        googleClientId: clientId,
         announcement: document.getElementById('setting-announcement').value.trim(),
         openTime: document.getElementById('setting-open').value.trim(),
         closeTime: document.getElementById('setting-close').value.trim()
       };
+
+      if (clientId) {
+        localStorage.setItem('chintu_google_client_id', clientId);
+      }
 
       try {
         const res = await fetch('/api/settings', {

@@ -407,6 +407,28 @@ app.post('/api/auth/google', (req, res) => {
   });
 });
 
+// Public: Get Google OAuth Client configuration
+app.get('/api/auth/config', (req, res) => {
+  const settings = readData(SETTINGS_FILE, {});
+  res.json({
+    success: true,
+    googleClientId: settings.googleClientId || process.env.GOOGLE_CLIENT_ID || "",
+    authorizedAdminEmail: settings.authorizedAdminEmail || ""
+  });
+});
+
+// Update Google OAuth Client ID
+app.post('/api/auth/google-client-id', (req, res) => {
+  const { clientId } = req.body;
+  if (!clientId || !clientId.trim()) {
+    return res.status(400).json({ success: false, message: 'Google Client ID is required' });
+  }
+  const settings = readData(SETTINGS_FILE, {});
+  settings.googleClientId = clientId.trim();
+  writeData(SETTINGS_FILE, settings);
+  res.json({ success: true, message: 'Google Client ID saved successfully', googleClientId: settings.googleClientId });
+});
+
 // Products Endpoints
 app.get('/api/products', (req, res) => {
   const products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
