@@ -1,0 +1,61 @@
+[
+  {
+    "id": "ORD-86852",
+    "createdAt": "2026-10-02T04:56:26.852Z",
+    "customer": {
+      "name": "Try",
+      "phone": "9876543210",
+      "address": "",
+      "deliveryType": "Store Pickup",
+      "cardMessage": ""
+    },
+    "items": [
+      {
+        "id": "prod-4",
+        "name": "Cute Boba Milk Tea Squishy Plushie (Large)",
+        "price": 399,
+        "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+        "quantity": 1
+      },
+      {
+        "id": "prod-3",
+        "name": "Giant 3-Foot Blush Pink Cuddle Teddy Bear",
+        "price": 899,
+        "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+        "quantity": 1
+      }
+    ],
+    "subtotal": 1298,
+    "discount": 0,
+    "total": 1298,
+    "status": "Confirmed"
+  },
+  {
+    "id": "ORD-101",
+    "createdAt": "2026-10-01T14:32:00.000Z",
+    "customer": {
+      "name": "Priya Sharma",
+      "phone": "8269212182",
+      "address": "Near Railway Station, Ward 19, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "Happy Birthday Sweety! Stay blessed always ❤️"
+    },
+    "items": [
+      {
+        "id": "prod-1",
+        "name": "Pink Acrylic 3D Heart Bear LED Illusion Lamp",
+        "price": 699,
+        "quantity": 1,
+        "customDetails": {
+          "name": "Priya & Rohit",
+          "date": "24 Oct 2024",
+          "message": "Forever and Always 💖"
+        }
+      }
+    ],
+    "subtotal": 699,
+    "discount": 70,
+    "total": 629,
+    "status": "Confirmed"
+  }
+]

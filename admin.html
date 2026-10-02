@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Chintu's Gift & Kawaii Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
+  
+  <!-- Google Identity Services SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body class="bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 min-h-screen text-purple-950 pb-16">
+
+  <!-- ================= AUTHENTICATION GATE (SHOWN WHEN NOT LOGGED IN) ================= -->
+  <div id="auth-gate" class="fixed inset-0 z-[2000] bg-pink-100/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="pink-acrylic w-full max-w-md p-6 sm:p-8 text-center shadow-2xl border-2 border-pink-300 relative animate-float">
+      
+      <!-- Mascot Badge -->
+      <div class="w-20 h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-4 animate-cartoon-bounce">
+        <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
+      </div>
+
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-xs font-black uppercase mb-3">
+        <i class="fa-solid fa-lock text-pink-600"></i> Store Owner Portal
+      </div>
+
+      <h2 class="text-xl sm:text-2xl font-black text-purple-950 font-fun mb-1">
+        Chintu's Admin Studio
+      </h2>
+      <p class="text-xs text-pink-900/80 mb-6 font-semibold">
+        This area is restricted exclusively to the store owner. Sign in with your Google Account to manage the catalogue.
+      </p>
+
+      <!-- Google Sign In Container -->
+      <div class="mb-4">
+        <!-- Native Google One Tap Button (Configured dynamically) -->
+        <div id="g_id_onload"
+             data-client_id="8269212182-chintus.apps.googleusercontent.com"
+             data-context="signin"
+             data-ux_mode="popup"
+             data-callback="handleGoogleCredentialResponse"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin flex justify-center mb-3"
+             data-type="standard"
+             data-shape="pill"
+             data-theme="outline"
+             data-text="signin_with"
+             data-size="large"
+             data-logo_alignment="left">
+        </div>
+
+        <div class="relative flex py-2 items-center">
+          <div class="flex-grow border-t border-pink-200"></div>
+          <span class="flex-shrink mx-3 text-[10px] font-black text-pink-600 uppercase">Owner Google Verification</span>
+          <div class="flex-grow border-t border-pink-200"></div>
+        </div>
+
+        <!-- Google Email + Master Key Verification Form -->
+        <form onsubmit="event.preventDefault(); submitGoogleOwnerLogin();" class="space-y-3 text-left">
+          <div>
+            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Owner Google Email</label>
+            <div class="relative">
+              <i class="fa-brands fa-google absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+              <input type="email" id="login-google-email" required placeholder="your.google@gmail.com" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Master Owner PIN / Passcode</label>
+            <div class="relative">
+              <i class="fa-solid fa-key absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+              <input type="password" id="login-master-key" placeholder="Enter owner key (Default: chintu8269)" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-300 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+            </div>
+            <p class="text-[10px] text-pink-700/80 mt-1">Default Master Key: <code class="bg-pink-100 px-1 py-0.5 rounded font-bold">chintu8269</code></p>
+          </div>
+
+          <button type="submit" class="w-full py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-md flex items-center justify-center gap-2 mt-3">
+            <i class="fa-solid fa-shield-halved"></i>
+            <span>Verify & Enter Dashboard</span>
+          </button>
+        </form>
+
+        <div id="auth-error-msg" class="hidden mt-3 p-2.5 rounded-xl bg-rose-100 text-rose-800 text-xs font-bold border border-rose-200"></div>
+      </div>
+
+      <div class="pt-3 border-t border-pink-200 text-[11px] text-pink-800">
+        <a href="index.html" class="hover:underline flex items-center justify-center gap-1">
+          <i class="fa-solid fa-arrow-left text-[10px]"></i> Back to Customer Store
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= DASHBOARD INTERFACE (SHOWN WHEN LOGGED IN) ================= -->
+  <div id="admin-main-interface" class="hidden">
+    
+    <!-- Admin Top Bar -->
+    <header class="sticky top-0 z-50 pink-acrylic-nav px-4 py-3 sm:py-4">
+      <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-10 h-10 rounded-full border-2 border-pink-400 shadow-sm animate-cartoon-bounce">
+          <div>
+            <h1 class="text-base sm:text-lg font-black text-pink-600 font-fun flex items-center gap-1.5">
+              CHINTU'S <span class="text-xs px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-bold border border-pink-300">Admin Studio</span>
+            </h1>
+            <p class="text-[11px] text-pink-800 font-semibold">Store Catalogue Management • Dalli Rajhara</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Logged in Google User Pill -->
+          <div id="user-profile-badge" class="flex items-center gap-2 px-3 py-1 rounded-full bg-white/90 border border-pink-300 text-xs shadow-sm">
+            <img id="user-avatar" src="assets/images/kawaii_logo.jpg" class="w-6 h-6 rounded-full object-cover border border-pink-400">
+            <span id="user-email-display" class="font-bold text-pink-900 truncate max-w-[140px] sm:max-w-none">owner@google.com</span>
+            <span class="text-[9px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded-full">Owner</span>
+          </div>
+
+          <button onclick="logoutAdmin()" class="p-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold transition shadow-sm" title="Sign Out">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+
+          <button onclick="openAddProductModal()" class="kawaii-btn-pink px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs font-extrabold flex items-center gap-1.5 shadow-md">
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>Add Item</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+      
+      <!-- Top Stats Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+        <div class="pink-acrylic p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-pink-600 font-fun" id="stat-total-products">0</div>
+          <div class="text-xs font-bold text-pink-800 mt-1">Total Products</div>
+        </div>
+        <div class="pink-acrylic p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-emerald-600 font-fun" id="stat-in-stock">0</div>
+          <div class="text-xs font-bold text-emerald-800 mt-1">In Stock</div>
+        </div>
+        <div class="pink-acrylic p-4 text-center">
+          <div class="text-2xl sm:text-3xl font-black text-purple-600 font-fun" id="stat-orders">0</div>
+          <div class="text-xs font-bold text-purple-800 mt-1">Total Orders</div>
+        </div>
+        <div class="pink-acrylic p-4 text-center">
+          <div class="text-base sm:text-lg font-black text-amber-600 font-fun" id="stat-phone">8269212182</div>
+          <div class="text-xs font-bold text-amber-800 mt-1">WhatsApp Hotline</div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <div class="flex items-center gap-2 mb-6 border-b border-pink-200 pb-2 overflow-x-auto no-scrollbar">
+        <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-2">
+          <i class="fa-solid fa-boxes-stacked"></i> Products Catalogue
+        </button>
+        <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-2">
+          <i class="fa-solid fa-receipt"></i> Customer Orders
+        </button>
+        <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-2">
+          <i class="fa-solid fa-sliders"></i> Store Settings
+        </button>
+      </div>
+
+      <!-- TAB 1: PRODUCTS MANAGEMENT -->
+      <section id="tab-products" class="tab-content">
+        <!-- Search & Category Filters -->
+        <div class="pink-acrylic p-4 mb-6 flex flex-col sm:flex-row gap-3 items-center justify-between">
+          <div class="relative w-full sm:w-72">
+            <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+            <input type="text" id="admin-search" placeholder="Search product name..." oninput="filterAdminProducts()" class="w-full pl-9 pr-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+          </div>
+
+          <div class="flex items-center gap-2 w-full sm:w-auto overflow-x-auto no-scrollbar">
+            <select id="admin-cat-filter" onchange="filterAdminProducts()" class="px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900 focus:outline-none focus:border-pink-500">
+              <option value="all">All Categories</option>
+              <option value="toys">🧸 Soft Toys & Plushies</option>
+              <option value="stationery">✍️ Fancy Stationery</option>
+              <option value="personalized">💖 Personalized Acrylic</option>
+              <option value="birthday">🎂 Birthday & Hampers</option>
+              <option value="novelties">🎒 Novelties & Accessories</option>
+            </select>
+
+            <button onclick="openAddProductModal()" class="kawaii-btn-pink px-4 py-2 text-xs whitespace-nowrap shadow-sm">
+              <i class="fa-solid fa-plus mr-1"></i> New Item
+            </button>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div id="admin-products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Rendered by JS -->
+        </div>
+      </section>
+
+      <!-- TAB 2: ORDERS MANAGEMENT -->
+      <section id="tab-orders" class="tab-content hidden">
+        <div class="pink-acrylic p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-bold text-pink-800 flex items-center gap-2">
+              <i class="fa-solid fa-basket-shopping text-pink-600"></i> Customer Orders Received
+            </h3>
+            <span class="text-xs text-pink-600 font-semibold" id="orders-count-label">0 Orders</span>
+          </div>
+          <div id="admin-orders-list" class="space-y-4">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 3: STORE SETTINGS -->
+      <section id="tab-settings" class="tab-content hidden">
+        <div class="pink-acrylic p-6 max-w-2xl mx-auto">
+          <h3 class="text-lg font-black text-pink-700 font-fun mb-2 flex items-center gap-2">
+            <i class="fa-solid fa-gear text-pink-500"></i> Store Info & Authorized Owner Email
+          </h3>
+          <p class="text-xs text-pink-900/70 mb-6">Manage contact number, authorized Google Account email, and announcement notice.</p>
+
+          <form id="settings-form" onsubmit="event.preventDefault(); saveStoreSettings();" class="space-y-4">
+            <div>
+              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Authorized Owner Google Email</label>
+              <input type="email" id="setting-google-email" placeholder="owner@gmail.com" class="w-full px-4 py-2.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+              <p class="text-[11px] text-pink-700 mt-1">Only this Google email will be allowed to log into this Admin Panel.</p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Store Phone Number (All WhatsApp & Calls)</label>
+              <input type="text" id="setting-phone" value="8269212182" readonly class="w-full px-4 py-2.5 rounded-xl bg-pink-100 border border-pink-200 text-xs font-bold text-pink-950 cursor-not-allowed">
+              <p class="text-[11px] text-pink-700 mt-1">Permanently locked to: 8269212182</p>
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Top Announcement Notice</label>
+              <textarea id="setting-announcement" rows="2" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Opening Time</label>
+                <input type="text" id="setting-open" value="10:30" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+              </div>
+              <div>
+                <label class="block text-xs font-bold text-pink-900 uppercase mb-1">Closing Time</label>
+                <input type="text" id="setting-close" value="20:30" class="w-full px-4 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950">
+              </div>
+            </div>
+
+            <div class="pt-4 border-t border-pink-200 flex justify-end">
+              <button type="submit" class="kawaii-btn-pink px-6 py-2.5 text-xs font-black shadow-md">
+                Save Store Settings
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ADD / EDIT PRODUCT MODAL -->
+    <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="pink-acrylic w-full max-w-xl max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h3 id="modal-title" class="text-lg font-black text-pink-700 font-fun mb-1">Add New Product</h3>
+        <p class="text-xs text-pink-800 mb-4">Add a new item to your soft toys, stationery or custom gifts catalogue.</p>
+
+        <form id="product-form" onsubmit="event.preventDefault(); saveProduct();" class="space-y-4">
+          <input type="hidden" id="form-product-id">
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Product Title *</label>
+            <input type="text" id="form-name" required placeholder="e.g. Kawaii Pastel Highlighters Set" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Hindi Name (Optional)</label>
+            <input type="text" id="form-hindi-name" placeholder="e.g. कवाई पेस्टल हाइलाइटर्स सेट" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Category *</label>
+              <select id="form-category" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="toys">🧸 Soft Toys & Plushies</option>
+                <option value="stationery">✍️ Fancy Stationery</option>
+                <option value="personalized">💖 Personalized Acrylic</option>
+                <option value="birthday">🎂 Birthday & Hampers</option>
+                <option value="novelties">🎒 Novelties & Accessories</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Badge Tag</label>
+              <input type="text" id="form-badge" placeholder="e.g. Bestseller, Kawaii Hot, New" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Selling Price (₹) *</label>
+              <input type="number" id="form-price" required placeholder="499" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700">
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Original Cut Price (₹)</label>
+              <input type="number" id="form-original-price" placeholder="899" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold text-slate-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Image URL *</label>
+            <input type="text" id="form-image" required placeholder="assets/images/kawaii_stationery.jpg" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold">
+            <!-- Preset Image Quick Pickers -->
+            <div class="flex items-center gap-2 mt-2">
+              <span class="text-[10px] text-pink-800 font-bold">Quick Pick:</span>
+              <button type="button" onclick="setImagePreset('assets/images/kawaii_stationery.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Stationery</button>
+              <button type="button" onclick="setImagePreset('assets/images/pink_acrylic_lamp.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Pink Lamp</button>
+              <button type="button" onclick="setImagePreset('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Soft Toys</button>
+              <button type="button" onclick="setImagePreset('assets/images/product_mug.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Magic Mug</button>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Description</label>
+            <textarea id="form-description" rows="2" placeholder="Brief cute description of item..." class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium"></textarea>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="form-instock" checked class="w-4 h-4 text-pink-600 rounded">
+              <span class="text-xs font-bold text-pink-900">In Stock</span>
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" id="form-customizable" class="w-4 h-4 text-pink-600 rounded">
+              <span class="text-xs font-bold text-pink-900">Customizable (Name/Photo)</span>
+            </label>
+          </div>
+
+          <div class="pt-4 border-t border-pink-200 flex justify-end gap-2">
+            <button type="button" onclick="closeProductModal()" class="px-4 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">Cancel</button>
+            <button type="submit" class="kawaii-btn-pink px-5 py-2 text-xs font-black shadow-md">Save Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- Admin JavaScript with Google Auth -->
+  <script>
+    let authToken = sessionStorage.getItem("chintu_admin_token");
+    let currentUser = null;
+    let allProducts = [];
+    let allOrders = [];
+    let currentSettings = {};
+
+    document.addEventListener("DOMContentLoaded", () => {
+      checkExistingSession();
+    });
+
+    function checkExistingSession() {
+      const savedUser = sessionStorage.getItem("chintu_admin_user");
+      if (authToken && savedUser) {
+        try {
+          currentUser = JSON.parse(savedUser);
+          showAdminDashboard();
+          return;
+        } catch (e) {}
+      }
+      showAuthGate();
+    }
+
+    function showAuthGate() {
+      document.getElementById('auth-gate').classList.remove('hidden');
+      document.getElementById('admin-main-interface').classList.add('hidden');
+    }
+
+    function showAdminDashboard() {
+      document.getElementById('auth-gate').classList.add('hidden');
+      document.getElementById('admin-main-interface').classList.remove('hidden');
+
+      if (currentUser) {
+        document.getElementById('user-email-display').textContent = currentUser.email || 'Owner';
+        if (currentUser.picture) {
+          document.getElementById('user-avatar').src = currentUser.picture;
+        }
+      }
+
+      fetchProducts();
+      fetchOrders();
+      fetchSettings();
+    }
+
+    // Google Credential Callback from Google Identity Services
+    function handleGoogleCredentialResponse(response) {
+      if (!response.credential) return;
+
+      // Decode JWT payload
+      try {
+        const base64Url = response.credential.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+          return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
+        const profile = JSON.parse(jsonPayload);
+        authenticateWithBackend({
+          email: profile.email,
+          name: profile.name,
+          picture: profile.picture,
+          credential: response.credential
+        });
+      } catch (err) {
+        console.error("JWT decode error:", err);
+        showAuthError("Error processing Google credential");
+      }
+    }
+
+    async function submitGoogleOwnerLogin() {
+      const email = document.getElementById('login-google-email').value.trim();
+      const masterCode = document.getElementById('login-master-key').value.trim();
+
+      if (!email) {
+        showAuthError("Please enter your Google Email address");
+        return;
+      }
+
+      authenticateWithBackend({ email, masterCode });
+    }
+
+    async function authenticateWithBackend(payload) {
+      try {
+        const res = await fetch('/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        const data = await res.json();
+        if (data.success && data.token) {
+          authToken = data.token;
+          currentUser = data.user;
+          sessionStorage.setItem("chintu_admin_token", authToken);
+          sessionStorage.setItem("chintu_admin_user", JSON.stringify(currentUser));
+          showToast(`Welcome back, ${currentUser.name || 'Owner'}! 🌸`);
+          showAdminDashboard();
+        } else {
+          showAuthError(data.message || "Authentication failed. Unauthorized account.");
+        }
+      } catch (err) {
+        console.error(err);
+        showAuthError("Network error contacting server");
+      }
+    }
+
+    function showAuthError(msg) {
+      const el = document.getElementById('auth-error-msg');
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    function logoutAdmin() {
+      sessionStorage.removeItem("chintu_admin_token");
+      sessionStorage.removeItem("chintu_admin_user");
+      authToken = null;
+      currentUser = null;
+      showToast("Signed out successfully");
+      showAuthGate();
+    }
+
+    // Helper for Authenticated API requests
+    function authHeaders() {
+      return {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`
+      };
+    }
+
+    async function fetchProducts() {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        if (data.success) {
+          allProducts = data.data;
+          renderAdminProducts(allProducts);
+          updateStats();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function fetchOrders() {
+      try {
+        const res = await fetch('/api/orders', { headers: authHeaders() });
+        if (res.status === 401 || res.status === 403) {
+          logoutAdmin();
+          return;
+        }
+        const data = await res.json();
+        if (data.success) {
+          allOrders = data.data;
+          renderAdminOrders(allOrders);
+          updateStats();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function fetchSettings() {
+      try {
+        const res = await fetch('/api/settings');
+        const data = await res.json();
+        if (data.success) {
+          currentSettings = data.data;
+          document.getElementById('setting-google-email').value = currentSettings.authorizedAdminEmail || "";
+          document.getElementById('setting-announcement').value = currentSettings.announcement || "";
+          document.getElementById('setting-open').value = currentSettings.openTime || "10:30";
+          document.getElementById('setting-close').value = currentSettings.closeTime || "20:30";
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function updateStats() {
+      document.getElementById('stat-total-products').textContent = allProducts.length;
+      document.getElementById('stat-in-stock').textContent = allProducts.filter(p => p.inStock).length;
+      document.getElementById('stat-orders').textContent = allOrders.length;
+      document.getElementById('orders-count-label').textContent = `${allOrders.length} Orders`;
+    }
+
+    function renderAdminProducts(products) {
+      const container = document.getElementById('admin-products-list');
+      if (!container) return;
+
+      if (products.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-pink-700">
+            <i class="fa-solid fa-gift text-4xl mb-3 text-pink-400"></i>
+            <p class="font-bold text-sm">No products found</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = products.map(p => `
+        <div class="pink-acrylic p-4 flex flex-col justify-between relative group border border-pink-200">
+          <div class="flex gap-3">
+            <div class="w-20 h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100">
+              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1.5 mb-1">
+                ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-pink-100 text-pink-700">${p.badge}</span>` : ''}
+                <span class="text-[10px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
+                  ${p.inStock ? '● In Stock' : '✕ Out of Stock'}
+                </span>
+              </div>
+              <h4 class="text-xs font-bold text-pink-950 truncate font-fun">${p.name}</h4>
+              <p class="text-[11px] text-pink-700 truncate">${p.hindiName || ''}</p>
+              <div class="flex items-baseline gap-2 mt-1">
+                <span class="text-sm font-extrabold text-pink-600">₹${p.price}</span>
+                <span class="text-[10px] text-slate-400 line-through">₹${p.originalPrice}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-3 mt-3 border-t border-pink-100 flex items-center justify-between gap-2">
+            <button onclick="toggleStock('${p.id}')" class="text-[11px] font-bold px-2.5 py-1 rounded-lg ${p.inStock ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'} transition">
+              ${p.inStock ? 'Mark Out of Stock' : 'Mark In Stock'}
+            </button>
+            <div class="flex items-center gap-1">
+              <button onclick="openEditProductModal('${p.id}')" class="p-1.5 rounded-lg bg-pink-100 text-pink-700 hover:bg-pink-200 text-xs" title="Edit Product">
+                <i class="fa-solid fa-pen-to-square"></i>
+              </button>
+              <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-rose-100 text-rose-700 hover:bg-rose-200 text-xs" title="Delete Product">
+                <i class="fa-solid fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderAdminOrders(orders) {
+      const container = document.getElementById('admin-orders-list');
+      if (!container) return;
+
+      if (orders.length === 0) {
+        container.innerHTML = `<p class="text-xs text-pink-700 text-center py-8 font-semibold">No orders logged yet.</p>`;
+        return;
+      }
+
+      container.innerHTML = orders.map(ord => `
+        <div class="pink-acrylic-sm p-4 border border-pink-200">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2 pb-2 border-b border-pink-100">
+            <div>
+              <span class="text-xs font-black text-pink-600 font-fun">${ord.id}</span>
+              <span class="text-[11px] text-pink-900/60 ml-2">${new Date(ord.createdAt).toLocaleString()}</span>
+            </div>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800">${ord.status || 'Confirmed'}</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs mb-3">
+            <div>
+              <div class="font-bold text-pink-950">Customer: ${ord.customer?.name || 'Guest'}</div>
+              <div class="text-pink-700">Phone: ${ord.customer?.phone || 'N/A'}</div>
+              <div class="text-pink-800/80">Address: ${ord.customer?.address || 'Pickup at store'}</div>
+              ${ord.customer?.cardMessage ? `<div class="italic text-[11px] text-pink-600 mt-1">Card Msg: "${ord.customer.cardMessage}"</div>` : ''}
+            </div>
+
+            <div>
+              <div class="font-bold text-pink-950 mb-1">Items Ordered:</div>
+              <ul class="space-y-1 text-[11px] text-pink-900">
+                ${ord.items ? ord.items.map(it => `
+                  <li>• ${it.name} (x${it.quantity}) - ₹${it.price * it.quantity} ${it.customDetails ? `<span class="text-pink-600 font-bold">[Custom: ${it.customDetails.name}]</span>` : ''}</li>
+                `).join('') : 'N/A'}
+              </ul>
+              <div class="text-xs font-extrabold text-pink-600 mt-2">Total Amount: ₹${ord.total}</div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterAdminProducts() {
+      const q = document.getElementById('admin-search').value.toLowerCase().trim();
+      const cat = document.getElementById('admin-cat-filter').value;
+
+      const filtered = allProducts.filter(p => {
+        const matchCat = cat === 'all' || p.category === cat;
+        const matchSearch = p.name.toLowerCase().includes(q) || (p.hindiName && p.hindiName.includes(q));
+        return matchCat && matchSearch;
+      });
+
+      renderAdminProducts(filtered);
+    }
+
+    function switchTab(tabName) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('bg-pink-600', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-white/80', 'text-pink-800');
+      });
+      document.getElementById(`tab-btn-${tabName}`).classList.add('bg-pink-600', 'text-white', 'shadow-sm');
+      document.getElementById(`tab-btn-${tabName}`).classList.remove('bg-white/80', 'text-pink-800');
+
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+    }
+
+    function openAddProductModal() {
+      document.getElementById('modal-title').textContent = "Add New Product";
+      document.getElementById('form-product-id').value = "";
+      document.getElementById('product-form').reset();
+      document.getElementById('form-instock').checked = true;
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function openEditProductModal(id) {
+      const p = allProducts.find(item => item.id === id);
+      if (!p) return;
+
+      document.getElementById('modal-title').textContent = "Edit Product";
+      document.getElementById('form-product-id').value = p.id;
+      document.getElementById('form-name').value = p.name;
+      document.getElementById('form-hindi-name').value = p.hindiName || "";
+      document.getElementById('form-category').value = p.category;
+      document.getElementById('form-badge').value = p.badge || "";
+      document.getElementById('form-price').value = p.price;
+      document.getElementById('form-original-price').value = p.originalPrice || "";
+      document.getElementById('form-image').value = p.image;
+      document.getElementById('form-description').value = p.description || "";
+      document.getElementById('form-instock').checked = p.inStock;
+      document.getElementById('form-customizable').checked = !!p.customizable;
+
+      document.getElementById('product-modal').classList.remove('hidden');
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').classList.add('hidden');
+    }
+
+    function setImagePreset(url) {
+      document.getElementById('form-image').value = url;
+    }
+
+    async function saveProduct() {
+      const id = document.getElementById('form-product-id').value;
+      const payload = {
+        name: document.getElementById('form-name').value.trim(),
+        hindiName: document.getElementById('form-hindi-name').value.trim(),
+        category: document.getElementById('form-category').value,
+        badge: document.getElementById('form-badge').value.trim(),
+        price: Number(document.getElementById('form-price').value),
+        originalPrice: Number(document.getElementById('form-original-price').value || document.getElementById('form-price').value * 1.5),
+        image: document.getElementById('form-image').value.trim(),
+        description: document.getElementById('form-description').value.trim(),
+        inStock: document.getElementById('form-instock').checked,
+        customizable: document.getElementById('form-customizable').checked
+      };
+
+      try {
+        let res;
+        if (id) {
+          res = await fetch(`/api/products/${id}`, {
+            method: 'PUT',
+            headers: authHeaders(),
+            body: JSON.stringify(payload)
+          });
+        } else {
+          res = await fetch('/api/products', {
+            method: 'POST',
+            headers: authHeaders(),
+            body: JSON.stringify(payload)
+          });
+        }
+
+        const data = await res.json();
+        if (data.success) {
+          showToast(id ? "Product updated! 🌸" : "Product added to catalogue! 🎉");
+          closeProductModal();
+          fetchProducts();
+        } else {
+          showToast(data.message || "Failed to save product", "error");
+        }
+      } catch (e) {
+        console.error(e);
+        showToast("Error saving product", "error");
+      }
+    }
+
+    async function toggleStock(id) {
+      try {
+        const res = await fetch(`/api/products/${id}/stock`, {
+          method: 'PATCH',
+          headers: authHeaders()
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Stock updated! 🧸`);
+          fetchProducts();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm("Are you sure you want to delete this product from catalogue?")) return;
+      try {
+        const res = await fetch(`/api/products/${id}`, {
+          method: 'DELETE',
+          headers: authHeaders()
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast("Product deleted!");
+          fetchProducts();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function saveStoreSettings() {
+      const payload = {
+        phone: "8269212182",
+        displayPhone: "+91 82692 12182",
+        whatsapp: "918269212182",
+        authorizedAdminEmail: document.getElementById('setting-google-email').value.trim(),
+        announcement: document.getElementById('setting-announcement').value.trim(),
+        openTime: document.getElementById('setting-open').value.trim(),
+        closeTime: document.getElementById('setting-close').value.trim()
+      };
+
+      try {
+        const res = await fetch('/api/settings', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast("Store settings & authorized Google email saved! 🌸");
+          fetchSettings();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function showToast(message, type = "success") {
+      const container = document.getElementById("toast-container");
+      if (!container) return;
+
+      const toast = document.createElement("div");
+      toast.className = `toast-msg ${type === 'error' ? 'border-l-4 border-rose-500' : 'border-l-4 border-pink-500'}`;
+      toast.innerHTML = `
+        <i class="fa-solid ${type === 'error' ? 'fa-circle-exclamation text-rose-500' : 'fa-circle-check text-pink-500'}"></i>
+        <span>${message}</span>
+      `;
+
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
