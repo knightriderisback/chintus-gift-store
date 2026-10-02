@@ -139,8 +139,18 @@ function applyStoreSettings(settings) {
     document.querySelectorAll(".store-maps-link").forEach(el => el.href = settings.mapsUrl);
   }
   if (settings.instagramHandle) {
-    const handleClean = settings.instagramHandle.replace('@', '');
-    document.querySelectorAll(".store-insta-link").forEach(el => el.href = `https://instagram.com/${handleClean}`);
+    let instaUrl = settings.instagramHandle.trim();
+    let displayHandle = instaUrl;
+    if (instaUrl.startsWith('http://') || instaUrl.startsWith('https://')) {
+      const parts = instaUrl.split('/').filter(Boolean);
+      displayHandle = '@' + (parts[parts.length - 1] || 'chintusgiftstore');
+    } else {
+      const clean = instaUrl.replace('@', '');
+      instaUrl = `https://instagram.com/${clean}`;
+      displayHandle = `@${clean}`;
+    }
+    document.querySelectorAll(".store-insta-link").forEach(el => el.href = instaUrl);
+    document.querySelectorAll(".store-insta-handle").forEach(el => el.textContent = displayHandle);
   }
 }
 

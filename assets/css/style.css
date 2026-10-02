@@ -246,6 +246,28 @@ h1, h2, h3, h4, h5, h6, .font-fun {
   transition: all 0.3s ease;
 }
 
+.float-insta-btn {
+  position: fixed;
+  bottom: 202px;
+  right: 16px;
+  z-index: 800;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 8px 20px rgba(220, 39, 67, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.float-insta-btn:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 12px 25px rgba(220, 39, 67, 0.6);
+}
+
 /* Mobile Bottom Navigation Bar */
 .mobile-bottom-nav {
   position: fixed;
@@ -282,6 +304,13 @@ h1, h2, h3, h4, h5, h6, .font-fun {
     width: 52px;
     height: 52px;
     font-size: 22px;
+  }
+  .float-insta-btn {
+    bottom: 158px;
+    right: 24px;
+    width: 52px;
+    height: 52px;
+    font-size: 24px;
   }
 }
 
