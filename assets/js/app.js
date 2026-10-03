@@ -12,6 +12,7 @@ let sortBy = "default";
 let currentLang = "en";
 let activeDiscount = 0;
 let discountCode = "";
+let visibleProductsCount = 8;
 
 // Customizer State
 let customizerState = {
@@ -340,9 +341,10 @@ function checkStoreOpenStatus() {
   }
 }
 
-// Render Products Grid
+// Render Products Grid with 8 items pagination & "Show More"
 function renderProducts() {
   const container = document.getElementById("products-grid");
+  const loadMoreContainer = document.getElementById("products-load-more-container");
   if (!container) return;
 
   let filtered = productsList.filter(p => {
@@ -370,12 +372,16 @@ function renderProducts() {
         <button onclick="resetFilters()" class="mt-4 px-5 py-2 rounded-full kawaii-btn-pink text-xs font-bold shadow-md">View All Items</button>
       </div>
     `;
+    if (loadMoreContainer) loadMoreContainer.innerHTML = "";
     return;
   }
 
-  container.innerHTML = filtered.map(product => {
+  const displayed = filtered.slice(0, visibleProductsCount);
+
+  container.innerHTML = displayed.map(product => {
     const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
     const title = currentLang === "hi" && product.hindiName ? product.hindiName : product.name;
+    const hasMultipleImages = Array.isArray(product.images) && product.images.length > 1;
 
     return `
       <div class="product-card group relative pink-acrylic p-3 sm:p-4 flex flex-col justify-between overflow-hidden border border-pink-200/80 shadow-sm hover:shadow-lg transition">
@@ -383,12 +389,13 @@ function renderProducts() {
         <!-- Top Badges -->
         <div class="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start">
           ${product.badge ? `<span class="kawaii-badge">${product.badge}</span>` : ''}
+          ${hasMultipleImages ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-600/90 text-white shadow-sm flex items-center gap-1"><i class="fa-solid fa-images text-[9px]"></i> ${product.images.length} Photos</span>` : ''}
           ${product.customizable ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-pink-600 text-white shadow-sm flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-[9px]"></i> Custom</span>` : ''}
         </div>
 
         <!-- Product Image -->
         <div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-3 bg-pink-50 cursor-pointer border border-pink-100" onclick="openQuickView('${product.id}')">
-          <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="lazy">
+          <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <span class="text-xs font-black text-pink-700 bg-white/95 px-3 py-1.5 rounded-full shadow-md backdrop-blur">Quick View</span>
           </div>
@@ -442,6 +449,34 @@ function renderProducts() {
       </div>
     `;
   }).join("");
+
+  // Update Show More / Load More button
+  if (loadMoreContainer) {
+    if (visibleProductsCount < filtered.length) {
+      loadMoreContainer.innerHTML = `
+        <button id="show-more-products-btn" onclick="loadMoreProducts()" class="px-8 py-3 rounded-full kawaii-btn-pink text-xs sm:text-sm font-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 border-2 border-pink-300 cursor-pointer">
+          <i class="fa-solid fa-sparkles text-yellow-300"></i>
+          <span>Show More Gifts (और देखें)</span>
+          <span class="text-[10px] bg-white/30 text-pink-900 px-2 py-0.5 rounded-full font-black">Showing ${displayed.length} of ${filtered.length}</span>
+          <i class="fa-solid fa-chevron-down text-xs animate-bounce"></i>
+        </button>
+      `;
+    } else if (filtered.length > 8) {
+      loadMoreContainer.innerHTML = `
+        <div class="flex items-center gap-2 py-2.5 px-5 rounded-full bg-pink-100/90 text-pink-800 text-xs font-bold border border-pink-200 shadow-sm">
+          <span>✨</span>
+          <span>You've seen all <strong>${filtered.length}</strong> adorable gifts! 🎀</span>
+        </div>
+      `;
+    } else {
+      loadMoreContainer.innerHTML = "";
+    }
+  }
+}
+
+function loadMoreProducts() {
+  visibleProductsCount += 8;
+  renderProducts();
 }
 
 function renderStars(rating) {
@@ -457,6 +492,7 @@ function renderStars(rating) {
 }
 
 function resetFilters() {
+  visibleProductsCount = 8;
   currentCategory = "all";
   searchQuery = "";
   sortBy = "default";
@@ -951,15 +987,32 @@ function openQuickView(productId) {
 
   const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
+  // Multi-image support
+  const allImages = (Array.isArray(product.images) && product.images.length > 0)
+    ? product.images
+    : [product.image || 'assets/images/kawaii_stationery.jpg'];
+
   modalBody.innerHTML = `
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="aspect-square rounded-2xl overflow-hidden bg-pink-50 border border-pink-200">
-        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover">
+      <div class="flex flex-col gap-2">
+        <div class="aspect-square rounded-2xl overflow-hidden bg-pink-50 border border-pink-200 relative group">
+          <img id="quickview-main-img" src="${allImages[0]}" alt="${product.name}" class="w-full h-full object-cover transition duration-300">
+        </div>
+        ${allImages.length > 1 ? `
+          <div class="flex items-center gap-2 overflow-x-auto py-1 px-0.5">
+            ${allImages.map((imgUrl, idx) => `
+              <button type="button" onclick="selectQuickViewImage('${imgUrl}', this)" class="qv-thumb shrink-0 w-14 h-14 rounded-xl overflow-hidden border-2 transition-all ${idx === 0 ? 'border-pink-600 ring-2 ring-pink-400 scale-105' : 'border-pink-200 opacity-80 hover:opacity-100'}">
+                <img src="${imgUrl}" alt="Thumb" class="w-full h-full object-cover">
+              </button>
+            `).join('')}
+          </div>
+        ` : ''}
       </div>
       <div class="flex flex-col justify-between">
         <div>
-          <div class="flex items-center gap-1.5 mb-1.5">
+          <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
             ${product.badge ? `<span class="kawaii-badge">${product.badge}</span>` : ''}
+            ${allImages.length > 1 ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-100 text-purple-800 border border-purple-200"><i class="fa-solid fa-camera mr-1"></i>${allImages.length} Photos</span>` : ''}
             <span class="text-xs text-emerald-700 font-extrabold"><i class="fa-solid fa-circle-check mr-1"></i>In Stock at Subhash Chowk</span>
           </div>
           <h2 class="text-base sm:text-lg font-black text-purple-950 mb-1 font-fun">${product.name}</h2>
@@ -997,6 +1050,19 @@ function openQuickView(productId) {
   `;
 
   modal.classList.remove("hidden");
+}
+
+function selectQuickViewImage(imgUrl, clickedBtn) {
+  const mainImg = document.getElementById("quickview-main-img");
+  if (mainImg) mainImg.src = imgUrl;
+  document.querySelectorAll(".qv-thumb").forEach(b => {
+    b.classList.remove("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
+    b.classList.add("border-pink-200", "opacity-80");
+  });
+  if (clickedBtn) {
+    clickedBtn.classList.remove("border-pink-200", "opacity-80");
+    clickedBtn.classList.add("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
+  }
 }
 
 function closeQuickView() {
@@ -1080,6 +1146,7 @@ function setupEventListeners() {
   if (searchInput) {
     searchInput.addEventListener("input", (e) => {
       searchQuery = e.target.value.trim();
+      visibleProductsCount = 8;
       renderProducts();
     });
   }
@@ -1093,6 +1160,7 @@ function setupEventListeners() {
       tab.classList.add("bg-pink-600", "text-white");
       tab.classList.remove("bg-white/80", "text-pink-800");
       currentCategory = tab.dataset.category;
+      visibleProductsCount = 8;
       renderProducts();
     });
   });
@@ -1101,6 +1169,7 @@ function setupEventListeners() {
   if (sortSelect) {
     sortSelect.addEventListener("change", (e) => {
       sortBy = e.target.value;
+      visibleProductsCount = 8;
       renderProducts();
     });
   }

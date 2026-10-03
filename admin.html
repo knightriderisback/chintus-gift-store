@@ -4,9 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Admin Portal | Chintu's Gift & Kawaii Store</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Speed Optimization Preconnects -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://accounts.google.com">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Great+Vibes&display=swap"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
@@ -26,7 +33,7 @@
     <header class="w-full pink-acrylic-nav px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-pink-200 shrink-0 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 sm:gap-2.5">
-          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0">
+          <img id="auth-gate-header-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0 object-contain">
           <div>
             <div class="flex items-center gap-1.5">
               <span class="text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
@@ -48,7 +55,7 @@
         
         <!-- Mascot Badge -->
         <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-3 animate-cartoon-bounce">
-          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
+          <img id="auth-gate-mascot-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
         </div>
 
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-[11px] font-black uppercase mb-2">
@@ -961,29 +968,48 @@
 
           <div>
             <div class="flex items-center justify-between mb-1">
-              <label class="block text-[11px] font-bold text-pink-900 uppercase">Product Image (File Upload or URL) *</label>
-              <span class="text-[10px] text-pink-700 font-semibold">JPG, PNG, WebP</span>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase">Product Images (Multiple Photos Supported) *</label>
+              <span id="form-images-count-badge" class="text-[10px] text-pink-700 font-bold bg-pink-100 px-2 py-0.5 rounded-full">1 Photo</span>
             </div>
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-14 h-14 rounded-xl overflow-hidden border-2 border-pink-300 bg-white shrink-0 shadow-sm">
-                <img id="form-image-preview" src="assets/images/kawaii_stationery.jpg" alt="Preview" class="w-full h-full object-cover">
-              </div>
-              <div class="flex-1 flex flex-col sm:flex-row gap-2">
-                <input type="text" id="form-image" required oninput="updateProductImagePreview(this.value)" placeholder="assets/images/kawaii_stationery.jpg or upload" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
-                <label class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0 transition">
+
+            <!-- Upload Multiple Files or Add via URL -->
+            <div class="p-3 bg-white/80 rounded-2xl border border-pink-200 space-y-2.5 mb-2">
+              <div class="flex flex-col sm:flex-row gap-2">
+                <label class="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-black shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0 transition">
                   <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
-                  <span>Upload Image</span>
-                  <input type="file" accept="image/*" class="hidden" onchange="uploadImageFile(this, 'form-image', 'form-image-preview', 'product')">
+                  <span>Upload Multiple Photos</span>
+                  <input type="file" multiple accept="image/*" class="hidden" onchange="handleProductMultiImageUpload(this)">
                 </label>
+
+                <div class="flex-1 flex gap-1.5">
+                  <input type="text" id="form-add-image-url" placeholder="Paste image URL here..." class="flex-1 px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+                  <button type="button" onclick="addProductImageUrlFromInput()" class="px-3 py-1.5 rounded-xl bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-black shrink-0 transition">
+                    + Add URL
+                  </button>
+                </div>
+              </div>
+
+              <!-- Primary Image Input (Kept for fallback and validation) -->
+              <input type="hidden" id="form-image" required value="assets/images/kawaii_stationery.jpg">
+
+              <!-- Multiple Images Preview & Management Strip -->
+              <div>
+                <div class="text-[10px] font-bold text-pink-800 mb-1.5 flex items-center justify-between">
+                  <span>Gallery Photos (Click star to make Cover):</span>
+                  <span class="text-[9px] text-pink-600">First photo = Main Cover</span>
+                </div>
+                <div id="form-gallery-strip" class="flex gap-2 overflow-x-auto py-1 px-1 bg-pink-50/70 rounded-xl min-h-[70px] items-center border border-pink-100">
+                  <!-- Rendered dynamically by renderProductFormImages() -->
+                </div>
               </div>
             </div>
 
             <div class="flex items-center gap-1.5 flex-wrap">
-              <span class="text-[10px] text-pink-800 font-bold">Quick Pick:</span>
-              <button type="button" onclick="setImagePreset('assets/images/kawaii_stationery.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Stationery</button>
-              <button type="button" onclick="setImagePreset('assets/images/pink_acrylic_lamp.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Pink Lamp</button>
-              <button type="button" onclick="setImagePreset('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Soft Toys</button>
-              <button type="button" onclick="setImagePreset('assets/images/product_mug.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">Magic Mug</button>
+              <span class="text-[10px] text-pink-800 font-bold">Quick Presets:</span>
+              <button type="button" onclick="addProductPresetImage('assets/images/kawaii_stationery.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">+ Stationery</button>
+              <button type="button" onclick="addProductPresetImage('assets/images/pink_acrylic_lamp.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">+ Pink Lamp</button>
+              <button type="button" onclick="addProductPresetImage('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">+ Soft Toys</button>
+              <button type="button" onclick="addProductPresetImage('assets/images/product_mug.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">+ Magic Mug</button>
             </div>
           </div>
 
@@ -1355,16 +1381,38 @@
   <!-- Toast Notification Container -->
   <div id="toast-container"></div>
 
+  <!-- Load Default Products for Instant 0ms Sync Fallback -->
+  <script src="assets/js/products.js?v=2.5"></script>
+
   <!-- Admin JavaScript with Google OAuth & Auth Flow -->
   <script>
-    let authToken = sessionStorage.getItem("chintu_admin_token");
+    // Read session token & user from localStorage or sessionStorage
+    let authToken = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
     let currentUser = null;
+    try {
+      const savedUserStr = localStorage.getItem("chintu_admin_user") || sessionStorage.getItem("chintu_admin_user");
+      if (savedUserStr) currentUser = JSON.parse(savedUserStr);
+    } catch (_) {}
+
+    // Instant Synchronous Products Hydration
     let allProducts = [];
+    try {
+      const cachedProds = localStorage.getItem('chintu_custom_products');
+      if (cachedProds) {
+        const parsed = JSON.parse(cachedProds);
+        if (Array.isArray(parsed) && parsed.length > 0) allProducts = parsed;
+      }
+    } catch (_) {}
+    if (allProducts.length === 0 && typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
+      allProducts = [...PRODUCTS_DATA];
+    }
+
     let allOrders = [];
     let currentSettings = {};
     let bulkParsedProducts = [];
     let selectedProductIds = new Set();
     let bulkImageDrafts = [];
+    let productFormImages = [];
 
     // All 10 Landing Page Sections on the Storefront
     const DEFAULT_SECTIONS_CONFIG = {
@@ -1394,6 +1442,9 @@
             initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
           }
           applySettingsToAdminForm(cachedSettings);
+          if (cachedSettings.storeLogo) {
+            applyLogoToAllViews(cachedSettings.storeLogo, cachedSettings.logoShape, cachedSettings.logoHeight);
+          }
         } else {
           initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
         }
@@ -1406,9 +1457,11 @@
     });
 
     function checkExistingSession() {
-      const savedUser = sessionStorage.getItem("chintu_admin_user");
-      if (authToken && savedUser) {
+      const savedToken = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
+      const savedUser = localStorage.getItem("chintu_admin_user") || sessionStorage.getItem("chintu_admin_user");
+      if (savedToken && savedUser) {
         try {
+          authToken = savedToken;
           currentUser = JSON.parse(savedUser);
           showAdminDashboard();
           return;
@@ -1431,6 +1484,12 @@
         if (currentUser.picture) {
           document.getElementById('user-avatar').src = currentUser.picture;
         }
+      }
+
+      // Synchronously render existing products and statistics immediately without delay
+      if (allProducts && allProducts.length > 0) {
+        renderAdminProducts(allProducts);
+        updateStats();
       }
 
       fetchProducts();
@@ -1584,6 +1643,8 @@
           currentUser = data.user;
           sessionStorage.setItem("chintu_admin_token", authToken);
           sessionStorage.setItem("chintu_admin_user", JSON.stringify(currentUser));
+          localStorage.setItem("chintu_admin_token", authToken);
+          localStorage.setItem("chintu_admin_user", JSON.stringify(currentUser));
           showToast(`Logged in as ${currentUser.name || 'Owner'}! 🌸`);
           showAdminDashboard();
         } else {
@@ -1604,6 +1665,8 @@
     function logoutAdmin() {
       sessionStorage.removeItem("chintu_admin_token");
       sessionStorage.removeItem("chintu_admin_user");
+      localStorage.removeItem("chintu_admin_token");
+      localStorage.removeItem("chintu_admin_user");
       authToken = null;
       currentUser = null;
       showToast("Signed out successfully 🌸");
@@ -1639,29 +1702,41 @@
       const cached = localStorage.getItem('chintu_custom_products');
       if (cached) {
         try {
-          allProducts = JSON.parse(cached);
-          renderAdminProducts(allProducts);
-          updateStats();
-          updateBulkSelectionBar();
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            allProducts = parsed;
+            renderAdminProducts(allProducts);
+            updateStats();
+            updateBulkSelectionBar();
+            return;
+          }
         } catch (_) {}
+      }
+
+      // Built-in default products fallback
+      if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA) && allProducts.length === 0) {
+        allProducts = [...PRODUCTS_DATA];
+        renderAdminProducts(allProducts);
+        updateStats();
+        updateBulkSelectionBar();
       }
     }
 
     async function fetchOrders() {
       try {
         const res = await fetch('/api/orders', { headers: authHeaders() });
-        if (res.status === 401 || res.status === 403) {
-          logoutAdmin();
+        if (!res.ok) {
+          console.warn("fetchOrders returned non-OK status:", res.status);
           return;
         }
         const data = await res.json();
-        if (data.success) {
+        if (data.success && Array.isArray(data.data)) {
           allOrders = data.data;
           renderAdminOrders(allOrders);
           updateStats();
         }
       } catch (e) {
-        console.error(e);
+        console.error("fetchOrders error:", e);
       }
     }
 
@@ -1727,21 +1802,20 @@
       if (document.getElementById('setting-brand-tagline')) {
         document.getElementById('setting-brand-tagline').value = cfg.brandTagline || "Gift & Kawaii Store • Dalli Rajhara";
       }
-      if (document.getElementById('setting-store-logo')) {
-        document.getElementById('setting-store-logo').value = cfg.storeLogo || "assets/images/kawaii_logo.jpg";
-        updateLogoPreview(cfg.storeLogo || "assets/images/kawaii_logo.jpg");
-      }
-
+      const logoUrl = cfg.storeLogo || "assets/images/kawaii_logo.jpg";
       const shape = cfg.logoShape || 'natural';
+      const height = cfg.logoHeight || 'md';
+
+      if (document.getElementById('setting-store-logo')) {
+        document.getElementById('setting-store-logo').value = logoUrl;
+      }
       if (document.getElementById('setting-logo-shape')) {
         document.getElementById('setting-logo-shape').value = shape;
-        changeLogoShape(shape);
       }
-      const height = cfg.logoHeight || 'md';
       if (document.getElementById('setting-logo-height')) {
         document.getElementById('setting-logo-height').value = height;
-        changeLogoHeight(height);
       }
+      applyLogoToAllViews(logoUrl, shape, height);
 
       // Coupons & Promotions
       if (document.getElementById('setting-coupon-code')) {
@@ -1857,16 +1931,17 @@
 
             <div class="flex gap-2.5 pr-6">
               <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100 shadow-inner">
-                <img src="${p.image}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover">
+                <img src="${p.image || (Array.isArray(p.images) && p.images[0]) || 'assets/images/kawaii_stationery.jpg'}" alt="${escapeHtml(p.name || 'Product')}" class="w-full h-full object-cover" loading="lazy" decoding="async">
               </div>
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1.5 mb-1 flex-wrap">
                   ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-pink-100 text-pink-700">${escapeHtml(p.badge)}</span>` : ''}
+                  ${Array.isArray(p.images) && p.images.length > 1 ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-purple-100 text-purple-700 border border-purple-200"><i class="fa-solid fa-camera mr-0.5"></i>${p.images.length} Photos</span>` : ''}
                   <span class="text-[9px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
                     ${p.inStock ? '● In Stock' : '✕ Out'}
                   </span>
                 </div>
-                <h4 class="text-xs font-bold text-pink-950 truncate font-fun" title="${escapeHtml(p.name)}">${escapeHtml(p.name)}</h4>
+                <h4 class="text-xs font-bold text-pink-950 truncate font-fun" title="${escapeHtml(p.name || '')}">${escapeHtml(p.name || '')}</h4>
                 <p class="text-[10px] text-pink-700 truncate">${escapeHtml(p.hindiName || '')}</p>
                 <div class="flex items-baseline gap-2 mt-1">
                   <span class="text-xs sm:text-sm font-extrabold text-pink-600">₹${p.price}</span>
@@ -2261,13 +2336,15 @@
     }
 
     // ================= PRODUCT CRUD MODALS =================
+    // ================= PRODUCT CRUD MODALS & MULTI-IMAGE MANAGEMENT =================
     function openAddProductModal() {
       document.getElementById('modal-title').textContent = "Add New Product";
       document.getElementById('form-product-id').value = "";
       document.getElementById('product-form').reset();
       document.getElementById('form-instock').checked = true;
       document.getElementById('form-image').value = "assets/images/kawaii_stationery.jpg";
-      updateProductImagePreview("assets/images/kawaii_stationery.jpg");
+      productFormImages = ["assets/images/kawaii_stationery.jpg"];
+      renderProductFormImages();
       document.getElementById('product-modal').classList.remove('hidden');
     }
 
@@ -2277,17 +2354,25 @@
 
       document.getElementById('modal-title').textContent = "Edit Product";
       document.getElementById('form-product-id').value = p.id;
-      document.getElementById('form-name').value = p.name;
+      document.getElementById('form-name').value = p.name || "";
       document.getElementById('form-hindi-name').value = p.hindiName || "";
-      document.getElementById('form-category').value = p.category;
+      document.getElementById('form-category').value = p.category || "stationery";
       document.getElementById('form-badge').value = p.badge || "";
-      document.getElementById('form-price').value = p.price;
+      document.getElementById('form-price').value = p.price || "";
       document.getElementById('form-original-price').value = p.originalPrice || "";
-      document.getElementById('form-image').value = p.image;
-      updateProductImagePreview(p.image || "assets/images/kawaii_stationery.jpg");
       document.getElementById('form-description').value = p.description || "";
-      document.getElementById('form-instock').checked = p.inStock;
+      document.getElementById('form-instock').checked = p.inStock !== false;
       document.getElementById('form-customizable').checked = !!p.customizable;
+
+      // Multi-image initialization
+      if (Array.isArray(p.images) && p.images.length > 0) {
+        productFormImages = [...p.images];
+      } else if (p.image) {
+        productFormImages = [p.image];
+      } else {
+        productFormImages = ["assets/images/kawaii_stationery.jpg"];
+      }
+      renderProductFormImages();
 
       document.getElementById('product-modal').classList.remove('hidden');
     }
@@ -2296,18 +2381,128 @@
       document.getElementById('product-modal').classList.add('hidden');
     }
 
-    function setImagePreset(url) {
-      document.getElementById('form-image').value = url;
-      updateProductImagePreview(url);
+    function renderProductFormImages() {
+      const strip = document.getElementById('form-gallery-strip');
+      const countBadge = document.getElementById('form-images-count-badge');
+      const hiddenInput = document.getElementById('form-image');
+      if (!strip) return;
+
+      if (!productFormImages || productFormImages.length === 0) {
+        productFormImages = ["assets/images/kawaii_stationery.jpg"];
+      }
+
+      if (hiddenInput) {
+        hiddenInput.value = productFormImages[0] || 'assets/images/kawaii_stationery.jpg';
+      }
+
+      if (countBadge) {
+        countBadge.textContent = `${productFormImages.length} ${productFormImages.length === 1 ? 'Photo' : 'Photos'}`;
+      }
+
+      strip.innerHTML = productFormImages.map((url, idx) => {
+        const isCover = idx === 0;
+        return `
+          <div class="relative shrink-0 w-20 h-20 rounded-xl overflow-hidden border-2 ${isCover ? 'border-pink-600 ring-2 ring-pink-300' : 'border-pink-200'} bg-white group shadow-sm">
+            <img src="${url}" alt="Product Photo" class="w-full h-full object-cover">
+            
+            ${isCover ? `
+              <div class="absolute top-1 left-1 bg-pink-600 text-white text-[8px] font-black px-1.5 py-0.5 rounded shadow">
+                Cover
+              </div>
+            ` : `
+              <button type="button" onclick="setProductCoverImage(${idx})" title="Set as Main Cover" class="absolute top-1 left-1 w-5 h-5 rounded-full bg-white/90 hover:bg-yellow-400 text-slate-700 hover:text-white flex items-center justify-center text-[10px] shadow transition">
+                <i class="fa-solid fa-star"></i>
+              </button>
+            `}
+
+            <button type="button" onclick="removeProductFormImage(${idx})" title="Remove photo" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-white/90 hover:bg-rose-500 text-rose-600 hover:text-white flex items-center justify-center text-[10px] shadow transition">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
     }
 
-    function updateProductImagePreview(url) {
-      const img = document.getElementById('form-image-preview');
-      if (img && url) img.src = url;
+    function setProductCoverImage(index) {
+      if (index <= 0 || index >= productFormImages.length) return;
+      const target = productFormImages.splice(index, 1)[0];
+      productFormImages.unshift(target);
+      renderProductFormImages();
+      showToast("Cover photo updated! 📸");
+    }
+
+    function removeProductFormImage(index) {
+      if (productFormImages.length <= 1) {
+        showToast("Product must have at least one image", "error");
+        return;
+      }
+      productFormImages.splice(index, 1);
+      renderProductFormImages();
+      showToast("Photo removed");
+    }
+
+    function addProductPresetImage(url) {
+      if (!productFormImages.includes(url)) {
+        productFormImages.push(url);
+      }
+      renderProductFormImages();
+      showToast("Preset photo added! 🌸");
+    }
+
+    function addProductImageUrlFromInput() {
+      const input = document.getElementById('form-add-image-url');
+      if (!input) return;
+      const url = input.value.trim();
+      if (!url) {
+        showToast("Please enter an image URL", "error");
+        return;
+      }
+      productFormImages.push(url);
+      input.value = '';
+      renderProductFormImages();
+      showToast("Photo added! 🌸");
+    }
+
+    async function handleProductMultiImageUpload(fileInput) {
+      const files = fileInput.files;
+      if (!files || files.length === 0) return;
+
+      showToast(`Optimizing & uploading ${files.length} images... ⏳`);
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (!file.type.startsWith('image/')) continue;
+        try {
+          const base64Data = await resizeImageToDataUrl(file, 1200, 1200, 0.85);
+          const res = await fetch('/api/upload', {
+            method: 'POST',
+            headers: authHeaders(),
+            body: JSON.stringify({
+              image: base64Data,
+              filename: `prod_${Date.now()}_${i}`
+            })
+          });
+          const data = await res.json();
+          if (data.success && data.url) {
+            productFormImages.push(data.url);
+          } else {
+            productFormImages.push(base64Data);
+          }
+        } catch (err) {
+          console.error("Multi upload error:", err);
+        }
+      }
+
+      fileInput.value = '';
+      renderProductFormImages();
+      showToast("All photos uploaded successfully! 📸✨");
     }
 
     async function saveProduct() {
       const id = document.getElementById('form-product-id').value;
+      const primaryImage = productFormImages[0] || document.getElementById('form-image').value.trim() || 'assets/images/kawaii_stationery.jpg';
+      const allImgs = productFormImages.length > 0 ? productFormImages : [primaryImage];
+
       const payload = {
         name: document.getElementById('form-name').value.trim(),
         hindiName: document.getElementById('form-hindi-name').value.trim(),
@@ -2315,7 +2510,8 @@
         badge: document.getElementById('form-badge').value.trim(),
         price: Number(document.getElementById('form-price').value),
         originalPrice: Number(document.getElementById('form-original-price').value || document.getElementById('form-price').value * 1.5),
-        image: document.getElementById('form-image').value.trim(),
+        image: primaryImage,
+        images: allImgs,
         description: document.getElementById('form-description').value.trim(),
         inStock: document.getElementById('form-instock').checked,
         customizable: document.getElementById('form-customizable').checked
@@ -2341,6 +2537,20 @@
         if (data.success) {
           showToast(id ? "Product updated! 🌸" : "Product added to catalogue! 🎉");
           closeProductModal();
+
+          // Immediately update local array for instant response
+          if (id) {
+            const idx = allProducts.findIndex(p => p.id === id);
+            if (idx !== -1) allProducts[idx] = { ...allProducts[idx], ...payload };
+          } else if (data.data) {
+            allProducts.unshift(data.data);
+          }
+          try {
+            localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts));
+          } catch (_) {}
+          renderAdminProducts(allProducts);
+          updateStats();
+
           fetchProducts();
         } else {
           showToast(data.message || "Failed to save product", "error");
@@ -2653,12 +2863,48 @@
       showToast("Layout reset to defaults. Click 'Save Section Changes' to apply.");
     }
 
-    // ================= ADAPTIVE LOGO & SIZING =================
+    // ================= ADAPTIVE LOGO & SIZING FOR ALL VIEWS =================
+    function applyLogoToAllViews(url, shape, size) {
+      if (!url) return;
+      // 1. Settings preview image
+      const previewImg = document.getElementById('logo-preview-img');
+      if (previewImg) previewImg.src = url;
+
+      // 2. Admin Header Logo
+      const adminLogoImg = document.getElementById('admin-logo-img');
+      if (adminLogoImg) adminLogoImg.src = url;
+
+      const adminLogoWrap = document.getElementById('admin-logo-wrapper');
+      if (adminLogoWrap) {
+        if (shape) {
+          adminLogoWrap.classList.remove('logo-shape-natural', 'logo-shape-circle', 'logo-shape-rounded', 'logo-shape-square');
+          adminLogoWrap.classList.add(`logo-shape-${shape}`);
+        }
+        if (size) {
+          adminLogoWrap.classList.remove('logo-size-sm', 'logo-size-md', 'logo-size-lg', 'logo-size-xl');
+          adminLogoWrap.classList.add(`logo-size-${size}`);
+        }
+      }
+
+      // 3. Auth Gate Header Logo
+      const authHeaderLogo = document.getElementById('auth-gate-header-logo');
+      if (authHeaderLogo) authHeaderLogo.src = url;
+
+      // 4. Auth Gate Mascot Logo
+      const authMascotLogo = document.getElementById('auth-gate-mascot-logo');
+      if (authMascotLogo) authMascotLogo.src = url;
+    }
+
     function changeLogoShape(shape) {
       const box = document.getElementById('admin-logo-preview-box');
       if (box) {
         box.classList.remove('logo-shape-natural', 'logo-shape-circle', 'logo-shape-rounded', 'logo-shape-square');
         box.classList.add(`logo-shape-${shape}`);
+      }
+      const adminLogoWrap = document.getElementById('admin-logo-wrapper');
+      if (adminLogoWrap) {
+        adminLogoWrap.classList.remove('logo-shape-natural', 'logo-shape-circle', 'logo-shape-rounded', 'logo-shape-square');
+        adminLogoWrap.classList.add(`logo-shape-${shape}`);
       }
     }
 
@@ -2668,17 +2914,23 @@
         box.classList.remove('logo-size-sm', 'logo-size-md', 'logo-size-lg', 'logo-size-xl');
         box.classList.add(`logo-size-${size}`);
       }
+      const adminLogoWrap = document.getElementById('admin-logo-wrapper');
+      if (adminLogoWrap) {
+        adminLogoWrap.classList.remove('logo-size-sm', 'logo-size-md', 'logo-size-lg', 'logo-size-xl');
+        adminLogoWrap.classList.add(`logo-size-${size}`);
+      }
     }
 
     function updateLogoPreview(url) {
-      const img = document.getElementById('logo-preview-img');
-      if (img && url) img.src = url;
+      const shape = document.getElementById('setting-logo-shape')?.value || 'natural';
+      const size = document.getElementById('setting-logo-height')?.value || 'md';
+      applyLogoToAllViews(url, shape, size);
     }
 
     function setLogoPreset(url, shape = 'natural', size = 'md') {
       const input = document.getElementById('setting-store-logo');
       if (input) input.value = url;
-      updateLogoPreview(url);
+      applyLogoToAllViews(url, shape, size);
 
       const shapeSelect = document.getElementById('setting-logo-shape');
       if (shapeSelect) {
@@ -2959,6 +3211,11 @@
         }
       } catch (_) {}
 
+      // Apply logo across login gate and header immediately
+      if (payload.storeLogo) {
+        applyLogoToAllViews(payload.storeLogo, payload.logoShape, payload.logoHeight);
+      }
+
       try {
         const res = await fetch('/api/settings', {
           method: 'POST',
@@ -2972,6 +3229,9 @@
             document.getElementById('setting-master-pin').value = '';
           }
           currentSettings = Object.assign({}, currentSettings, payload);
+          if (payload.storeLogo) {
+            applyLogoToAllViews(payload.storeLogo, payload.logoShape, payload.logoHeight);
+          }
         } else {
           showToast(data.message || "Failed to save settings to server", "error");
         }
@@ -3076,6 +3336,20 @@
           const previewImg = document.getElementById(previewImgId);
           if (previewImg) {
             previewImg.src = finalUrl;
+          }
+
+          // If this is the store logo, apply to all views (login gate, header, preview) and persist
+          if (prefix === 'logo' || targetInputId === 'setting-store-logo') {
+            const shape = document.getElementById('setting-logo-shape')?.value || 'natural';
+            const size = document.getElementById('setting-logo-height')?.value || 'md';
+            applyLogoToAllViews(finalUrl, shape, size);
+            try {
+              let s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
+              s.storeLogo = finalUrl;
+              s.logoShape = shape;
+              s.logoHeight = size;
+              localStorage.setItem('chintu_store_settings', JSON.stringify(s));
+            } catch (_) {}
           }
 
           showToast("Image uploaded successfully! 🌸");

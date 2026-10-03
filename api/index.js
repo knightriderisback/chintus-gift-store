@@ -592,11 +592,14 @@ app.post('/api/products/bulk', requireAdmin, (req, res) => {
 
 app.post('/api/products', requireAdmin, (req, res) => {
   const products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
-  const { name, hindiName, category, price, originalPrice, image, badge, customizable, customType, description, specs, inStock } = req.body;
+  const { name, hindiName, category, price, originalPrice, image, images, badge, customizable, customType, description, specs, inStock } = req.body;
 
   if (!name || !price) {
     return res.status(400).json({ success: false, message: 'Name and price are required' });
   }
+
+  const primaryImage = image || (Array.isArray(images) && images[0]) || 'assets/images/kawaii_stationery.jpg';
+  const allImages = Array.isArray(images) && images.length > 0 ? images : [primaryImage];
 
   const newProduct = {
     id: `prod-${Date.now()}`,
@@ -607,7 +610,8 @@ app.post('/api/products', requireAdmin, (req, res) => {
     originalPrice: Number(originalPrice || price * 1.5),
     rating: 5.0,
     reviewsCount: 1,
-    image: image || 'assets/images/kawaii_stationery.jpg',
+    image: primaryImage,
+    images: allImages,
     badge: badge || 'New Kawaii',
     customizable: Boolean(customizable),
     customType: customType || 'stationery',
@@ -626,9 +630,14 @@ app.put('/api/products/:id', requireAdmin, (req, res) => {
   const index = products.findIndex(p => p.id === req.params.id);
   if (index === -1) return res.status(404).json({ success: false, message: 'Product not found' });
 
+  const primaryImg = req.body.image || (Array.isArray(req.body.images) && req.body.images[0]) || products[index].image;
+  const allImgs = Array.isArray(req.body.images) && req.body.images.length > 0 ? req.body.images : (products[index].images || [primaryImg]);
+
   const updated = {
     ...products[index],
     ...req.body,
+    image: primaryImg,
+    images: allImgs,
     price: req.body.price ? Number(req.body.price) : products[index].price,
     originalPrice: req.body.originalPrice ? Number(req.body.originalPrice) : products[index].originalPrice,
     specs: Array.isArray(req.body.specs) ? req.body.specs : (typeof req.body.specs === 'string' ? req.body.specs.split(',').map(s => s.trim()) : products[index].specs)
