@@ -25,6 +25,14 @@ const TMP_PRODUCTS = path.join('/tmp', 'chintus_products.json');
 const TMP_ORDERS = path.join('/tmp', 'chintus_orders.json');
 const TMP_SETTINGS = path.join('/tmp', 'chintus_settings.json');
 
+// Load default orders
+let DEFAULT_ORDERS = [];
+try {
+  if (fs.existsSync(ORDERS_FILE)) {
+    DEFAULT_ORDERS = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf8'));
+  }
+} catch (_) {}
+
 function getTmpFile(file) {
   if (file === PRODUCTS_FILE) return TMP_PRODUCTS;
   if (file === ORDERS_FILE) return TMP_ORDERS;
@@ -462,22 +470,47 @@ app.delete('/api/products/:id', requireAdmin, (req, res) => {
 
 // Protected: View Orders (Admin only)
 app.get('/api/orders', requireAdmin, (req, res) => {
-  const orders = readJSON(ORDERS_FILE, []);
+  const orders = readJSON(ORDERS_FILE, DEFAULT_ORDERS);
   res.json({ success: true, count: orders.length, data: orders });
 });
 
-// Public: Log Order from checkout
+// Public: Log Order from checkout or manual entry
 app.post('/api/orders', (req, res) => {
-  const orders = readJSON(ORDERS_FILE, []);
+  const orders = readJSON(ORDERS_FILE, DEFAULT_ORDERS);
   const newOrder = {
-    id: `ORD-${Date.now().toString().slice(-5)}`,
-    createdAt: new Date().toISOString(),
-    ...req.body,
-    status: 'Confirmed'
+    id: req.body.id || `ORD-${Date.now().toString().slice(-4)}`,
+    createdAt: req.body.createdAt || new Date().toISOString(),
+    customer: req.body.customer || {},
+    items: req.body.items || [],
+    subtotal: req.body.subtotal || req.body.total || 0,
+    discount: req.body.discount || 0,
+    total: req.body.total || 0,
+    status: req.body.status || 'Confirmed'
   };
   orders.unshift(newOrder);
   writeJSON(ORDERS_FILE, orders);
   res.status(201).json({ success: true, message: 'Order recorded', data: newOrder });
+});
+
+app.patch('/api/orders/:id/status', requireAdmin, (req, res) => {
+  const orders = readJSON(ORDERS_FILE, DEFAULT_ORDERS);
+  const order = orders.find(o => o.id === req.params.id);
+  if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
+  order.status = req.body.status || order.status;
+  order.updatedAt = new Date().toISOString();
+  writeJSON(ORDERS_FILE, orders);
+  res.json({ success: true, message: 'Order status updated', data: order });
+});
+
+app.delete('/api/orders/:id', requireAdmin, (req, res) => {
+  let orders = readJSON(ORDERS_FILE, DEFAULT_ORDERS);
+  const initialLength = orders.length;
+  orders = orders.filter(o => o.id !== req.params.id);
+  if (orders.length === initialLength) {
+    return res.status(404).json({ success: false, message: 'Order not found' });
+  }
+  writeJSON(ORDERS_FILE, orders);
+  res.json({ success: true, message: 'Order deleted successfully' });
 });
 
 // --- SETTINGS API ---

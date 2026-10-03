@@ -1,34 +1,205 @@
 [
   {
-    "id": "ORD-86852",
-    "createdAt": "2026-10-02T04:56:26.852Z",
+    "id": "ORD-108",
+    "createdAt": "2026-10-03T11:45:00.000Z",
     "customer": {
-      "name": "Try",
-      "phone": "9876543210",
-      "address": "",
+      "name": "Manish Chandrakar",
+      "phone": "8269212182",
+      "address": "Hospital Colony, Near Sector 1, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "Happy Birthday Beta! Lots of love from Mom & Dad 🎂"
+    },
+    "items": [
+      {
+        "id": "prod-3",
+        "name": "Giant 3-Foot Blush Pink Cuddle Teddy Bear",
+        "price": 899,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        "id": "prod-5",
+        "name": "Pastel Dual-Tip Aesthetic Highlighters (Pack of 6)",
+        "price": 249,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "subtotal": 1148,
+    "discount": 115,
+    "total": 1033,
+    "status": "Confirmed"
+  },
+  {
+    "id": "ORD-107",
+    "createdAt": "2026-10-03T09:15:00.000Z",
+    "customer": {
+      "name": "Kavita Sharma",
+      "phone": "9826112233",
+      "address": "Ward 14, Subhash Chowk, Dalli Rajhara",
       "deliveryType": "Store Pickup",
-      "cardMessage": ""
+      "cardMessage": "Best wishes for your new stationery collection! ✨"
+    },
+    "items": [
+      {
+        "id": "prod-2",
+        "name": "Pastel Aesthetic Highlighters & Kawaii Diary Gift Set",
+        "price": 499,
+        "quantity": 1,
+        "image": "assets/images/kawaii_stationery.jpg"
+      },
+      {
+        "id": "prod-7",
+        "name": "Kawaii Sanrio Plush Head Retractable Gel Pens (Set of 4)",
+        "price": 199,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "subtotal": 698,
+    "discount": 0,
+    "total": 698,
+    "status": "Confirmed"
+  },
+  {
+    "id": "ORD-106",
+    "createdAt": "2026-10-02T16:20:00.000Z",
+    "customer": {
+      "name": "Nikhil Jain",
+      "phone": "9111223344",
+      "address": "Mines Colony, Block B, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "Happy Anniversary Love! Our favourite song always 💖"
+    },
+    "items": [
+      {
+        "id": "prod-8",
+        "name": "Personalized Pink Acrylic Spotify Song Plaque with Stand",
+        "price": 499,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+        "customDetails": {
+          "name": "Nikhil & Anjali",
+          "song": "Kesariya - Arijit Singh",
+          "date": "15 Feb 2023"
+        }
+      }
+    ],
+    "subtotal": 499,
+    "discount": 50,
+    "total": 449,
+    "status": "Out for Delivery"
+  },
+  {
+    "id": "ORD-105",
+    "createdAt": "2026-10-02T12:10:00.000Z",
+    "customer": {
+      "name": "Sneha Deshmukh",
+      "phone": "7000123456",
+      "address": "Balod Road, Near Bus Stand, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "Surprise gift for my sweetest sister! 🎁"
+    },
+    "items": [
+      {
+        "id": "prod-9",
+        "name": "Sweet Kawaii Birthday Explosion Surprise Box with Plushie",
+        "price": 549,
+        "quantity": 1,
+        "image": "assets/images/birthday_hampers.jpg",
+        "customDetails": {
+          "name": "Sneha & Ritu",
+          "photos": "24 custom photos included"
+        }
+      }
+    ],
+    "subtotal": 549,
+    "discount": 0,
+    "total": 549,
+    "status": "Delivered"
+  },
+  {
+    "id": "ORD-104",
+    "createdAt": "2026-10-02T08:30:00.000Z",
+    "customer": {
+      "name": "Rakesh Sahu",
+      "phone": "9425123456",
+      "address": "Ward 19, Near Bharat Petroleum, Dalli Rajhara",
+      "deliveryType": "Store Pickup",
+      "cardMessage": "Morning chai will always remind you of me ☕"
+    },
+    "items": [
+      {
+        "id": "prod-6",
+        "name": "Photo Magic Color-Changing Ceramic Mug",
+        "price": 349,
+        "quantity": 1,
+        "image": "assets/images/product_mug.jpg",
+        "customDetails": {
+          "name": "Rakesh & Sunita",
+          "message": "Happy 5th Anniversary!"
+        }
+      }
+    ],
+    "subtotal": 349,
+    "discount": 35,
+    "total": 314,
+    "status": "Confirmed"
+  },
+  {
+    "id": "ORD-103",
+    "createdAt": "2026-10-01T18:05:00.000Z",
+    "customer": {
+      "name": "Ananya Patel",
+      "phone": "9876543210",
+      "address": "Gupta Chowk, Ward 08, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "To my bestie, happy kawaii study sessions ahead!"
     },
     "items": [
       {
         "id": "prod-4",
         "name": "Cute Boba Milk Tea Squishy Plushie (Large)",
         "price": 399,
-        "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-        "quantity": 1
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
       },
       {
-        "id": "prod-3",
-        "name": "Giant 3-Foot Blush Pink Cuddle Teddy Bear",
-        "price": 899,
-        "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-        "quantity": 1
+        "id": "prod-10",
+        "name": "Kawaii Bear Cartoon Sipper Water Bottle (800ml)",
+        "price": 349,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
       }
     ],
-    "subtotal": 1298,
+    "subtotal": 748,
+    "discount": 75,
+    "total": 673,
+    "status": "Delivered"
+  },
+  {
+    "id": "ORD-102",
+    "createdAt": "2026-10-01T15:20:00.000Z",
+    "customer": {
+      "name": "Aarav Verma",
+      "phone": "9981445566",
+      "address": "Camp 1, Mines Area, Dalli Rajhara",
+      "deliveryType": "Home Delivery",
+      "cardMessage": "For my lovely niece on her 10th birthday! 🐰"
+    },
+    "items": [
+      {
+        "id": "prod-11",
+        "name": "Super Fluffy Bunny Long-Ear Soft Plushie",
+        "price": 449,
+        "quantity": 1,
+        "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80"
+      }
+    ],
+    "subtotal": 449,
     "discount": 0,
-    "total": 1298,
-    "status": "Confirmed"
+    "total": 449,
+    "status": "Delivered"
   },
   {
     "id": "ORD-101",
@@ -46,6 +217,7 @@
         "name": "Pink Acrylic 3D Heart Bear LED Illusion Lamp",
         "price": 699,
         "quantity": 1,
+        "image": "assets/images/pink_acrylic_lamp.jpg",
         "customDetails": {
           "name": "Priya & Rohit",
           "date": "24 Oct 2024",
@@ -56,6 +228,6 @@
     "subtotal": 699,
     "discount": 70,
     "total": 629,
-    "status": "Confirmed"
+    "status": "Delivered"
   }
 ]

@@ -279,6 +279,25 @@ const DEFAULT_PRODUCTS = [
   }
 ];
 
+// Dynamically sync products from data/products.json if available
+try {
+  if (fs.existsSync(PRODUCTS_FILE)) {
+    const loadedProds = JSON.parse(fs.readFileSync(PRODUCTS_FILE, 'utf8'));
+    if (Array.isArray(loadedProds) && loadedProds.length > 0) {
+      DEFAULT_PRODUCTS.length = 0;
+      DEFAULT_PRODUCTS.push(...loadedProds);
+    }
+  }
+} catch (_) {}
+
+// Load rich default orders from data/orders.json
+let DEFAULT_ORDERS = [];
+try {
+  if (fs.existsSync(ORDERS_FILE)) {
+    DEFAULT_ORDERS = JSON.parse(fs.readFileSync(ORDERS_FILE, 'utf8'));
+  }
+} catch (_) {}
+
 let memoryCache = {
   products: null,
   orders: null,
@@ -711,21 +730,46 @@ app.delete('/api/products/:id', requireAdmin, (req, res) => {
 
 // Orders Endpoints
 app.get('/api/orders', requireAdmin, (req, res) => {
-  const orders = readData(ORDERS_FILE, []);
+  const orders = readData(ORDERS_FILE, DEFAULT_ORDERS);
   res.json({ success: true, count: orders.length, data: orders });
 });
 
 app.post('/api/orders', (req, res) => {
-  const orders = readData(ORDERS_FILE, []);
+  const orders = readData(ORDERS_FILE, DEFAULT_ORDERS);
   const newOrder = {
-    id: `ORD-${Date.now().toString().slice(-5)}`,
-    createdAt: new Date().toISOString(),
-    ...req.body,
-    status: 'Confirmed'
+    id: req.body.id || `ORD-${Date.now().toString().slice(-4)}`,
+    createdAt: req.body.createdAt || new Date().toISOString(),
+    customer: req.body.customer || {},
+    items: req.body.items || [],
+    subtotal: req.body.subtotal || req.body.total || 0,
+    discount: req.body.discount || 0,
+    total: req.body.total || 0,
+    status: req.body.status || 'Confirmed'
   };
   orders.unshift(newOrder);
   writeData(ORDERS_FILE, orders);
   res.status(201).json({ success: true, message: 'Order recorded', data: newOrder });
+});
+
+app.patch('/api/orders/:id/status', requireAdmin, (req, res) => {
+  const orders = readData(ORDERS_FILE, DEFAULT_ORDERS);
+  const order = orders.find(o => o.id === req.params.id);
+  if (!order) return res.status(404).json({ success: false, message: 'Order not found' });
+  order.status = req.body.status || order.status;
+  order.updatedAt = new Date().toISOString();
+  writeData(ORDERS_FILE, orders);
+  res.json({ success: true, message: 'Order status updated', data: order });
+});
+
+app.delete('/api/orders/:id', requireAdmin, (req, res) => {
+  let orders = readData(ORDERS_FILE, DEFAULT_ORDERS);
+  const initialLength = orders.length;
+  orders = orders.filter(o => o.id !== req.params.id);
+  if (orders.length === initialLength) {
+    return res.status(404).json({ success: false, message: 'Order not found' });
+  }
+  writeData(ORDERS_FILE, orders);
+  res.json({ success: true, message: 'Order deleted successfully' });
 });
 
 // Settings Endpoints

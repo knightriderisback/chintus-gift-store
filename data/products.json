@@ -341,5 +341,176 @@
       "Free Handwritten Greeting Card"
     ],
     "inStock": true
+  },
+  {
+    "id": "prod-17",
+    "name": "Kawaii Cinnamoroll Cloud Soft Cushion",
+    "hindiName": "कवाई सिनामोरोल क्लाउड सॉफ्ट कुशन",
+    "category": "toys",
+    "price": 449,
+    "originalPrice": 799,
+    "rating": 4.9,
+    "reviewsCount": 33,
+    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+    "badge": "Anime Cutie",
+    "customizable": false,
+    "description": "Fluffy cloud-soft plush cushion with iconic long floppy bunny ears and baby blue blush cheeks. Great for bed decor or reading support.",
+    "specs": [
+      "Size: 38 x 30 cm",
+      "Cloud Elastic Velvet",
+      "Memory Cotton Filling",
+      "Removable Washable Cover"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-18",
+    "name": "Aesthetic Transparent Grid Pencil Case & Pastel Pen Set",
+    "hindiName": "एस्थेटिक ग्रिड पेंसिल केस और जेल पेन सेट",
+    "category": "stationery",
+    "price": 249,
+    "originalPrice": 499,
+    "rating": 4.8,
+    "reviewsCount": 29,
+    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
+    "badge": "Desk Aesthetic",
+    "customizable": false,
+    "description": "High-capacity clear mesh pencil case with zipper and internal organizer mesh pockets, bundled with 3 sweet pastel gel pens.",
+    "specs": [
+      "Water-resistant Mesh Fabric",
+      "Holds Up to 50 Pens",
+      "Includes 3 Pastel Pens",
+      "Smooth Metal Zipper"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-19",
+    "name": "Custom Engraved Acrylic Photo Keychain with Spotify Code",
+    "hindiName": "कस्टम एक्रिलिक फोटो कीचेन विथ स्पॉटिफाई कोड",
+    "category": "personalized",
+    "price": 199,
+    "originalPrice": 399,
+    "rating": 4.9,
+    "reviewsCount": 54,
+    "image": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
+    "badge": "Pocket Magic",
+    "customizable": true,
+    "customType": "keychain",
+    "description": "Mini crystal acrylic charm printed with your couple photo and scannable Spotify music code on high-durability acrylic.",
+    "specs": [
+      "5x7 cm Cast Acrylic",
+      "Anti-scratch Clear Coat",
+      "Golden Swivel Clasp",
+      "Working Spotify Barcode"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-20",
+    "name": "Cute Cat Paw Electric Hand Warmer & Night Light",
+    "hindiName": "क्यूट कैट पॉ हैंड वार्मर और नाइट लाइट",
+    "category": "novelties",
+    "price": 599,
+    "originalPrice": 999,
+    "rating": 4.9,
+    "reviewsCount": 37,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+    "badge": "Winter Warm",
+    "customizable": false,
+    "description": "Pocket-sized cat paw shaped rechargeable instant warmer with 2 heat levels and a gentle glowing ambient pastel night lamp.",
+    "specs": [
+      "USB Rechargeable Battery (2400mAh)",
+      "Instant 3-Second Heating",
+      "Warm LED Night Light",
+      "Silicone Hanging Lanyard"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-21",
+    "name": "Deluxe Pink Birthday Surprise Hamper with Fairy Lights",
+    "hindiName": "डीलक्स पिंक बर्थडे सरप्राइज हैंपर विथ फेयरी लाइट्स",
+    "category": "birthday",
+    "price": 1299,
+    "originalPrice": 2299,
+    "rating": 5,
+    "reviewsCount": 46,
+    "image": "assets/images/birthday_hampers.jpg",
+    "badge": "Royal Hamper",
+    "customizable": true,
+    "customType": "hamper",
+    "description": "Grand celebratory gift box featuring a 30cm blush teddy, personalized LED photo mug, chocolate box, scented lavender candle, and fairy lights.",
+    "specs": [
+      "Premium Rigid Pink Gift Box",
+      "Includes Teddy, Mug & Candle",
+      "Fairy String Lights Included",
+      "Free Custom Calligraphy Card"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-22",
+    "name": "Giant 40cm Marshmallow Bunny Sleep Plushie",
+    "hindiName": "जायंट 40cm मार्शमैलो बन्नी स्लीप प्लशी",
+    "category": "toys",
+    "price": 699,
+    "originalPrice": 1199,
+    "rating": 5,
+    "reviewsCount": 42,
+    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+    "badge": "Cloud Soft",
+    "customizable": false,
+    "description": "Super squishy lying bunny companion made with marshmallow stretch fabric and slow-rebound feather cotton.",
+    "specs": [
+      "Length: 40 cm",
+      "High Elastic Spandex",
+      "Anti-allergy Cotton Core",
+      "Machine Washable"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-23",
+    "name": "Aesthetic Retro Mechanical Keyboard Calculator",
+    "hindiName": "एस्थेटिक रेट्रो मैकेनिकल कीबोर्ड कैलकुलेटर",
+    "category": "stationery",
+    "price": 399,
+    "originalPrice": 699,
+    "rating": 4.8,
+    "reviewsCount": 31,
+    "image": "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
+    "badge": "Clicky ASMR",
+    "customizable": false,
+    "description": "Fun pastel desktop calculator with clicky mechanical keyboard keys, retro round buttons, and 12-digit wide LCD screen.",
+    "specs": [
+      "Clicky Mechanical Switch Keys",
+      "12-Digit Large Screen Display",
+      "Auto Power Off (AAA Battery)",
+      "Non-slip Silicone Pads"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-24",
+    "name": "3D Moonlight Crystal Ball with Wooden LED Base",
+    "hindiName": "3D मूनलाइट क्रिस्टल बॉल विथ वुडन LED बेस",
+    "category": "personalized",
+    "price": 749,
+    "originalPrice": 1399,
+    "rating": 4.9,
+    "reviewsCount": 59,
+    "image": "assets/images/pink_acrylic_lamp.jpg",
+    "badge": "Night Glow",
+    "customizable": true,
+    "customType": "crystal",
+    "description": "Optical K9 glass crystal ball with laser-engraved 3D solar system or moon crater, illuminated by a solid beechwood warm LED pedestal.",
+    "specs": [
+      "60mm K9 Optical Crystal Sphere",
+      "Natural Beech Wood Lamp Base",
+      "USB Cable with Inline Switch",
+      "Gift Box Packaging"
+    ],
+    "inStock": true
   }
 ]

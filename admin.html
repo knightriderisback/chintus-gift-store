@@ -183,15 +183,8 @@
           </div>
         </a>
 
-        <!-- Right: ONLY Store Button & Logout Button -->
+        <!-- Right: ONLY Logout Button (no footer options repeated in header) -->
         <div class="flex items-center gap-2 sm:gap-3 shrink-0">
-          <!-- Store Button -->
-          <a href="index.html" class="px-3.5 sm:px-4 py-2 rounded-full bg-white hover:bg-pink-50 text-pink-800 border border-pink-300 text-xs sm:text-sm font-black transition flex items-center gap-1.5 shadow-sm" title="Go to Customer Store">
-            <i class="fa-solid fa-store text-pink-600 text-sm"></i>
-            <span>Store</span>
-          </a>
-
-          <!-- Logout Button -->
           <button onclick="logoutAdmin()" class="px-3.5 sm:px-4 py-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 border border-rose-200 text-xs sm:text-sm font-black transition flex items-center gap-1.5 shadow-sm" title="Sign Out of Admin">
             <i class="fa-solid fa-right-from-bracket text-sm"></i>
             <span>Logout</span>
@@ -207,15 +200,15 @@
       <!-- Top Stats Cards -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mb-5 sm:mb-6">
         <div class="pink-acrylic p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-3xl font-black text-pink-600 font-fun" id="stat-total-products">0</div>
+          <div class="text-xl sm:text-3xl font-black text-pink-600 font-fun" id="stat-total-products">24</div>
           <div class="text-[11px] sm:text-xs font-bold text-pink-800 mt-0.5">Total Products</div>
         </div>
         <div class="pink-acrylic p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-3xl font-black text-emerald-600 font-fun" id="stat-in-stock">0</div>
+          <div class="text-xl sm:text-3xl font-black text-emerald-600 font-fun" id="stat-in-stock">24</div>
           <div class="text-[11px] sm:text-xs font-bold text-emerald-800 mt-0.5">In Stock</div>
         </div>
         <div class="pink-acrylic p-3 sm:p-4 text-center">
-          <div class="text-xl sm:text-3xl font-black text-purple-600 font-fun" id="stat-orders">0</div>
+          <div class="text-xl sm:text-3xl font-black text-purple-600 font-fun" id="stat-orders">8</div>
           <div class="text-[11px] sm:text-xs font-bold text-purple-800 mt-0.5">Total Orders</div>
         </div>
         <div class="pink-acrylic p-3 sm:p-4 text-center">
@@ -224,20 +217,20 @@
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
-      <div class="flex items-center gap-1.5 sm:gap-2 mb-5 sm:mb-6 border-b border-pink-200 pb-2 overflow-x-auto no-scrollbar">
-        <button onclick="switchTab('products')" id="tab-btn-products" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-pink-600 text-white shadow-sm flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-boxes-stacked"></i> Products Catalogue
-        </button>
-        <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-receipt"></i> Customer Orders
-        </button>
-        <button onclick="switchTab('control_center')" id="tab-btn-control_center" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-sliders"></i> Page Control Centre
-        </button>
-        <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-gear"></i> Store Settings
-        </button>
+      <!-- Active Section Banner (Navigation options are kept ONLY in the footer and sticky bottom dock) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5 bg-white/80 p-3.5 sm:p-4 rounded-2xl border border-pink-200 shadow-sm">
+        <div class="flex items-center gap-3">
+          <span id="current-section-icon" class="text-2xl sm:text-3xl">🧸</span>
+          <div>
+            <h2 id="current-section-title" class="text-base sm:text-xl font-black text-pink-900 font-fun">Products Catalogue</h2>
+            <p id="current-section-subtitle" class="text-[11px] text-pink-700/80 font-medium">Manage toys, stationery, custom gifts, prices and bulk listings</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <span id="current-section-stats-pill" class="text-xs font-black text-pink-700 bg-pink-100 px-3 py-1 rounded-full border border-pink-300">
+            24 Items Listed
+          </span>
+        </div>
       </div>
 
       <!-- TAB 1: PRODUCTS MANAGEMENT -->
@@ -308,39 +301,72 @@
 
       <!-- TAB 2: ORDERS MANAGEMENT -->
       <section id="tab-orders" class="tab-content hidden">
-        <div class="pink-acrylic p-4 sm:p-6">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="text-sm sm:text-base font-black text-pink-800 font-fun flex items-center gap-2">
-              <i class="fa-solid fa-basket-shopping text-pink-600"></i> Customer Orders Received
-            </h3>
-            <span class="text-xs text-pink-600 font-semibold" id="orders-count-label">0 Orders</span>
+        <div class="pink-acrylic p-4 sm:p-6 border border-pink-200 shadow-sm rounded-3xl space-y-4">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-pink-200">
+            <div>
+              <h3 class="text-base sm:text-xl font-black text-pink-800 font-fun flex items-center gap-2">
+                <i class="fa-solid fa-basket-shopping text-pink-600"></i> Customer Orders Received
+              </h3>
+              <p class="text-xs text-pink-700/80">Manage customer gift orders, update delivery statuses, record manual orders, and chat on WhatsApp</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black text-pink-700 bg-pink-100 px-3 py-1.5 rounded-full border border-pink-300" id="orders-count-label">8 Orders</span>
+              <button onclick="openAddOrderModal()" class="kawaii-btn-pink px-4 py-2 rounded-xl text-xs font-black shadow-sm flex items-center gap-1.5 transition hover:scale-105">
+                <i class="fa-solid fa-plus"></i>
+                <span>+ New Order</span>
+              </button>
+            </div>
           </div>
-          <div id="admin-orders-list" class="space-y-3">
-            <!-- Rendered by JS -->
+
+          <!-- Orders Search & Filter Bar -->
+          <div class="flex flex-col sm:flex-row gap-2.5 items-center justify-between">
+            <div class="relative w-full sm:w-80">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+              <input type="text" id="admin-order-search" placeholder="Search customer, phone, order ID..." oninput="filterAdminOrders()" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div class="flex items-center gap-2 w-full sm:w-auto">
+              <select id="admin-order-status-filter" onchange="filterAdminOrders()" class="w-full sm:w-auto px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900 focus:outline-none focus:border-pink-500">
+                <option value="all">All Order Statuses</option>
+                <option value="Confirmed">Confirmed</option>
+                <option value="Out for Delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Orders List Container -->
+          <div id="admin-orders-list" class="space-y-3.5 pt-1">
+            <!-- Dynamically populated & fallback rendered -->
           </div>
         </div>
       </section>
 
       <!-- TAB 3: PAGE CONTROL CENTRE (Landing Page Sections Manager) -->
       <section id="tab-control_center" class="tab-content hidden">
-        <div class="max-w-5xl mx-auto space-y-6">
+        <div class="max-w-5xl mx-auto space-y-5">
           
           <!-- Section Header -->
-          <div class="pink-acrylic p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-pink-200 shadow-md">
+          <div class="pink-acrylic p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-pink-200 shadow-md rounded-3xl">
             <div>
               <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-[11px] font-black uppercase mb-1">
                 <i class="fa-solid fa-sliders text-purple-600"></i> Landing Page Layout & Content
               </div>
               <h3 class="text-lg sm:text-2xl font-black text-pink-700 font-fun">
-                Sections Control Centre
+                Sections Control Centre (कंट्रोल सेन्टर)
               </h3>
-              <p class="text-xs text-pink-900/80">Hide, show, move up/down, and edit titles, subtitles, badges, and button text of every section on your storefront!</p>
+              <p class="text-xs text-pink-900/80">Hero Banner, Pink Custom Studio, Product Catalog, Reviews, Instagram aur sabhi sections ko View/Hide karein aur unka order Up/Down karein!</p>
             </div>
 
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+              <a href="index.html" target="_blank" class="px-3.5 py-2 rounded-xl bg-white hover:bg-pink-50 text-pink-800 border border-pink-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <span>Live Preview</span>
+              </a>
               <button type="button" onclick="resetSectionsToDefault()" class="px-3 py-2 rounded-xl bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                 <i class="fa-solid fa-rotate-left"></i>
-                <span>Reset Layout</span>
+                <span>Reset</span>
               </button>
               <button type="button" onclick="saveSectionsControlCentre()" class="kawaii-btn-pink px-4 sm:px-5 py-2 text-xs font-black shadow-md flex items-center gap-1.5">
                 <i class="fa-solid fa-floppy-disk"></i>
@@ -350,16 +376,32 @@
           </div>
 
           <!-- Instructions Card -->
-          <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-200 text-xs text-pink-900 flex items-center gap-2.5">
-            <span class="text-lg">💡</span>
+          <div class="p-3.5 rounded-2xl bg-white/80 border border-pink-200 text-xs text-pink-900 flex items-center gap-2.5 shadow-sm">
+            <span class="text-xl">💡</span>
             <div>
-              <strong>Quick Tip:</strong> Use the <strong>▲ Up</strong> and <strong>▼ Down</strong> buttons to change section order on the homepage. Use the <strong>Show / Hide switch</strong> to instantly enable or disable any section.
+              <strong>Quick Guide:</strong> Kisi bhi section ko website se band karne ya chalu karne ke liye <strong>View / Hide button</strong> dabayein. Homepage par position aage ya piche karne ke liye <strong>▲ Move Up</strong> aur <strong>▼ Move Down</strong> use karein. Changes apply karne ke baad upar <strong>Save Section Changes</strong> par click karein.
             </div>
           </div>
 
-          <!-- Sections List Container -->
+          <!-- Sections List Container (Pre-populated with all 10 landing page sections) -->
           <div id="control-centre-sections-list" class="space-y-3.5">
-            <!-- Rendered by JS renderControlCentreSections() -->
+            <!-- Hydrated & Rendered by JavaScript -->
+          </div>
+
+          <!-- Sticky Save Bar at bottom of Control Centre -->
+          <div class="sticky bottom-16 sm:bottom-4 z-20 pink-acrylic p-3.5 sm:p-4 rounded-2xl shadow-xl border-2 border-pink-300 flex items-center justify-between gap-3">
+            <span class="text-xs font-bold text-pink-900 hidden sm:inline">
+              🌸 Saving applies section changes immediately to the live customer storefront!
+            </span>
+            <div class="flex items-center gap-2 ml-auto">
+              <button type="button" onclick="resetSectionsToDefault()" class="px-3.5 py-2 rounded-xl bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold transition shadow-sm">
+                Reset to Default
+              </button>
+              <button type="button" onclick="saveSectionsControlCentre()" class="kawaii-btn-pink px-5 py-2 rounded-xl text-xs font-black shadow-lg flex items-center gap-1.5">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Save Section Changes</span>
+              </button>
+            </div>
           </div>
 
         </div>
@@ -769,29 +811,121 @@
 
     </main>
 
-    <!-- ADMIN FOOTER & QUICK NAVIGATION MENU -->
+    <!-- ADMIN FOOTER & QUICK NAVIGATION MENU (Sole central navigation location) -->
     <footer class="mt-12 mb-24 sm:mb-20 pt-8 pb-6 border-t border-pink-200 text-center text-xs text-pink-800">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-3 font-extrabold text-[11px] sm:text-xs">
-          <button type="button" onclick="switchTab('products')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
-            <i class="fa-solid fa-boxes-stacked text-pink-500"></i> Product Catalogue
+        <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mb-3 font-extrabold text-[11px] sm:text-xs">
+          <button type="button" onclick="switchTab('products')" id="footer-btn-products" class="footer-nav-btn hover:text-pink-600 transition flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-pink-600 text-white shadow-sm border border-pink-300">
+            <i class="fa-solid fa-boxes-stacked"></i>
+            <span>Product Catalogue</span>
           </button>
-          <button type="button" onclick="switchTab('orders')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
-            <i class="fa-solid fa-receipt text-pink-500"></i> Customer Orders
+          <button type="button" onclick="switchTab('orders')" id="footer-btn-orders" class="footer-nav-btn hover:text-pink-600 transition flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-pink-800 border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-receipt text-pink-500"></i>
+            <span>Customer Orders</span>
           </button>
-          <button type="button" onclick="switchTab('control_center')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
-            <i class="fa-solid fa-sliders text-pink-500"></i> Page Control Centre
+          <button type="button" onclick="switchTab('control_center')" id="footer-btn-control_center" class="footer-nav-btn hover:text-pink-600 transition flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-pink-800 border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-sliders text-pink-500"></i>
+            <span>Page Control Centre</span>
           </button>
-          <button type="button" onclick="switchTab('settings')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
-            <i class="fa-solid fa-gear text-pink-500"></i> Store Customization Settings
+          <button type="button" onclick="switchTab('settings')" id="footer-btn-settings" class="footer-nav-btn hover:text-pink-600 transition flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-pink-800 border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-gear text-pink-500"></i>
+            <span>Store Settings</span>
           </button>
-          <a href="index.html" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
-            <i class="fa-solid fa-store text-pink-500"></i> View Storefront
+          <a href="index.html" target="_blank" id="footer-btn-store" class="footer-nav-btn hover:text-pink-600 transition flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-white text-pink-800 border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-store text-pink-500"></i>
+            <span>View Storefront</span>
           </a>
         </div>
         <p class="text-[11px] text-pink-700/80">Chintu's Gift & Kawaii Store • Admin Control Panel • Dalli Rajhara, Chhattisgarh</p>
       </div>
     </footer>
+
+    <!-- ADD MANUAL ORDER MODAL -->
+    <div id="order-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-xl max-h-[90vh] overflow-y-auto p-5 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300">
+        <button onclick="closeAddOrderModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun mb-1">
+          🛍️ Record New Customer Order
+        </h3>
+        <p class="text-xs text-pink-800 mb-4">Record phone inquiries (8269212182), walk-in shop orders, or custom gift orders.</p>
+
+        <form id="order-form" onsubmit="event.preventDefault(); saveManualOrder();" class="space-y-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Customer Full Name *</label>
+              <input type="text" id="order-customer-name" required placeholder="e.g. Priya Sharma" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Customer Phone / WhatsApp *</label>
+              <input type="tel" id="order-customer-phone" required placeholder="e.g. 9826112233" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Delivery Type</label>
+              <select id="order-delivery-type" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="Home Delivery">🏠 Home Delivery (Dalli Rajhara)</option>
+                <option value="Store Pickup">🏪 Store Pickup (Subhash Chowk Shop)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Initial Status</label>
+              <select id="order-status" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="Confirmed">Confirmed</option>
+                <option value="Out for Delivery">Out for Delivery</option>
+                <option value="Delivered">Delivered</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Delivery Address</label>
+            <input type="text" id="order-customer-address" placeholder="e.g. Ward 19, Near Railway Station, Dalli Rajhara" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium focus:outline-none focus:border-pink-500">
+          </div>
+
+          <div class="p-3 rounded-2xl bg-white/70 border border-pink-200 space-y-2.5">
+            <label class="block text-[11px] font-black text-pink-900 uppercase">Item Ordered</label>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div class="sm:col-span-2">
+                <input type="text" id="order-item-name" required placeholder="Item title (e.g. Pink Acrylic Lamp)" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-semibold">
+              </div>
+              <div>
+                <input type="number" id="order-item-price" required placeholder="Price ₹ (e.g. 699)" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700">
+              </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <span class="text-[10px] text-pink-800 font-bold shrink-0">Select from Catalogue:</span>
+              <select id="order-quick-product-select" onchange="fillOrderItemFromSelect(this.value)" class="flex-1 px-2.5 py-1 rounded-xl bg-white border border-pink-200 text-[11px] font-bold text-pink-900">
+                <option value="">— Choose Existing Product —</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Custom Message / Card Note (Optional)</label>
+            <textarea id="order-card-message" rows="2" placeholder="e.g. Happy Birthday Rohit! Stay blessed always ❤️" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium focus:outline-none focus:border-pink-500"></textarea>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end gap-2">
+            <button type="button" onclick="closeAddOrderModal()" class="px-4 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">
+              Cancel
+            </button>
+            <button type="submit" class="kawaii-btn-pink px-5 py-2 rounded-xl text-xs font-black shadow-md flex items-center gap-1.5">
+              <i class="fa-solid fa-check"></i>
+              <span>Save & Record Order</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <!-- ADD / EDIT PRODUCT MODAL -->
     <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
@@ -1251,9 +1385,36 @@
     let bulkParsedProducts = [];
     let selectedProductIds = new Set();
     let bulkImageDrafts = [];
-    let sectionsConfig = {};
+
+    // All 10 Landing Page Sections on the Storefront
+    const DEFAULT_SECTIONS_CONFIG = {
+      announcement: { order: 0, visible: true, name: '📢 Top Announcement Marquee Bar (अनाउंसमेंट बार)', badge: 'Cute Offer', title: 'Special Promo Marquee', subtitle: 'Live notification ribbon scrolling at top of website', ctaText: '' },
+      hero: { order: 1, visible: true, name: '🧸 Hero Section (वेलकम बैनर व हेडलाइन)', badge: '✨ 100% Authentic Cute Kawaii Stuff', title: 'Spread Joy with Cute & Custom Gifts!', subtitle: 'Discover Dalli Rajhara\'s happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.', ctaText: 'Explore Cute Gifts 🛍️' },
+      customizer: { order: 2, visible: true, name: '✨ Pink Custom Studio (पिंक कस्टम गिफ्ट स्टूडियो)', badge: '✨ Pink Custom Studio', title: 'Design Your Custom Gift Live!', subtitle: 'Choose your gift style, customize preview, and place your order on WhatsApp instantly.', ctaText: 'Preview & Order' },
+      gift_finder: { order: 3, visible: true, name: '💡 AI Gift Finder Interactive Quiz (गिफ्ट फाइंडर क्विज़)', badge: '💡 Quick Helper', title: 'Confused What to Gift?', subtitle: 'Answer 2 simple questions to find the perfect gift instantly!', ctaText: 'Find Gift' },
+      catalog: { order: 4, visible: true, name: '🎀 Product Catalogue & Category Filters (प्रोडक्ट कैटलॉग)', badge: '🎀 Explore Catalogue', title: 'Discover Kawaii Cuteness & Personalized Wonders', subtitle: 'Explore curated cute stationery, plush toys, acrylic lamps, and celebration hampers.', ctaText: 'View All' },
+      reviews: { order: 5, visible: true, name: '⭐ Customer Reviews & Google Testimonials (कस्टमर रिव्यू)', badge: '⭐ 4.9 Google Reviews', title: 'Loved by Dalli Rajhara Locals', subtitle: 'Real experiences from customers across Subhash Chowk, Balod Road & Mines Colony.', ctaText: 'Write a Google Review' },
+      instagram: { order: 6, visible: true, name: '📸 Instagram Feed & Community Showcase (इंस्टाग्राम फीड)', badge: '📸 Official Instagram', title: 'Join Our Kawaii Community on Instagram!', subtitle: 'Follow @chintusgiftstore for daily new arrivals, customer unboxings, giveaways, and BTS packing reels.', ctaText: 'Follow @chintusgiftstore on Instagram 💖' },
+      store_locator: { order: 7, visible: true, name: '📍 Physical Store Location & Timings (स्टोर लोकेशन व मैप)', badge: '📍 Visit Store & Pickup', title: 'Visit Chintu\'s Gift Store in Dalli Rajhara', subtitle: 'Find us easily at Subhash Chowk. Drop by to touch and feel our plushies, stationery, and customized lamps in person!', ctaText: 'Open in Google Maps' },
+      footer: { order: 8, visible: true, name: '🌸 Storefront Footer & Navigation Links (वेबसाइट फुटर)', badge: '', title: 'Footer Links & Contact', subtitle: 'Store links, working hours, and social media handles', ctaText: '' },
+      floating_actions: { order: 9, visible: true, name: '⚡ Floating Actions (व्हाट्सएप व कॉल फ्लोटिंग बटन)', badge: '', title: 'WhatsApp & Back-to-Top Floating Dock', subtitle: 'Floating buttons for instant customer chat and navigation', ctaText: '' }
+    };
+
+    let sectionsConfig = JSON.parse(JSON.stringify(DEFAULT_SECTIONS_CONFIG));
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Immediate sync from local storage for instant 0ms rendering
+      try {
+        const cachedSettings = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
+        if (cachedSettings.sectionsConfig && Object.keys(cachedSettings.sectionsConfig).length > 0) {
+          initSectionsConfig(cachedSettings.sectionsConfig);
+        } else {
+          initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
+        }
+      } catch (_) {
+        initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
+      }
+
       checkExistingSession();
       setupBulkDragDrop();
     });
@@ -1737,41 +1898,283 @@
       const container = document.getElementById('admin-orders-list');
       if (!container) return;
 
-      if (orders.length === 0) {
-        container.innerHTML = `<p class="text-xs text-pink-700 text-center py-8 font-semibold">No orders logged yet.</p>`;
+      if (!orders || orders.length === 0) {
+        container.innerHTML = `
+          <div class="p-8 text-center bg-white/70 rounded-2xl border border-pink-200">
+            <div class="text-3xl mb-2">🛍️</div>
+            <p class="font-extrabold text-sm text-pink-900">No matching orders found</p>
+            <p class="text-xs text-pink-700/80 mt-1">Use the "+ New Order" button above to record customer orders or phone inquiries.</p>
+          </div>
+        `;
         return;
       }
 
-      container.innerHTML = orders.map(ord => `
-        <div class="pink-acrylic-sm p-3.5 border border-pink-200">
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-2 pb-2 border-b border-pink-100">
-            <div>
-              <span class="text-xs font-black text-pink-600 font-fun">${ord.id}</span>
-              <span class="text-[10px] text-pink-900/60 ml-2">${new Date(ord.createdAt).toLocaleString()}</span>
-            </div>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">${ord.status || 'Confirmed'}</span>
-          </div>
+      container.innerHTML = orders.map(ord => {
+        const isDelivered = ord.status === 'Delivered';
+        const isOut = ord.status === 'Out for Delivery';
+        const statusBadgeClass = isDelivered 
+          ? 'bg-emerald-100 text-emerald-800 border-emerald-300' 
+          : (isOut ? 'bg-amber-100 text-amber-800 border-amber-300' : 'bg-pink-100 text-pink-800 border-pink-300');
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs mb-2">
-            <div>
-              <div class="font-bold text-pink-950">Customer: ${escapeHtml(ord.customer?.name || 'Guest')}</div>
-              <div class="text-pink-700">Phone: ${escapeHtml(ord.customer?.phone || 'N/A')}</div>
-              <div class="text-pink-800/80">Address: ${escapeHtml(ord.customer?.address || 'Pickup at store')}</div>
-              ${ord.customer?.cardMessage ? `<div class="italic text-[10px] text-pink-600 mt-0.5">Card Msg: "${escapeHtml(ord.customer.cardMessage)}"</div>` : ''}
+        const phone = ord.customer?.phone || '';
+        const cleanPhone = phone.replace(/[^0-9]/g, '');
+        const customerName = ord.customer?.name || 'Customer';
+        const waText = encodeURIComponent(`Namaste ${customerName}! Regarding your Chintu's Gift Store order ${ord.id}: `);
+        const waLink = cleanPhone ? `https://wa.me/91${cleanPhone.slice(-10)}?text=${waText}` : '#';
+
+        return `
+          <div class="pink-acrylic p-4 sm:p-5 rounded-2xl border border-pink-200 shadow-sm transition hover:shadow-md">
+            <!-- Order Header Bar -->
+            <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 border-b border-pink-100">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2.5 py-1 rounded-xl bg-pink-600 text-white font-mono font-black text-xs shadow-sm">
+                  ${escapeHtml(ord.id)}
+                </span>
+                <span class="text-[11px] text-pink-800/80 font-semibold">
+                  <i class="fa-regular fa-clock mr-1"></i>${new Date(ord.createdAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' })}
+                </span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${ord.customer?.deliveryType === 'Store Pickup' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'}">
+                  ${escapeHtml(ord.customer?.deliveryType || 'Home Delivery')}
+                </span>
+              </div>
+
+              <div class="flex items-center gap-2">
+                <!-- Status Switcher Dropdown -->
+                <select onchange="updateOrderStatus('${ord.id}', this.value)" class="text-xs font-bold px-3 py-1 rounded-xl border border-pink-200 bg-white ${statusBadgeClass} cursor-pointer focus:outline-none">
+                  <option value="Confirmed" ${ord.status === 'Confirmed' ? 'selected' : ''}>● Confirmed</option>
+                  <option value="Out for Delivery" ${ord.status === 'Out for Delivery' ? 'selected' : ''}>🚚 Out for Delivery</option>
+                  <option value="Delivered" ${ord.status === 'Delivered' ? 'selected' : ''}>✅ Delivered</option>
+                </select>
+
+                <button type="button" onclick="deleteOrder('${ord.id}')" class="p-1.5 rounded-xl bg-rose-50 text-rose-600 hover:bg-rose-100 text-xs transition" title="Delete Order">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
             </div>
 
-            <div>
-              <div class="font-bold text-pink-950 mb-0.5">Items:</div>
-              <ul class="space-y-0.5 text-[11px] text-pink-900">
-                ${ord.items ? ord.items.map(it => `
-                  <li>• ${escapeHtml(it.name)} (x${it.quantity}) - ₹${it.price * it.quantity} ${it.customDetails ? `<span class="text-pink-600 font-bold">[Custom: ${escapeHtml(it.customDetails.name)}]</span>` : ''}</li>
-                `).join('') : 'N/A'}
-              </ul>
-              <div class="text-xs font-extrabold text-pink-600 mt-1.5">Total Amount: ₹${ord.total}</div>
+            <!-- Customer & Item Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-3.5 text-xs">
+              <!-- Left: Customer Details -->
+              <div class="space-y-1.5 bg-white/70 p-3 rounded-xl border border-pink-100">
+                <div class="flex items-center justify-between">
+                  <span class="font-black text-pink-950 text-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-user text-pink-500"></i> ${escapeHtml(customerName)}
+                  </span>
+                  ${cleanPhone ? `
+                    <a href="${waLink}" target="_blank" class="px-2.5 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-[10px] shadow-sm flex items-center gap-1 transition">
+                      <i class="fa-brands fa-whatsapp text-xs"></i> WhatsApp Chat
+                    </a>
+                  ` : ''}
+                </div>
+
+                <p class="text-pink-800 font-semibold flex items-center gap-1.5">
+                  <i class="fa-solid fa-phone text-pink-400"></i>
+                  <a href="tel:${escapeHtml(phone)}" class="hover:underline">${escapeHtml(phone || 'N/A')}</a>
+                </p>
+
+                <p class="text-pink-900/80 flex items-start gap-1.5">
+                  <i class="fa-solid fa-location-dot text-pink-400 mt-0.5 shrink-0"></i>
+                  <span>${escapeHtml(ord.customer?.address || 'Pickup at Subhash Chowk store')}</span>
+                </p>
+
+                ${ord.customer?.cardMessage ? `
+                  <div class="mt-2 p-2 rounded-lg bg-pink-50 border border-pink-200 text-pink-800 italic text-[11px] flex items-start gap-1.5">
+                    <i class="fa-solid fa-envelope-open-text text-pink-500 mt-0.5 shrink-0"></i>
+                    <span>"${escapeHtml(ord.customer.cardMessage)}"</span>
+                  </div>
+                ` : ''}
+              </div>
+
+              <!-- Right: Items & Bill Summary -->
+              <div class="bg-white/70 p-3 rounded-xl border border-pink-100 flex flex-col justify-between">
+                <div>
+                  <div class="font-black text-pink-900 text-xs mb-1.5 uppercase flex items-center gap-1">
+                    <i class="fa-solid fa-bag-shopping text-pink-500"></i> Items Ordered:
+                  </div>
+                  <ul class="space-y-1 text-[11px]">
+                    ${(ord.items || []).map(it => `
+                      <li class="flex items-center justify-between text-pink-950 border-b border-pink-50 pb-1">
+                        <span class="truncate pr-2">
+                          • <strong>${escapeHtml(it.name)}</strong> (x${it.quantity || 1})
+                          ${it.customDetails ? `<span class="text-pink-600 font-bold block sm:inline">[Custom: ${escapeHtml(it.customDetails.name || '')}]</span>` : ''}
+                        </span>
+                        <span class="font-mono font-bold text-pink-700 shrink-0">₹${(it.price || 0) * (it.quantity || 1)}</span>
+                      </li>
+                    `).join('')}
+                  </ul>
+                </div>
+
+                <div class="pt-2 mt-2 border-t border-pink-200 flex items-baseline justify-between">
+                  <div class="text-[11px] text-pink-800">
+                    ${ord.discount ? `<span class="text-emerald-700 font-bold">Discount: -₹${ord.discount}</span>` : ''}
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[10px] text-pink-700 uppercase font-black mr-1">Total:</span>
+                    <span class="text-base font-black text-pink-600 font-fun">₹${ord.total || ord.subtotal || 0}</span>
+                  </div>
+                </div>
+              </div>
             </div>
+
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
+    }
+
+    // ================= MANUAL ORDER RECORDING & ACTIONS =================
+    function openAddOrderModal() {
+      const form = document.getElementById('order-form');
+      if (form) form.reset();
+      populateOrderProductsDropdown();
+      const modal = document.getElementById('order-modal');
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeAddOrderModal() {
+      const modal = document.getElementById('order-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function populateOrderProductsDropdown() {
+      const sel = document.getElementById('order-quick-product-select');
+      if (!sel) return;
+      sel.innerHTML = '<option value="">— Choose Existing Product —</option>' +
+        allProducts.map(p => `<option value="${p.id}">${escapeHtml(p.name)} (₹${p.price})</option>`).join('');
+    }
+
+    function fillOrderItemFromSelect(prodId) {
+      if (!prodId) return;
+      const p = allProducts.find(item => item.id === prodId);
+      if (!p) return;
+      const nameInput = document.getElementById('order-item-name');
+      const priceInput = document.getElementById('order-item-price');
+      if (nameInput) nameInput.value = p.name;
+      if (priceInput) priceInput.value = p.price;
+    }
+
+    async function saveManualOrder() {
+      const name = document.getElementById('order-customer-name').value.trim();
+      const phone = document.getElementById('order-customer-phone').value.trim();
+      const deliveryType = document.getElementById('order-delivery-type').value;
+      const status = document.getElementById('order-status').value;
+      const address = document.getElementById('order-customer-address').value.trim();
+      const itemName = document.getElementById('order-item-name').value.trim();
+      const itemPrice = Number(document.getElementById('order-item-price').value) || 0;
+      const cardMessage = document.getElementById('order-card-message').value.trim();
+
+      if (!name || !phone || !itemName) {
+        showToast("Please fill in Customer Name, Phone, and Item", "error");
+        return;
+      }
+
+      const newOrder = {
+        id: `ORD-${Date.now().toString().slice(-4)}`,
+        createdAt: new Date().toISOString(),
+        customer: {
+          name,
+          phone,
+          address: address || (deliveryType === 'Store Pickup' ? 'Store Pickup (Subhash Chowk Shop)' : 'Dalli Rajhara, Chhattisgarh'),
+          deliveryType,
+          cardMessage
+        },
+        items: [
+          {
+            id: `prod-item-${Date.now()}`,
+            name: itemName,
+            price: itemPrice,
+            quantity: 1
+          }
+        ],
+        subtotal: itemPrice,
+        discount: 0,
+        total: itemPrice,
+        status
+      };
+
+      showToast("Recording customer order... ⏳");
+
+      try {
+        const res = await fetch('/api/orders', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify(newOrder)
+        });
+        const data = await res.json();
+        if (data.success && data.data) {
+          allOrders.unshift(data.data);
+        } else {
+          allOrders.unshift(newOrder);
+        }
+      } catch (err) {
+        allOrders.unshift(newOrder);
+      }
+
+      try {
+        localStorage.setItem('chintu_orders_cache', JSON.stringify(allOrders));
+      } catch (_) {}
+
+      closeAddOrderModal();
+      updateStats();
+      renderAdminOrders(allOrders);
+      showToast(`Order ${newOrder.id} recorded successfully! 🎉`);
+    }
+
+    async function updateOrderStatus(orderId, newStatus) {
+      showToast(`Updating ${orderId}... ⏳`);
+      try {
+        await fetch(`/api/orders/${orderId}/status`, {
+          method: 'PATCH',
+          headers: authHeaders(),
+          body: JSON.stringify({ status: newStatus })
+        });
+      } catch (_) {}
+
+      const ord = allOrders.find(o => o.id === orderId);
+      if (ord) {
+        ord.status = newStatus;
+        try {
+          localStorage.setItem('chintu_orders_cache', JSON.stringify(allOrders));
+        } catch (_) {}
+        renderAdminOrders(allOrders);
+        showToast(`Order ${orderId} marked as ${newStatus}! 🌸`);
+      }
+    }
+
+    async function deleteOrder(orderId) {
+      if (!confirm(`Are you sure you want to delete order ${orderId}?`)) return;
+
+      try {
+        await fetch(`/api/orders/${orderId}`, {
+          method: 'DELETE',
+          headers: authHeaders()
+        });
+      } catch (_) {}
+
+      allOrders = allOrders.filter(o => o.id !== orderId);
+      try {
+        localStorage.setItem('chintu_orders_cache', JSON.stringify(allOrders));
+      } catch (_) {}
+      updateStats();
+      renderAdminOrders(allOrders);
+      showToast(`Order ${orderId} deleted.`);
+    }
+
+    function filterAdminOrders() {
+      const q = (document.getElementById('admin-order-search')?.value || '').toLowerCase().trim();
+      const statusFilter = document.getElementById('admin-order-status-filter')?.value || 'all';
+
+      const filtered = allOrders.filter(o => {
+        const matchStatus = statusFilter === 'all' || o.status === statusFilter;
+        const matchQuery = !q ||
+          (o.id && o.id.toLowerCase().includes(q)) ||
+          (o.customer?.name && o.customer.name.toLowerCase().includes(q)) ||
+          (o.customer?.phone && o.customer.phone.toLowerCase().includes(q)) ||
+          (o.customer?.address && o.customer.address.toLowerCase().includes(q)) ||
+          (o.items && o.items.some(it => it.name.toLowerCase().includes(q)));
+        return matchStatus && matchQuery;
+      });
+
+      renderAdminOrders(filtered);
     }
 
     function filterAdminProducts() {
@@ -1788,26 +2191,66 @@
     }
 
     function switchTab(tabName) {
-      // Desktop tabs
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('bg-pink-600', 'text-white', 'shadow-sm');
-        btn.classList.add('bg-white/80', 'text-pink-800');
-      });
-      const activeTabBtn = document.getElementById(`tab-btn-${tabName}`);
-      if (activeTabBtn) {
-        activeTabBtn.classList.add('bg-pink-600', 'text-white', 'shadow-sm');
-        activeTabBtn.classList.remove('bg-white/80', 'text-pink-800');
+      // Update Active Section Banner Info
+      const sectionMeta = {
+        products: {
+          title: "Products Catalogue",
+          icon: "🧸",
+          subtitle: "Manage toys, stationery, custom gifts, prices and bulk listings",
+          stats: `${allProducts.length} Items Listed`
+        },
+        orders: {
+          title: "Customer Orders",
+          icon: "🛍️",
+          subtitle: "Manage customer gift orders, update delivery statuses, record manual orders, and chat on WhatsApp",
+          stats: `${allOrders.length} Orders Logged`
+        },
+        control_center: {
+          title: "Sections Control Centre (कंट्रोल सेन्टर)",
+          icon: "🎛️",
+          subtitle: "Hero, Pink Custom Studio, Catalog, Reviews, Instagram aur sabhi sections ko View/Hide aur Reorder karein",
+          stats: "10 Storefront Sections"
+        },
+        settings: {
+          title: "Storefront Customizer & Profile",
+          icon: "⚙️",
+          subtitle: "Customize your entire store: Themes, Logo, Coupons, Hero banner, Contact, Address & Security",
+          stats: "Live Storefront Settings"
+        }
+      };
+
+      const meta = sectionMeta[tabName];
+      if (meta) {
+        const titleEl = document.getElementById('current-section-title');
+        const iconEl = document.getElementById('current-section-icon');
+        const subEl = document.getElementById('current-section-subtitle');
+        const pillEl = document.getElementById('current-section-stats-pill');
+        if (titleEl) titleEl.textContent = meta.title;
+        if (iconEl) iconEl.textContent = meta.icon;
+        if (subEl) subEl.textContent = meta.subtitle;
+        if (pillEl) pillEl.textContent = meta.stats;
       }
 
-      // Sticky Dock buttons
+      // Footer Navigation Buttons Active Style
+      document.querySelectorAll('.footer-nav-btn').forEach(btn => {
+        btn.classList.remove('bg-pink-600', 'text-white', 'border-pink-300');
+        btn.classList.add('bg-white', 'text-pink-800', 'border-pink-200');
+      });
+      const activeFooterBtn = document.getElementById(`footer-btn-${tabName}`);
+      if (activeFooterBtn) {
+        activeFooterBtn.classList.remove('bg-white', 'text-pink-800', 'border-pink-200');
+        activeFooterBtn.classList.add('bg-pink-600', 'text-white', 'border-pink-300');
+      }
+
+      // Sticky Dock buttons Active Style
       document.querySelectorAll('.dock-btn').forEach(btn => {
         btn.classList.remove('text-pink-600', 'font-black');
         btn.classList.add('text-pink-800', 'font-bold');
       });
       const activeDockBtn = document.getElementById(`dock-btn-${tabName}`);
       if (activeDockBtn) {
-        activeDockBtn.classList.add('text-pink-600', 'font-black');
         activeDockBtn.classList.remove('text-pink-800', 'font-bold');
+        activeDockBtn.classList.add('text-pink-600', 'font-black');
       }
 
       // Toggle tab containers
@@ -1819,7 +2262,14 @@
 
       if (tabName === 'control_center') {
         renderControlCentreSections();
+      } else if (tabName === 'orders') {
+        renderAdminOrders(allOrders);
+      } else if (tabName === 'products') {
+        renderAdminProducts(allProducts);
       }
+
+      // Smooth scroll to top of main container
+      window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
     // ================= PRODUCT CRUD MODALS =================
@@ -2085,19 +2535,6 @@
     }
 
     // ================= PAGE SECTIONS CONTROL CENTRE =================
-    const DEFAULT_SECTIONS_CONFIG = {
-      announcement: { order: 0, visible: true, name: 'Top Announcement Marquee Bar', badge: 'Cute Offer', title: 'Special Promo Marquee', subtitle: 'Live notification scrolling at top of page', ctaText: '' },
-      hero: { order: 1, visible: true, name: 'Hero Welcome Banner & CTA', badge: '✨ 100% Authentic Cute Kawaii Stuff', title: 'Spread Joy with Cute & Custom Gifts!', subtitle: 'Discover Dalli Rajhara\'s happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.', ctaText: 'Explore Cute Gifts 🛍️' },
-      customizer: { order: 2, visible: true, name: 'Pink Custom Gift Studio', badge: '✨ Pink Custom Studio', title: 'Design Your Custom Gift Live!', subtitle: 'Choose your gift style, customize preview, and place your order on WhatsApp instantly.', ctaText: 'Preview & Order' },
-      gift_finder: { order: 3, visible: true, name: 'AI Gift Finder Interactive Quiz', badge: '💡 Quick Helper', title: 'Confused What to Gift?', subtitle: 'Answer 2 simple questions to find the perfect gift instantly!', ctaText: 'Find Gift' },
-      catalog: { order: 4, visible: true, name: 'Product Catalogue & Filters Grid', badge: '🎀 Explore Catalogue', title: 'Discover Kawaii Cuteness & Personalized Wonders', subtitle: 'Explore curated cute stationery, plush toys, acrylic lamps, and celebration hampers.', ctaText: 'View All' },
-      reviews: { order: 5, visible: true, name: 'Customer Reviews & Testimonials', badge: '⭐ 4.9 Google Reviews', title: 'Loved by Dalli Rajhara Locals', subtitle: 'Real experiences from customers across Subhash Chowk, Balod Road & Mines Colony.', ctaText: 'Write a Google Review' },
-      instagram: { order: 6, visible: true, name: 'Instagram Feed & Community Showcase', badge: '📸 Official Instagram', title: 'Join Our Kawaii Community on Instagram!', subtitle: 'Follow @chintusgiftstore for daily new arrivals, customer unboxings, giveaways, and BTS packing reels.', ctaText: 'Follow @chintusgiftstore on Instagram 💖' },
-      store_locator: { order: 7, visible: true, name: 'Physical Store Location & Timings', badge: '📍 Visit Store & Pickup', title: 'Visit Chintu\'s Gift Store in Dalli Rajhara', subtitle: 'Find us easily at Subhash Chowk. Drop by to touch and feel our plushies, stationery, and customized lamps in person!', ctaText: 'Open in Google Maps' },
-      footer: { order: 8, visible: true, name: 'Storefront Footer & Navigation Links', badge: '', title: 'Footer Links & Contact', subtitle: 'Store links, working hours, and social media handles', ctaText: '' },
-      floating_actions: { order: 9, visible: true, name: 'Floating Action Buttons', badge: '', title: 'WhatsApp & Back-to-Top Floating Dock', subtitle: 'Floating buttons for instant customer chat and navigation', ctaText: '' }
-    };
-
     function initSectionsConfig(saved) {
       sectionsConfig = {};
       const savedCfg = (saved && typeof saved === 'object') ? saved : {};
@@ -2111,45 +2548,53 @@
       const container = document.getElementById('control-centre-sections-list');
       if (!container) return;
 
+      if (!sectionsConfig || Object.keys(sectionsConfig).length === 0) {
+        initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
+        return;
+      }
+
       const sortedKeys = Object.keys(sectionsConfig).sort((a, b) => (sectionsConfig[a].order ?? 99) - (sectionsConfig[b].order ?? 99));
 
       container.innerHTML = sortedKeys.map((secId, index) => {
         const sec = sectionsConfig[secId];
         const isFirst = index === 0;
         const isLast = index === sortedKeys.length - 1;
+        const isVisible = sec.visible !== false;
 
         return `
-          <div class="pink-acrylic p-4 sm:p-5 rounded-2xl border ${sec.visible !== false ? 'border-pink-300' : 'border-slate-300 opacity-60 bg-slate-50/50'} transition-all shadow-sm">
+          <div class="pink-acrylic p-4 sm:p-5 rounded-2xl border ${isVisible ? 'border-pink-300' : 'border-rose-200 bg-rose-50/40 opacity-75'} transition-all shadow-sm">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 pb-3 border-b border-pink-100">
               
               <div class="flex items-center gap-3">
-                <span class="w-7 h-7 rounded-xl bg-pink-100 text-pink-700 font-black text-xs flex items-center justify-center font-mono shadow-inner">
+                <span class="w-8 h-8 rounded-xl bg-pink-100 text-pink-700 font-black text-xs flex items-center justify-center font-mono shadow-inner border border-pink-200">
                   #${index + 1}
                 </span>
                 <div>
                   <h4 class="text-sm font-black text-pink-950 font-fun flex items-center gap-2">
                     <span>${sec.name || secId}</span>
-                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${sec.visible !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}">
-                      ${sec.visible !== false ? '● Visible' : '✕ Hidden'}
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${isVisible ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'}">
+                      ${isVisible ? '● Showing (Live)' : '✕ Hidden (Off)'}
                     </span>
                   </h4>
-                  <p class="text-[11px] text-pink-800/70">Section ID: <code class="font-mono bg-pink-100/60 px-1 py-0.5 rounded">${secId}</code></p>
+                  <p class="text-[11px] text-pink-800/70">Section ID: <code class="font-mono bg-pink-100/60 px-1.5 py-0.5 rounded text-[10px]">${secId}</code></p>
                 </div>
               </div>
 
-              <div class="flex items-center gap-2 self-end sm:self-center">
+              <div class="flex items-center gap-2 self-end sm:self-center flex-wrap">
                 <!-- Move Up / Move Down Reorder -->
-                <button type="button" onclick="moveSection('${secId}', -1)" ${isFirst ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-bold hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition" title="Move Up">
+                <button type="button" onclick="moveSection('${secId}', -1)" ${isFirst ? 'disabled' : ''} class="px-3 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-black hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition flex items-center gap-1 shadow-sm" title="Move Up (ऊपर करें)">
                   <i class="fa-solid fa-arrow-up"></i>
+                  <span>Up</span>
                 </button>
-                <button type="button" onclick="moveSection('${secId}', 1)" ${isLast ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-bold hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition" title="Move Down">
+                <button type="button" onclick="moveSection('${secId}', 1)" ${isLast ? 'disabled' : ''} class="px-3 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-black hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition flex items-center gap-1 shadow-sm" title="Move Down (नीचे करें)">
                   <i class="fa-solid fa-arrow-down"></i>
+                  <span>Down</span>
                 </button>
 
                 <!-- Show / Hide Switch -->
-                <button type="button" onclick="toggleSectionVisibility('${secId}')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-sm ${sec.visible !== false ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-slate-300 hover:bg-slate-400 text-slate-800'}">
-                  <i class="fa-solid ${sec.visible !== false ? 'fa-eye' : 'fa-eye-slash'}"></i>
-                  <span>${sec.visible !== false ? 'Showing' : 'Hidden'}</span>
+                <button type="button" onclick="toggleSectionVisibility('${secId}')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-sm ${isVisible ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-rose-600 hover:bg-rose-700 text-white'}">
+                  <i class="fa-solid ${isVisible ? 'fa-eye' : 'fa-eye-slash'}"></i>
+                  <span>${isVisible ? '👁️ Showing (Click to Hide)' : '🙈 Hidden (Click to Show)'}</span>
                 </button>
               </div>
             </div>
