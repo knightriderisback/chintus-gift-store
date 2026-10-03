@@ -21,6 +21,22 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
   
+  <!-- Zero-Latency Session Persistence (Prevents auth-gate flash on page refresh) -->
+  <style>
+    html.admin-has-session #auth-gate { display: none !important; }
+    html.admin-has-session #admin-main-interface { display: block !important; }
+  </style>
+  <script>
+    (function() {
+      try {
+        var token = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
+        if (token && token !== "null" && token !== "undefined") {
+          document.documentElement.classList.add("admin-has-session");
+        }
+      } catch (_) {}
+    })();
+  </script>
+
   <!-- Google Identity Services SDK -->
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
@@ -1382,7 +1398,7 @@
   <div id="toast-container"></div>
 
   <!-- Load Default Products for Instant 0ms Sync Fallback -->
-  <script src="assets/js/products.js?v=2.5"></script>
+  <script src="assets/js/products.js?v=3.5"></script>
 
   <!-- Admin JavaScript with Google OAuth & Auth Flow -->
   <script>
@@ -1431,7 +1447,7 @@
     let sectionsConfig = JSON.parse(JSON.stringify(DEFAULT_SECTIONS_CONFIG));
 
     document.addEventListener("DOMContentLoaded", () => {
-      // Immediate sync from local storage for instant 0ms rendering
+      // 1. Immediate sync from local storage for instant 0ms rendering
       try {
         const cachedSettings = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
         if (cachedSettings && Object.keys(cachedSettings).length > 0) {
@@ -1452,6 +1468,10 @@
         initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
       }
 
+      // 2. Fetch server settings immediately (public endpoint) so auth gate mascot & header reflect custom logo
+      fetchSettings();
+
+      // 3. Check session and restore dashboard
       checkExistingSession();
       setupBulkDragDrop();
     });
@@ -1459,34 +1479,48 @@
     function checkExistingSession() {
       const savedToken = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
       const savedUser = localStorage.getItem("chintu_admin_user") || sessionStorage.getItem("chintu_admin_user");
-      if (savedToken && savedUser) {
-        try {
-          authToken = savedToken;
-          currentUser = JSON.parse(savedUser);
-          showAdminDashboard();
-          return;
-        } catch (e) {}
+      if (savedToken && savedToken !== "null" && savedToken !== "undefined") {
+        authToken = savedToken;
+        if (savedUser) {
+          try {
+            currentUser = JSON.parse(savedUser);
+          } catch (_) {
+            currentUser = { email: 'owner@chintus.com', name: 'Owner' };
+          }
+        } else {
+          currentUser = { email: 'owner@chintus.com', name: 'Owner' };
+        }
+        showAdminDashboard();
+        return;
       }
       showAuthGate();
     }
 
     function showAuthGate() {
-      document.getElementById('auth-gate').classList.remove('hidden');
-      document.getElementById('admin-main-interface').classList.add('hidden');
+      document.documentElement.classList.remove('admin-has-session');
+      const gate = document.getElementById('auth-gate');
+      const main = document.getElementById('admin-main-interface');
+      if (gate) gate.classList.remove('hidden');
+      if (main) main.classList.add('hidden');
     }
 
     function showAdminDashboard() {
-      document.getElementById('auth-gate').classList.add('hidden');
-      document.getElementById('admin-main-interface').classList.remove('hidden');
+      document.documentElement.classList.add('admin-has-session');
+      const gate = document.getElementById('auth-gate');
+      const main = document.getElementById('admin-main-interface');
+      if (gate) gate.classList.add('hidden');
+      if (main) main.classList.remove('hidden');
 
       if (currentUser) {
-        document.getElementById('user-email-display').textContent = currentUser.email || 'Owner';
-        if (currentUser.picture) {
-          document.getElementById('user-avatar').src = currentUser.picture;
+        const emailEl = document.getElementById('user-email-display');
+        if (emailEl) emailEl.textContent = currentUser.email || 'Owner';
+        const avatarEl = document.getElementById('user-avatar');
+        if (avatarEl && currentUser.picture) {
+          avatarEl.src = currentUser.picture;
         }
       }
 
-      // Synchronously render existing products and statistics immediately without delay
+      // Synchronously render existing products and statistics immediately without delay (0ms)
       if (allProducts && allProducts.length > 0) {
         renderAdminProducts(allProducts);
         updateStats();
@@ -1750,16 +1784,32 @@
         const res = await fetch('/api/settings');
         const data = await res.json();
         if (data.success && data.data) {
-          // Authoritatively merge: local custom modifications always take priority over server defaults
-          currentSettings = Object.assign({}, data.data, localSettings);
-          if (localSettings.storeLogo && localSettings.storeLogo !== 'assets/images/kawaii_logo.jpg') {
-            currentSettings.storeLogo = localSettings.storeLogo;
+          const serverSettings = data.data;
+
+          // Resolve logo: Non-default custom logo always takes priority
+          let bestLogo = "assets/images/kawaii_logo.jpg";
+          if (localSettings.storeLogo && localSettings.storeLogo.trim() !== "" && localSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+            bestLogo = localSettings.storeLogo;
+          } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+            bestLogo = serverSettings.storeLogo;
           }
+
+          // Authoritatively merge: Start with server settings, keep non-empty local settings
+          currentSettings = Object.assign({}, serverSettings, localSettings);
+          currentSettings.storeLogo = bestLogo;
+
           if (localSettings.instagramHandle) {
             currentSettings.instagramHandle = localSettings.instagramHandle;
+          } else if (serverSettings.instagramHandle) {
+            currentSettings.instagramHandle = serverSettings.instagramHandle;
           }
+
           if (localSettings.sectionsConfig && Object.keys(localSettings.sectionsConfig).length > 0) {
             currentSettings.sectionsConfig = localSettings.sectionsConfig;
+            initSectionsConfig(localSettings.sectionsConfig);
+          } else if (serverSettings.sectionsConfig && Object.keys(serverSettings.sectionsConfig).length > 0) {
+            currentSettings.sectionsConfig = serverSettings.sectionsConfig;
+            initSectionsConfig(serverSettings.sectionsConfig);
           }
         } else {
           currentSettings = localSettings;
@@ -1774,6 +1824,9 @@
       } catch (_) {}
 
       applySettingsToAdminForm(currentSettings);
+      if (currentSettings.storeLogo) {
+        applyLogoToAllViews(currentSettings.storeLogo, currentSettings.logoShape, currentSettings.logoHeight);
+      }
     }
 
     function applySettingsToAdminForm(cfg) {
@@ -3348,7 +3401,17 @@
               s.storeLogo = finalUrl;
               s.logoShape = shape;
               s.logoHeight = size;
+              s.userModifiedAt = new Date().toISOString();
               localStorage.setItem('chintu_store_settings', JSON.stringify(s));
+            } catch (_) {}
+
+            // Auto-persist logo directly to backend endpoint
+            try {
+              fetch('/api/settings', {
+                method: 'POST',
+                headers: authHeaders(),
+                body: JSON.stringify({ storeLogo: finalUrl, logoShape: shape, logoHeight: size })
+              }).catch(() => {});
             } catch (_) {}
           }
 

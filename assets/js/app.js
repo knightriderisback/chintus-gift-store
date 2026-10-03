@@ -74,24 +74,32 @@ async function loadStoreSettings() {
       const serverSettings = data.data;
       let finalSettings;
 
-      if (parsedLocal && typeof parsedLocal === 'object' && Object.keys(parsedLocal).length > 0) {
-        // Authoritative: User changes in localStorage MUST take precedence over server defaults!
-        finalSettings = Object.assign({}, serverSettings, parsedLocal);
+      // Safe logo resolution: custom logo always prevails
+      let bestLogo = "assets/images/kawaii_logo.jpg";
+      if (parsedLocal && parsedLocal.storeLogo && parsedLocal.storeLogo.trim() !== "" && parsedLocal.storeLogo !== "assets/images/kawaii_logo.jpg") {
+        bestLogo = parsedLocal.storeLogo;
+      } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+        bestLogo = serverSettings.storeLogo;
+      }
 
-        // Explicitly preserve custom logo if user uploaded or chose one
-        if (parsedLocal.storeLogo && parsedLocal.storeLogo !== 'assets/images/kawaii_logo.jpg') {
-          finalSettings.storeLogo = parsedLocal.storeLogo;
-        }
-        // Explicitly preserve custom Instagram handle/url
+      if (parsedLocal && typeof parsedLocal === 'object' && Object.keys(parsedLocal).length > 0) {
+        finalSettings = Object.assign({}, serverSettings, parsedLocal);
+        finalSettings.storeLogo = bestLogo;
+
         if (parsedLocal.instagramHandle) {
           finalSettings.instagramHandle = parsedLocal.instagramHandle;
+        } else if (serverSettings.instagramHandle) {
+          finalSettings.instagramHandle = serverSettings.instagramHandle;
         }
-        // Explicitly preserve sectionsConfig
+
         if (parsedLocal.sectionsConfig && Object.keys(parsedLocal.sectionsConfig).length > 0) {
           finalSettings.sectionsConfig = parsedLocal.sectionsConfig;
+        } else if (serverSettings.sectionsConfig && Object.keys(serverSettings.sectionsConfig).length > 0) {
+          finalSettings.sectionsConfig = serverSettings.sectionsConfig;
         }
       } else {
         finalSettings = serverSettings;
+        finalSettings.storeLogo = bestLogo;
       }
 
       localStorage.setItem('chintu_store_settings', JSON.stringify(finalSettings));
@@ -272,8 +280,29 @@ function applyStoreSettings(settings) {
   }
 }
 
-// Fetch products from backend REST API with Local Storage fallback
+// Fetch products from backend REST API with instant 0ms cached render & stale-while-revalidate
 async function fetchProductsAndRender() {
+  // 1. Instant 0ms render from pre-existing or cached products
+  if (productsList && productsList.length > 0) {
+    renderProducts();
+  } else {
+    const cached = localStorage.getItem('chintu_custom_products');
+    if (cached) {
+      try {
+        const prods = JSON.parse(cached);
+        if (Array.isArray(prods) && prods.length > 0) {
+          productsList = prods;
+          renderProducts();
+        }
+      } catch (_) {}
+    }
+    if (productsList.length === 0 && typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
+      productsList = [...PRODUCTS_DATA];
+      renderProducts();
+    }
+  }
+
+  // 2. Background revalidation from server
   try {
     const res = await fetch('/api/products');
     const data = await res.json();
@@ -281,27 +310,9 @@ async function fetchProductsAndRender() {
       productsList = data.data;
       localStorage.setItem('chintu_custom_products', JSON.stringify(productsList));
       renderProducts();
-      return;
     }
   } catch (e) {
-    console.warn("Backend API not reachable, checking local storage cache:", e);
-  }
-
-  const cached = localStorage.getItem('chintu_custom_products');
-  if (cached) {
-    try {
-      const prods = JSON.parse(cached);
-      if (Array.isArray(prods) && prods.length > 0) {
-        productsList = prods;
-        renderProducts();
-        return;
-      }
-    } catch (_) {}
-  }
-
-  if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
-    productsList = PRODUCTS_DATA;
-    renderProducts();
+    console.warn("Backend API not reachable, using offline cache:", e);
   }
 }
 

@@ -20,7 +20,12 @@
       "USB Powered (5V)",
       "Dimensions: 7.5 x 8 inches"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg",
+      "assets/images/custom_gifts.jpg"
+    ]
   },
   {
     "id": "prod-2",
@@ -41,7 +46,12 @@
       "6 Washi Tape Rolls",
       "3 Kawaii Sticker Sheets"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-3",
@@ -62,7 +72,12 @@
       "100% Non-toxic PP Cotton",
       "Satin Bow Ribbon Included"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-4",
@@ -83,7 +98,12 @@
       "Down Cotton Filling",
       "Machine Washable"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-5",
@@ -104,7 +124,12 @@
       "Quick-Dry Anti-Smear Ink",
       "Clear Acrylic Case"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-6",
@@ -126,7 +151,12 @@
       "Microwave & Dishwasher Safe",
       "Custom Photo Print"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/product_mug.jpg",
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg"
+    ]
   },
   {
     "id": "prod-7",
@@ -147,7 +177,12 @@
       "Comfort Soft Grip",
       "Refillable Body"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-8",
@@ -169,7 +204,12 @@
       "Natural Solid Pine Stand",
       "Scannable Working Spotify Barcode"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg"
+    ]
   },
   {
     "id": "prod-9",
@@ -191,7 +231,12 @@
       "Center Pocket with Mini Teddy",
       "Includes 24 Photo Slots"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/birthday_hampers.jpg",
+      "assets/images/hero_store.jpg",
+      "assets/images/custom_gifts.jpg"
+    ]
   },
   {
     "id": "prod-10",
@@ -212,7 +257,12 @@
       "Pop-up Soft Silicone Straw",
       "Adjustable Shoulder Strap"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-11",
@@ -233,7 +283,12 @@
       "Safety Embroidered Eyes",
       "Washable Fabric"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-12",
@@ -254,7 +309,12 @@
       "6 Pen & Brush Slots",
       "Non-Slip Base Feet"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-13",
@@ -275,7 +335,12 @@
       "Micro Copper String LEDs",
       "Wood Texture Base"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+      "assets/images/birthday_hampers.jpg",
+      "assets/images/hero_store.jpg"
+    ]
   },
   {
     "id": "prod-14",
@@ -297,7 +362,12 @@
       "Permanent Laser Engraved Name",
       "Mini Acrylic Charm Included"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg"
+    ]
   },
   {
     "id": "prod-15",
@@ -318,7 +388,12 @@
       "Includes 2 Pastel Scrunchies",
       "Gentle on Hair"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-16",
@@ -340,7 +415,12 @@
       "Includes Fairy Lights & Chocolates",
       "Free Handwritten Greeting Card"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/kawaii_hero.jpg",
+      "assets/images/birthday_hampers.jpg",
+      "assets/images/hero_store.jpg"
+    ]
   },
   {
     "id": "prod-17",
@@ -361,7 +441,12 @@
       "Memory Cotton Filling",
       "Removable Washable Cover"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-18",
@@ -382,7 +467,12 @@
       "Includes 3 Pastel Pens",
       "Smooth Metal Zipper"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-19",
@@ -404,7 +494,12 @@
       "Golden Swivel Clasp",
       "Working Spotify Barcode"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg"
+    ]
   },
   {
     "id": "prod-20",
@@ -425,7 +520,12 @@
       "Warm LED Night Light",
       "Silicone Hanging Lanyard"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-21",
@@ -447,7 +547,12 @@
       "Fairy String Lights Included",
       "Free Custom Calligraphy Card"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/birthday_hampers.jpg",
+      "assets/images/hero_store.jpg",
+      "assets/images/custom_gifts.jpg"
+    ]
   },
   {
     "id": "prod-22",
@@ -468,7 +573,12 @@
       "Anti-allergy Cotton Core",
       "Machine Washable"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-23",
@@ -489,7 +599,12 @@
       "Auto Power Off (AAA Battery)",
       "Non-slip Silicone Pads"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg",
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
+    ]
   },
   {
     "id": "prod-24",
@@ -511,6 +626,11 @@
       "USB Cable with Inline Switch",
       "Gift Box Packaging"
     ],
-    "inStock": true
+    "inStock": true,
+    "images": [
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg",
+      "assets/images/custom_gifts.jpg"
+    ]
   }
 ]
