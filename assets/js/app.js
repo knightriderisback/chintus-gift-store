@@ -55,21 +55,44 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(checkStoreOpenStatus, 60000);
 });
 
-// Load settings from backend or local storage
+// Load settings from backend or local storage (Local custom settings NEVER get overwritten by server defaults)
 async function loadStoreSettings() {
+  const local = localStorage.getItem('chintu_store_settings');
+  let parsedLocal = null;
+  if (local) {
+    try {
+      parsedLocal = JSON.parse(local);
+      applyStoreSettings(parsedLocal);
+    } catch (_) {}
+  }
+
   try {
     const res = await fetch('/api/settings');
     const data = await res.json();
     if (data.success && data.data) {
       const serverSettings = data.data;
-      const local = localStorage.getItem('chintu_store_settings');
-      let finalSettings = serverSettings;
-      if (local) {
-        try {
-          const parsedLocal = JSON.parse(local);
-          finalSettings = { ...parsedLocal, ...serverSettings };
-        } catch (_) {}
+      let finalSettings;
+
+      if (parsedLocal && typeof parsedLocal === 'object' && Object.keys(parsedLocal).length > 0) {
+        // Authoritative: User changes in localStorage MUST take precedence over server defaults!
+        finalSettings = Object.assign({}, serverSettings, parsedLocal);
+
+        // Explicitly preserve custom logo if user uploaded or chose one
+        if (parsedLocal.storeLogo && parsedLocal.storeLogo !== 'assets/images/kawaii_logo.jpg') {
+          finalSettings.storeLogo = parsedLocal.storeLogo;
+        }
+        // Explicitly preserve custom Instagram handle/url
+        if (parsedLocal.instagramHandle) {
+          finalSettings.instagramHandle = parsedLocal.instagramHandle;
+        }
+        // Explicitly preserve sectionsConfig
+        if (parsedLocal.sectionsConfig && Object.keys(parsedLocal.sectionsConfig).length > 0) {
+          finalSettings.sectionsConfig = parsedLocal.sectionsConfig;
+        }
+      } else {
+        finalSettings = serverSettings;
       }
+
       localStorage.setItem('chintu_store_settings', JSON.stringify(finalSettings));
       applyStoreSettings(finalSettings);
       return;
@@ -78,12 +101,9 @@ async function loadStoreSettings() {
     console.log("Using cached/default store settings:", e.message);
   }
 
-  const cached = localStorage.getItem('chintu_store_settings');
-  if (cached) {
-    try {
-      applyStoreSettings(JSON.parse(cached));
-      return;
-    } catch (_) {}
+  if (parsedLocal) {
+    applyStoreSettings(parsedLocal);
+    return;
   }
 
   applyStoreSettings({
