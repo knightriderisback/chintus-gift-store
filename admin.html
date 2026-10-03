@@ -165,59 +165,39 @@
   <!-- ================= DASHBOARD INTERFACE (PERFECT MOBILE + DESKTOP HEADER) ================= -->
   <div id="admin-main-interface" class="hidden">
     
-    <!-- Fixed Modern Pink Acrylic Admin Header -->
+    <!-- Fixed Modern Pink Acrylic Admin Header (Logo, Store Name, Store Button, Logout Button ONLY) -->
     <header class="sticky top-0 z-50 pink-acrylic-nav px-3 sm:px-6 shadow-sm border-b border-pink-200">
       <div class="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20 gap-2">
         
-        <!-- Left: Brand Logo & Title -->
+        <!-- Left: Brand Logo & Title (Adaptive PNG Molding) -->
         <a href="admin.html" class="flex items-center gap-2 sm:gap-3 min-w-0">
-          <img src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-pink-400 shadow-sm shrink-0 animate-cartoon-bounce">
+          <div id="admin-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
+            <img id="admin-logo-img" src="assets/images/kawaii_logo.jpg" alt="Logo" class="store-logo-img object-contain">
+          </div>
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
-              <span class="text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight truncate">CHINTU'S</span>
+              <span id="admin-header-store-name" class="store-brand-title text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight truncate">CHINTU'S</span>
               <span class="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-black border border-pink-300 shrink-0">Admin</span>
             </div>
-            <p class="text-[10px] sm:text-xs text-pink-800 font-semibold truncate hidden md:block">Store Catalogue Management • Dalli Rajhara</p>
+            <p class="text-[10px] sm:text-xs text-pink-800 font-semibold truncate hidden md:block">Store Management • Dalli Rajhara</p>
           </div>
         </a>
 
-        <!-- Right: Actions & User Profile -->
-        <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-          
-          <!-- View Store Link Button -->
-          <a href="index.html" class="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-white/90 hover:bg-white text-pink-800 border border-pink-300 text-[11px] sm:text-xs font-bold transition flex items-center gap-1 shadow-sm shrink-0" title="Go to Customer Store">
-            <span class="text-xs">🏪</span>
-            <span class="hidden sm:inline">Store</span>
+        <!-- Right: ONLY Store Button & Logout Button -->
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <!-- Store Button -->
+          <a href="index.html" class="px-3.5 sm:px-4 py-2 rounded-full bg-white hover:bg-pink-50 text-pink-800 border border-pink-300 text-xs sm:text-sm font-black transition flex items-center gap-1.5 shadow-sm" title="Go to Customer Store">
+            <i class="fa-solid fa-store text-pink-600 text-sm"></i>
+            <span>Store</span>
           </a>
 
-          <!-- Bulk Upload Excel/CSV Button -->
-          <button onclick="openBulkUploadModal()" class="px-2.5 sm:px-3.5 py-1.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] sm:text-xs font-black flex items-center gap-1.5 shadow-sm shrink-0 transition" title="Bulk Import Products from Excel/CSV">
-            <i class="fa-solid fa-file-excel text-[11px]"></i>
-            <span class="hidden sm:inline">Bulk Upload</span>
-            <span class="sm:hidden">Bulk</span>
+          <!-- Logout Button -->
+          <button onclick="logoutAdmin()" class="px-3.5 sm:px-4 py-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 border border-rose-200 text-xs sm:text-sm font-black transition flex items-center gap-1.5 shadow-sm" title="Sign Out of Admin">
+            <i class="fa-solid fa-right-from-bracket text-sm"></i>
+            <span>Logout</span>
           </button>
-
-          <!-- Add Product Button -->
-          <button onclick="openAddProductModal()" class="kawaii-btn-pink px-2.5 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-black flex items-center gap-1 shadow-sm shrink-0">
-            <i class="fa-solid fa-plus text-[10px]"></i>
-            <span class="hidden sm:inline">Add Item</span>
-            <span class="sm:hidden">Add</span>
-          </button>
-
-          <!-- User Google Profile Badge with Sign Out -->
-          <div class="flex items-center gap-1 sm:gap-2 pl-1 sm:pl-2 border-l border-pink-200 shrink-0">
-            <div class="flex items-center gap-1.5 px-2 py-1 rounded-full bg-white/90 border border-pink-300 text-xs shadow-sm">
-              <img id="user-avatar" src="assets/images/kawaii_logo.jpg" alt="Profile" class="w-6 h-6 rounded-full object-cover border border-pink-400 shrink-0">
-              <span id="user-email-display" class="font-bold text-pink-900 truncate max-w-[120px] text-[11px] sm:text-xs hidden md:inline">owner@google.com</span>
-              <span class="text-[9px] bg-emerald-100 text-emerald-800 font-black px-1.5 py-0.5 rounded-full hidden sm:inline">Owner</span>
-            </div>
-
-            <button onclick="logoutAdmin()" class="p-1.5 sm:p-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold transition shadow-sm" title="Sign Out">
-              <i class="fa-solid fa-right-from-bracket"></i>
-            </button>
-          </div>
-
         </div>
+
       </div>
     </header>
 
@@ -252,8 +232,11 @@
         <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
           <i class="fa-solid fa-receipt"></i> Customer Orders
         </button>
+        <button onclick="switchTab('control_center')" id="tab-btn-control_center" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
+          <i class="fa-solid fa-sliders"></i> Page Control Centre
+        </button>
         <button onclick="switchTab('settings')" id="tab-btn-settings" class="tab-btn px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-extrabold bg-white/80 text-pink-800 hover:bg-pink-100 flex items-center gap-1.5 whitespace-nowrap">
-          <i class="fa-solid fa-wand-magic-sparkles"></i> Store & Page Customizer
+          <i class="fa-solid fa-gear"></i> Store Settings
         </button>
       </div>
 
@@ -276,13 +259,43 @@
               <option value="novelties">🎒 Novelties & Accessories</option>
             </select>
 
-            <button onclick="openBulkUploadModal()" class="px-3 sm:px-3.5 py-2 text-xs font-black rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition flex items-center gap-1.5 shadow-sm whitespace-nowrap">
+            <button onclick="openBulkImageModal()" class="px-3 sm:px-3.5 py-2 text-xs font-black rounded-xl bg-purple-600 hover:bg-purple-700 text-white transition flex items-center gap-1.5 shadow-sm whitespace-nowrap" title="Upload multiple images at once to auto-create products">
+              <i class="fa-solid fa-images"></i>
+              <span>Bulk Image Upload</span>
+            </button>
+
+            <button onclick="openBulkUploadModal()" class="px-3 sm:px-3.5 py-2 text-xs font-black rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition flex items-center gap-1.5 shadow-sm whitespace-nowrap" title="Bulk Import Products from Excel/CSV">
               <i class="fa-solid fa-file-excel"></i>
-              <span>Bulk Upload (Excel/CSV)</span>
+              <span>Excel/CSV</span>
             </button>
 
             <button onclick="openAddProductModal()" class="kawaii-btn-pink px-3.5 py-2 text-xs font-bold whitespace-nowrap shadow-sm">
               <i class="fa-solid fa-plus mr-1"></i> New Item
+            </button>
+          </div>
+        </div>
+
+        <!-- Bulk Selection Action Bar (Sticky when products are selected) -->
+        <div id="bulk-selection-bar" class="hidden pink-acrylic p-3 sm:p-4 mb-4 border-2 border-pink-400 bg-pink-100/90 shadow-md flex flex-wrap items-center justify-between gap-3 sticky top-20 z-30 animate-fade-in">
+          <div class="flex items-center gap-3">
+            <label class="flex items-center gap-2 cursor-pointer text-xs font-black text-pink-900 select-none">
+              <input type="checkbox" id="select-all-products" onchange="toggleSelectAllProducts(this.checked)" class="w-4 h-4 rounded text-pink-600 focus:ring-pink-500 cursor-pointer">
+              <span>Select All</span>
+            </label>
+            <span id="selected-count-badge" class="px-2.5 py-1 rounded-full bg-pink-600 text-white text-[11px] font-black">0 selected</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button onclick="openBulkEditModal()" class="px-3.5 py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-black flex items-center gap-1.5 shadow-sm transition">
+              <i class="fa-solid fa-pen-to-square"></i>
+              <span>Bulk Edit Selected</span>
+            </button>
+            <button onclick="confirmBulkDelete()" class="px-3.5 py-1.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-black flex items-center gap-1.5 shadow-sm transition">
+              <i class="fa-solid fa-trash-can"></i>
+              <span>Bulk Delete</span>
+            </button>
+            <button onclick="clearProductSelection()" class="px-2.5 py-1.5 rounded-xl bg-white text-pink-800 text-xs font-bold hover:bg-pink-50 border border-pink-200 transition">
+              Cancel
             </button>
           </div>
         </div>
@@ -308,7 +321,51 @@
         </div>
       </section>
 
-      <!-- TAB 3: STORE SETTINGS & LANDING PAGE CUSTOMIZER -->
+      <!-- TAB 3: PAGE CONTROL CENTRE (Landing Page Sections Manager) -->
+      <section id="tab-control_center" class="tab-content hidden">
+        <div class="max-w-5xl mx-auto space-y-6">
+          
+          <!-- Section Header -->
+          <div class="pink-acrylic p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 border border-pink-200 shadow-md">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-purple-100 text-purple-800 text-[11px] font-black uppercase mb-1">
+                <i class="fa-solid fa-sliders text-purple-600"></i> Landing Page Layout & Content
+              </div>
+              <h3 class="text-lg sm:text-2xl font-black text-pink-700 font-fun">
+                Sections Control Centre
+              </h3>
+              <p class="text-xs text-pink-900/80">Hide, show, move up/down, and edit titles, subtitles, badges, and button text of every section on your storefront!</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="resetSectionsToDefault()" class="px-3 py-2 rounded-xl bg-white hover:bg-rose-50 text-rose-700 border border-rose-200 text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-rotate-left"></i>
+                <span>Reset Layout</span>
+              </button>
+              <button type="button" onclick="saveSectionsControlCentre()" class="kawaii-btn-pink px-4 sm:px-5 py-2 text-xs font-black shadow-md flex items-center gap-1.5">
+                <i class="fa-solid fa-floppy-disk"></i>
+                <span>Save Section Changes</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Instructions Card -->
+          <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-200 text-xs text-pink-900 flex items-center gap-2.5">
+            <span class="text-lg">💡</span>
+            <div>
+              <strong>Quick Tip:</strong> Use the <strong>▲ Up</strong> and <strong>▼ Down</strong> buttons to change section order on the homepage. Use the <strong>Show / Hide switch</strong> to instantly enable or disable any section.
+            </div>
+          </div>
+
+          <!-- Sections List Container -->
+          <div id="control-centre-sections-list" class="space-y-3.5">
+            <!-- Rendered by JS renderControlCentreSections() -->
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TAB 4: STORE SETTINGS & LANDING PAGE CUSTOMIZER -->
       <section id="tab-settings" class="tab-content hidden">
         <div class="max-w-4xl mx-auto space-y-6">
           
@@ -441,31 +498,63 @@
                 <input type="text" id="setting-brand-tagline" value="Gift & Kawaii Store • Dalli Rajhara" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">
               </div>
 
-              <!-- Store Logo URL with Live Preview, Upload & Presets -->
-              <div class="p-3 rounded-2xl bg-white/70 border border-pink-200">
-                <div class="flex items-center justify-between mb-1">
-                  <label class="block text-[11px] font-bold text-pink-900 uppercase">Store Logo Image (File Upload or URL)</label>
-                  <span class="text-[10px] text-pink-700 font-semibold">Square JPG/PNG/WebP</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-pink-400 bg-white shrink-0 shadow-sm">
-                    <img id="logo-preview-img" src="assets/images/kawaii_logo.jpg" alt="Logo Preview" class="w-full h-full object-cover">
-                  </div>
-                  <div class="flex-1 flex flex-col sm:flex-row gap-2">
-                    <input type="text" id="setting-store-logo" oninput="updateLogoPreview(this.value)" value="assets/images/kawaii_logo.jpg" placeholder="assets/images/kawaii_logo.jpg or upload" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
-                    <label class="px-3.5 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-black shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0 transition">
-                      <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
-                      <span>Upload Logo</span>
-                      <input type="file" accept="image/*" class="hidden" onchange="uploadImageFile(this, 'setting-store-logo', 'logo-preview-img', 'logo')">
-                    </label>
-                  </div>
+              <!-- Store Logo URL with Adaptive PNG Molding, Shape & Sizing Controls -->
+              <div class="p-3.5 rounded-2xl bg-white/70 border border-pink-200 space-y-3">
+                <div class="flex items-center justify-between">
+                  <label class="block text-[11px] font-bold text-pink-900 uppercase">Store Logo & Adaptive PNG Molding</label>
+                  <span class="text-[10px] text-pink-700 font-bold bg-pink-100 px-2 py-0.5 rounded-full">Transparent PNG Ready ✨</span>
                 </div>
                 
-                <div class="flex items-center gap-1.5 mt-2 flex-wrap">
+                <p class="text-[11px] text-pink-900/80">
+                  Upload your store logo. If you upload a <strong>transparent PNG</strong> (no background), it will automatically mold and adjust cleanly without any forced circle borders or cropping!
+                </p>
+
+                <!-- Input & Upload Button -->
+                <div class="flex flex-col sm:flex-row gap-2">
+                  <input type="text" id="setting-store-logo" oninput="updateLogoPreview(this.value)" value="assets/images/kawaii_logo.jpg" placeholder="Image URL or upload transparent PNG" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                  <label class="px-3.5 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-black shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0 transition">
+                    <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
+                    <span>Upload Logo (PNG/JPG)</span>
+                    <input type="file" accept="image/*" class="hidden" onchange="uploadImageFile(this, 'setting-store-logo', 'logo-preview-img', 'logo')">
+                  </label>
+                </div>
+
+                <!-- Logo Customization Settings: Shape & Size -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-pink-100">
+                  <div>
+                    <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">Logo Shape Mode</label>
+                    <select id="setting-logo-shape" onchange="changeLogoShape(this.value)" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                      <option value="natural" selected>✨ Adaptive / Natural (Molds to PNG - No circle cut)</option>
+                      <option value="circle">⚪ Circle (Classic Round Badge)</option>
+                      <option value="rounded">🔲 Rounded Box (Soft Corners)</option>
+                      <option value="square">⏹️ Square (Sharp Borders)</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">Logo Height / Sizing</label>
+                    <select id="setting-logo-height" onchange="changeLogoHeight(this.value)" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+                      <option value="sm">Small (36px)</option>
+                      <option value="md" selected>Medium (48px - Recommended)</option>
+                      <option value="lg">Large (64px)</option>
+                      <option value="xl">Extra Large (80px)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Live Preview on Checkerboard -->
+                <div class="pt-2 flex items-center gap-3">
+                  <div class="text-[10px] font-bold text-pink-800">Live Preview:</div>
+                  <div id="admin-logo-preview-box" class="store-logo-wrap logo-shape-natural logo-size-md p-2 rounded-xl border border-pink-200 bg-[linear-gradient(45deg,#f1f5f9_25%,transparent_25%),linear-gradient(-45deg,#f1f5f9_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#f1f5f9_75%),linear-gradient(-45deg,transparent_75%,#f1f5f9_75%)] bg-[size:16px_16px] bg-[position:0_0,0_8px,8px_-8px,-8px_0] max-w-[200px] flex items-center justify-center shadow-inner">
+                    <img id="logo-preview-img" src="assets/images/kawaii_logo.jpg" alt="Logo Preview" class="store-logo-img object-contain">
+                  </div>
+                </div>
+
+                <!-- Quick Presets -->
+                <div class="flex items-center gap-1.5 pt-1 flex-wrap">
                   <span class="text-[10px] text-pink-800 font-bold">Quick Presets:</span>
-                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_logo.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🌸 Kawaii Mascot</button>
-                  <button type="button" onclick="setLogoPreset('assets/images/chintus_logo_badge.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🎀 Classic Badge</button>
-                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_hero.jpg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🧸 Plushies Icon</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_logo.jpg', 'circle', 'md')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🌸 Mascot Circle</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/chintus_logo_badge.jpg', 'natural', 'lg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🎀 Custom Natural</button>
                 </div>
               </div>
             </div>
@@ -679,6 +768,30 @@
       </section>
 
     </main>
+
+    <!-- ADMIN FOOTER & QUICK NAVIGATION MENU -->
+    <footer class="mt-12 mb-24 sm:mb-20 pt-8 pb-6 border-t border-pink-200 text-center text-xs text-pink-800">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-6 mb-3 font-extrabold text-[11px] sm:text-xs">
+          <button type="button" onclick="switchTab('products')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-boxes-stacked text-pink-500"></i> Product Catalogue
+          </button>
+          <button type="button" onclick="switchTab('orders')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-receipt text-pink-500"></i> Customer Orders
+          </button>
+          <button type="button" onclick="switchTab('control_center')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-sliders text-pink-500"></i> Page Control Centre
+          </button>
+          <button type="button" onclick="switchTab('settings')" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-gear text-pink-500"></i> Store Customization Settings
+          </button>
+          <a href="index.html" class="hover:text-pink-600 transition flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-pink-200 shadow-sm">
+            <i class="fa-solid fa-store text-pink-500"></i> View Storefront
+          </a>
+        </div>
+        <p class="text-[11px] text-pink-700/80">Chintu's Gift & Kawaii Store • Admin Control Panel • Dalli Rajhara, Chhattisgarh</p>
+      </div>
+    </footer>
 
     <!-- ADD / EDIT PRODUCT MODAL -->
     <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
@@ -925,6 +1038,204 @@
       </div>
     </div>
 
+    <!-- BULK IMAGE UPLOAD MODAL (One Product Created Per Image) -->
+    <div id="bulk-image-modal" class="hidden fixed inset-0 z-[1250] bg-purple-950/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-4xl max-h-[92vh] overflow-y-auto p-4 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300">
+        
+        <button onclick="closeBulkImageModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold text-sm shadow-sm transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="flex items-center gap-2.5 mb-2">
+          <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-images"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-xl font-black text-pink-700 font-fun">
+              📸 Bulk Image to Product Lister
+            </h3>
+            <p class="text-xs text-pink-900/80">Select multiple product photos at once. Each image automatically creates a new product in your catalogue!</p>
+          </div>
+        </div>
+
+        <!-- Dropzone / Picker -->
+        <div id="bulk-image-dropzone" onclick="document.getElementById('bulk-image-file-input').click()" class="mt-4 p-6 sm:p-8 rounded-2xl border-2 border-dashed border-pink-300 hover:border-pink-500 bg-white/70 hover:bg-pink-50/50 cursor-pointer text-center transition">
+          <i class="fa-solid fa-cloud-arrow-up text-3xl sm:text-4xl text-pink-500 mb-2"></i>
+          <p class="text-xs sm:text-sm font-extrabold text-pink-950">Click or Drag & Drop Multiple Photos Here</p>
+          <p class="text-[11px] text-pink-700 mt-1">Supports JPG, PNG, WEBP. Select 5, 10, 20 or more photos at once!</p>
+          <input type="file" id="bulk-image-file-input" multiple accept="image/*" class="hidden" onchange="handleBulkImageFiles(this.files)">
+        </div>
+
+        <!-- Quick Batch Controls (Visible when images are chosen) -->
+        <div id="bulk-image-quick-controls" class="hidden mt-4 p-3.5 rounded-2xl bg-white/80 border border-pink-200 space-y-2">
+          <div class="text-[11px] font-black text-pink-900 uppercase">⚡ Quick Batch Apply to All Uploaded Images:</div>
+          <div class="grid grid-cols-1 sm:grid-cols-4 gap-2">
+            <div>
+              <label class="block text-[10px] font-bold text-pink-800">Selling Price (₹)</label>
+              <input type="number" id="batch-fill-price" placeholder="e.g. 499" class="w-full px-2.5 py-1.5 rounded-xl border border-pink-200 text-xs font-bold text-emerald-700">
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-pink-800">Original MRP (₹)</label>
+              <input type="number" id="batch-fill-original-price" placeholder="e.g. 899" class="w-full px-2.5 py-1.5 rounded-xl border border-pink-200 text-xs font-semibold text-slate-500">
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold text-pink-800">Category for All</label>
+              <select id="batch-fill-category" class="w-full px-2.5 py-1.5 rounded-xl border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="">Keep / Individual</option>
+                <option value="toys">🧸 Soft Toys</option>
+                <option value="stationery">✍️ Stationery</option>
+                <option value="personalized">💖 Personalized</option>
+                <option value="birthday">🎂 Birthday</option>
+                <option value="novelties">🎒 Novelties</option>
+              </select>
+            </div>
+            <div class="flex items-end">
+              <button type="button" onclick="applyBatchImageValues()" class="w-full py-1.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-xs font-black shadow-sm transition">
+                Apply to All
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview Grid of Draft Products -->
+        <div id="bulk-images-preview-section" class="hidden mt-4 space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-pink-900" id="bulk-images-count-label">0 Images Ready</span>
+            <button type="button" onclick="clearBulkImages()" class="text-xs text-rose-600 font-bold hover:underline">Clear All</button>
+          </div>
+
+          <div id="bulk-images-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 max-h-80 overflow-y-auto p-1">
+            <!-- Dynamically populated -->
+          </div>
+
+          <div class="pt-3 border-t border-pink-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <p class="text-[11px] text-pink-700">Images are auto-compressed in browser canvas for ultra-fast instant upload.</p>
+            <button type="button" id="bulk-images-submit-btn" onclick="uploadAndListAllBulkImages()" class="w-full sm:w-auto px-6 py-2.5 rounded-full kawaii-btn-pink text-xs font-black shadow-md flex items-center justify-center gap-2">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span>Upload & List All Products</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BULK PRODUCT EDIT MODAL -->
+    <div id="bulk-edit-modal" class="hidden fixed inset-0 z-[1250] bg-purple-950/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-lg max-h-[90vh] overflow-y-auto p-5 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300">
+        
+        <button onclick="closeBulkEditModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="flex items-center gap-2.5 mb-3">
+          <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center text-lg shadow-sm">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun">
+              Bulk Edit Selected Products
+            </h3>
+            <p class="text-xs text-pink-900/80" id="bulk-edit-count-subtitle">0 products selected for editing</p>
+          </div>
+        </div>
+
+        <form onsubmit="event.preventDefault(); submitBulkProductEdit();" class="space-y-3.5 text-left">
+          
+          <!-- Category -->
+          <div>
+            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Change Category</label>
+            <select id="bulk-edit-category" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+              <option value="keep">— Keep Unchanged —</option>
+              <option value="toys">🧸 Soft Toys & Plushies</option>
+              <option value="stationery">✍️ Fancy Stationery</option>
+              <option value="personalized">💖 Personalized Acrylic</option>
+              <option value="birthday">🎂 Birthday & Hampers</option>
+              <option value="novelties">🎒 Novelties & Accessories</option>
+            </select>
+          </div>
+
+          <!-- Price Action -->
+          <div class="p-3 rounded-2xl bg-white/70 border border-pink-200 space-y-2">
+            <label class="block text-[11px] font-black text-pink-900 uppercase">Update Price / Discounts</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <select id="bulk-edit-price-action" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="none">— Do Not Change Price —</option>
+                <option value="set">Set Fixed Selling Price (₹)</option>
+                <option value="discount_percent">Apply Discount Percentage (%)</option>
+                <option value="increase_percent">Increase Price Percentage (%)</option>
+              </select>
+              <input type="number" id="bulk-edit-price-val" placeholder="Value (e.g. 399 or 15)" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-emerald-700">
+            </div>
+          </div>
+
+          <!-- Stock Status -->
+          <div>
+            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Stock Availability</label>
+            <select id="bulk-edit-stock" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+              <option value="keep">— Keep Unchanged —</option>
+              <option value="true">● Mark All as In Stock</option>
+              <option value="false">✕ Mark All as Out of Stock</option>
+            </select>
+          </div>
+
+          <!-- Badge -->
+          <div>
+            <label class="block text-[11px] font-black text-pink-900 uppercase mb-1">Badge Tag</label>
+            <select id="bulk-edit-badge" class="w-full px-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+              <option value="keep">— Keep Unchanged —</option>
+              <option value="Bestseller">Bestseller</option>
+              <option value="Kawaii Hot">Kawaii Hot</option>
+              <option value="Trending">Trending</option>
+              <option value="Special Offer">Special Offer</option>
+              <option value="New Arrival">New Arrival</option>
+              <option value="">— Remove Badge Tag —</option>
+            </select>
+          </div>
+
+          <div class="pt-2 flex items-center justify-end gap-2">
+            <button type="button" onclick="closeBulkEditModal()" class="px-4 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">
+              Cancel
+            </button>
+            <button type="submit" class="px-5 py-2 rounded-xl kawaii-btn-pink text-xs font-black shadow-md">
+              Apply to Selected Products
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <!-- STICKY ADMIN BOTTOM NAVIGATION DOCK (Quick Action Footer Menu) -->
+    <div class="admin-bottom-nav fixed bottom-0 left-0 right-0 z-40 px-3 py-2 sm:py-2.5 flex items-center justify-around border-t border-pink-300 shadow-lg">
+      <button type="button" onclick="switchTab('products')" id="dock-btn-products" class="dock-btn flex flex-col items-center justify-center text-pink-600 font-black text-[11px] sm:text-xs transition">
+        <i class="fa-solid fa-boxes-stacked text-base sm:text-lg mb-0.5"></i>
+        <span>Products</span>
+      </button>
+
+      <button type="button" onclick="switchTab('orders')" id="dock-btn-orders" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition relative">
+        <i class="fa-solid fa-receipt text-base sm:text-lg mb-0.5"></i>
+        <span>Orders</span>
+        <span id="dock-orders-badge" class="hidden absolute -top-1 -right-2 px-1.5 py-0.2 rounded-full bg-rose-500 text-white text-[9px] font-black">0</span>
+      </button>
+
+      <button type="button" onclick="switchTab('control_center')" id="dock-btn-control_center" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition">
+        <i class="fa-solid fa-sliders text-base sm:text-lg mb-0.5"></i>
+        <span>Control Centre</span>
+      </button>
+
+      <button type="button" onclick="switchTab('settings')" id="dock-btn-settings" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition">
+        <i class="fa-solid fa-gear text-base sm:text-lg mb-0.5"></i>
+        <span>Settings</span>
+      </button>
+
+      <a href="index.html" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition" title="Go to Storefront">
+        <i class="fa-solid fa-store text-base sm:text-lg mb-0.5 text-pink-500"></i>
+        <span>Store</span>
+      </a>
+    </div>
+
   </div>
 
   <!-- Toast Notification Container -->
@@ -938,6 +1249,9 @@
     let allOrders = [];
     let currentSettings = {};
     let bulkParsedProducts = [];
+    let selectedProductIds = new Set();
+    let bulkImageDrafts = [];
+    let sectionsConfig = {};
 
     document.addEventListener("DOMContentLoaded", () => {
       checkExistingSession();
@@ -1160,13 +1474,29 @@
       try {
         const res = await fetch('/api/products');
         const data = await res.json();
-        if (data.success) {
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
           allProducts = data.data;
+          try {
+            localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts));
+          } catch (_) {}
           renderAdminProducts(allProducts);
           updateStats();
+          updateBulkSelectionBar();
+          return;
         }
       } catch (e) {
-        console.error(e);
+        console.error("fetchProducts error:", e);
+      }
+
+      // Offline / Local Storage fallback if network fails
+      const cached = localStorage.getItem('chintu_custom_products');
+      if (cached) {
+        try {
+          allProducts = JSON.parse(cached);
+          renderAdminProducts(allProducts);
+          updateStats();
+          updateBulkSelectionBar();
+        } catch (_) {}
       }
     }
 
@@ -1189,111 +1519,140 @@
     }
 
     async function fetchSettings() {
+      let localSettings = {};
+      try {
+        localSettings = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
+      } catch (_) {}
+
       try {
         const res = await fetch('/api/settings');
         const data = await res.json();
         if (data.success) {
-          currentSettings = data.data;
-          
-          // Theme & visual
-          const activeTheme = currentSettings.theme || 'theme-sakura-pink';
-          selectTheme(activeTheme);
-          if (document.getElementById('setting-blur')) {
-            document.getElementById('setting-blur').value = currentSettings.blurIntensity || 'blur-normal';
-          }
-          if (document.getElementById('setting-floating-stickers')) {
-            document.getElementById('setting-floating-stickers').checked = currentSettings.floatingStickers !== false;
-          }
-          if (document.getElementById('setting-festive-confetti')) {
-            document.getElementById('setting-festive-confetti').checked = currentSettings.festiveConfetti !== false;
-          }
-
-          // Branding
-          if (document.getElementById('setting-store-name')) {
-            document.getElementById('setting-store-name').value = currentSettings.name || currentSettings.storeName || "Chintu's Gift & Kawaii Store";
-          }
-          if (document.getElementById('setting-brand-short')) {
-            document.getElementById('setting-brand-short').value = currentSettings.brandShort || "CHINTU'S";
-          }
-          if (document.getElementById('setting-brand-tagline')) {
-            document.getElementById('setting-brand-tagline').value = currentSettings.brandTagline || "Gift & Kawaii Store • Dalli Rajhara";
-          }
-          if (document.getElementById('setting-store-logo')) {
-            document.getElementById('setting-store-logo').value = currentSettings.storeLogo || "assets/images/kawaii_logo.jpg";
-            updateLogoPreview(currentSettings.storeLogo || "assets/images/kawaii_logo.jpg");
-          }
-
-          // Coupons & Promotions
-          if (document.getElementById('setting-coupon-code')) {
-            document.getElementById('setting-coupon-code').value = currentSettings.couponCode || "CHINTU10";
-          }
-          if (document.getElementById('setting-coupon-discount')) {
-            document.getElementById('setting-coupon-discount').value = currentSettings.couponDiscount || 10;
-          }
-          if (document.getElementById('setting-coupon-min-order')) {
-            document.getElementById('setting-coupon-min-order').value = currentSettings.couponMinOrder || 499;
-          }
-          if (document.getElementById('setting-announcement')) {
-            document.getElementById('setting-announcement').value = currentSettings.announcement || "";
-          }
-          if (document.getElementById('setting-delivery-notice')) {
-            document.getElementById('setting-delivery-notice').value = currentSettings.deliveryNotice || "⚡ Ultra-fast local delivery in Dalli Rajhara • WhatsApp Instant Updates";
-          }
-
-          // Hero Section
-          if (document.getElementById('setting-hero-badge')) {
-            document.getElementById('setting-hero-badge').value = currentSettings.heroBadge || "✨ 100% Authentic Cute Kawaii Stuff";
-          }
-          if (document.getElementById('setting-hero-heading')) {
-            document.getElementById('setting-hero-heading').value = currentSettings.heroHeading || "Spread Joy with Cute & Custom Gifts!";
-          }
-          if (document.getElementById('setting-hero-subtitle')) {
-            document.getElementById('setting-hero-subtitle').value = currentSettings.heroSubtitle || "Discover Dalli Rajhara's happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.";
-          }
-          if (document.getElementById('setting-hero-image')) {
-            document.getElementById('setting-hero-image').value = currentSettings.heroImage || "assets/images/kawaii_hero.jpg";
-            updateHeroPreview(currentSettings.heroImage || "assets/images/kawaii_hero.jpg");
-          }
-          if (document.getElementById('setting-hero-cta')) {
-            document.getElementById('setting-hero-cta').value = currentSettings.heroCtaText || "Explore Cute Gifts 🛍️";
-          }
-
-          // Contact & Physical Location
-          if (document.getElementById('setting-phone')) {
-            document.getElementById('setting-phone').value = currentSettings.phone || "8269212182";
-          }
-          if (document.getElementById('setting-whatsapp')) {
-            document.getElementById('setting-whatsapp').value = currentSettings.whatsapp || "918269212182";
-          }
-          if (document.getElementById('setting-address')) {
-            document.getElementById('setting-address').value = currentSettings.address || "Shop No. 2 (House 01), Shubhash Chowk, Near Bharat Petroleum, Ward Number 19, Dalli Rajhara, Chhattisgarh 491228";
-          }
-          if (document.getElementById('setting-maps-url')) {
-            document.getElementById('setting-maps-url').value = currentSettings.mapsUrl || "https://maps.google.com/?q=Dalli+Rajhara+Chhattisgarh";
-          }
-          if (document.getElementById('setting-instagram')) {
-            document.getElementById('setting-instagram').value = currentSettings.instagramHandle || "https://instagram.com/chintusgiftstore";
-          }
-          if (document.getElementById('setting-open')) {
-            document.getElementById('setting-open').value = currentSettings.openTime || "10:30";
-          }
-          if (document.getElementById('setting-close')) {
-            document.getElementById('setting-close').value = currentSettings.closeTime || "20:30";
-          }
-          if (document.getElementById('setting-closed-day')) {
-            document.getElementById('setting-closed-day').value = currentSettings.closedDay || "Open 7 Days a Week";
-          }
-
-          // Security
-          if (document.getElementById('setting-google-email')) {
-            document.getElementById('setting-google-email').value = currentSettings.authorizedAdminEmail || "";
-          }
-          if (document.getElementById('setting-google-client-id')) {
-            document.getElementById('setting-google-client-id').value = currentSettings.googleClientId || localStorage.getItem('chintu_google_client_id') || "";
-          }
+          // Authoritatively merge server data and localSettings so changes are never lost
+          currentSettings = Object.assign({}, data.data, localSettings);
+        } else {
+          currentSettings = localSettings;
         }
       } catch (e) {
-        console.error(e);
+        console.error("fetchSettings error, using local cache:", e);
+        currentSettings = localSettings;
+      }
+
+      applySettingsToAdminForm(currentSettings);
+    }
+
+    function applySettingsToAdminForm(cfg) {
+      if (!cfg) return;
+
+      // Theme & visual
+      const activeTheme = cfg.theme || 'theme-sakura-pink';
+      selectTheme(activeTheme);
+      if (document.getElementById('setting-blur')) {
+        document.getElementById('setting-blur').value = cfg.blurIntensity || 'blur-normal';
+      }
+      if (document.getElementById('setting-floating-stickers')) {
+        document.getElementById('setting-floating-stickers').checked = cfg.floatingStickers !== false;
+      }
+      if (document.getElementById('setting-festive-confetti')) {
+        document.getElementById('setting-festive-confetti').checked = cfg.festiveConfetti !== false;
+      }
+
+      // Branding & Adaptive Logo
+      if (document.getElementById('setting-store-name')) {
+        document.getElementById('setting-store-name').value = cfg.name || cfg.storeName || "Chintu's Gift & Kawaii Store";
+      }
+      if (document.getElementById('setting-brand-short')) {
+        document.getElementById('setting-brand-short').value = cfg.brandShort || "CHINTU'S";
+      }
+      if (document.getElementById('setting-brand-tagline')) {
+        document.getElementById('setting-brand-tagline').value = cfg.brandTagline || "Gift & Kawaii Store • Dalli Rajhara";
+      }
+      if (document.getElementById('setting-store-logo')) {
+        document.getElementById('setting-store-logo').value = cfg.storeLogo || "assets/images/kawaii_logo.jpg";
+        updateLogoPreview(cfg.storeLogo || "assets/images/kawaii_logo.jpg");
+      }
+
+      const shape = cfg.logoShape || 'natural';
+      if (document.getElementById('setting-logo-shape')) {
+        document.getElementById('setting-logo-shape').value = shape;
+        changeLogoShape(shape);
+      }
+      const height = cfg.logoHeight || 'md';
+      if (document.getElementById('setting-logo-height')) {
+        document.getElementById('setting-logo-height').value = height;
+        changeLogoHeight(height);
+      }
+
+      // Coupons & Promotions
+      if (document.getElementById('setting-coupon-code')) {
+        document.getElementById('setting-coupon-code').value = cfg.couponCode || "CHINTU10";
+      }
+      if (document.getElementById('setting-coupon-discount')) {
+        document.getElementById('setting-coupon-discount').value = cfg.couponDiscount ?? 10;
+      }
+      if (document.getElementById('setting-coupon-min-order')) {
+        document.getElementById('setting-coupon-min-order').value = cfg.couponMinOrder ?? 499;
+      }
+      if (document.getElementById('setting-announcement')) {
+        document.getElementById('setting-announcement').value = cfg.announcement || "";
+      }
+      if (document.getElementById('setting-delivery-notice')) {
+        document.getElementById('setting-delivery-notice').value = cfg.deliveryNotice || "⚡ Ultra-fast local delivery in Dalli Rajhara • WhatsApp Instant Updates";
+      }
+
+      // Hero Section
+      if (document.getElementById('setting-hero-badge')) {
+        document.getElementById('setting-hero-badge').value = cfg.heroBadge || "✨ 100% Authentic Cute Kawaii Stuff";
+      }
+      if (document.getElementById('setting-hero-heading')) {
+        document.getElementById('setting-hero-heading').value = cfg.heroHeading || "Spread Joy with Cute & Custom Gifts!";
+      }
+      if (document.getElementById('setting-hero-subtitle')) {
+        document.getElementById('setting-hero-subtitle').value = cfg.heroSubtitle || "Discover Dalli Rajhara's happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.";
+      }
+      if (document.getElementById('setting-hero-image')) {
+        document.getElementById('setting-hero-image').value = cfg.heroImage || "assets/images/kawaii_hero.jpg";
+        updateHeroPreview(cfg.heroImage || "assets/images/kawaii_hero.jpg");
+      }
+      if (document.getElementById('setting-hero-cta')) {
+        document.getElementById('setting-hero-cta').value = cfg.heroCtaText || "Explore Cute Gifts 🛍️";
+      }
+
+      // Sections Control Centre
+      initSectionsConfig(cfg.sectionsConfig);
+
+      // Contact & Physical Location
+      if (document.getElementById('setting-phone')) {
+        document.getElementById('setting-phone').value = "8269212182";
+      }
+      if (document.getElementById('setting-whatsapp')) {
+        document.getElementById('setting-whatsapp').value = cfg.whatsapp || "918269212182";
+      }
+      if (document.getElementById('setting-address')) {
+        document.getElementById('setting-address').value = cfg.address || "Shop No. 2 (House 01), Shubhash Chowk, Near Bharat Petroleum, Ward Number 19, Dalli Rajhara, Chhattisgarh 491228";
+      }
+      if (document.getElementById('setting-maps-url')) {
+        document.getElementById('setting-maps-url').value = cfg.mapsUrl || "https://maps.google.com/?q=Dalli+Rajhara+Chhattisgarh";
+      }
+      if (document.getElementById('setting-instagram')) {
+        document.getElementById('setting-instagram').value = cfg.instagramHandle || "https://instagram.com/chintusgiftstore";
+      }
+      if (document.getElementById('setting-open')) {
+        document.getElementById('setting-open').value = cfg.openTime || "10:30";
+      }
+      if (document.getElementById('setting-close')) {
+        document.getElementById('setting-close').value = cfg.closeTime || "20:30";
+      }
+      if (document.getElementById('setting-closed-day')) {
+        document.getElementById('setting-closed-day').value = cfg.closedDay || "Open 7 Days a Week";
+      }
+
+      // Security
+      if (document.getElementById('setting-google-email')) {
+        document.getElementById('setting-google-email').value = cfg.authorizedAdminEmail || "";
+      }
+      if (document.getElementById('setting-google-client-id')) {
+        document.getElementById('setting-google-client-id').value = cfg.googleClientId || localStorage.getItem('chintu_google_client_id') || "";
       }
     }
 
@@ -1302,6 +1661,15 @@
       document.getElementById('stat-in-stock').textContent = allProducts.filter(p => p.inStock).length;
       document.getElementById('stat-orders').textContent = allOrders.length;
       document.getElementById('orders-count-label').textContent = `${allOrders.length} Orders`;
+      const dockOrders = document.getElementById('dock-orders-badge');
+      if (dockOrders) {
+        if (allOrders.length > 0) {
+          dockOrders.textContent = allOrders.length;
+          dockOrders.classList.remove('hidden');
+        } else {
+          dockOrders.classList.add('hidden');
+        }
+      }
     }
 
     function renderAdminProducts(products) {
@@ -1318,43 +1686,51 @@
         return;
       }
 
-      container.innerHTML = products.map(p => `
-        <div class="pink-acrylic p-3.5 flex flex-col justify-between relative group border border-pink-200">
-          <div class="flex gap-2.5">
-            <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100">
-              <img src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+      container.innerHTML = products.map(p => {
+        const isSelected = selectedProductIds.has(p.id);
+        return `
+          <div class="pink-acrylic p-3.5 flex flex-col justify-between relative group border ${isSelected ? 'border-pink-500 ring-2 ring-pink-500 bg-pink-100/70' : 'border-pink-200'} transition-all shadow-sm rounded-2xl">
+            <!-- Product Selection Checkbox (Top Right) -->
+            <div class="absolute top-2.5 right-2.5 z-10">
+              <input type="checkbox" ${isSelected ? 'checked' : ''} onchange="toggleProductSelect('${p.id}', this.checked)" class="w-4 h-4 rounded text-pink-600 focus:ring-pink-500 cursor-pointer shadow-sm">
             </div>
-            <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-1.5 mb-1">
-                ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-pink-100 text-pink-700">${p.badge}</span>` : ''}
-                <span class="text-[9px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
-                  ${p.inStock ? '● In Stock' : '✕ Out'}
-                </span>
-              </div>
-              <h4 class="text-xs font-bold text-pink-950 truncate font-fun">${p.name}</h4>
-              <p class="text-[10px] text-pink-700 truncate">${p.hindiName || ''}</p>
-              <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-xs sm:text-sm font-extrabold text-pink-600">₹${p.price}</span>
-                <span class="text-[10px] text-slate-400 line-through">₹${p.originalPrice}</span>
-              </div>
-            </div>
-          </div>
 
-          <div class="pt-2.5 mt-2.5 border-t border-pink-100 flex items-center justify-between gap-1.5">
-            <button onclick="toggleStock('${p.id}')" class="text-[10px] font-bold px-2 py-1 rounded-lg ${p.inStock ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'} transition">
-              ${p.inStock ? 'Mark Out of Stock' : 'Mark In Stock'}
-            </button>
-            <div class="flex items-center gap-1">
-              <button onclick="openEditProductModal('${p.id}')" class="p-1.5 rounded-lg bg-pink-100 text-pink-700 hover:bg-pink-200 text-xs" title="Edit Product">
-                <i class="fa-solid fa-pen-to-square"></i>
+            <div class="flex gap-2.5 pr-6">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden bg-white shrink-0 border border-pink-100 shadow-inner">
+                <img src="${p.image}" alt="${escapeHtml(p.name)}" class="w-full h-full object-cover">
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+                  ${p.badge ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-extrabold bg-pink-100 text-pink-700">${escapeHtml(p.badge)}</span>` : ''}
+                  <span class="text-[9px] font-bold ${p.inStock ? 'text-emerald-600 bg-emerald-50' : 'text-rose-600 bg-rose-50'} px-2 py-0.5 rounded-full">
+                    ${p.inStock ? '● In Stock' : '✕ Out'}
+                  </span>
+                </div>
+                <h4 class="text-xs font-bold text-pink-950 truncate font-fun" title="${escapeHtml(p.name)}">${escapeHtml(p.name)}</h4>
+                <p class="text-[10px] text-pink-700 truncate">${escapeHtml(p.hindiName || '')}</p>
+                <div class="flex items-baseline gap-2 mt-1">
+                  <span class="text-xs sm:text-sm font-extrabold text-pink-600">₹${p.price}</span>
+                  <span class="text-[10px] text-slate-400 line-through">₹${p.originalPrice || Math.round(p.price * 1.5)}</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-2.5 mt-2.5 border-t border-pink-100 flex items-center justify-between gap-1.5">
+              <button onclick="toggleStock('${p.id}')" class="text-[10px] font-bold px-2 py-1 rounded-lg ${p.inStock ? 'bg-amber-100 text-amber-800 hover:bg-amber-200' : 'bg-emerald-100 text-emerald-800 hover:bg-emerald-200'} transition">
+                ${p.inStock ? 'Mark Out' : 'Mark In Stock'}
               </button>
-              <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-rose-100 text-rose-700 hover:bg-rose-200 text-xs" title="Delete Product">
-                <i class="fa-solid fa-trash-can"></i>
-              </button>
+              <div class="flex items-center gap-1">
+                <button onclick="openEditProductModal('${p.id}')" class="p-1.5 rounded-lg bg-pink-100 text-pink-700 hover:bg-pink-200 text-xs transition" title="Edit Product">
+                  <i class="fa-solid fa-pen-to-square"></i>
+                </button>
+                <button onclick="deleteProduct('${p.id}')" class="p-1.5 rounded-lg bg-rose-100 text-rose-700 hover:bg-rose-200 text-xs transition" title="Delete Product">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
 
     function renderAdminOrders(orders) {
@@ -1378,17 +1754,17 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs mb-2">
             <div>
-              <div class="font-bold text-pink-950">Customer: ${ord.customer?.name || 'Guest'}</div>
-              <div class="text-pink-700">Phone: ${ord.customer?.phone || 'N/A'}</div>
-              <div class="text-pink-800/80">Address: ${ord.customer?.address || 'Pickup at store'}</div>
-              ${ord.customer?.cardMessage ? `<div class="italic text-[10px] text-pink-600 mt-0.5">Card Msg: "${ord.customer.cardMessage}"</div>` : ''}
+              <div class="font-bold text-pink-950">Customer: ${escapeHtml(ord.customer?.name || 'Guest')}</div>
+              <div class="text-pink-700">Phone: ${escapeHtml(ord.customer?.phone || 'N/A')}</div>
+              <div class="text-pink-800/80">Address: ${escapeHtml(ord.customer?.address || 'Pickup at store')}</div>
+              ${ord.customer?.cardMessage ? `<div class="italic text-[10px] text-pink-600 mt-0.5">Card Msg: "${escapeHtml(ord.customer.cardMessage)}"</div>` : ''}
             </div>
 
             <div>
               <div class="font-bold text-pink-950 mb-0.5">Items:</div>
               <ul class="space-y-0.5 text-[11px] text-pink-900">
                 ${ord.items ? ord.items.map(it => `
-                  <li>• ${it.name} (x${it.quantity}) - ₹${it.price * it.quantity} ${it.customDetails ? `<span class="text-pink-600 font-bold">[Custom: ${it.customDetails.name}]</span>` : ''}</li>
+                  <li>• ${escapeHtml(it.name)} (x${it.quantity}) - ₹${it.price * it.quantity} ${it.customDetails ? `<span class="text-pink-600 font-bold">[Custom: ${escapeHtml(it.customDetails.name)}]</span>` : ''}</li>
                 `).join('') : 'N/A'}
               </ul>
               <div class="text-xs font-extrabold text-pink-600 mt-1.5">Total Amount: ₹${ord.total}</div>
@@ -1399,12 +1775,12 @@
     }
 
     function filterAdminProducts() {
-      const q = document.getElementById('admin-search').value.toLowerCase().trim();
-      const cat = document.getElementById('admin-cat-filter').value;
+      const q = (document.getElementById('admin-search')?.value || '').toLowerCase().trim();
+      const cat = document.getElementById('admin-cat-filter')?.value || 'all';
 
       const filtered = allProducts.filter(p => {
         const matchCat = cat === 'all' || p.category === cat;
-        const matchSearch = p.name.toLowerCase().includes(q) || (p.hindiName && p.hindiName.includes(q));
+        const matchSearch = p.name.toLowerCase().includes(q) || (p.hindiName && p.hindiName.toLowerCase().includes(q));
         return matchCat && matchSearch;
       });
 
@@ -1412,17 +1788,41 @@
     }
 
     function switchTab(tabName) {
+      // Desktop tabs
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('bg-pink-600', 'text-white', 'shadow-sm');
         btn.classList.add('bg-white/80', 'text-pink-800');
       });
-      document.getElementById(`tab-btn-${tabName}`).classList.add('bg-pink-600', 'text-white', 'shadow-sm');
-      document.getElementById(`tab-btn-${tabName}`).classList.remove('bg-white/80', 'text-pink-800');
+      const activeTabBtn = document.getElementById(`tab-btn-${tabName}`);
+      if (activeTabBtn) {
+        activeTabBtn.classList.add('bg-pink-600', 'text-white', 'shadow-sm');
+        activeTabBtn.classList.remove('bg-white/80', 'text-pink-800');
+      }
 
+      // Sticky Dock buttons
+      document.querySelectorAll('.dock-btn').forEach(btn => {
+        btn.classList.remove('text-pink-600', 'font-black');
+        btn.classList.add('text-pink-800', 'font-bold');
+      });
+      const activeDockBtn = document.getElementById(`dock-btn-${tabName}`);
+      if (activeDockBtn) {
+        activeDockBtn.classList.add('text-pink-600', 'font-black');
+        activeDockBtn.classList.remove('text-pink-800', 'font-bold');
+      }
+
+      // Toggle tab containers
       document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
+      const activeSection = document.getElementById(`tab-${tabName}`);
+      if (activeSection) {
+        activeSection.classList.remove('hidden');
+      }
+
+      if (tabName === 'control_center') {
+        renderControlCentreSections();
+      }
     }
 
+    // ================= PRODUCT CRUD MODALS =================
     function openAddProductModal() {
       document.getElementById('modal-title').textContent = "Add New Product";
       document.getElementById('form-product-id').value = "";
@@ -1539,6 +1939,8 @@
         const data = await res.json();
         if (data.success) {
           showToast("Product deleted!");
+          selectedProductIds.delete(id);
+          updateBulkSelectionBar();
           fetchProducts();
         }
       } catch (e) {
@@ -1546,6 +1948,525 @@
       }
     }
 
+    // ================= BULK PRODUCT SELECTION & EDITING =================
+    function toggleSelectAllProducts(checked) {
+      if (checked) {
+        allProducts.forEach(p => selectedProductIds.add(p.id));
+      } else {
+        selectedProductIds.clear();
+      }
+      updateBulkSelectionBar();
+      renderAdminProducts(allProducts);
+    }
+
+    function toggleProductSelect(id, checked) {
+      if (checked) {
+        selectedProductIds.add(id);
+      } else {
+        selectedProductIds.delete(id);
+      }
+      updateBulkSelectionBar();
+      renderAdminProducts(allProducts);
+    }
+
+    function updateBulkSelectionBar() {
+      const bar = document.getElementById('bulk-selection-bar');
+      const countBadge = document.getElementById('selected-count-badge');
+      const selectAll = document.getElementById('select-all-products');
+
+      const count = selectedProductIds.size;
+      if (countBadge) countBadge.textContent = `${count} selected`;
+
+      if (selectAll) {
+        selectAll.checked = count > 0 && count === allProducts.length;
+        selectAll.indeterminate = count > 0 && count < allProducts.length;
+      }
+
+      if (bar) {
+        if (count > 0) {
+          bar.classList.remove('hidden');
+        } else {
+          bar.classList.add('hidden');
+        }
+      }
+    }
+
+    function clearProductSelection() {
+      selectedProductIds.clear();
+      updateBulkSelectionBar();
+      renderAdminProducts(allProducts);
+    }
+
+    function openBulkEditModal() {
+      if (selectedProductIds.size === 0) {
+        showToast("Please select at least one product first", "error");
+        return;
+      }
+      document.getElementById('bulk-edit-count-subtitle').textContent = `${selectedProductIds.size} products selected for batch edit`;
+      document.getElementById('bulk-edit-category').value = 'keep';
+      document.getElementById('bulk-edit-price-action').value = 'none';
+      document.getElementById('bulk-edit-price-val').value = '';
+      document.getElementById('bulk-edit-stock').value = 'keep';
+      document.getElementById('bulk-edit-badge').value = 'keep';
+      document.getElementById('bulk-edit-modal').classList.remove('hidden');
+    }
+
+    function closeBulkEditModal() {
+      document.getElementById('bulk-edit-modal').classList.add('hidden');
+    }
+
+    async function submitBulkProductEdit() {
+      const count = selectedProductIds.size;
+      if (count === 0) return;
+
+      const payload = {
+        ids: Array.from(selectedProductIds),
+        category: document.getElementById('bulk-edit-category').value,
+        priceAction: document.getElementById('bulk-edit-price-action').value,
+        priceValue: Number(document.getElementById('bulk-edit-price-val').value) || 0,
+        stock: document.getElementById('bulk-edit-stock').value,
+        badge: document.getElementById('bulk-edit-badge').value
+      };
+
+      showToast(`Updating ${count} products... ⏳`);
+
+      try {
+        const res = await fetch('/api/products/bulk-edit', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`🎉 Bulk edit applied to ${data.count} products!`);
+          closeBulkEditModal();
+          clearProductSelection();
+          fetchProducts();
+        } else {
+          showToast(data.message || "Bulk edit failed", "error");
+        }
+      } catch (err) {
+        console.error(err);
+        showToast("Error executing bulk edit", "error");
+      }
+    }
+
+    async function confirmBulkDelete() {
+      const count = selectedProductIds.size;
+      if (count === 0) return;
+
+      if (!confirm(`Are you sure you want to permanently delete all ${count} selected products from your catalogue? This action cannot be undone.`)) {
+        return;
+      }
+
+      showToast(`Deleting ${count} products... ⏳`);
+
+      try {
+        const res = await fetch('/api/products/bulk-edit', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({
+            ids: Array.from(selectedProductIds),
+            action: 'delete'
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast(`Deleted ${data.count} products!`);
+          clearProductSelection();
+          fetchProducts();
+        } else {
+          showToast(data.message || "Failed to delete products", "error");
+        }
+      } catch (err) {
+        console.error(err);
+        showToast("Error deleting products", "error");
+      }
+    }
+
+    // ================= PAGE SECTIONS CONTROL CENTRE =================
+    const DEFAULT_SECTIONS_CONFIG = {
+      announcement: { order: 0, visible: true, name: 'Top Announcement Marquee Bar', badge: 'Cute Offer', title: 'Special Promo Marquee', subtitle: 'Live notification scrolling at top of page', ctaText: '' },
+      hero: { order: 1, visible: true, name: 'Hero Welcome Banner & CTA', badge: '✨ 100% Authentic Cute Kawaii Stuff', title: 'Spread Joy with Cute & Custom Gifts!', subtitle: 'Discover Dalli Rajhara\'s happiest gift corner for soft plushies, aesthetic stationery, personalized acrylic lamps, and custom birthday hampers.', ctaText: 'Explore Cute Gifts 🛍️' },
+      customizer: { order: 2, visible: true, name: 'Pink Custom Gift Studio', badge: '✨ Pink Custom Studio', title: 'Design Your Custom Gift Live!', subtitle: 'Choose your gift style, customize preview, and place your order on WhatsApp instantly.', ctaText: 'Preview & Order' },
+      gift_finder: { order: 3, visible: true, name: 'AI Gift Finder Interactive Quiz', badge: '💡 Quick Helper', title: 'Confused What to Gift?', subtitle: 'Answer 2 simple questions to find the perfect gift instantly!', ctaText: 'Find Gift' },
+      catalog: { order: 4, visible: true, name: 'Product Catalogue & Filters Grid', badge: '🎀 Explore Catalogue', title: 'Discover Kawaii Cuteness & Personalized Wonders', subtitle: 'Explore curated cute stationery, plush toys, acrylic lamps, and celebration hampers.', ctaText: 'View All' },
+      reviews: { order: 5, visible: true, name: 'Customer Reviews & Testimonials', badge: '⭐ 4.9 Google Reviews', title: 'Loved by Dalli Rajhara Locals', subtitle: 'Real experiences from customers across Subhash Chowk, Balod Road & Mines Colony.', ctaText: 'Write a Google Review' },
+      instagram: { order: 6, visible: true, name: 'Instagram Feed & Community Showcase', badge: '📸 Official Instagram', title: 'Join Our Kawaii Community on Instagram!', subtitle: 'Follow @chintusgiftstore for daily new arrivals, customer unboxings, giveaways, and BTS packing reels.', ctaText: 'Follow @chintusgiftstore on Instagram 💖' },
+      store_locator: { order: 7, visible: true, name: 'Physical Store Location & Timings', badge: '📍 Visit Store & Pickup', title: 'Visit Chintu\'s Gift Store in Dalli Rajhara', subtitle: 'Find us easily at Subhash Chowk. Drop by to touch and feel our plushies, stationery, and customized lamps in person!', ctaText: 'Open in Google Maps' },
+      footer: { order: 8, visible: true, name: 'Storefront Footer & Navigation Links', badge: '', title: 'Footer Links & Contact', subtitle: 'Store links, working hours, and social media handles', ctaText: '' },
+      floating_actions: { order: 9, visible: true, name: 'Floating Action Buttons', badge: '', title: 'WhatsApp & Back-to-Top Floating Dock', subtitle: 'Floating buttons for instant customer chat and navigation', ctaText: '' }
+    };
+
+    function initSectionsConfig(saved) {
+      sectionsConfig = {};
+      const savedCfg = (saved && typeof saved === 'object') ? saved : {};
+      Object.keys(DEFAULT_SECTIONS_CONFIG).forEach(id => {
+        sectionsConfig[id] = Object.assign({}, DEFAULT_SECTIONS_CONFIG[id], savedCfg[id] || {});
+      });
+      renderControlCentreSections();
+    }
+
+    function renderControlCentreSections() {
+      const container = document.getElementById('control-centre-sections-list');
+      if (!container) return;
+
+      const sortedKeys = Object.keys(sectionsConfig).sort((a, b) => (sectionsConfig[a].order ?? 99) - (sectionsConfig[b].order ?? 99));
+
+      container.innerHTML = sortedKeys.map((secId, index) => {
+        const sec = sectionsConfig[secId];
+        const isFirst = index === 0;
+        const isLast = index === sortedKeys.length - 1;
+
+        return `
+          <div class="pink-acrylic p-4 sm:p-5 rounded-2xl border ${sec.visible !== false ? 'border-pink-300' : 'border-slate-300 opacity-60 bg-slate-50/50'} transition-all shadow-sm">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3 pb-3 border-b border-pink-100">
+              
+              <div class="flex items-center gap-3">
+                <span class="w-7 h-7 rounded-xl bg-pink-100 text-pink-700 font-black text-xs flex items-center justify-center font-mono shadow-inner">
+                  #${index + 1}
+                </span>
+                <div>
+                  <h4 class="text-sm font-black text-pink-950 font-fun flex items-center gap-2">
+                    <span>${sec.name || secId}</span>
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full ${sec.visible !== false ? 'bg-emerald-100 text-emerald-800' : 'bg-slate-200 text-slate-700'}">
+                      ${sec.visible !== false ? '● Visible' : '✕ Hidden'}
+                    </span>
+                  </h4>
+                  <p class="text-[11px] text-pink-800/70">Section ID: <code class="font-mono bg-pink-100/60 px-1 py-0.5 rounded">${secId}</code></p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 self-end sm:self-center">
+                <!-- Move Up / Move Down Reorder -->
+                <button type="button" onclick="moveSection('${secId}', -1)" ${isFirst ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-bold hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition" title="Move Up">
+                  <i class="fa-solid fa-arrow-up"></i>
+                </button>
+                <button type="button" onclick="moveSection('${secId}', 1)" ${isLast ? 'disabled' : ''} class="px-2.5 py-1.5 rounded-xl bg-white text-pink-800 border border-pink-200 text-xs font-bold hover:bg-pink-100 disabled:opacity-30 disabled:pointer-events-none transition" title="Move Down">
+                  <i class="fa-solid fa-arrow-down"></i>
+                </button>
+
+                <!-- Show / Hide Switch -->
+                <button type="button" onclick="toggleSectionVisibility('${secId}')" class="px-3.5 py-1.5 rounded-xl text-xs font-black transition flex items-center gap-1.5 shadow-sm ${sec.visible !== false ? 'bg-emerald-600 hover:bg-emerald-700 text-white' : 'bg-slate-300 hover:bg-slate-400 text-slate-800'}">
+                  <i class="fa-solid ${sec.visible !== false ? 'fa-eye' : 'fa-eye-slash'}"></i>
+                  <span>${sec.visible !== false ? 'Showing' : 'Hidden'}</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Content Customizer for this Section -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div>
+                <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">Badge Tag / Highlight Pill</label>
+                <input type="text" value="${escapeHtml(sec.badge || '')}" onchange="updateSectionField('${secId}', 'badge', this.value)" placeholder="e.g. ✨ New Arrival" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-semibold text-pink-900 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">CTA Button Text</label>
+                <input type="text" value="${escapeHtml(sec.ctaText || '')}" onchange="updateSectionField('${secId}', 'ctaText', this.value)" placeholder="e.g. Order on WhatsApp" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-semibold text-pink-900 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">Section Heading / Title</label>
+                <input type="text" value="${escapeHtml(sec.title || '')}" onchange="updateSectionField('${secId}', 'title', this.value)" placeholder="Main Section Title" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+              </div>
+
+              <div class="sm:col-span-2">
+                <label class="block text-[10px] font-black text-pink-900 uppercase mb-1">Subtitle / Descriptive Text</label>
+                <textarea rows="2" onchange="updateSectionField('${secId}', 'subtitle', this.value)" placeholder="Short descriptive sentence" class="w-full px-3 py-1.5 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">${escapeHtml(sec.subtitle || '')}</textarea>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function moveSection(secId, direction) {
+      const sortedKeys = Object.keys(sectionsConfig).sort((a, b) => (sectionsConfig[a].order ?? 99) - (sectionsConfig[b].order ?? 99));
+      const currentIdx = sortedKeys.indexOf(secId);
+      const targetIdx = currentIdx + direction;
+      if (targetIdx < 0 || targetIdx >= sortedKeys.length) return;
+
+      const targetId = sortedKeys[targetIdx];
+      const tempOrder = sectionsConfig[secId].order;
+      sectionsConfig[secId].order = sectionsConfig[targetId].order;
+      sectionsConfig[targetId].order = tempOrder;
+
+      renderControlCentreSections();
+      showToast("Section moved! Click 'Save Section Changes' to apply. 🌸");
+    }
+
+    function toggleSectionVisibility(secId) {
+      if (!sectionsConfig[secId]) return;
+      sectionsConfig[secId].visible = sectionsConfig[secId].visible === false;
+      renderControlCentreSections();
+      showToast(`Section ${sectionsConfig[secId].visible ? 'showing' : 'hidden'}!`);
+    }
+
+    function updateSectionField(secId, field, value) {
+      if (!sectionsConfig[secId]) return;
+      sectionsConfig[secId][field] = value.trim();
+    }
+
+    async function saveSectionsControlCentre() {
+      currentSettings.sectionsConfig = sectionsConfig;
+      showToast("Saving landing page layout... ⏳");
+      await saveStoreSettings();
+    }
+
+    function resetSectionsToDefault() {
+      if (!confirm("Are you sure you want to reset all landing page sections and order back to default?")) return;
+      initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
+      showToast("Layout reset to defaults. Click 'Save Section Changes' to apply.");
+    }
+
+    // ================= ADAPTIVE LOGO & SIZING =================
+    function changeLogoShape(shape) {
+      const box = document.getElementById('admin-logo-preview-box');
+      if (box) {
+        box.classList.remove('logo-shape-natural', 'logo-shape-circle', 'logo-shape-rounded', 'logo-shape-square');
+        box.classList.add(`logo-shape-${shape}`);
+      }
+    }
+
+    function changeLogoHeight(size) {
+      const box = document.getElementById('admin-logo-preview-box');
+      if (box) {
+        box.classList.remove('logo-size-sm', 'logo-size-md', 'logo-size-lg', 'logo-size-xl');
+        box.classList.add(`logo-size-${size}`);
+      }
+    }
+
+    function updateLogoPreview(url) {
+      const img = document.getElementById('logo-preview-img');
+      if (img && url) img.src = url;
+    }
+
+    function setLogoPreset(url, shape = 'natural', size = 'md') {
+      const input = document.getElementById('setting-store-logo');
+      if (input) input.value = url;
+      updateLogoPreview(url);
+
+      const shapeSelect = document.getElementById('setting-logo-shape');
+      if (shapeSelect) {
+        shapeSelect.value = shape;
+        changeLogoShape(shape);
+      }
+
+      const heightSelect = document.getElementById('setting-logo-height');
+      if (heightSelect) {
+        heightSelect.value = size;
+        changeLogoHeight(size);
+      }
+    }
+
+    // ================= BULK IMAGE TO PRODUCT LISTER =================
+    function openBulkImageModal() {
+      document.getElementById('bulk-image-modal').classList.remove('hidden');
+    }
+
+    function closeBulkImageModal() {
+      document.getElementById('bulk-image-modal').classList.add('hidden');
+    }
+
+    async function handleBulkImageFiles(files) {
+      if (!files || files.length === 0) return;
+
+      showToast(`Processing ${files.length} images... ⏳`);
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        if (!file.type.startsWith('image/')) continue;
+
+        try {
+          const dataUrl = await resizeImageToDataUrl(file, 800, 800, 0.85);
+
+          let rawName = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+          rawName = rawName.replace(/[-_]+/g, ' ').replace(/\s+/g, ' ').trim();
+          const prettyName = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+
+          const batchCat = document.getElementById('batch-fill-category')?.value || 'toys';
+          const batchPrice = Number(document.getElementById('batch-fill-price')?.value) || 499;
+          const batchOriginal = Number(document.getElementById('batch-fill-original-price')?.value) || Math.round(batchPrice * 1.5);
+
+          bulkImageDrafts.push({
+            id: 'draft_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+            name: prettyName,
+            category: batchCat,
+            price: batchPrice,
+            originalPrice: batchOriginal,
+            badge: 'New Arrival',
+            inStock: true,
+            dataUrl: dataUrl,
+            filename: file.name
+          });
+        } catch (err) {
+          console.error("Failed to process image file", file.name, err);
+        }
+      }
+
+      renderBulkImageDrafts();
+    }
+
+    function renderBulkImageDrafts() {
+      const container = document.getElementById('bulk-images-grid');
+      const previewSection = document.getElementById('bulk-images-preview-section');
+      const quickControls = document.getElementById('bulk-image-quick-controls');
+      const countLabel = document.getElementById('bulk-images-count-label');
+
+      if (!container) return;
+
+      if (bulkImageDrafts.length === 0) {
+        if (previewSection) previewSection.classList.add('hidden');
+        if (quickControls) quickControls.classList.add('hidden');
+        container.innerHTML = '';
+        return;
+      }
+
+      if (previewSection) previewSection.classList.remove('hidden');
+      if (quickControls) quickControls.classList.remove('hidden');
+      if (countLabel) countLabel.textContent = `${bulkImageDrafts.length} Photos Ready to List`;
+
+      container.innerHTML = bulkImageDrafts.map((draft, idx) => `
+        <div class="pink-acrylic p-3 rounded-2xl border border-pink-200 flex flex-col justify-between relative text-xs shadow-sm">
+          <button type="button" onclick="removeBulkImageDraft(${idx})" class="absolute top-2 right-2 w-6 h-6 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-700 flex items-center justify-center font-bold text-[10px] shadow-sm z-10" title="Remove">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+
+          <div>
+            <div class="w-full h-32 rounded-xl overflow-hidden bg-white mb-2 border border-pink-100">
+              <img src="${draft.dataUrl}" alt="${escapeHtml(draft.name)}" class="w-full h-full object-cover">
+            </div>
+
+            <div class="space-y-1.5">
+              <div>
+                <label class="block text-[9px] font-black text-pink-900 uppercase">Product Title</label>
+                <input type="text" value="${escapeHtml(draft.name)}" oninput="bulkImageDrafts[${idx}].name = this.value" class="w-full px-2.5 py-1 rounded-lg border border-pink-200 text-[11px] font-bold text-pink-950">
+              </div>
+
+              <div class="grid grid-cols-2 gap-1.5">
+                <div>
+                  <label class="block text-[9px] font-black text-pink-900 uppercase">Category</label>
+                  <select onchange="bulkImageDrafts[${idx}].category = this.value" class="w-full px-2 py-1 rounded-lg border border-pink-200 text-[10px] font-bold text-pink-900">
+                    <option value="toys" ${draft.category === 'toys' ? 'selected' : ''}>🧸 Soft Toys</option>
+                    <option value="stationery" ${draft.category === 'stationery' ? 'selected' : ''}>✍️ Stationery</option>
+                    <option value="personalized" ${draft.category === 'personalized' ? 'selected' : ''}>💖 Personalized</option>
+                    <option value="birthday" ${draft.category === 'birthday' ? 'selected' : ''}>🎂 Birthday</option>
+                    <option value="novelties" ${draft.category === 'novelties' ? 'selected' : ''}>🎒 Novelties</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label class="block text-[9px] font-black text-pink-900 uppercase">Selling Price (₹)</label>
+                  <input type="number" value="${draft.price}" oninput="bulkImageDrafts[${idx}].price = Number(this.value)" class="w-full px-2 py-1 rounded-lg border border-pink-200 text-[11px] font-bold text-emerald-700">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function applyBatchImageValues() {
+      const cat = document.getElementById('batch-fill-category')?.value;
+      const price = Number(document.getElementById('batch-fill-price')?.value);
+      const origPrice = Number(document.getElementById('batch-fill-original-price')?.value);
+
+      bulkImageDrafts.forEach(draft => {
+        if (cat) draft.category = cat;
+        if (!isNaN(price) && price > 0) draft.price = price;
+        if (!isNaN(origPrice) && origPrice > 0) draft.originalPrice = origPrice;
+      });
+
+      renderBulkImageDrafts();
+      showToast("Values applied to all drafts! ✨");
+    }
+
+    function removeBulkImageDraft(idx) {
+      bulkImageDrafts.splice(idx, 1);
+      renderBulkImageDrafts();
+    }
+
+    function clearBulkImages() {
+      bulkImageDrafts = [];
+      const fileInput = document.getElementById('bulk-image-file-input');
+      if (fileInput) fileInput.value = '';
+      renderBulkImageDrafts();
+    }
+
+    async function uploadAndListAllBulkImages() {
+      if (bulkImageDrafts.length === 0) {
+        showToast("No images to upload", "error");
+        return;
+      }
+
+      const submitBtn = document.getElementById('bulk-images-submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>Listing ${bulkImageDrafts.length} Products...</span>`;
+
+      showToast(`Uploading photos & creating products... ⏳`);
+
+      try {
+        const productsToCreate = [];
+
+        for (let i = 0; i < bulkImageDrafts.length; i++) {
+          const draft = bulkImageDrafts[i];
+          let imageUrl = draft.dataUrl;
+
+          try {
+            const upRes = await fetch('/api/upload', {
+              method: 'POST',
+              headers: authHeaders(),
+              body: JSON.stringify({
+                image: draft.dataUrl,
+                filename: `product_${Date.now()}_${i}`
+              })
+            });
+            const upData = await upRes.json();
+            if (upData.success && upData.url) {
+              imageUrl = upData.url;
+            }
+          } catch (_) {}
+
+          productsToCreate.push({
+            name: draft.name || `Cute Product #${i + 1}`,
+            hindiName: "",
+            category: draft.category || 'toys',
+            badge: draft.badge || 'New Arrival',
+            price: Number(draft.price) || 499,
+            originalPrice: Number(draft.originalPrice) || Math.round((Number(draft.price) || 499) * 1.5),
+            image: imageUrl,
+            description: `Authentic cute kawaii item from Chintu's Gift Store, Dalli Rajhara.`,
+            inStock: true,
+            customizable: draft.category === 'personalized'
+          });
+        }
+
+        const res = await fetch('/api/products/bulk', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({ products: productsToCreate })
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          showToast(`🎉 Successfully added ${data.count} new products from uploaded photos!`);
+          clearBulkImages();
+          closeBulkImageModal();
+          fetchProducts();
+        } else {
+          showToast(data.message || "Failed to save products", "error");
+        }
+      } catch (err) {
+        console.error(err);
+        showToast("Error listing products: " + err.message, "error");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> <span>Upload & List All Products</span>`;
+      }
+    }
+
+    // ================= STORE SETTINGS & PERSISTENCE =================
     async function saveStoreSettings() {
       const clientId = (document.getElementById('setting-google-client-id')?.value || "").trim();
       const masterPin = (document.getElementById('setting-master-pin')?.value || "").trim();
@@ -1557,9 +2478,12 @@
         festiveConfetti: document.getElementById('setting-festive-confetti')?.checked ?? true,
 
         name: (document.getElementById('setting-store-name')?.value || "Chintu's Gift & Kawaii Store").trim(),
+        storeName: (document.getElementById('setting-store-name')?.value || "Chintu's Gift & Kawaii Store").trim(),
         brandShort: (document.getElementById('setting-brand-short')?.value || "CHINTU'S").trim(),
         brandTagline: (document.getElementById('setting-brand-tagline')?.value || "").trim(),
         storeLogo: (document.getElementById('setting-store-logo')?.value || "assets/images/kawaii_logo.jpg").trim(),
+        logoShape: document.getElementById('setting-logo-shape')?.value || 'natural',
+        logoHeight: document.getElementById('setting-logo-height')?.value || 'md',
 
         couponCode: (document.getElementById('setting-coupon-code')?.value || "CHINTU10").trim().toUpperCase(),
         couponDiscount: Number(document.getElementById('setting-coupon-discount')?.value) || 10,
@@ -1573,6 +2497,8 @@
         heroImage: (document.getElementById('setting-hero-image')?.value || "assets/images/kawaii_hero.jpg").trim(),
         heroCtaText: (document.getElementById('setting-hero-cta')?.value || "Explore Cute Gifts 🛍️").trim(),
 
+        sectionsConfig: sectionsConfig,
+
         phone: "8269212182",
         displayPhone: "+91 82692 12182",
         whatsapp: (document.getElementById('setting-whatsapp')?.value || "918269212182").trim(),
@@ -1584,16 +2510,21 @@
         closedDay: (document.getElementById('setting-closed-day')?.value || "Open 7 Days a Week").trim(),
 
         authorizedAdminEmail: (document.getElementById('setting-google-email')?.value || "").trim().toLowerCase(),
-        googleClientId: clientId
+        googleClientId: clientId,
+        updatedAt: new Date().toISOString()
       };
 
       if (masterPin) {
         payload.masterPin = masterPin;
       }
 
-      if (clientId) {
-        localStorage.setItem('chintu_google_client_id', clientId);
-      }
+      // Authoritative Dual-Save to Local Storage
+      try {
+        localStorage.setItem('chintu_store_settings', JSON.stringify(payload));
+        if (clientId) {
+          localStorage.setItem('chintu_google_client_id', clientId);
+        }
+      } catch (_) {}
 
       try {
         const res = await fetch('/api/settings', {
@@ -1603,21 +2534,20 @@
         });
         const data = await res.json();
         if (data.success) {
-          showToast("Store settings, theme & landing page saved successfully! 🌸");
+          showToast("Store settings, theme, logo & sections saved permanently! 🌸");
           if (masterPin) {
             document.getElementById('setting-master-pin').value = '';
           }
-          fetchSettings();
+          currentSettings = Object.assign({}, currentSettings, payload);
         } else {
-          showToast(data.message || "Failed to save settings", "error");
+          showToast(data.message || "Failed to save settings to server", "error");
         }
       } catch (e) {
         console.error(e);
-        showToast("Network error saving settings", "error");
+        showToast("Settings saved to browser storage! (Network offline)", "error");
       }
     }
 
-    // ================= CUSTOMIZER HELPERS =================
     function selectTheme(themeName) {
       const input = document.getElementById('setting-theme');
       if (input) input.value = themeName;
@@ -1635,19 +2565,6 @@
         activeCard.classList.add('border-pink-500', 'bg-pink-50');
         const badge = activeCard.querySelector('.theme-active-badge');
         if (badge) badge.classList.remove('hidden');
-      }
-    }
-
-    function updateLogoPreview(url) {
-      const img = document.getElementById('logo-preview-img');
-      if (img && url) img.src = url;
-    }
-
-    function setLogoPreset(url) {
-      const input = document.getElementById('setting-store-logo');
-      if (input) {
-        input.value = url;
-        updateLogoPreview(url);
       }
     }
 
@@ -1674,6 +2591,16 @@
         input.type = 'password';
         btn.innerHTML = '<i class="fa-solid fa-eye"></i>';
       }
+    }
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
     }
 
     // ================= IMAGE FILE UPLOAD HANDLER =================

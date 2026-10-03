@@ -14,12 +14,23 @@ const PRODUCTS_FILE = path.join(__dirname, 'data', 'products.json');
 const ORDERS_FILE = path.join(__dirname, 'data', 'orders.json');
 const SETTINGS_FILE = path.join(__dirname, 'data', 'settings.json');
 
-// Memory Cache for Serverless resilience (e.g. Vercel read-only filesystem)
+// Memory Cache and /tmp resilience
 let memoryCache = {
   products: null,
   orders: null,
   settings: null
 };
+
+const TMP_PRODUCTS = path.join('/tmp', 'chintus_products.json');
+const TMP_ORDERS = path.join('/tmp', 'chintus_orders.json');
+const TMP_SETTINGS = path.join('/tmp', 'chintus_settings.json');
+
+function getTmpFile(file) {
+  if (file === PRODUCTS_FILE) return TMP_PRODUCTS;
+  if (file === ORDERS_FILE) return TMP_ORDERS;
+  if (file === SETTINGS_FILE) return TMP_SETTINGS;
+  return null;
+}
 
 // Helper to read JSON
 function readJSON(file, defaultVal = []) {
@@ -27,6 +38,18 @@ function readJSON(file, defaultVal = []) {
     if (file === PRODUCTS_FILE && memoryCache.products) return memoryCache.products;
     if (file === ORDERS_FILE && memoryCache.orders) return memoryCache.orders;
     if (file === SETTINGS_FILE && memoryCache.settings) return memoryCache.settings;
+
+    // 1. Check /tmp first for runtime state persistence
+    const tmpFile = getTmpFile(file);
+    if (tmpFile && fs.existsSync(tmpFile)) {
+      try {
+        const data = JSON.parse(fs.readFileSync(tmpFile, 'utf8'));
+        if (file === PRODUCTS_FILE) memoryCache.products = data;
+        if (file === ORDERS_FILE) memoryCache.orders = data;
+        if (file === SETTINGS_FILE) memoryCache.settings = data;
+        return data;
+      } catch (_) {}
+    }
 
     if (!fs.existsSync(file)) {
       try { fs.writeFileSync(file, JSON.stringify(defaultVal, null, 2)); } catch (_) {}
@@ -46,7 +69,7 @@ function readJSON(file, defaultVal = []) {
   }
 }
 
-// Helper to write JSON (falls back to memory if filesystem is read-only)
+// Helper to write JSON (writes to both project and /tmp)
 function writeJSON(file, data) {
   if (file === PRODUCTS_FILE) memoryCache.products = data;
   if (file === ORDERS_FILE) memoryCache.orders = data;
@@ -54,11 +77,18 @@ function writeJSON(file, data) {
 
   try {
     fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
-    return true;
   } catch (err) {
     console.warn(`Filesystem write failed (${file}), cached in memory:`, err.message);
-    return true;
   }
+
+  const tmpFile = getTmpFile(file);
+  if (tmpFile) {
+    try {
+      fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
+    } catch (_) {}
+  }
+
+  return true;
 }
 
 // Authentication Middleware for Admin Protection
@@ -348,6 +378,75 @@ app.patch('/api/products/:id/stock', requireAdmin, (req, res) => {
   res.json({ success: true, message: `Product stock changed to ${product.inStock}`, data: product });
 });
 
+// Protected: Bulk Edit & Bulk Delete Products (Admin only)
+app.post('/api/products/bulk-edit', requireAdmin, (req, res) => {
+  const { ids, updates = {}, action = 'update' } = req.body;
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ success: false, message: 'Array of product IDs is required' });
+  }
+
+  let products = readJSON(PRODUCTS_FILE, []);
+
+  if (action === 'delete') {
+    const initialCount = products.length;
+    products = products.filter(p => !ids.includes(p.id));
+    const deletedCount = initialCount - products.length;
+    writeJSON(PRODUCTS_FILE, products);
+    return res.json({
+      success: true,
+      message: `Successfully deleted ${deletedCount} products from catalogue`,
+      deletedCount
+    });
+  }
+
+  let modifiedCount = 0;
+  products = products.map(product => {
+    if (!ids.includes(product.id)) return product;
+    modifiedCount++;
+
+    const updated = { ...product };
+
+    if (updates.category && updates.category !== 'keep') {
+      updated.category = String(updates.category).toLowerCase().trim();
+    }
+    if (updates.badge !== undefined && updates.badge !== 'keep') {
+      updated.badge = String(updates.badge).trim();
+    }
+    if (updates.inStock !== undefined && updates.inStock !== 'keep') {
+      updated.inStock = Boolean(updates.inStock === true || updates.inStock === 'true' || updates.inStock === 1);
+    }
+
+    if (updates.priceAction === 'set' && updates.priceValue !== undefined && updates.priceValue !== '') {
+      const newPrice = Math.max(1, Number(updates.priceValue));
+      updated.price = newPrice;
+      if (!updates.originalPriceValue && (!updated.originalPrice || updated.originalPrice < newPrice)) {
+        updated.originalPrice = Math.round(newPrice * 1.5);
+      }
+    } else if (updates.priceAction === 'discount_percent' && updates.priceValue) {
+      const discountPct = Number(updates.priceValue) / 100;
+      updated.originalPrice = updated.price;
+      updated.price = Math.max(1, Math.round(updated.price * (1 - discountPct)));
+    } else if (updates.priceAction === 'increase_percent' && updates.priceValue) {
+      const incPct = Number(updates.priceValue) / 100;
+      updated.price = Math.round(updated.price * (1 + incPct));
+    }
+
+    if (updates.originalPriceValue && updates.originalPriceValue !== '') {
+      updated.originalPrice = Math.max(1, Number(updates.originalPriceValue));
+    }
+
+    return updated;
+  });
+
+  writeJSON(PRODUCTS_FILE, products);
+  res.json({
+    success: true,
+    message: `Successfully updated ${modifiedCount} products!`,
+    modifiedCount,
+    data: products
+  });
+});
+
 // Protected: Delete product (Admin only)
 app.delete('/api/products/:id', requireAdmin, (req, res) => {
   let products = readJSON(PRODUCTS_FILE, []);
@@ -401,15 +500,19 @@ app.get('/api/settings', (req, res) => {
 // Protected: Save settings (Admin only)
 app.post('/api/settings', requireAdmin, (req, res) => {
   const current = readJSON(SETTINGS_FILE, {});
+  const storeName = req.body.storeName || req.body.name || current.storeName || current.name || "Chintu's Gift & Kawaii Store";
   const updated = {
     ...current,
     ...req.body,
+    storeName: storeName,
+    name: storeName,
     phone: "8269212182",
     displayPhone: "+91 82692 12182",
-    whatsapp: "918269212182"
+    whatsapp: "918269212182",
+    updatedAt: new Date().toISOString()
   };
   writeJSON(SETTINGS_FILE, updated);
-  res.json({ success: true, message: 'Settings saved', data: updated });
+  res.json({ success: true, message: 'Settings saved successfully', data: updated });
 });
 
 // Serve Static Files

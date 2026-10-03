@@ -26,6 +26,24 @@ let customizerState = {
   uploadedPhoto: null
 };
 
+// Instant 0ms Fast Cache Rendering (Zero Latency on Page Load)
+(function initFastRender() {
+  try {
+    const cachedSettings = localStorage.getItem('chintu_store_settings');
+    if (cachedSettings) {
+      const parsed = JSON.parse(cachedSettings);
+      applyStoreSettings(parsed);
+    }
+    const cachedProducts = localStorage.getItem('chintu_custom_products');
+    if (cachedProducts) {
+      const prods = JSON.parse(cachedProducts);
+      if (Array.isArray(prods) && prods.length > 0) {
+        productsList = prods;
+      }
+    }
+  } catch (_) {}
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
   loadStoreSettings();
   loadCart();
@@ -37,17 +55,35 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(checkStoreOpenStatus, 60000);
 });
 
-// Load settings from backend or local defaults
+// Load settings from backend or local storage
 async function loadStoreSettings() {
   try {
     const res = await fetch('/api/settings');
     const data = await res.json();
     if (data.success && data.data) {
-      applyStoreSettings(data.data);
+      const serverSettings = data.data;
+      const local = localStorage.getItem('chintu_store_settings');
+      let finalSettings = serverSettings;
+      if (local) {
+        try {
+          const parsedLocal = JSON.parse(local);
+          finalSettings = { ...parsedLocal, ...serverSettings };
+        } catch (_) {}
+      }
+      localStorage.setItem('chintu_store_settings', JSON.stringify(finalSettings));
+      applyStoreSettings(finalSettings);
       return;
     }
   } catch (e) {
-    console.log("Using default store settings");
+    console.log("Using cached/default store settings:", e.message);
+  }
+
+  const cached = localStorage.getItem('chintu_store_settings');
+  if (cached) {
+    try {
+      applyStoreSettings(JSON.parse(cached));
+      return;
+    } catch (_) {}
   }
 
   applyStoreSettings({
@@ -62,6 +98,7 @@ async function loadStoreSettings() {
 }
 
 function applyStoreSettings(settings) {
+  if (!settings) return;
   window.currentStoreSettings = settings;
 
   // 1. Theme and Aesthetic Styling
@@ -79,9 +116,10 @@ function applyStoreSettings(settings) {
     document.body.classList.remove('hide-stickers');
   }
 
-  // 2. Branding (Store Name, Logo, Tagline)
-  if (settings.storeName) {
-    document.title = `${settings.storeName} | Dalli Rajhara`;
+  // 2. Branding (Store Name, Logo, Tagline) & Adaptive PNG Molding
+  const brandName = settings.storeName || settings.name;
+  if (brandName) {
+    document.title = `${brandName} | Dalli Rajhara`;
   }
   if (settings.brandShort) {
     document.querySelectorAll(".store-brand-title").forEach(el => el.textContent = settings.brandShort);
@@ -90,7 +128,18 @@ function applyStoreSettings(settings) {
     document.querySelectorAll(".store-brand-tagline").forEach(el => el.textContent = settings.brandTagline);
   }
   if (settings.storeLogo) {
-    document.querySelectorAll(".store-logo-img").forEach(el => el.src = settings.storeLogo);
+    document.querySelectorAll(".store-logo-img").forEach(el => {
+      el.src = settings.storeLogo;
+      el.style.objectFit = 'contain';
+    });
+  }
+
+  // Apply Logo Mold & Custom Shape / Height
+  const logoWrapper = document.getElementById("store-logo-wrapper");
+  if (logoWrapper) {
+    const shape = settings.logoShape || 'natural';
+    const size = settings.logoHeight || 'md';
+    logoWrapper.className = `store-logo-wrap logo-shape-${shape} logo-size-${size} shrink-0`;
   }
 
   // 3. Top Announcement & Offers
@@ -152,20 +201,81 @@ function applyStoreSettings(settings) {
     document.querySelectorAll(".store-insta-link").forEach(el => el.href = instaUrl);
     document.querySelectorAll(".store-insta-handle").forEach(el => el.textContent = displayHandle);
   }
+
+  // 6. Section Control Centre: Hide/Show, Move, and Custom Content
+  if (settings.sectionsConfig && typeof settings.sectionsConfig === 'object') {
+    const flow = document.getElementById("main-content-flow");
+
+    Object.entries(settings.sectionsConfig).forEach(([secId, cfg]) => {
+      const sec = document.querySelector(`[data-section-id="${secId}"]`);
+      if (!sec) return;
+
+      // Visibility toggle
+      if (cfg.visible === false) {
+        sec.classList.add('hidden');
+      } else {
+        sec.classList.remove('hidden');
+      }
+
+      // Content customizer
+      if (cfg.badge) {
+        const b = sec.querySelector('.section-badge') || sec.querySelector('#hero-badge-text');
+        if (b) b.textContent = cfg.badge;
+      }
+      if (cfg.title) {
+        const t = sec.querySelector('.section-title') || sec.querySelector('#hero-heading');
+        if (t) t.textContent = cfg.title;
+      }
+      if (cfg.subtitle) {
+        const s = sec.querySelector('.section-subtitle') || sec.querySelector('#hero-subtitle');
+        if (s) s.textContent = cfg.subtitle;
+      }
+      if (cfg.ctaText) {
+        const c = sec.querySelector('.section-cta') || sec.querySelector('#hero-cta-btn-text');
+        if (c) c.textContent = cfg.ctaText;
+      }
+    });
+
+    // Reorder flow sections inside #main-content-flow
+    if (flow) {
+      const childSections = Array.from(flow.children).filter(el => el.hasAttribute('data-section-id'));
+      childSections.sort((a, b) => {
+        const idA = a.getAttribute('data-section-id');
+        const idB = b.getAttribute('data-section-id');
+        const orderA = settings.sectionsConfig[idA]?.order ?? 99;
+        const orderB = settings.sectionsConfig[idB]?.order ?? 99;
+        return orderA - orderB;
+      });
+      childSections.forEach(node => flow.appendChild(node));
+    }
+  }
 }
 
-// Fetch products from backend REST API
+// Fetch products from backend REST API with Local Storage fallback
 async function fetchProductsAndRender() {
   try {
     const res = await fetch('/api/products');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
       productsList = data.data;
+      localStorage.setItem('chintu_custom_products', JSON.stringify(productsList));
       renderProducts();
       return;
     }
   } catch (e) {
-    console.warn("Backend API not reachable, falling back to local dataset:", e);
+    console.warn("Backend API not reachable, checking local storage cache:", e);
+  }
+
+  const cached = localStorage.getItem('chintu_custom_products');
+  if (cached) {
+    try {
+      const prods = JSON.parse(cached);
+      if (Array.isArray(prods) && prods.length > 0) {
+        productsList = prods;
+        renderProducts();
+        return;
+      }
+    } catch (_) {}
   }
 
   if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {

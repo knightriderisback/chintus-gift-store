@@ -476,3 +476,66 @@ body.blur-strong .pink-acrylic, body.blur-strong .pink-acrylic-nav {
 body.hide-stickers .decorative-sticker {
   display: none !important;
 }
+
+/* ================= LOGO CUSTOMIZATION & ADAPTIVE PNG MOLDING ================= */
+.store-logo-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.store-logo-img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Natural mode: Transparent PNG molds completely to its intrinsic shape */
+.logo-shape-natural {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+.logo-shape-circle {
+  border-radius: 9999px !important;
+  overflow: hidden !important;
+  border: 2px solid var(--acrylic-border) !important;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.15) !important;
+  aspect-ratio: 1 / 1;
+}
+
+.logo-shape-rounded {
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  border: 1.5px solid var(--acrylic-border) !important;
+  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.12) !important;
+  padding: 3px;
+}
+
+.logo-shape-square {
+  border-radius: 6px !important;
+  overflow: hidden !important;
+  border: 1.5px solid var(--acrylic-border) !important;
+  aspect-ratio: 1 / 1;
+}
+
+/* Logo Sizes */
+.logo-size-sm .store-logo-img { max-height: 36px !important; }
+.logo-size-md .store-logo-img { max-height: 48px !important; }
+.logo-size-lg .store-logo-img { max-height: 64px !important; }
+.logo-size-xl .store-logo-img { max-height: 80px !important; }
+
+/* Admin Footer Dock Navigation */
+.admin-bottom-nav {
+  background: rgba(255, 245, 248, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1.5px solid rgba(244, 114, 182, 0.3);
+  box-shadow: 0 -4px 24px rgba(236, 72, 153, 0.1);
+}
+

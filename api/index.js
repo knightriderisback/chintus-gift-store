@@ -285,11 +285,35 @@ let memoryCache = {
   settings: null
 };
 
+const TMP_PRODUCTS = path.join('/tmp', 'chintus_products.json');
+const TMP_ORDERS = path.join('/tmp', 'chintus_orders.json');
+const TMP_SETTINGS = path.join('/tmp', 'chintus_settings.json');
+
+function getTmpFile(file) {
+  if (file === PRODUCTS_FILE) return TMP_PRODUCTS;
+  if (file === ORDERS_FILE) return TMP_ORDERS;
+  if (file === SETTINGS_FILE) return TMP_SETTINGS;
+  return null;
+}
+
 function readData(file, defaultVal) {
   if (file === PRODUCTS_FILE && memoryCache.products) return memoryCache.products;
   if (file === ORDERS_FILE && memoryCache.orders) return memoryCache.orders;
   if (file === SETTINGS_FILE && memoryCache.settings) return memoryCache.settings;
 
+  // 1. Check /tmp first for runtime state persistence across requests in serverless
+  const tmpFile = getTmpFile(file);
+  if (tmpFile && fs.existsSync(tmpFile)) {
+    try {
+      const data = JSON.parse(fs.readFileSync(tmpFile, 'utf8'));
+      if (file === PRODUCTS_FILE) memoryCache.products = data;
+      if (file === ORDERS_FILE) memoryCache.orders = data;
+      if (file === SETTINGS_FILE) memoryCache.settings = data;
+      return data;
+    } catch (_) {}
+  }
+
+  // 2. Fall back to bundled data file
   try {
     if (fs.existsSync(file)) {
       const data = JSON.parse(fs.readFileSync(file, 'utf8'));
@@ -308,9 +332,19 @@ function writeData(file, data) {
   if (file === ORDERS_FILE) memoryCache.orders = data;
   if (file === SETTINGS_FILE) memoryCache.settings = data;
 
+  // 1. Try to write to project file
   try {
     fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
   } catch (_) {}
+
+  // 2. Try to write to /tmp file (writable in AWS Lambda & Vercel serverless)
+  const tmpFile = getTmpFile(file);
+  if (tmpFile) {
+    try {
+      fs.writeFileSync(tmpFile, JSON.stringify(data, null, 2), 'utf8');
+    } catch (_) {}
+  }
+
   return true;
 }
 
@@ -596,6 +630,75 @@ app.patch('/api/products/:id/stock', requireAdmin, (req, res) => {
   res.json({ success: true, message: `Product stock changed to ${product.inStock}`, data: product });
 });
 
+// Protected: Bulk Edit & Bulk Delete Products (Admin only)
+app.post('/api/products/bulk-edit', requireAdmin, (req, res) => {
+  const { ids, updates = {}, action = 'update' } = req.body;
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ success: false, message: 'Array of product IDs is required' });
+  }
+
+  let products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+
+  if (action === 'delete') {
+    const initialCount = products.length;
+    products = products.filter(p => !ids.includes(p.id));
+    const deletedCount = initialCount - products.length;
+    writeData(PRODUCTS_FILE, products);
+    return res.json({
+      success: true,
+      message: `Successfully deleted ${deletedCount} products from catalogue`,
+      deletedCount
+    });
+  }
+
+  let modifiedCount = 0;
+  products = products.map(product => {
+    if (!ids.includes(product.id)) return product;
+    modifiedCount++;
+
+    const updated = { ...product };
+
+    if (updates.category && updates.category !== 'keep') {
+      updated.category = String(updates.category).toLowerCase().trim();
+    }
+    if (updates.badge !== undefined && updates.badge !== 'keep') {
+      updated.badge = String(updates.badge).trim();
+    }
+    if (updates.inStock !== undefined && updates.inStock !== 'keep') {
+      updated.inStock = Boolean(updates.inStock === true || updates.inStock === 'true' || updates.inStock === 1);
+    }
+
+    if (updates.priceAction === 'set' && updates.priceValue !== undefined && updates.priceValue !== '') {
+      const newPrice = Math.max(1, Number(updates.priceValue));
+      updated.price = newPrice;
+      if (!updates.originalPriceValue && (!updated.originalPrice || updated.originalPrice < newPrice)) {
+        updated.originalPrice = Math.round(newPrice * 1.5);
+      }
+    } else if (updates.priceAction === 'discount_percent' && updates.priceValue) {
+      const discountPct = Number(updates.priceValue) / 100;
+      updated.originalPrice = updated.price;
+      updated.price = Math.max(1, Math.round(updated.price * (1 - discountPct)));
+    } else if (updates.priceAction === 'increase_percent' && updates.priceValue) {
+      const incPct = Number(updates.priceValue) / 100;
+      updated.price = Math.round(updated.price * (1 + incPct));
+    }
+
+    if (updates.originalPriceValue && updates.originalPriceValue !== '') {
+      updated.originalPrice = Math.max(1, Number(updates.originalPriceValue));
+    }
+
+    return updated;
+  });
+
+  writeData(PRODUCTS_FILE, products);
+  res.json({
+    success: true,
+    message: `Successfully updated ${modifiedCount} products!`,
+    modifiedCount,
+    data: products
+  });
+});
+
 app.delete('/api/products/:id', requireAdmin, (req, res) => {
   let products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
   const exists = products.some(p => p.id === req.params.id);
@@ -644,15 +747,19 @@ app.get('/api/settings', (req, res) => {
 
 app.post('/api/settings', requireAdmin, (req, res) => {
   const current = readData(SETTINGS_FILE, {});
+  const storeName = req.body.storeName || req.body.name || current.storeName || current.name || "Chintu's Gift & Kawaii Store";
   const updated = {
     ...current,
     ...req.body,
+    storeName: storeName,
+    name: storeName,
     phone: "8269212182",
     displayPhone: "+91 82692 12182",
-    whatsapp: "918269212182"
+    whatsapp: "918269212182",
+    updatedAt: new Date().toISOString()
   };
   writeData(SETTINGS_FILE, updated);
-  res.json({ success: true, message: 'Settings saved', data: updated });
+  res.json({ success: true, message: 'Settings saved successfully', data: updated });
 });
 
 module.exports = app;
