@@ -16,6 +16,21 @@
   <!-- Favicon -->
   <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
 
+  <!-- Zero-Latency Logo & Settings Hydration (Prevents default logo flash on refresh) -->
+  <script>
+    (function() {
+      try {
+        var s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
+        window.__CHINTU_STORE_LOGO__ = (s && s.storeLogo && s.storeLogo.trim()) ? s.storeLogo : 'assets/images/kawaii_logo.jpg';
+        window.__CHINTU_LOGO_SHAPE__ = (s && s.logoShape) ? s.logoShape : 'natural';
+        window.__CHINTU_LOGO_HEIGHT__ = (s && s.logoHeight) ? s.logoHeight : 'md';
+        window.__CHINTU_STORE_NAME__ = (s && (s.brandShort || s.storeName)) ? (s.brandShort || s.storeName) : "CHINTU'S";
+      } catch (e) {
+        window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+      }
+    })();
+  </script>
+
   <!-- Speed Optimization Preconnects -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
@@ -112,6 +127,13 @@
       <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div id="store-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
           <img id="store-logo-img" src="assets/images/kawaii_logo.jpg" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
+          <script>
+            if (window.__CHINTU_STORE_LOGO__) document.getElementById('store-logo-img').src = window.__CHINTU_STORE_LOGO__;
+            if (window.__CHINTU_LOGO_SHAPE__ || window.__CHINTU_LOGO_HEIGHT__) {
+              var wrap = document.getElementById('store-logo-wrapper');
+              if (wrap) wrap.className = 'store-logo-wrap logo-shape-' + (window.__CHINTU_LOGO_SHAPE__ || 'natural') + ' logo-size-' + (window.__CHINTU_LOGO_HEIGHT__ || 'md') + ' shrink-0';
+            }
+          </script>
         </div>
         <div>
           <div class="flex items-center gap-1.5">
@@ -485,67 +507,37 @@
     </div>
   </section>
 
-  <!-- MAIN PRODUCT CATALOGUE & FILTERS -->
+  <!-- MAIN CATEGORIES SHOWCASE (Direct Products moved to dedicated Category Pages for maximum speed & lag-free scrolling) -->
   <section id="catalog" data-section-id="catalog" class="py-12 sm:py-16 px-3 sm:px-6 max-w-7xl mx-auto w-full transition-all duration-300">
     
     <!-- Title and Search Bar -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
       <div>
-        <span class="kawaii-badge mb-1.5 section-badge">🎀 Explore Catalogue</span>
+        <span class="kawaii-badge mb-1.5 section-badge">🎀 Shop by Category</span>
         <h2 class="text-2xl sm:text-4xl font-black text-purple-950 font-fun section-title">
-          Soft Toys, Stationery & Gifts
+          Explore Our Kawaii Categories
         </h2>
-        <p class="text-xs text-pink-900/80 font-semibold mt-0.5 section-subtitle">
-          Order for same-day delivery or visit Shop No. 2, Subhash Chowk, Dalli Rajhara.
+        <p class="text-xs sm:text-sm text-pink-900/80 font-semibold mt-0.5 section-subtitle">
+          Tap any category below to view exclusive gifts, subcategories & collections in Dalli Rajhara!
         </p>
       </div>
 
-      <!-- Search & Sort Controls -->
-      <div class="flex flex-wrap items-center gap-2">
-        <div class="relative flex-1 sm:w-64">
-          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
-          <input type="text" id="search-input" placeholder="Search teddy, pen, mug..." class="w-full pl-8 pr-3 py-2 rounded-full bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+      <!-- Quick Search to Category -->
+      <form onsubmit="event.preventDefault(); redirectToCategorySearch();" class="flex items-center gap-2 w-full md:w-auto">
+        <div class="relative flex-1 sm:w-72">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+          <input type="text" id="front-search-input" placeholder="Search diaries, teddies, lamps..." class="w-full pl-9 pr-3 py-2.5 rounded-2xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
         </div>
-
-        <select id="sort-select" class="px-3 py-2 rounded-full bg-white border border-pink-200 text-pink-900 text-xs font-bold focus:outline-none focus:border-pink-500 shadow-sm">
-          <option value="default">Featured</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
-          <option value="rating">Top Rated</option>
-        </select>
-      </div>
+        <button type="submit" class="px-4 py-2.5 rounded-2xl kawaii-btn-pink text-xs font-black shadow-md shrink-0 flex items-center gap-1.5 cursor-pointer">
+          <span>Search</span>
+          <i class="fa-solid fa-arrow-right text-[10px]"></i>
+        </button>
+      </form>
     </div>
 
-    <!-- Category Tabs -->
-    <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-3 mb-6 no-scrollbar">
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-pink-600 text-white whitespace-nowrap shadow-sm transition" data-category="all">
-        All Items
-      </button>
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-white/80 text-pink-900 hover:bg-pink-100 whitespace-nowrap shadow-sm transition border border-pink-200" data-category="toys">
-        🧸 Soft Toys & Plushies
-      </button>
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-white/80 text-pink-900 hover:bg-pink-100 whitespace-nowrap shadow-sm transition border border-pink-200" data-category="stationery">
-        ✍️ Fancy Stationery
-      </button>
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-white/80 text-pink-900 hover:bg-pink-100 whitespace-nowrap shadow-sm transition border border-pink-200" data-category="personalized">
-        💖 Pink Acrylic & Custom
-      </button>
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-white/80 text-pink-900 hover:bg-pink-100 whitespace-nowrap shadow-sm transition border border-pink-200" data-category="birthday">
-        🎂 Birthday Hampers
-      </button>
-      <button class="category-tab px-3.5 py-1.5 rounded-full text-xs font-black bg-white/80 text-pink-900 hover:bg-pink-100 whitespace-nowrap shadow-sm transition border border-pink-200" data-category="novelties">
-        🎒 Bags & Bottles
-      </button>
-    </div>
-
-    <!-- Dynamic Products Grid -->
-    <div id="products-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
-      <!-- Rendered dynamically by app.js -->
-    </div>
-
-    <!-- Show More (Load More) Button Container -->
-    <div id="products-load-more-container" class="mt-8 flex flex-col items-center justify-center gap-2">
-      <!-- Dynamic Show More button rendered by app.js -->
+    <!-- Dynamic Categories Grid (Populated dynamically from categories.json / admin updates) -->
+    <div id="categories-showcase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+      <!-- Rendered dynamically by app.js (with instant synchronous fallback) -->
     </div>
 
   </section>
@@ -1010,6 +1002,7 @@
   <div id="toast-container"></div>
 
   <!-- SCRIPTS (Deferred for Non-blocking Fast Rendering) -->
+  <script defer src="assets/js/categories.js?v=3.5"></script>
   <script defer src="assets/js/products.js?v=3.5"></script>
   <script defer src="assets/js/app.js?v=3.5"></script>
 </body>

@@ -2,6 +2,7 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/category", "destination": "/category.html" },
     { "source": "/api/(.*)", "destination": "/api" }
   ],
   "headers": [

@@ -12,6 +12,7 @@ app.use(express.urlencoded({ limit: '25mb', extended: true }));
 const PRODUCTS_FILE = path.join(__dirname, '..', 'data', 'products.json');
 const ORDERS_FILE = path.join(__dirname, '..', 'data', 'orders.json');
 const SETTINGS_FILE = path.join(__dirname, '..', 'data', 'settings.json');
+const CATEGORIES_FILE = path.join(__dirname, '..', 'data', 'categories.json');
 
 // Default Fallback Data if files unavailable in Serverless environment
 const DEFAULT_PRODUCTS = [
@@ -301,17 +302,20 @@ try {
 let memoryCache = {
   products: null,
   orders: null,
-  settings: null
+  settings: null,
+  categories: null
 };
 
 const TMP_PRODUCTS = path.join('/tmp', 'chintus_products.json');
 const TMP_ORDERS = path.join('/tmp', 'chintus_orders.json');
 const TMP_SETTINGS = path.join('/tmp', 'chintus_settings.json');
+const TMP_CATEGORIES = path.join('/tmp', 'chintus_categories.json');
 
 function getTmpFile(file) {
   if (file === PRODUCTS_FILE) return TMP_PRODUCTS;
   if (file === ORDERS_FILE) return TMP_ORDERS;
   if (file === SETTINGS_FILE) return TMP_SETTINGS;
+  if (file === CATEGORIES_FILE) return TMP_CATEGORIES;
   return null;
 }
 
@@ -319,6 +323,7 @@ function readData(file, defaultVal) {
   if (file === PRODUCTS_FILE && memoryCache.products) return memoryCache.products;
   if (file === ORDERS_FILE && memoryCache.orders) return memoryCache.orders;
   if (file === SETTINGS_FILE && memoryCache.settings) return memoryCache.settings;
+  if (file === CATEGORIES_FILE && memoryCache.categories) return memoryCache.categories;
 
   // 1. Check /tmp first for runtime state persistence across requests in serverless
   const tmpFile = getTmpFile(file);
@@ -328,6 +333,7 @@ function readData(file, defaultVal) {
       if (file === PRODUCTS_FILE) memoryCache.products = data;
       if (file === ORDERS_FILE) memoryCache.orders = data;
       if (file === SETTINGS_FILE) memoryCache.settings = data;
+      if (file === CATEGORIES_FILE) memoryCache.categories = data;
       return data;
     } catch (_) {}
   }
@@ -339,6 +345,7 @@ function readData(file, defaultVal) {
       if (file === PRODUCTS_FILE) memoryCache.products = data;
       if (file === ORDERS_FILE) memoryCache.orders = data;
       if (file === SETTINGS_FILE) memoryCache.settings = data;
+      if (file === CATEGORIES_FILE) memoryCache.categories = data;
       return data;
     }
   } catch (_) {}
@@ -350,6 +357,7 @@ function writeData(file, data) {
   if (file === PRODUCTS_FILE) memoryCache.products = data;
   if (file === ORDERS_FILE) memoryCache.orders = data;
   if (file === SETTINGS_FILE) memoryCache.settings = data;
+  if (file === CATEGORIES_FILE) memoryCache.categories = data;
 
   // 1. Try to write to project file
   try {
@@ -565,6 +573,7 @@ app.post('/api/products/bulk', requireAdmin, (req, res) => {
       name: String(p.name).trim(),
       hindiName: String(p.hindiName || p['hindi name'] || p['Hindi Name'] || '').trim(),
       category: String(p.category || 'stationery').toLowerCase().trim(),
+      subcategory: String(p.subcategory || p['subcategory'] || p['Subcategory'] || '').trim(),
       price: Number(p.price) || 0,
       originalPrice: Number(p.originalPrice || p['original price'] || p['Original Price'] || Number(p.price) * 1.5) || 0,
       rating: 5.0,
@@ -606,6 +615,7 @@ app.post('/api/products', requireAdmin, (req, res) => {
     name: name.trim(),
     hindiName: (hindiName || '').trim(),
     category: category || 'stationery',
+    subcategory: (req.body.subcategory || '').trim(),
     price: Number(price),
     originalPrice: Number(originalPrice || price * 1.5),
     rating: 5.0,
@@ -813,6 +823,94 @@ app.post('/api/settings', requireAdmin, (req, res) => {
   };
   writeData(SETTINGS_FILE, updated);
   res.json({ success: true, message: 'Settings saved successfully', data: updated });
+});
+
+// Categories Endpoints
+app.get('/api/categories', (req, res) => {
+  const categories = readData(CATEGORIES_FILE, []);
+  const products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+  
+  // Dynamically compute real-time product count for each category
+  const enriched = categories.map(cat => {
+    const count = products.filter(p => p.category === cat.id).length;
+    return { ...cat, itemCount: count };
+  });
+
+  res.json({ success: true, count: enriched.length, data: enriched });
+});
+
+app.post('/api/categories', requireAdmin, (req, res) => {
+  const categories = readData(CATEGORIES_FILE, []);
+  const { name, hindiName, icon, image, tagline, subcategories } = req.body;
+  if (!name) {
+    return res.status(400).json({ success: false, message: 'Category name is required' });
+  }
+
+  const id = (req.body.id || name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') || `cat-${Date.now()}`);
+  
+  if (categories.some(c => c.id === id)) {
+    return res.status(400).json({ success: false, message: 'Category with this ID already exists' });
+  }
+
+  let subcatArray = [];
+  if (Array.isArray(subcategories)) {
+    subcatArray = subcategories.map(s => String(s).trim()).filter(Boolean);
+  } else if (typeof subcategories === 'string') {
+    subcatArray = subcategories.split(',').map(s => s.trim()).filter(Boolean);
+  }
+
+  const newCat = {
+    id,
+    name: name.trim(),
+    hindiName: (hindiName || '').trim(),
+    icon: icon || '🎁',
+    image: image || 'assets/images/kawaii_stationery.jpg',
+    tagline: (tagline || '').trim(),
+    subcategories: subcatArray.length > 0 ? subcatArray : ['All Items'],
+    itemCount: 0
+  };
+
+  categories.push(newCat);
+  writeData(CATEGORIES_FILE, categories);
+  res.status(201).json({ success: true, message: 'Category created successfully', data: newCat });
+});
+
+app.put('/api/categories/:id', requireAdmin, (req, res) => {
+  const categories = readData(CATEGORIES_FILE, []);
+  const idx = categories.findIndex(c => c.id === req.params.id);
+  if (idx === -1) {
+    return res.status(404).json({ success: false, message: 'Category not found' });
+  }
+
+  let subcatArray = categories[idx].subcategories;
+  if (req.body.subcategories !== undefined) {
+    if (Array.isArray(req.body.subcategories)) {
+      subcatArray = req.body.subcategories.map(s => String(s).trim()).filter(Boolean);
+    } else if (typeof req.body.subcategories === 'string') {
+      subcatArray = req.body.subcategories.split(',').map(s => s.trim()).filter(Boolean);
+    }
+  }
+
+  categories[idx] = {
+    ...categories[idx],
+    ...req.body,
+    id: categories[idx].id, // preserve ID
+    subcategories: subcatArray
+  };
+
+  writeData(CATEGORIES_FILE, categories);
+  res.json({ success: true, message: 'Category updated successfully', data: categories[idx] });
+});
+
+app.delete('/api/categories/:id', requireAdmin, (req, res) => {
+  let categories = readData(CATEGORIES_FILE, []);
+  const initialLen = categories.length;
+  categories = categories.filter(c => c.id !== req.params.id);
+  if (categories.length === initialLen) {
+    return res.status(404).json({ success: false, message: 'Category not found' });
+  }
+  writeData(CATEGORIES_FILE, categories);
+  res.json({ success: true, message: 'Category deleted successfully' });
 });
 
 module.exports = app;

@@ -5,6 +5,7 @@ const STORE_DISPLAY_PHONE = "+91 82692 12182";
 const STORE_WA = "918269212182";
 
 let productsList = [];
+let categoriesList = typeof DEFAULT_CATEGORIES !== 'undefined' ? [...DEFAULT_CATEGORIES] : [];
 let cart = [];
 let currentCategory = "all";
 let searchQuery = "";
@@ -35,6 +36,13 @@ let customizerState = {
       const parsed = JSON.parse(cachedSettings);
       applyStoreSettings(parsed);
     }
+    const cachedCats = localStorage.getItem('chintu_categories');
+    if (cachedCats) {
+      const cats = JSON.parse(cachedCats);
+      if (Array.isArray(cats) && cats.length > 0) {
+        categoriesList = cats;
+      }
+    }
     const cachedProducts = localStorage.getItem('chintu_custom_products');
     if (cachedProducts) {
       const prods = JSON.parse(cachedProducts);
@@ -49,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadStoreSettings();
   loadCart();
   checkStoreOpenStatus();
+  fetchCategoriesAndRender();
   fetchProductsAndRender();
   initCustomizer();
   initQuiz();
@@ -277,6 +286,124 @@ function applyStoreSettings(settings) {
       });
       childSections.forEach(node => flow.appendChild(node));
     }
+  }
+}
+
+// Render Categories Showcase on Front Page
+function renderCategoriesShowcase(cats) {
+  const container = document.getElementById("categories-showcase-grid");
+  if (!container) return;
+
+  const list = (Array.isArray(cats) && cats.length > 0) ? cats : categoriesList;
+  if (!list || list.length === 0) return;
+
+  container.innerHTML = list.map(cat => {
+    const subcats = Array.isArray(cat.subcategories) ? cat.subcategories : [];
+    const count = cat.itemCount || (productsList ? productsList.filter(p => p.category === cat.id).length : 0);
+    const countText = count > 0 ? `${count}+ Gifts` : 'Explore';
+
+    return `
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=${encodeURIComponent(cat.id)}'">
+            <img src="${cat.image || 'assets/images/kawaii_stationery.jpg'}" alt="${cat.name}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                ${cat.icon || '🎀'}
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                ${countText}
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>${cat.name}</span>
+              </h3>
+              ${cat.hindiName ? `<div class="text-[11px] font-bold text-pink-200 drop-shadow">${cat.hindiName}</div>` : ''}
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            ${cat.tagline || 'Explore exclusive gifts and soft toys for every celebration in Dalli Rajhara!'}
+          </p>
+
+          <!-- Subcategories chips preview -->
+          ${subcats.length > 0 ? `
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              ${subcats.slice(0, 3).map(sub => `
+                <a href="/category?cat=${encodeURIComponent(cat.id)}&subcat=${encodeURIComponent(sub)}" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  ${sub}
+                </a>
+              `).join('')}
+              ${subcats.length > 3 ? `<span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+${subcats.length - 3} more</span>` : ''}
+            </div>
+          ` : ''}
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=${encodeURIComponent(cat.id)}" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Fetch categories from backend REST API with instant 0ms cached render & stale-while-revalidate
+async function fetchCategoriesAndRender() {
+  // 1. Instant 0ms render from cache or static default
+  const cached = localStorage.getItem('chintu_categories');
+  if (cached) {
+    try {
+      const parsed = JSON.parse(cached);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        categoriesList = parsed;
+        renderCategoriesShowcase(categoriesList);
+      }
+    } catch (_) {}
+  }
+  if (categoriesList.length === 0 && typeof DEFAULT_CATEGORIES !== 'undefined') {
+    categoriesList = [...DEFAULT_CATEGORIES];
+    renderCategoriesShowcase(categoriesList);
+  } else if (categoriesList.length > 0) {
+    renderCategoriesShowcase(categoriesList);
+  }
+
+  // 2. Fetch fresh categories from backend API
+  try {
+    const res = await fetch('/api/categories');
+    const data = await res.json();
+    if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+      categoriesList = data.data;
+      localStorage.setItem('chintu_categories', JSON.stringify(categoriesList));
+      renderCategoriesShowcase(categoriesList);
+    }
+  } catch (e) {
+    console.warn("Categories API not reachable, using cached:", e);
+  }
+}
+
+function redirectToCategorySearch() {
+  const input = document.getElementById("front-search-input");
+  const query = input ? input.value.trim() : "";
+  if (query) {
+    window.location.href = `/category?search=${encodeURIComponent(query)}`;
+  } else {
+    window.location.href = `/category?cat=stationery`;
   }
 }
 

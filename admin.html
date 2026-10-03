@@ -21,7 +21,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
   
-  <!-- Zero-Latency Session Persistence (Prevents auth-gate flash on page refresh) -->
+  <!-- Zero-Latency Session Persistence & Logo Pre-Hydration (Prevents auth-gate and logo flash on page refresh) -->
   <style>
     html.admin-has-session #auth-gate { display: none !important; }
     html.admin-has-session #admin-main-interface { display: block !important; }
@@ -32,6 +32,13 @@
         var token = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
         if (token && token !== "null" && token !== "undefined") {
           document.documentElement.classList.add("admin-has-session");
+        }
+        var s = localStorage.getItem('chintu_store_settings');
+        if (s) {
+          var parsed = JSON.parse(s);
+          if (parsed && parsed.storeLogo) {
+            window.__CHINTU_STORE_LOGO__ = parsed.storeLogo;
+          }
         }
       } catch (_) {}
     })();
@@ -50,6 +57,7 @@
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 sm:gap-2.5">
           <img id="auth-gate-header-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0 object-contain">
+          <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('auth-gate-header-logo').src = window.__CHINTU_STORE_LOGO__;</script>
           <div>
             <div class="flex items-center gap-1.5">
               <span class="text-base sm:text-xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
@@ -72,6 +80,7 @@
         <!-- Mascot Badge -->
         <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-3 animate-cartoon-bounce">
           <img id="auth-gate-mascot-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
+          <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('auth-gate-mascot-logo').src = window.__CHINTU_STORE_LOGO__;</script>
         </div>
 
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-pink-200 text-pink-800 text-[11px] font-black uppercase mb-2">
@@ -198,6 +207,7 @@
         <a href="admin.html" class="flex items-center gap-2 sm:gap-3 min-w-0">
           <div id="admin-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
             <img id="admin-logo-img" src="assets/images/kawaii_logo.jpg" alt="Logo" class="store-logo-img object-contain">
+            <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('admin-logo-img').src = window.__CHINTU_STORE_LOGO__;</script>
           </div>
           <div class="min-w-0">
             <div class="flex items-center gap-1.5">
@@ -321,6 +331,45 @@
         <!-- Products Grid -->
         <div id="admin-products-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
           <!-- Rendered by JS -->
+        </div>
+      </section>
+
+      <!-- TAB: CATEGORIES MANAGEMENT -->
+      <section id="tab-categories" class="tab-content hidden">
+        <div class="pink-acrylic p-4 sm:p-6 border border-pink-200 shadow-sm rounded-3xl space-y-4">
+          
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-pink-200">
+            <div>
+              <h3 class="text-base sm:text-xl font-black text-pink-800 font-fun flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-pink-600"></i> Category Manager & Dedicated Pages
+              </h3>
+              <p class="text-xs text-pink-700/80">Manage all store categories. Any category added here directly displays on the Front Page with its own dedicated page & subcategories!</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-black text-pink-700 bg-pink-100 px-3 py-1.5 rounded-full border border-pink-300" id="categories-count-label">6 Categories</span>
+              <button onclick="openAddCategoryModal()" class="kawaii-btn-pink px-4 py-2 rounded-xl text-xs font-black shadow-sm flex items-center gap-1.5 transition hover:scale-105">
+                <i class="fa-solid fa-plus"></i>
+                <span>+ New Category</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Categories Search & Information -->
+          <div class="flex flex-col sm:flex-row gap-2.5 items-center justify-between">
+            <div class="relative w-full sm:w-80">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
+              <input type="text" id="admin-category-search" placeholder="Search categories..." oninput="filterAdminCategories()" class="w-full pl-8 pr-3 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
+            </div>
+            <div class="text-[11px] font-bold text-pink-800">
+              ⚡ Categories auto-sync live with front page & category pages
+            </div>
+          </div>
+
+          <!-- Categories Grid -->
+          <div id="admin-categories-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4 pt-2">
+            <!-- Rendered by JS -->
+          </div>
+
         </div>
       </section>
 
@@ -930,6 +979,82 @@
       </div>
     </div>
 
+    <!-- ADD / EDIT CATEGORY MODAL -->
+    <div id="category-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+      <div class="pink-acrylic w-full max-w-lg max-h-[90vh] overflow-y-auto p-5 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300">
+        <button onclick="closeCategoryModal()" class="absolute top-4 right-4 w-7 h-7 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center font-bold">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h3 id="category-modal-title" class="text-base sm:text-lg font-black text-pink-700 font-fun mb-1">Add New Category</h3>
+        <p class="text-xs text-pink-800 mb-4">Add a new category with dedicated page, subcategories, and cover photo.</p>
+
+        <form id="category-form" onsubmit="event.preventDefault(); saveCategory();" class="space-y-3">
+          <input type="hidden" id="form-category-mode" value="add">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Category ID (Slug) *</label>
+              <input type="text" id="form-cat-id" required placeholder="e.g. stationery, cosmetics" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Icon (Emoji or Symbol) *</label>
+              <input type="text" id="form-cat-icon" required placeholder="e.g. 💄 or 🧸 or ✏️" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Category Name (English) *</label>
+              <input type="text" id="form-cat-name" required placeholder="e.g. Cosmetic & Beauty" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500" oninput="autoSlugCategoryId()">
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Hindi Name</label>
+              <input type="text" id="form-cat-hindi-name" placeholder="e.g. कॉस्मेटिक व ब्यूटी" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500">
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Tagline / Brief Description</label>
+            <input type="text" id="form-cat-tagline" placeholder="e.g. Cute bear lip balms, pocket mirrors & skincare" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500">
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Cover Image (URL or Upload) *</label>
+            <div class="flex gap-2 mb-2">
+              <input type="text" id="form-cat-image" required placeholder="Paste image URL or upload below..." class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500" oninput="updateCatPreviewFromInput()">
+              <label class="px-3 py-2 rounded-xl bg-pink-100 hover:bg-pink-200 text-pink-800 text-xs font-black cursor-pointer transition shrink-0 flex items-center gap-1">
+                <i class="fa-solid fa-cloud-arrow-up"></i> Upload
+                <input type="file" accept="image/*" class="hidden" onchange="handleCategoryCoverUpload(this)">
+              </label>
+            </div>
+            <div class="flex items-center gap-2">
+              <img id="form-cat-preview-img" src="assets/images/kawaii_stationery.jpg" alt="Preview" class="w-12 h-12 rounded-xl object-cover border border-pink-200 shadow-inner">
+              <span class="text-[10px] text-pink-700 font-semibold">Displayed as the category banner cover on front page and dedicated page.</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Subcategories (Comma-separated)</label>
+            <textarea id="form-cat-subcategories" rows="2" placeholder="e.g. Cute Lip Balms, Pocket Mirrors, Hair Accessories, Hand Creams" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-medium text-pink-950 focus:outline-none focus:border-pink-500"></textarea>
+            <p class="text-[10px] text-pink-700 mt-1">Separate subcategories with commas. Customers can filter by each subcategory on the dedicated page!</p>
+          </div>
+
+          <div class="pt-3 border-t border-pink-200 flex items-center justify-end gap-2">
+            <button type="button" onclick="closeCategoryModal()" class="px-4 py-2 rounded-xl bg-white text-pink-800 text-xs font-bold border border-pink-200">
+              Cancel
+            </button>
+            <button type="submit" class="kawaii-btn-pink px-5 py-2 rounded-xl text-xs font-black shadow-md flex items-center gap-1.5">
+              <i class="fa-solid fa-check"></i>
+              <span>Save Category</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <!-- ADD / EDIT PRODUCT MODAL -->
     <div id="product-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
       <div class="pink-acrylic w-full max-w-xl max-h-[90vh] overflow-y-auto p-5 sm:p-6 relative shadow-2xl">
@@ -953,15 +1078,23 @@
             <input type="text" id="form-hindi-name" placeholder="e.g. कवाई पेस्टल हाइलाइटर्स सेट" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-semibold focus:outline-none focus:border-pink-500">
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
             <div>
               <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Category *</label>
-              <select id="form-category" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
-                <option value="toys">🧸 Soft Toys & Plushies</option>
+              <select id="form-category" onchange="updateSubcategoryDropdownInForm()" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
                 <option value="stationery">✍️ Fancy Stationery</option>
+                <option value="cosmetics">💄 Cosmetic & Beauty</option>
+                <option value="toys">🧸 Soft Toys & Plushies</option>
                 <option value="personalized">💖 Personalized Acrylic</option>
                 <option value="birthday">🎂 Birthday & Hampers</option>
                 <option value="novelties">🎒 Novelties & Accessories</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-bold text-pink-900 uppercase mb-1">Subcategory</label>
+              <select id="form-subcategory" class="w-full px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-bold text-pink-900">
+                <option value="">— Select Subcategory —</option>
               </select>
             </div>
 
@@ -1370,6 +1503,11 @@
         <span>Products</span>
       </button>
 
+      <button type="button" onclick="switchTab('categories')" id="dock-btn-categories" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition">
+        <i class="fa-solid fa-layer-group text-base sm:text-lg mb-0.5"></i>
+        <span>Categories</span>
+      </button>
+
       <button type="button" onclick="switchTab('orders')" id="dock-btn-orders" class="dock-btn flex flex-col items-center justify-center text-pink-800 hover:text-pink-600 font-bold text-[11px] sm:text-xs transition relative">
         <i class="fa-solid fa-receipt text-base sm:text-lg mb-0.5"></i>
         <span>Orders</span>
@@ -1397,7 +1535,8 @@
   <!-- Toast Notification Container -->
   <div id="toast-container"></div>
 
-  <!-- Load Default Products for Instant 0ms Sync Fallback -->
+  <!-- Load Default Categories & Products for Instant 0ms Sync Fallback -->
+  <script src="assets/js/categories.js?v=3.5"></script>
   <script src="assets/js/products.js?v=3.5"></script>
 
   <!-- Admin JavaScript with Google OAuth & Auth Flow -->
@@ -1410,7 +1549,19 @@
       if (savedUserStr) currentUser = JSON.parse(savedUserStr);
     } catch (_) {}
 
-    // Instant Synchronous Products Hydration
+    // Instant Synchronous Categories & Products Hydration
+    let allCategories = [];
+    try {
+      const cachedCats = localStorage.getItem('chintu_categories');
+      if (cachedCats) {
+        const parsed = JSON.parse(cachedCats);
+        if (Array.isArray(parsed) && parsed.length > 0) allCategories = parsed;
+      }
+    } catch (_) {}
+    if (allCategories.length === 0 && typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
+      allCategories = [...DEFAULT_CATEGORIES];
+    }
+
     let allProducts = [];
     try {
       const cachedProds = localStorage.getItem('chintu_custom_products');
@@ -1468,8 +1619,11 @@
         initSectionsConfig(DEFAULT_SECTIONS_CONFIG);
       }
 
-      // 2. Fetch server settings immediately (public endpoint) so auth gate mascot & header reflect custom logo
+      // 2. Fetch server settings & categories immediately
       fetchSettings();
+      fetchCategories();
+      populateFormCategoryDropdown();
+      populateFilterCategoryDropdown();
 
       // 3. Check session and restore dashboard
       checkExistingSession();
@@ -1520,13 +1674,19 @@
         }
       }
 
-      // Synchronously render existing products and statistics immediately without delay (0ms)
+      // Synchronously render existing products, categories and statistics immediately without delay (0ms)
       if (allProducts && allProducts.length > 0) {
         renderAdminProducts(allProducts);
         updateStats();
       }
+      if (allCategories && allCategories.length > 0) {
+        renderAdminCategories(allCategories);
+        populateFormCategoryDropdown();
+        populateFilterCategoryDropdown();
+      }
 
       fetchProducts();
+      fetchCategories();
       fetchOrders();
       fetchSettings();
     }
@@ -1753,6 +1913,380 @@
         renderAdminProducts(allProducts);
         updateStats();
         updateBulkSelectionBar();
+      }
+    }
+
+    // ================= CATEGORIES MANAGEMENT & DYNAMIC SYNC =================
+    async function fetchCategories() {
+      try {
+        const res = await fetch('/api/categories');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+          allCategories = data.data;
+          try {
+            localStorage.setItem('chintu_categories', JSON.stringify(allCategories));
+          } catch (_) {}
+          renderAdminCategories(allCategories);
+          populateFormCategoryDropdown();
+          populateFilterCategoryDropdown();
+          return;
+        }
+      } catch (e) {
+        console.error("fetchCategories error:", e);
+      }
+
+      // Offline / Local Storage fallback
+      const cached = localStorage.getItem('chintu_categories');
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            allCategories = parsed;
+            renderAdminCategories(allCategories);
+            populateFormCategoryDropdown();
+            populateFilterCategoryDropdown();
+            return;
+          }
+        } catch (_) {}
+      }
+
+      // Built-in default categories fallback
+      if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES) && allCategories.length === 0) {
+        allCategories = [...DEFAULT_CATEGORIES];
+        renderAdminCategories(allCategories);
+        populateFormCategoryDropdown();
+        populateFilterCategoryDropdown();
+      }
+    }
+
+    function renderAdminCategories(cats) {
+      const container = document.getElementById('admin-categories-list');
+      const countLabel = document.getElementById('categories-count-label');
+      if (!container) return;
+
+      const list = (Array.isArray(cats) && cats.length > 0) ? cats : allCategories;
+      if (countLabel) countLabel.textContent = `${list.length} Categories`;
+
+      if (list.length === 0) {
+        container.innerHTML = `
+          <div class="col-span-full py-12 text-center text-pink-700">
+            <i class="fa-solid fa-layer-group text-4xl mb-3 text-pink-400"></i>
+            <p class="font-bold text-sm">No categories found</p>
+            <button onclick="openAddCategoryModal()" class="mt-3 px-4 py-2 rounded-xl kawaii-btn-pink text-xs font-bold shadow-sm">+ Add First Category</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = list.map(c => {
+        const subcats = Array.isArray(c.subcategories) ? c.subcategories : [];
+        const count = c.itemCount || (allProducts ? allProducts.filter(p => p.category === c.id).length : 0);
+
+        return `
+          <div class="pink-acrylic p-4 flex flex-col justify-between relative group border border-pink-200/90 hover:border-pink-400 transition-all shadow-sm hover:shadow-md rounded-2xl">
+            <div>
+              <!-- Cover Image & Icon Badge -->
+              <div class="relative w-full h-36 rounded-xl overflow-hidden mb-3 bg-pink-100 border border-pink-100">
+                <img src="${c.image || 'assets/images/kawaii_stationery.jpg'}" alt="${escapeHtml(c.name)}" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-transparent to-transparent"></div>
+                <div class="absolute top-2 left-2 flex items-center gap-1.5">
+                  <span class="w-8 h-8 rounded-xl bg-white/90 backdrop-blur border border-pink-200 shadow flex items-center justify-center text-base">
+                    ${c.icon || '🎀'}
+                  </span>
+                  <span class="px-2 py-0.5 rounded-full text-[10px] font-mono font-black bg-pink-950/80 text-white">
+                    #${escapeHtml(c.id)}
+                  </span>
+                </div>
+                <div class="absolute top-2 right-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-pink-600 text-white shadow">
+                    ${count} Products
+                  </span>
+                </div>
+                <div class="absolute bottom-2 left-2 right-2 text-white">
+                  <h4 class="text-sm font-black font-fun leading-tight">${escapeHtml(c.name)}</h4>
+                  ${c.hindiName ? `<div class="text-[10px] text-pink-200 font-bold">${escapeHtml(c.hindiName)}</div>` : ''}
+                </div>
+              </div>
+
+              <!-- Tagline -->
+              <p class="text-[11px] text-pink-900/80 line-clamp-2 mb-2 leading-relaxed">
+                ${escapeHtml(c.tagline || 'Explore exclusive gifts and soft toys')}
+              </p>
+
+              <!-- Subcategories preview -->
+              <div class="mb-3">
+                <div class="text-[10px] font-bold text-pink-700 uppercase mb-1">Subcategories (${subcats.length}):</div>
+                <div class="flex flex-wrap gap-1">
+                  ${subcats.slice(0, 3).map(sub => `
+                    <span class="text-[9px] font-extrabold px-2 py-0.5 rounded-md bg-white border border-pink-200 text-pink-800">
+                      ${escapeHtml(sub)}
+                    </span>
+                  `).join('')}
+                  ${subcats.length > 3 ? `<span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-pink-100 text-pink-600">+${subcats.length - 3}</span>` : ''}
+                </div>
+              </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="pt-2.5 border-t border-pink-100 flex items-center justify-between gap-1.5">
+              <a href="/category?cat=${encodeURIComponent(c.id)}" target="_blank" class="px-2.5 py-1.5 rounded-xl bg-white hover:bg-pink-50 text-pink-800 border border-pink-200 text-[10px] font-bold flex items-center gap-1 shadow-sm transition">
+                <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i> View Page
+              </a>
+              <div class="flex items-center gap-1">
+                <button onclick="openEditCategoryModal('${c.id}')" class="px-2.5 py-1.5 rounded-xl bg-pink-100 hover:bg-pink-200 text-pink-700 text-[10px] font-bold flex items-center gap-1 transition">
+                  <i class="fa-solid fa-pen-to-square"></i> Edit
+                </button>
+                <button onclick="deleteCategory('${c.id}')" class="p-1.5 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs transition" title="Delete Category">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterAdminCategories() {
+      const q = (document.getElementById('admin-category-search')?.value || '').toLowerCase().trim();
+      if (!q) {
+        renderAdminCategories(allCategories);
+        return;
+      }
+      const filtered = allCategories.filter(c => 
+        (c.name && c.name.toLowerCase().includes(q)) ||
+        (c.hindiName && c.hindiName.toLowerCase().includes(q)) ||
+        (c.id && c.id.toLowerCase().includes(q)) ||
+        (c.tagline && c.tagline.toLowerCase().includes(q)) ||
+        (Array.isArray(c.subcategories) && c.subcategories.some(s => s.toLowerCase().includes(q)))
+      );
+      renderAdminCategories(filtered);
+    }
+
+    function openAddCategoryModal() {
+      document.getElementById('category-modal-title').textContent = "Add New Category";
+      document.getElementById('form-category-mode').value = "add";
+      document.getElementById('category-form').reset();
+      document.getElementById('form-cat-id').readOnly = false;
+      document.getElementById('form-cat-id').classList.remove('bg-slate-100');
+      document.getElementById('form-cat-icon').value = "🎀";
+      document.getElementById('form-cat-image').value = "assets/images/kawaii_stationery.jpg";
+      document.getElementById('form-cat-preview-img').src = "assets/images/kawaii_stationery.jpg";
+      document.getElementById('category-modal').classList.remove('hidden');
+    }
+
+    function openEditCategoryModal(id) {
+      const cat = allCategories.find(c => c.id === id);
+      if (!cat) return;
+
+      document.getElementById('category-modal-title').textContent = "Edit Category";
+      document.getElementById('form-category-mode').value = "edit";
+      document.getElementById('form-cat-id').value = cat.id;
+      document.getElementById('form-cat-id').readOnly = true;
+      document.getElementById('form-cat-id').classList.add('bg-slate-100');
+      document.getElementById('form-cat-name').value = cat.name || "";
+      document.getElementById('form-cat-hindi-name').value = cat.hindiName || "";
+      document.getElementById('form-cat-icon').value = cat.icon || "🎀";
+      document.getElementById('form-cat-image').value = cat.image || "assets/images/kawaii_stationery.jpg";
+      document.getElementById('form-cat-preview-img').src = cat.image || "assets/images/kawaii_stationery.jpg";
+      document.getElementById('form-cat-tagline').value = cat.tagline || "";
+      document.getElementById('form-cat-subcategories').value = Array.isArray(cat.subcategories) ? cat.subcategories.join(', ') : "";
+
+      document.getElementById('category-modal').classList.remove('hidden');
+    }
+
+    function closeCategoryModal() {
+      document.getElementById('category-modal').classList.add('hidden');
+    }
+
+    function autoSlugCategoryId() {
+      const mode = document.getElementById('form-category-mode').value;
+      if (mode !== 'add') return;
+      const name = document.getElementById('form-cat-name').value;
+      const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      document.getElementById('form-cat-id').value = slug;
+    }
+
+    function updateCatPreviewFromInput() {
+      const val = document.getElementById('form-cat-image').value.trim();
+      if (val) {
+        document.getElementById('form-cat-preview-img').src = val;
+      }
+    }
+
+    async function handleCategoryCoverUpload(fileInput) {
+      const file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+
+      showToast("Uploading category cover photo... ⏳");
+      try {
+        const base64Data = await resizeImageToDataUrl(file, 1200, 800, 0.85);
+        const res = await fetch('/api/upload', {
+          method: 'POST',
+          headers: authHeaders(),
+          body: JSON.stringify({
+            image: base64Data,
+            filename: `cat_${Date.now()}`
+          })
+        });
+        const data = await res.json();
+        const finalUrl = (data.success && data.url) ? data.url : base64Data;
+        document.getElementById('form-cat-image').value = finalUrl;
+        document.getElementById('form-cat-preview-img').src = finalUrl;
+        showToast("Category cover photo uploaded! 📸");
+      } catch (err) {
+        console.error("Cover upload error:", err);
+        showToast("Failed to upload image", "error");
+      }
+      fileInput.value = '';
+    }
+
+    async function saveCategory() {
+      const mode = document.getElementById('form-category-mode').value;
+      const id = document.getElementById('form-cat-id').value.trim();
+      const name = document.getElementById('form-cat-name').value.trim();
+      const hindiName = document.getElementById('form-cat-hindi-name').value.trim();
+      const icon = document.getElementById('form-cat-icon').value.trim() || '🎀';
+      const image = document.getElementById('form-cat-image').value.trim() || 'assets/images/kawaii_stationery.jpg';
+      const tagline = document.getElementById('form-cat-tagline').value.trim();
+      const subcatsRaw = document.getElementById('form-cat-subcategories').value;
+      const subcategories = subcatsRaw
+        ? subcatsRaw.split(',').map(s => s.trim()).filter(s => s.length > 0)
+        : [];
+
+      if (!id || !name) {
+        showToast("Category ID and Name are required", "error");
+        return;
+      }
+
+      const payload = { id, name, hindiName, icon, image, tagline, subcategories };
+      showToast(mode === 'add' ? "Adding new category... ⏳" : "Updating category... ⏳");
+
+      try {
+        let res;
+        if (mode === 'edit') {
+          res = await fetch(`/api/categories/${id}`, {
+            method: 'PUT',
+            headers: authHeaders(),
+            body: JSON.stringify(payload)
+          });
+        } else {
+          res = await fetch('/api/categories', {
+            method: 'POST',
+            headers: authHeaders(),
+            body: JSON.stringify(payload)
+          });
+        }
+
+        const data = await res.json();
+        if (data.success) {
+          showToast(mode === 'add' ? "🎉 Category added! Directly live on front page." : "🎉 Category updated successfully!");
+          closeCategoryModal();
+
+          if (mode === 'edit') {
+            const idx = allCategories.findIndex(c => c.id === id);
+            if (idx !== -1) allCategories[idx] = { ...allCategories[idx], ...payload };
+          } else {
+            const existingIdx = allCategories.findIndex(c => c.id === id);
+            if (existingIdx !== -1) {
+              allCategories[existingIdx] = { ...allCategories[existingIdx], ...payload };
+            } else {
+              allCategories.push(data.data || payload);
+            }
+          }
+
+          localStorage.setItem('chintu_categories', JSON.stringify(allCategories));
+          renderAdminCategories(allCategories);
+          populateFormCategoryDropdown();
+          populateFilterCategoryDropdown();
+        } else {
+          showToast(data.message || "Failed to save category", "error");
+        }
+      } catch (err) {
+        console.error("Save category error:", err);
+        showToast("Network error saving category", "error");
+      }
+    }
+
+    async function deleteCategory(id) {
+      if (!confirm(`Are you sure you want to delete category "${id}"? Products under this category will remain, but the category page will be removed.`)) {
+        return;
+      }
+
+      showToast(`Deleting category "${id}"... ⏳`);
+      try {
+        const res = await fetch(`/api/categories/${id}`, {
+          method: 'DELETE',
+          headers: authHeaders()
+        });
+        const data = await res.json();
+        if (data.success) {
+          showToast("Category deleted successfully 🌸");
+          allCategories = allCategories.filter(c => c.id !== id);
+          localStorage.setItem('chintu_categories', JSON.stringify(allCategories));
+          renderAdminCategories(allCategories);
+          populateFormCategoryDropdown();
+          populateFilterCategoryDropdown();
+        } else {
+          showToast(data.message || "Failed to delete category", "error");
+        }
+      } catch (err) {
+        console.error("Delete category error:", err);
+        showToast("Error deleting category", "error");
+      }
+    }
+
+    function populateFormCategoryDropdown(selectedCatId, selectedSubcat) {
+      const catSelect = document.getElementById('form-category');
+      if (!catSelect) return;
+
+      catSelect.innerHTML = allCategories.map(c => `
+        <option value="${c.id}">${c.icon || '🎀'} ${escapeHtml(c.name)}</option>
+      `).join('');
+
+      if (selectedCatId) {
+        catSelect.value = selectedCatId;
+      } else if (allCategories.length > 0) {
+        catSelect.value = allCategories[0].id;
+      }
+
+      updateSubcategoryDropdownInForm(selectedSubcat);
+    }
+
+    function updateSubcategoryDropdownInForm(selectedSubcat) {
+      const catSelect = document.getElementById('form-category');
+      const subcatSelect = document.getElementById('form-subcategory');
+      if (!catSelect || !subcatSelect) return;
+
+      const chosenCatId = catSelect.value;
+      const catObj = allCategories.find(c => c.id === chosenCatId);
+      const subcats = (catObj && Array.isArray(catObj.subcategories)) ? catObj.subcategories : [];
+
+      subcatSelect.innerHTML = '<option value="">— Select Subcategory —</option>' +
+        subcats.map(sub => `<option value="${escapeHtml(sub)}">${escapeHtml(sub)}</option>`).join('');
+
+      if (selectedSubcat && subcats.includes(selectedSubcat)) {
+        subcatSelect.value = selectedSubcat;
+      } else {
+        subcatSelect.value = "";
+      }
+    }
+
+    function populateFilterCategoryDropdown() {
+      const filterSelect = document.getElementById('admin-cat-filter');
+      const bulkSelect = document.getElementById('bulk-edit-category');
+
+      if (filterSelect) {
+        const cur = filterSelect.value;
+        filterSelect.innerHTML = '<option value="all">All Categories</option>' +
+          allCategories.map(c => `<option value="${c.id}">${c.icon || '🎀'} ${escapeHtml(c.name)}</option>`).join('');
+        filterSelect.value = cur || 'all';
+      }
+
+      if (bulkSelect) {
+        const cur = bulkSelect.value;
+        bulkSelect.innerHTML = '<option value="keep">— Keep Unchanged —</option>' +
+          allCategories.map(c => `<option value="${c.id}">${c.icon || '🎀'} ${escapeHtml(c.name)}</option>`).join('');
+        bulkSelect.value = cur || 'keep';
       }
     }
 
@@ -2326,6 +2860,12 @@
           subtitle: "Manage toys, stationery, custom gifts, prices and bulk listings",
           stats: `${allProducts.length} Items Listed`
         },
+        categories: {
+          title: "Categories Management (कैटेगरी मैनेजर)",
+          icon: "🎀",
+          subtitle: "Create, edit and organize store categories, icons, cover photos, and subcategories for the storefront",
+          stats: `${allCategories.length} Categories`
+        },
         orders: {
           title: "Customer Orders",
           icon: "🛍️",
@@ -2382,18 +2922,20 @@
         renderAdminOrders(allOrders);
       } else if (tabName === 'products') {
         renderAdminProducts(allProducts);
+      } else if (tabName === 'categories') {
+        renderAdminCategories(allCategories);
       }
 
       // Smooth scroll to top of main container
       window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
-    // ================= PRODUCT CRUD MODALS =================
     // ================= PRODUCT CRUD MODALS & MULTI-IMAGE MANAGEMENT =================
     function openAddProductModal() {
       document.getElementById('modal-title').textContent = "Add New Product";
       document.getElementById('form-product-id').value = "";
       document.getElementById('product-form').reset();
+      populateFormCategoryDropdown();
       document.getElementById('form-instock').checked = true;
       document.getElementById('form-image').value = "assets/images/kawaii_stationery.jpg";
       productFormImages = ["assets/images/kawaii_stationery.jpg"];
@@ -2409,7 +2951,7 @@
       document.getElementById('form-product-id').value = p.id;
       document.getElementById('form-name').value = p.name || "";
       document.getElementById('form-hindi-name').value = p.hindiName || "";
-      document.getElementById('form-category').value = p.category || "stationery";
+      populateFormCategoryDropdown(p.category, p.subcategory);
       document.getElementById('form-badge').value = p.badge || "";
       document.getElementById('form-price').value = p.price || "";
       document.getElementById('form-original-price').value = p.originalPrice || "";
@@ -2560,6 +3102,7 @@
         name: document.getElementById('form-name').value.trim(),
         hindiName: document.getElementById('form-hindi-name').value.trim(),
         category: document.getElementById('form-category').value,
+        subcategory: (document.getElementById('form-subcategory') ? document.getElementById('form-subcategory').value.trim() : ""),
         badge: document.getElementById('form-badge').value.trim(),
         price: Number(document.getElementById('form-price').value),
         originalPrice: Number(document.getElementById('form-original-price').value || document.getElementById('form-price').value * 1.5),

@@ -27,7 +27,8 @@ const PRODUCTS_DATA = [
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg",
       "assets/images/custom_gifts.jpg"
-    ]
+    ],
+    "subcategory": "3D LED Acrylic Lamps"
   },
   {
     "id": "prod-2",
@@ -53,7 +54,8 @@ const PRODUCTS_DATA = [
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Aesthetic Highlighters & Pens"
   },
   {
     "id": "prod-3",
@@ -79,7 +81,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Giant Cuddle Teddies"
   },
   {
     "id": "prod-4",
@@ -105,7 +108,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Boba & Food Squishies"
   },
   {
     "id": "prod-5",
@@ -131,7 +135,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Aesthetic Highlighters & Pens"
   },
   {
     "id": "prod-6",
@@ -158,7 +163,8 @@ const PRODUCTS_DATA = [
       "assets/images/product_mug.jpg",
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg"
-    ]
+    ],
+    "subcategory": "Photo Magic Mugs"
   },
   {
     "id": "prod-7",
@@ -184,7 +190,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Pastel Diaries & Locks"
   },
   {
     "id": "prod-8",
@@ -211,7 +218,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg"
-    ]
+    ],
+    "subcategory": "Cute Animal Plushies"
   },
   {
     "id": "prod-9",
@@ -238,7 +246,8 @@ const PRODUCTS_DATA = [
       "assets/images/birthday_hampers.jpg",
       "assets/images/hero_store.jpg",
       "assets/images/custom_gifts.jpg"
-    ]
+    ],
+    "subcategory": "Washi Tapes & Stickers"
   },
   {
     "id": "prod-10",
@@ -264,7 +273,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Birthday Gift Hampers"
   },
   {
     "id": "prod-11",
@@ -290,7 +300,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Spotify Music Plaques"
   },
   {
     "id": "prod-12",
@@ -316,7 +327,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Pastel Sippers & Bottles"
   },
   {
     "id": "prod-13",
@@ -342,7 +354,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
       "assets/images/birthday_hampers.jpg",
       "assets/images/hero_store.jpg"
-    ]
+    ],
+    "subcategory": "Surprise Explosion Boxes"
   },
   {
     "id": "prod-14",
@@ -369,7 +382,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg"
-    ]
+    ],
+    "subcategory": "Pencil Pouches & Organizers"
   },
   {
     "id": "prod-15",
@@ -395,7 +409,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Plush Keychains & Charms"
   },
   {
     "id": "prod-16",
@@ -422,7 +437,8 @@ const PRODUCTS_DATA = [
       "assets/images/kawaii_hero.jpg",
       "assets/images/birthday_hampers.jpg",
       "assets/images/hero_store.jpg"
-    ]
+    ],
+    "subcategory": "Custom Acrylic Keychains"
   },
   {
     "id": "prod-17",
@@ -448,7 +464,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Aesthetic Highlighters & Pens"
   },
   {
     "id": "prod-18",
@@ -474,7 +491,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Cute Animal Plushies"
   },
   {
     "id": "prod-19",
@@ -501,7 +519,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg"
-    ]
+    ],
+    "subcategory": "Birthday Gift Hampers"
   },
   {
     "id": "prod-20",
@@ -527,7 +546,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Mini Crossbody Bags"
   },
   {
     "id": "prod-21",
@@ -554,7 +574,8 @@ const PRODUCTS_DATA = [
       "assets/images/birthday_hampers.jpg",
       "assets/images/hero_store.jpg",
       "assets/images/custom_gifts.jpg"
-    ]
+    ],
+    "subcategory": "3D LED Acrylic Lamps"
   },
   {
     "id": "prod-22",
@@ -580,7 +601,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Pastel Diaries & Locks"
   },
   {
     "id": "prod-23",
@@ -606,7 +628,8 @@ const PRODUCTS_DATA = [
       "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
       "assets/images/kawaii_stationery.jpg",
       "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ]
+    ],
+    "subcategory": "Cute Desk Gadgets"
   },
   {
     "id": "prod-24",
@@ -633,6 +656,116 @@ const PRODUCTS_DATA = [
       "assets/images/pink_acrylic_lamp.jpg",
       "assets/images/product_lamp.jpg",
       "assets/images/custom_gifts.jpg"
-    ]
+    ],
+    "subcategory": "Celebration Baskets"
+  },
+  {
+    "id": "prod-cosm-1",
+    "name": "Kawaii Bear Hydrating Color-Tint Lip Balm Set",
+    "hindiName": "क्यूट बियर कलर-टिंट लिप बाम सेट",
+    "category": "cosmetics",
+    "subcategory": "Cute Lip Balms & Tints",
+    "price": 199,
+    "originalPrice": 349,
+    "rating": 4.9,
+    "reviewsCount": 38,
+    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Cute Essential",
+    "customizable": false,
+    "description": "Super-nourishing moisturizing tint lip balm shaped in an adorable pastel bear tube. Enriched with shea butter and vitamin E for naturally soft, glowing baby lips.",
+    "specs": [
+      "Enriched with Shea Butter & Vit E",
+      "Gentle Peach Pink Tint",
+      "Cute Bear Shaped Tube",
+      "Safe for All Skin Types"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cosm-2",
+    "name": "Pink Acrylic LED Lighted Pocket Vanity Mirror",
+    "hindiName": "पिंक ऐक्रेलिक LED पॉकेट वैनिटी मिरर",
+    "category": "cosmetics",
+    "subcategory": "Pocket Vanity Mirrors & Brushes",
+    "price": 349,
+    "originalPrice": 699,
+    "rating": 4.9,
+    "reviewsCount": 44,
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+      "assets/images/pink_acrylic_lamp.jpg"
+    ],
+    "badge": "Viral Beauty",
+    "customizable": true,
+    "customType": "mirror",
+    "description": "Compact folding travel vanity mirror featuring ring LED illumination with 3 brightness modes. Rechargeable via USB-C with custom name engraving on frosted pink acrylic cover.",
+    "specs": [
+      "Touch-Sensor Ring LED Light",
+      "1x Normal & 3x Magnified Mirror",
+      "USB-C Rechargeable",
+      "Custom Name Engraved"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cosm-3",
+    "name": "Pastel Cloud Aesthetic Hair Clips & Scrunchies Hamper (8 Pcs)",
+    "hindiName": "पेस्टेल क्लाउड एस्थेटिक हेयर क्लिप्स व स्क्रंचीज सेट",
+    "category": "cosmetics",
+    "subcategory": "Aesthetic Hair Accessories",
+    "price": 249,
+    "originalPrice": 499,
+    "rating": 4.8,
+    "reviewsCount": 52,
+    "image": "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg"
+    ],
+    "badge": "Trending Set",
+    "customizable": false,
+    "description": "Complete aesthetic Korean style hair accessory box! Contains 4 matte pastel claw clips, 2 pure silk scrunchies, and 2 cute bow bobby pins in a gift-ready kawaii acrylic box.",
+    "specs": [
+      "4 Matte Pastel Acrylic Clips",
+      "2 Mulberry Silk Scrunchies",
+      "2 Ribbon Bow Pins",
+      "Kawaii Gift Box Included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cosm-4",
+    "name": "Aesthetic Peach Blossom Pocket Hand Cream & Hydrating Mist",
+    "hindiName": "पीच ब्लॉसम पॉकेट हैंड क्रीम व मिस्ट सेट",
+    "category": "cosmetics",
+    "subcategory": "Pastel Skincare & Hand Creams",
+    "price": 299,
+    "originalPrice": 549,
+    "rating": 5.0,
+    "reviewsCount": 31,
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+      "assets/images/birthday_hampers.jpg"
+    ],
+    "badge": "Bestseller",
+    "customizable": false,
+    "description": "Lightweight quick-absorbing hand moisturizing cream infused with real peach blossom extract and sweet floral aroma mist. Pocket-sized luxury for handbags and study desks.",
+    "specs": [
+      "Real Peach Blossom Extract",
+      "Non-Sticky Fast Absorption",
+      "Pocket-Friendly 45ml Tube",
+      "Sweet Natural Floral Aroma"
+    ],
+    "inStock": true
   }
 ];
