@@ -123,9 +123,10 @@ async function fetchFreshData() {
     const res = await fetch('/api/categories');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+      const hasChanged = JSON.stringify(data.data) !== JSON.stringify(allCategories);
       allCategories = data.data;
       localStorage.setItem('chintu_categories', JSON.stringify(allCategories));
-      renderCategoryView();
+      if (hasChanged) renderCategoryView();
     }
   } catch (_) {}
 
@@ -134,9 +135,10 @@ async function fetchFreshData() {
     const res = await fetch('/api/products');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+      const hasChanged = JSON.stringify(data.data) !== JSON.stringify(allProducts);
       allProducts = data.data;
       localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts));
-      renderCategoryProducts();
+      if (hasChanged) renderCategoryProducts();
     }
   } catch (_) {}
 }
@@ -328,7 +330,7 @@ function renderCategoryProducts() {
 
   const displayed = filtered.slice(0, visibleProductsCount);
 
-  container.innerHTML = displayed.map(product => {
+  container.innerHTML = displayed.map((product, pIndex) => {
     const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
     const hasMultipleImages = Array.isArray(product.images) && product.images.length > 1;
     const photoCount = hasMultipleImages ? product.images.length : 1;
@@ -345,7 +347,7 @@ function renderCategoryProducts() {
 
         <!-- Product Image -->
         <div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-3 bg-pink-50 cursor-pointer border border-pink-100" onclick="openQuickView('${product.id}')">
-          <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" decoding="async">
+          <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="${pIndex < 2 ? 'eager' : 'lazy'}" decoding="async" ${pIndex < 2 ? 'fetchpriority="high"' : ''}>
           <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <span class="text-xs font-black text-pink-700 bg-white/95 px-3 py-1.5 rounded-full shadow-md backdrop-blur flex items-center gap-1.5">
               <i class="fa-solid fa-eye text-pink-500"></i> Quick View

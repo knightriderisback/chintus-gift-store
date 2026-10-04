@@ -545,6 +545,7 @@ app.post('/api/upload', requireAdmin, (req, res) => {
 
 // Products Endpoints
 app.get('/api/products', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
   const products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
   res.json({ success: true, count: products.length, data: products });
 });
@@ -793,6 +794,7 @@ app.delete('/api/orders/:id', requireAdmin, (req, res) => {
 
 // Settings Endpoints
 app.get('/api/settings', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
   const settings = readData(SETTINGS_FILE, {
     storeName: "Chintu's Gift & Kawaii Store",
     phone: "8269212182",
@@ -827,6 +829,7 @@ app.post('/api/settings', requireAdmin, (req, res) => {
 
 // Categories Endpoints
 app.get('/api/categories', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=60, s-maxage=300, stale-while-revalidate=600');
   const categories = readData(CATEGORIES_FILE, []);
   const products = readData(PRODUCTS_FILE, DEFAULT_PRODUCTS);
   

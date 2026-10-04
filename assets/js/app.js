@@ -403,9 +403,10 @@ async function fetchCategoriesAndRender() {
     const res = await fetch('/api/categories');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
+      const hasChanged = JSON.stringify(categoriesList) !== JSON.stringify(data.data);
       categoriesList = data.data;
       localStorage.setItem('chintu_categories', JSON.stringify(categoriesList));
-      renderCategoriesShowcase(categoriesList);
+      if (hasChanged) renderCategoriesShowcase(categoriesList);
     }
   } catch (e) {
     console.warn("Categories API not reachable, using cached:", e);
