@@ -13,7 +13,12 @@
     (function() {
       try {
         var s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
-        window.__CHINTU_STORE_LOGO__ = (s && s.storeLogo && s.storeLogo.trim()) ? s.storeLogo : 'assets/images/kawaii_logo.jpg';
+        var l = (s && s.storeLogo && s.storeLogo.trim() && s.storeLogo !== 'assets/images/logo.jpg') ? s.storeLogo : 'assets/images/kawaii_logo.jpg';
+        if (s && s.storeLogo === 'assets/images/logo.jpg') {
+          s.storeLogo = 'assets/images/kawaii_logo.jpg';
+          try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
+        }
+        window.__CHINTU_STORE_LOGO__ = l;
         window.__CHINTU_LOGO_SHAPE__ = (s && s.logoShape) ? s.logoShape : 'natural';
         window.__CHINTU_LOGO_HEIGHT__ = (s && s.logoHeight) ? s.logoHeight : 'md';
         window.__CHINTU_STORE_NAME__ = (s && (s.brandShort || s.storeName)) ? (s.brandShort || s.storeName) : "CHINTU'S";
@@ -217,10 +222,11 @@
 
   </main>
 
-  <!-- QUICK VIEW PRODUCT MODAL (WITH MULTI-PHOTO GALLERY) -->
-  <div id="quickview-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/40 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-    <div class="pink-acrylic w-full max-w-xl max-h-[92vh] overflow-y-auto p-5 sm:p-6 shadow-2xl relative rounded-3xl bg-white/95 border border-pink-200">
-      <button onclick="closeQuickView()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-800 flex items-center justify-center font-bold transition">
+  <!-- QUICK VIEW PRODUCT MODAL (WITH MULTI-PHOTO GALLERY & PROMINENT CLOSE BUTTON) -->
+  <div id="quickview-modal" class="hidden fixed inset-0 z-[1200] bg-purple-950/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="pink-acrylic w-full max-w-xl max-h-[92vh] overflow-y-auto p-5 sm:p-6 shadow-2xl relative rounded-3xl bg-white/95 border-2 border-pink-300">
+      <!-- Prominent Sticky Close Button (Always Visible Even When Scrolled) -->
+      <button onclick="closeQuickView()" class="sticky top-0 float-right -mt-2 -mr-2 z-50 w-10 h-10 rounded-full bg-white hover:bg-rose-100 text-rose-600 border-2 border-pink-300 shadow-xl flex items-center justify-center font-black text-xl transition hover:scale-105 active:scale-95 cursor-pointer" title="Close Product View (बंद करें ✕)">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div id="quickview-body"></div>

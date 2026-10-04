@@ -36,11 +36,20 @@
         var s = localStorage.getItem('chintu_store_settings');
         if (s) {
           var parsed = JSON.parse(s);
-          if (parsed && parsed.storeLogo) {
-            window.__CHINTU_STORE_LOGO__ = parsed.storeLogo;
+          if (parsed) {
+            if (parsed.storeLogo === 'assets/images/logo.jpg') {
+              parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
+              localStorage.setItem('chintu_store_settings', JSON.stringify(parsed));
+            }
+            window.__CHINTU_STORE_LOGO__ = (parsed.storeLogo && parsed.storeLogo.trim() !== '' && parsed.storeLogo !== 'assets/images/logo.jpg') ? parsed.storeLogo : 'assets/images/kawaii_logo.jpg';
           }
         }
-      } catch (_) {}
+        if (!window.__CHINTU_STORE_LOGO__) {
+          window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+        }
+      } catch (_) {
+        window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+      }
     })();
   </script>
 
@@ -2496,6 +2505,10 @@
       let localSettings = {};
       try {
         localSettings = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
+        if (localSettings && localSettings.storeLogo === 'assets/images/logo.jpg') {
+          localSettings.storeLogo = 'assets/images/kawaii_logo.jpg';
+          localStorage.setItem('chintu_store_settings', JSON.stringify(localSettings));
+        }
       } catch (_) {}
 
       try {
@@ -2506,9 +2519,9 @@
 
           // Resolve logo: Non-default custom logo always takes priority
           let bestLogo = "assets/images/kawaii_logo.jpg";
-          if (localSettings.storeLogo && localSettings.storeLogo.trim() !== "" && localSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+          if (localSettings.storeLogo && localSettings.storeLogo.trim() !== "" && localSettings.storeLogo !== "assets/images/logo.jpg" && localSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
             bestLogo = localSettings.storeLogo;
-          } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+          } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/logo.jpg" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
             bestLogo = serverSettings.storeLogo;
           }
 

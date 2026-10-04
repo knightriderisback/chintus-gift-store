@@ -34,6 +34,10 @@ let customizerState = {
     const cachedSettings = localStorage.getItem('chintu_store_settings');
     if (cachedSettings) {
       const parsed = JSON.parse(cachedSettings);
+      if (parsed.storeLogo === 'assets/images/logo.jpg' || !parsed.storeLogo) {
+        parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
+        try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
+      }
       applyStoreSettings(parsed);
     }
     const cachedCats = localStorage.getItem('chintu_categories');
@@ -41,13 +45,6 @@ let customizerState = {
       const cats = JSON.parse(cachedCats);
       if (Array.isArray(cats) && cats.length > 0) {
         categoriesList = cats;
-      }
-    }
-    const cachedProducts = localStorage.getItem('chintu_custom_products');
-    if (cachedProducts) {
-      const prods = JSON.parse(cachedProducts);
-      if (Array.isArray(prods) && prods.length > 0) {
-        productsList = prods;
       }
     }
   } catch (_) {}
@@ -58,12 +55,22 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   checkStoreOpenStatus();
   fetchCategoriesAndRender();
-  fetchProductsAndRender();
   initCustomizer();
   initQuiz();
   setupEventListeners();
   initVisitorTracker("Storefront Homepage");
   setInterval(checkStoreOpenStatus, 60000);
+
+  // Close QuickView on Outside Click or Escape
+  const qm = document.getElementById("quickview-modal");
+  if (qm) {
+    qm.addEventListener("click", (e) => {
+      if (e.target === qm) closeQuickView();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeQuickView();
+  });
 });
 
 // Load settings from backend or local storage (Local custom settings NEVER get overwritten by server defaults)
@@ -73,6 +80,10 @@ async function loadStoreSettings() {
   if (local) {
     try {
       parsedLocal = JSON.parse(local);
+      if (parsedLocal && parsedLocal.storeLogo === 'assets/images/logo.jpg') {
+        parsedLocal.storeLogo = 'assets/images/kawaii_logo.jpg';
+        localStorage.setItem('chintu_store_settings', JSON.stringify(parsedLocal));
+      }
       applyStoreSettings(parsedLocal);
     } catch (_) {}
   }
@@ -86,9 +97,9 @@ async function loadStoreSettings() {
 
       // Safe logo resolution: custom logo always prevails
       let bestLogo = "assets/images/kawaii_logo.jpg";
-      if (parsedLocal && parsedLocal.storeLogo && parsedLocal.storeLogo.trim() !== "" && parsedLocal.storeLogo !== "assets/images/kawaii_logo.jpg") {
+      if (parsedLocal && parsedLocal.storeLogo && parsedLocal.storeLogo.trim() !== "" && parsedLocal.storeLogo !== "assets/images/logo.jpg" && parsedLocal.storeLogo !== "assets/images/kawaii_logo.jpg") {
         bestLogo = parsedLocal.storeLogo;
-      } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
+      } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/logo.jpg" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
         bestLogo = serverSettings.storeLogo;
       }
 
@@ -138,6 +149,9 @@ async function loadStoreSettings() {
 
 function applyStoreSettings(settings) {
   if (!settings) return;
+  if (settings.storeLogo === 'assets/images/logo.jpg') {
+    settings.storeLogo = 'assets/images/kawaii_logo.jpg';
+  }
   window.currentStoreSettings = settings;
 
   // 1. Theme and Aesthetic Styling
@@ -1116,8 +1130,21 @@ function buyOnWhatsApp(productId) {
   window.open(url, "_blank");
 }
 
-function openQuickView(productId) {
-  const product = productsList.find(p => p.id === productId);
+async function openQuickView(productId) {
+  let product = (Array.isArray(productsList) && productsList.length > 0) ? productsList.find(p => p.id === productId) : null;
+  if (!product && typeof window !== 'undefined' && Array.isArray(window.PRODUCTS_DATA)) {
+    product = window.PRODUCTS_DATA.find(p => p.id === productId);
+  }
+  if (!product) {
+    try {
+      const res = await fetch('/api/products');
+      const data = await res.json();
+      if (data.success && Array.isArray(data.data)) {
+        productsList = data.data;
+        product = productsList.find(p => p.id === productId);
+      }
+    } catch (_) {}
+  }
   if (!product) return;
 
   const modal = document.getElementById("quickview-modal");
@@ -1183,6 +1210,9 @@ function openQuickView(productId) {
               <i class="fa-solid fa-wand-magic-sparkles"></i> Customize Name / Photo
             </button>
           ` : ''}
+          <button type="button" onclick="closeQuickView()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-black transition flex items-center justify-center gap-1.5 border border-slate-300 hover:border-rose-300 shadow-sm cursor-pointer mt-1">
+            <i class="fa-solid fa-xmark text-sm"></i> <span>Close Product View (बंद करें ✕)</span>
+          </button>
         </div>
       </div>
     </div>

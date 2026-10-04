@@ -17,10 +17,15 @@ let cart = [];
 // Instant Fast Cache Initialization
 (function initFastData() {
   try {
-    // 1. Settings & Logo
+    // 1. Settings & Logo (Sanitize old logo.jpg)
     const cachedSettings = localStorage.getItem('chintu_store_settings');
     if (cachedSettings) {
-      applyPageSettings(JSON.parse(cachedSettings));
+      const parsed = JSON.parse(cachedSettings);
+      if (parsed.storeLogo === 'assets/images/logo.jpg' || !parsed.storeLogo) {
+        parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
+        try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
+      }
+      applyPageSettings(parsed);
     }
 
     // 2. Categories
@@ -63,6 +68,17 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCategoryView();
   fetchFreshData();
   initVisitorTracker("Category: " + currentCategory);
+
+  // Close QuickView on Outside Click or Escape
+  const qm = document.getElementById("quickview-modal");
+  if (qm) {
+    qm.addEventListener("click", (e) => {
+      if (e.target === qm) closeQuickView();
+    });
+  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeQuickView();
+  });
 });
 
 // Settings & Branding
@@ -72,12 +88,14 @@ function applyPageSettings(settings) {
     document.body.classList.remove('theme-sakura-pink', 'theme-lavender-dream', 'theme-peach-coral', 'theme-cotton-candy', 'theme-matcha-mint');
     document.body.classList.add(settings.theme);
   }
-  if (settings.storeLogo) {
-    document.querySelectorAll(".store-logo-img").forEach(el => {
-      el.src = settings.storeLogo;
-      el.style.objectFit = 'contain';
-    });
+  let targetLogo = settings.storeLogo || "assets/images/kawaii_logo.jpg";
+  if (targetLogo === "assets/images/logo.jpg") {
+    targetLogo = "assets/images/kawaii_logo.jpg";
   }
+  document.querySelectorAll(".store-logo-img").forEach(el => {
+    el.src = targetLogo;
+    el.style.objectFit = 'contain';
+  });
   const logoWrapper = document.getElementById("store-logo-wrapper");
   if (logoWrapper) {
     const shape = settings.logoShape || 'natural';
@@ -179,6 +197,47 @@ function renderCategoryView() {
   renderCategoryProducts();
 }
 
+const SUBCAT_ICONS = {
+  // Stationery
+  "Pencils & Gel Pens": "✏️",
+  "Cute Erasers & Sharpeners": "🧼",
+  "Pastel Diaries & Locks": "📔",
+  "Aesthetic Highlighters": "🖍️",
+  "Pencil Pouches & Organizers": "👝",
+  "Washi Tapes & Stickers": "🎀",
+  // Cosmetics
+  "Cute Lip Balms & Glosses": "💄",
+  "Korean Velvet Tint Mud": "💋",
+  "Pocket Mirrors & Brushes": "🪞",
+  "Hand Creams & Skincare": "🌸",
+  "Hair Accessories & Clips": "✨",
+  "Makeup Vanity Pouches": "👛",
+  // Toys
+  "Giant Cuddle Teddies": "🧸",
+  "Boba & Food Plushies": "🧋",
+  "Kawaii Animal Plushies": "🐰",
+  "Reversible Emotion Plushies": "🐙",
+  "Plush Backpacks & Charms": "🎒",
+  // Personalized
+  "3D LED Acrylic Lamps": "💡",
+  "Photo Magic Mugs": "☕",
+  "Spotify Music Plaques": "🎵",
+  "Photo Rotating Cube Lamps": "🪵",
+  "Custom Name Keychains": "🔑",
+  // Birthday
+  "Birthday Gift Hampers": "🎁",
+  "Surprise Explosion Boxes": "📦",
+  "Celebration Baskets": "🧺",
+  "Greeting Cards & Seals": "💌",
+  "Birthday Party Props": "👑",
+  // Novelties
+  "Pastel Sippers & Bottles": "🥤",
+  "Mini Crossbody Bags": "👜",
+  "Silicone Night Lamps": "🐼",
+  "Smart Desk Clocks": "⏰",
+  "Mini Mist Humidifiers": "💨"
+};
+
 function renderSubcategoriesPills(cat) {
   const container = document.getElementById("subcategories-pill-container");
   if (!container) return;
@@ -192,11 +251,15 @@ function renderSubcategoriesPills(cat) {
   container.innerHTML = allPills.map(sub => {
     const isAll = sub === "all";
     const isActive = currentSubcategory === sub;
-    const label = isAll ? "✨ All (सभी)" : sub;
+    const icon = isAll ? "✨" : (SUBCAT_ICONS[sub] || "🎀");
+    const count = allProducts.filter(p => p.category === cat.id && (isAll || p.subcategory === sub)).length;
+    const label = isAll ? "All Items (सभी)" : sub;
 
     return `
-      <button onclick="switchSubcategory('${sub}')" class="subcat-chip px-3.5 py-1.5 rounded-xl text-xs font-black transition-all whitespace-nowrap border shadow-sm flex items-center gap-1 cursor-pointer ${isActive ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-500 shadow-md scale-105' : 'bg-white text-pink-900 border-pink-200/90 hover:bg-pink-50 hover:border-pink-300'}">
-        ${label}
+      <button onclick="switchSubcategory('${sub}')" class="subcat-chip px-3.5 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap border shadow-sm flex items-center gap-1.5 cursor-pointer ${isActive ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-500 shadow-md scale-105 ring-2 ring-pink-300' : 'bg-white text-pink-900 border-pink-200/90 hover:bg-pink-50 hover:border-pink-300'}">
+        <span>${icon}</span>
+        <span>${label}</span>
+        <span class="px-1.5 py-0.2 rounded-full text-[10px] font-black ${isActive ? 'bg-white/20 text-white' : 'bg-pink-100 text-pink-700'}">${count}</span>
       </button>
     `;
   }).join('');
@@ -439,6 +502,9 @@ function openQuickView(productId) {
               <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Buy
             </button>
           </div>
+          <button type="button" onclick="closeQuickView()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-black transition flex items-center justify-center gap-1.5 border border-slate-300 hover:border-rose-300 shadow-sm cursor-pointer mt-1">
+            <i class="fa-solid fa-xmark text-sm"></i> <span>Close Product View (बंद करें ✕)</span>
+          </button>
         </div>
       </div>
     </div>
