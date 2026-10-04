@@ -14,28 +14,18 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0">
+  <link rel="icon" type="image/png" href="assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0">
 
   <!-- Zero-Latency Logo & Settings Hydration (Permanently guarantees new pink mascot logo) -->
   <script>
     (function() {
-      var CANONICAL_MASCOT = 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0';
+      var CANONICAL_MASCOT = 'assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0';
       try {
         var s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
-        var l = CANONICAL_MASCOT;
-        if (s && s.storeLogo) {
-          var str = String(s.storeLogo).trim();
-          if (str.includes('logo.jpg') || str.includes('badge') || str.includes('kawaii_logo.jpg') || str === '') {
-            s.storeLogo = CANONICAL_MASCOT;
-            try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
-            l = CANONICAL_MASCOT;
-          } else {
-            l = str;
-          }
-        } else {
-          l = CANONICAL_MASCOT;
-        }
-        window.__CHINTU_STORE_LOGO__ = l;
+        s.storeLogo = CANONICAL_MASCOT;
+        s.favicon = CANONICAL_MASCOT;
+        try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
+        window.__CHINTU_STORE_LOGO__ = CANONICAL_MASCOT;
         window.__CHINTU_LOGO_SHAPE__ = (s && s.logoShape) ? s.logoShape : 'natural';
         window.__CHINTU_LOGO_HEIGHT__ = (s && s.logoHeight) ? s.logoHeight : 'md';
         window.__CHINTU_STORE_NAME__ = (s && (s.brandShort || s.storeName)) ? (s.brandShort || s.storeName) : "CHINTU'S";
@@ -142,7 +132,7 @@
       <!-- Logo & Brand with Cartoon Mascot (Adaptive PNG Molding) -->
       <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div id="store-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
-          <img id="store-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
+          <img id="store-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
           <script>
             if (window.__CHINTU_STORE_LOGO__) document.getElementById('store-logo-img').src = window.__CHINTU_STORE_LOGO__;
             if (window.__CHINTU_LOGO_SHAPE__ || window.__CHINTU_LOGO_HEIGHT__) {
@@ -438,8 +428,11 @@
             <!-- Price & Action Buttons -->
             <div class="pt-3 border-t border-pink-200 flex flex-col sm:flex-row items-center justify-between gap-3">
               <div>
-                <span class="text-[11px] text-pink-800 font-bold block">Customized Price:</span>
-                <span id="customizer-price-display" class="text-2xl sm:text-3xl font-black text-pink-600 font-fun">₹699</span>
+                <span class="text-[11px] text-pink-800 font-bold block mb-1">Pricing & Rate:</span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black shadow-xs">
+                  <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+                  <span id="customizer-price-display">WhatsApp for Rate</span>
+                </div>
                 <span class="text-[10px] text-emerald-700 font-bold ml-2">✓ Free Gift Box & Card</span>
               </div>
 
@@ -529,12 +522,12 @@
     <!-- Title and Search Bar -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
       <div>
-        <span class="kawaii-badge mb-1.5 section-badge">🎀 Shop by Category</span>
+        <span class="kawaii-badge mb-1.5 section-badge">🎀 Digital Product Catalogue</span>
         <h2 class="text-2xl sm:text-4xl font-black text-purple-950 font-fun section-title">
-          Explore Our Kawaii Categories
+          Chintu's Digital Catalogue (डिजिटल कैटलॉग)
         </h2>
         <p class="text-xs sm:text-sm text-pink-900/80 font-semibold mt-0.5 section-subtitle">
-          Tap any category below to view exclusive gifts, subcategories & collections in Dalli Rajhara!
+          किसी भी कैटेगरी पर टैप करें — सब-कैटेगरी व 135+ प्रोडक्ट्स देखें और बेस्ट रेट जानने के लिए WhatsApp पर इनक्वायरी भेजें!
         </p>
       </div>
 
@@ -542,13 +535,39 @@
       <form onsubmit="event.preventDefault(); redirectToCategorySearch();" class="flex items-center gap-2 w-full md:w-auto">
         <div class="relative flex-1 sm:w-72">
           <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-pink-400 text-xs"></i>
-          <input type="text" id="front-search-input" placeholder="Search diaries, teddies, lamps..." class="w-full pl-9 pr-3 py-2.5 rounded-2xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
+          <input type="text" id="front-search-input" placeholder="Search erasers, pencils, lipsticks..." class="w-full pl-9 pr-3 py-2.5 rounded-2xl bg-white border border-pink-200 text-xs font-bold text-pink-950 focus:outline-none focus:border-pink-500 shadow-sm">
         </div>
         <button type="submit" class="px-4 py-2.5 rounded-2xl kawaii-btn-pink text-xs font-black shadow-md shrink-0 flex items-center gap-1.5 cursor-pointer">
           <span>Search</span>
           <i class="fa-solid fa-arrow-right text-[10px]"></i>
         </button>
       </form>
+    </div>
+
+    <!-- PROFESSIONAL RATE & ORDER INSTRUCTIONS / DISCLAIMER BANNER -->
+    <div class="mb-8 relative overflow-hidden rounded-3xl border-2 border-emerald-400/80 bg-gradient-to-r from-emerald-50 via-pink-50 to-emerald-50 p-4 sm:p-5 shadow-sm">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-start gap-3 sm:gap-4">
+          <div class="w-11 h-11 sm:w-13 sm:h-13 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-md">
+            <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl"></i>
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap mb-1">
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shadow-xs">WhatsApp Order & Rate Guide</span>
+              <span class="text-xs sm:text-sm font-black text-purple-950 font-fun">रेट (Rate) जानने व ऑर्डर करने का आसान तरीका:</span>
+            </div>
+            <p class="text-xs sm:text-sm text-pink-950 font-bold leading-relaxed">
+              रेट जानने के लिए कैटालॉग में से जो भी प्रोडक्ट्स आपको पसंद आएं, उन्हें <span class="text-pink-600 font-extrabold underline decoration-pink-300">‘Add to Bag’ (बैग में जोड़ें)</span> में डालें। फिर नीचे <span class="text-emerald-700 font-extrabold underline decoration-emerald-300">‘Send Inquiry on WhatsApp’</span> दबाएं — हमारी टीम तुरंत आपको बेस्ट डिस्काउंटेड रेट और होम डिलीवरी डिटेल्स देगी! 🌸
+            </p>
+          </div>
+        </div>
+        <div class="shrink-0 flex items-center gap-2 self-stretch md:self-auto justify-end">
+          <a href="https://wa.me/918269212182?text=Namaste%20Chintu's%20Gift%20Store!%20I%20want%20to%20browse%20catalogue%20and%20know%20product%20rates" target="_blank" class="w-full md:w-auto px-4 py-2.5 rounded-2xl kawaii-btn-green text-xs font-black shadow-md flex items-center justify-center gap-2 hover:scale-105 transition-all">
+            <i class="fa-brands fa-whatsapp text-base"></i>
+            <span>WhatsApp Us (8269212182)</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- Dynamic Categories Grid (Populated dynamically from categories.json / admin updates) -->
@@ -638,7 +657,11 @@
 
           <!-- Subcategories chips preview -->
           <div class="flex flex-wrap gap-1.5 mb-4">
-            <a href="/category?cat=stationery&subcat=Rulers & Geometry" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Rulers & Geometry</a><a href="/category?cat=stationery&subcat=Pencil Cases & Pouches" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Pencil Cases & Pouches</a><a href="/category?cat=stationery&subcat=Pencil Sharpeners" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Pencil Sharpeners</a><span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+2 more</span>
+            <a href="/category?cat=stationery&subcat=Erasers%20%26%20Novelty" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/90 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">🧼 Erasers</a>
+            <a href="/category?cat=stationery&subcat=Pencil%20Sharpeners" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/90 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">✏️ Sharpeners</a>
+            <a href="/category?cat=stationery&subcat=Pencil%20Cases%20%26%20Pouches" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/90 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">👝 Pencil Cases</a>
+            <a href="/category?cat=stationery&subcat=Rulers%20%26%20Geometry" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/90 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">📐 Rulers</a>
+            <a href="/category?cat=stationery&subcat=Pens%20%26%20Highlighters" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/90 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">🖊️ Pens</a>
           </div>
         </div>
 

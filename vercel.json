@@ -1,9 +1,11 @@
 {
   "cleanUrls": true,
   "redirects": [
-    { "source": "/assets/images/logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true },
-    { "source": "/assets/images/kawaii_logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true },
-    { "source": "/assets/images/chintus_logo_badge.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true }
+    { "source": "/assets/images/logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0", "permanent": true },
+    { "source": "/assets/images/kawaii_logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0", "permanent": true },
+    { "source": "/assets/images/chintus_logo_badge.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0", "permanent": true },
+    { "source": "/assets/images/chintus_pink_kawaii_mascot_v5.png", "destination": "/assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0", "permanent": true },
+    { "source": "/assets/images/chintus_pink_kawaii_mascot_v6.png", "destination": "/assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0", "permanent": true }
   ],
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
@@ -11,6 +13,24 @@
     { "source": "/api/(.*)", "destination": "/api" }
   ],
   "headers": [
+    {
+      "source": "/(.*)\\.html",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(category|admin)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
     {
       "source": "/assets/(.*)\\.(css|js)",
       "headers": [

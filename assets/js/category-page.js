@@ -16,15 +16,15 @@ let cart = [];
 let quickViewImages = [];
 let quickViewCurrentIndex = 0;
 
-const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0";
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0";
 
 function resolveSafeLogo(logo) {
   if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;
   const l = logo.trim();
-  if (l.includes('logo.jpg') || l.includes('badge') || l.includes('kawaii_logo.jpg') || l === '') {
-    return CANONICAL_MASCOT_LOGO;
+  if (l.startsWith('data:image/') || l.startsWith('/uploads/')) {
+    return l;
   }
-  return l;
+  return CANONICAL_MASCOT_LOGO;
 }
 
 // Fallback images when Google Drive links are not public yet or on network error
@@ -227,8 +227,8 @@ function renderCategoryView() {
     `).join('');
   }
 
-  // Render Subcategory filter chips
-  renderSubcategoriesPills(cat);
+  // Render Subcategory Visual Explorer Cards
+  renderSubcategoriesCards(cat);
 
   // Render Products
   renderCategoryProducts();
@@ -265,31 +265,113 @@ const SUBCAT_ICONS = {
   "Model Look Reference": "📸"
 };
 
-function renderSubcategoriesPills(cat) {
-  const container = document.getElementById("subcategories-pill-container");
+const SUBCAT_HINDI = {
+  // Stationery & School Supplies
+  "Erasers & Novelty": "इरेज़र्स व क्यूट रबर",
+  "Pencil Sharpeners": "पेंसिल शार्पनर्स",
+  "Pencil Cases & Pouches": "पेंसिल बॉक्स व पाउच",
+  "Rulers & Geometry": "स्केल व ज्योमेट्री सेट",
+  "Pens & Highlighters": "पेन व हाइलाइटर्स",
+  // Beauty & Cosmetics
+  "Lipsticks": "लिपस्टिक्स व लिप शेड्स",
+  "Foundations & Face Base": "फाउंडेशन व बेस",
+  "Lip Glosses": "लिप ग्लॉस",
+  "Lip Products": "लिप केयर",
+  "Lip Glosses & Balms": "लिप ग्लॉस व बाम",
+  "Lip Care & Treatments": "लिप ट्रीटमेंट",
+  "Lip Liners": "लिप लाइनर",
+  "Nail Art & Press-ons": "नेल आर्ट व नेल्स",
+  "Eye & Face Palettes": "आई व फेस पैलेट",
+  "Single Eye Shadows": "आई शैडो",
+  // Skincare & Personal Care
+  "Face Packs & Masks": "फेस मास्क व पैक",
+  "Face & Body Scrubs": "बॉडी व फेस स्क्रब",
+  "Face Wash & Cleansers": "फेस वॉश व क्लींजर",
+  "Moisturizers & Creams": "मॉइस्चराइज़र व क्रीम",
+  // Kids & Lifestyle
+  "Water Bottles & Sippers": "सिपर व वाटर बॉटल"
+};
+
+function renderSubcategoriesCards(cat) {
+  const container = document.getElementById("subcategories-cards-grid");
   if (!container) return;
 
   const subcats = Array.isArray(cat.subcategories) && cat.subcategories.length > 0 
     ? cat.subcategories 
-    : ["All Items"];
+    : [];
 
-  const allPills = ["all", ...subcats];
-
-  container.innerHTML = allPills.map(sub => {
-    const isAll = sub === "all";
+  const cardsHtml = subcats.map(sub => {
     const isActive = currentSubcategory === sub;
-    const icon = isAll ? "✨" : (SUBCAT_ICONS[sub] || "🎀");
-    const count = allProducts.filter(p => p.category === cat.id && (isAll || p.subcategory === sub)).length;
-    const label = isAll ? "All Items (सभी)" : sub;
+    const icon = SUBCAT_ICONS[sub] || "🎀";
+    const hindi = SUBCAT_HINDI[sub] || "";
+    const count = allProducts.filter(p => p.category === cat.id && p.subcategory === sub).length;
 
     return `
-      <button onclick="switchSubcategory('${sub}')" class="subcat-chip px-3.5 py-2 rounded-xl text-xs font-black transition-all whitespace-nowrap border shadow-sm flex items-center gap-1.5 cursor-pointer ${isActive ? 'bg-gradient-to-r from-pink-500 to-rose-500 text-white border-pink-500 shadow-md scale-105 ring-2 ring-pink-300' : 'bg-white text-pink-900 border-pink-200/90 hover:bg-pink-50 hover:border-pink-300'}">
-        <span>${icon}</span>
-        <span>${label}</span>
-        <span class="px-1.5 py-0.2 rounded-full text-[10px] font-black ${isActive ? 'bg-white/20 text-white' : 'bg-pink-100 text-pink-700'}">${count}</span>
-      </button>
+      <div onclick="filterBySubcategory('${sub.replace(/'/g, "\\'")}')" class="subcat-card group relative p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between ${isActive ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white border-pink-600 shadow-md ring-2 ring-pink-400 scale-[1.02]' : 'bg-white hover:bg-pink-50 text-pink-950 border-pink-200/90 shadow-2xs hover:shadow-md hover:border-pink-300'}">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="w-8 h-8 rounded-xl ${isActive ? 'bg-white/20 text-white' : 'bg-pink-100 text-pink-600'} flex items-center justify-center text-base shadow-2xs group-hover:scale-110 transition-transform">
+              ${icon}
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? 'bg-white text-pink-600' : 'bg-pink-100 text-pink-700'}">
+              ${count} items
+            </span>
+          </div>
+          <h3 class="text-xs sm:text-sm font-black ${isActive ? 'text-white' : 'text-purple-950'} font-fun line-clamp-1 leading-tight mb-0.5">
+            ${sub}
+          </h3>
+          ${hindi ? `<div class="text-[10px] font-bold ${isActive ? 'text-pink-100' : 'text-pink-600'} truncate">${hindi}</div>` : ''}
+        </div>
+        <div class="mt-2.5 pt-2 border-t ${isActive ? 'border-white/20 text-white' : 'border-pink-100 text-pink-600'} flex items-center justify-between text-[10px] font-extrabold">
+          <span>${isActive ? 'Selected ✓' : 'View Products'}</span>
+          <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+        </div>
+      </div>
     `;
   }).join('');
+
+  container.innerHTML = cardsHtml;
+  updateActiveFilterIndicator();
+}
+
+function filterBySubcategory(subcat) {
+  currentSubcategory = subcat;
+  visibleProductsCount = 8;
+  renderSubcategoriesCards(getActiveCategoryObject());
+  renderCategoryProducts();
+  updateActiveFilterIndicator();
+
+  // Update browser URL query without reload
+  const url = new URL(window.location.href);
+  if (subcat === 'all') {
+    url.searchParams.delete('subcat');
+  } else {
+    url.searchParams.set('subcat', subcat);
+  }
+  window.history.replaceState({}, '', url.toString());
+
+  // Smooth scroll to products section
+  const grid = document.getElementById("category-products-grid");
+  if (grid) {
+    grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+function updateActiveFilterIndicator() {
+  const bar = document.getElementById("active-filter-indicator");
+  const label = document.getElementById("active-filter-label");
+  const countBadge = document.getElementById("active-filter-count-badge");
+  if (!bar) return;
+
+  if (currentSubcategory === 'all') {
+    bar.classList.add("hidden");
+  } else {
+    bar.classList.remove("hidden");
+    if (label) label.textContent = currentSubcategory;
+    const cat = getActiveCategoryObject();
+    const count = allProducts.filter(p => p.category === cat.id && p.subcategory === currentSubcategory).length;
+    if (countBadge) countBadge.textContent = `${count} products`;
+  }
 }
 
 function switchCategory(catId) {
@@ -302,9 +384,7 @@ function switchCategory(catId) {
 }
 
 function switchSubcategory(subcat) {
-  currentSubcategory = subcat;
-  visibleProductsCount = 8;
-  renderCategoryProducts();
+  filterBySubcategory(subcat);
 }
 
 // Render Products Grid with 8 items pagination & "Show More" (NO PRICE, NO STOCK MODE)
@@ -404,8 +484,17 @@ function renderCategoryProducts() {
             ${product.description || ''}
           </p>
 
+          <!-- WhatsApp Rate Indicator (Replaces numeric price) -->
+          <div class="mb-2 flex items-center justify-between">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-black shadow-2xs cursor-pointer hover:bg-emerald-100 transition" onclick="inquireOnWhatsApp('${product.id}')" title="Ask Rate on WhatsApp">
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+              <span>WhatsApp for Rate</span>
+            </div>
+            <span class="text-[9px] text-pink-600 font-extrabold uppercase tracking-wider">Inquire</span>
+          </div>
+
           <!-- WhatsApp Inquiry & Add to Inquiry Bag Actions -->
-          <div class="mt-auto pt-2.5 border-t border-pink-100">
+          <div class="mt-auto pt-2 border-t border-pink-100">
             <div class="grid grid-cols-2 gap-2">
               <button onclick="addToCart('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-pink text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98" title="Add to Inquiry Bag">
                 <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
@@ -543,10 +632,22 @@ function openQuickView(productId) {
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Subcategory:</span> <span>${product.subcategory || '-'}</span></div>
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Location:</span> <span>Subhash Chowk, Dalli Rajhara</span></div>
           </div>
+        <!-- WhatsApp Rate Indicator in Modal -->
+        <div class="mb-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between shadow-2xs">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <i class="fa-brands fa-whatsapp text-xl"></i>
+            </div>
+            <div>
+              <span class="text-[10px] uppercase font-black tracking-wider text-emerald-700 block">Rate & Pricing</span>
+              <span class="text-xs font-black text-purple-950 font-fun">WhatsApp for Best Rate & Availability</span>
+            </div>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-xs">Direct Support</span>
         </div>
 
         <!-- Action Buttons -->
-        <div class="pt-3 border-t border-pink-200 flex flex-col gap-2">
+        <div class="pt-2 border-t border-pink-200 flex flex-col gap-2">
           <div class="grid grid-cols-2 gap-2">
             <button onclick="addToCart('${product.id}'); closeQuickView();" class="py-2.5 rounded-xl kawaii-btn-pink text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer">
               <i class="fa-solid fa-plus"></i> Add to Bag

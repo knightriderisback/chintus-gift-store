@@ -28,15 +28,15 @@ let customizerState = {
   uploadedPhoto: null
 };
 
-const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0";
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0";
 
 function resolveSafeLogo(logo) {
   if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;
   const l = logo.trim();
-  if (l.includes('logo.jpg') || l.includes('badge') || l.includes('kawaii_logo.jpg') || l === '') {
-    return CANONICAL_MASCOT_LOGO;
+  if (l.startsWith('data:image/') || l.startsWith('/uploads/')) {
+    return l;
   }
-  return l;
+  return CANONICAL_MASCOT_LOGO;
 }
 
 // Instant 0ms Fast Cache Rendering (Zero Latency on Page Load)
@@ -745,7 +745,7 @@ function setCustomizerProduct(type) {
   });
 
   const priceEl = document.getElementById("customizer-price-display");
-  if (priceEl) priceEl.textContent = `₹${customizerState.price}`;
+  if (priceEl) priceEl.innerHTML = '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black shadow-xs"><i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> WhatsApp for Rate</span>';
 
   updateCustomizerPreview();
 }
@@ -870,12 +870,11 @@ function orderCustomOnWhatsApp() {
   const text = `🌸 *NEW CUSTOM DESIGN ORDER - CHINTU'S GIFT SHOP*\n` +
                `========================================\n` +
                `🎀 *Product:* ${customizerState.title}\n` +
-               `💰 *Price:* ₹${customizerState.price}\n` +
                `✨ *Custom Name:* ${customizerState.nameText}\n` +
                (customizerState.dateText ? `📅 *Date:* ${customizerState.dateText}\n` : '') +
                (customizerState.messageText ? `💌 *Card Message:* ${customizerState.messageText}\n` : '') +
                `========================================\n` +
-               `Please confirm order for Dalli Rajhara store and share UPI QR / Payment details!`;
+               `Please share the best rate, availability, and home delivery details for Dalli Rajhara!`;
 
   const url = `https://wa.me/${STORE_WA}?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank");
