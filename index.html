@@ -130,7 +130,7 @@
     <div class="max-w-7xl mx-auto flex items-center justify-between h-16 sm:h-20">
       
       <!-- Logo & Brand with Cartoon Mascot (Adaptive PNG Molding) -->
-      <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
+      <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
         <div id="store-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
           <img id="store-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
           <script>
@@ -141,10 +141,10 @@
             }
           </script>
         </div>
-        <div>
+        <div class="min-w-0">
           <div class="flex items-center gap-1.5">
-            <span class="store-brand-title text-lg sm:text-2xl font-black text-pink-600 font-fun tracking-tight">CHINTU'S</span>
-            <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-extrabold uppercase border border-pink-200">Kawaii</span>
+            <span class="store-brand-title text-lg sm:text-2xl font-black text-pink-600 font-fun tracking-tight truncate">CHINTU'S</span>
+            <span class="text-[10px] px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-extrabold uppercase border border-pink-200 shrink-0">Kawaii</span>
           </div>
           <p class="store-brand-tagline text-[10px] sm:text-xs text-pink-800/80 font-bold truncate max-w-[170px] sm:max-w-none">
             💄 Beauty, Cosmetics & Fancy Stationery
@@ -427,13 +427,14 @@
 
             <!-- Price & Action Buttons -->
             <div class="pt-3 border-t border-pink-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div>
+              <div class="min-w-0">
                 <span class="text-[11px] text-pink-800 font-bold block mb-1">Pricing & Rate:</span>
-                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black shadow-xs">
-                  <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
-                  <span id="customizer-price-display">WhatsApp for Rate</span>
+                <div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black shadow-xs min-w-0">
+                  <span class="text-sm font-black text-pink-600 leading-none shrink-0">₹</span>
+                  <i class="fa-brands fa-whatsapp text-emerald-600 text-sm shrink-0"></i>
+                  <span id="customizer-price-display" class="text-emerald-900 font-black truncate">WhatsApp for Rate</span>
                 </div>
-                <span class="text-[10px] text-emerald-700 font-bold ml-2">✓ Free Gift Box & Card</span>
+                <span class="text-[10px] text-emerald-700 font-bold ml-2 shrink-0">✓ Free Gift Box & Card</span>
               </div>
 
               <div class="flex items-center gap-2 w-full sm:w-auto">
@@ -521,13 +522,16 @@
     
     <!-- Title and Search Bar -->
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-      <div>
+      <div class="min-w-0">
         <span class="kawaii-badge mb-1.5 section-badge">🎀 Digital Product Catalogue</span>
-        <h2 class="text-2xl sm:text-4xl font-black text-purple-950 font-fun section-title">
-          Chintu's Digital Catalogue (डिजिटल कैटलॉग)
+        <h2 class="text-2xl sm:text-4xl font-black text-purple-950 font-fun section-title leading-tight">
+          Chintu's Digital Catalogue
         </h2>
-        <p class="text-xs sm:text-sm text-pink-900/80 font-semibold mt-0.5 section-subtitle">
-          किसी भी कैटेगरी पर टैप करें — सब-कैटेगरी व 135+ प्रोडक्ट्स देखें और बेस्ट रेट जानने के लिए WhatsApp पर इनक्वायरी भेजें!
+        <div class="text-xs sm:text-sm text-pink-600 font-bold mt-0.5">
+          डिजिटल कैटलॉग व प्रोडक्ट्स एक्सप्लोरर
+        </div>
+        <p class="text-xs sm:text-sm text-slate-700 font-medium mt-1 leading-relaxed section-subtitle">
+          Select any category to explore subcategories & 135+ authentic items. Inquire on WhatsApp for best discounted rates!
         </p>
       </div>
 
@@ -547,73 +551,76 @@
     <!-- PROFESSIONAL BILINGUAL STEP-BY-STEP RATE & ORDER INSTRUCTIONS -->
     <div class="mb-8 relative overflow-hidden rounded-3xl border-2 border-emerald-400 bg-gradient-to-br from-emerald-50 via-white to-pink-50 p-4 sm:p-5 shadow-sm space-y-3.5">
       <!-- Header with Badges -->
-      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 pb-2.5 border-b border-emerald-100">
-        <div class="flex items-center gap-2.5">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 pb-2.5 border-b border-emerald-100">
+        <div class="flex items-center gap-2.5 min-w-0">
           <span class="w-9 h-9 rounded-2xl bg-emerald-500 text-white flex items-center justify-center text-lg shadow-sm shrink-0">
             <i class="fa-brands fa-whatsapp"></i>
           </span>
-          <div>
+          <div class="min-w-0">
             <div class="flex items-center gap-2 flex-wrap">
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider">How to Order & Inquire</span>
-              <span class="text-xs sm:text-sm font-black text-purple-950 font-fun">रेट (Rate) जानने व ऑर्डर करने के 3 आसान स्टेप्स:</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-black uppercase tracking-wider shrink-0">Order & Rate Guide</span>
+              <h3 class="text-xs sm:text-sm font-black text-purple-950 font-fun truncate">3 Simple Steps to Check Rates & Order</h3>
             </div>
-            <p class="text-[11px] text-pink-900/80 font-bold">Follow 3 easy steps below • नीचे दिए गए 3 आसान स्टेप्स देखें:</p>
+            <p class="text-[10px] sm:text-[11px] text-pink-700 font-semibold truncate mt-0.5">रेट जानने और ऑर्डर करने के 3 आसान स्टेप्स:</p>
           </div>
         </div>
 
-        <a href="https://wa.me/918269212182?text=Namaste%20Chintu's%20Gift%20Store!%20I%20want%20to%20know%20product%20rates" target="_blank" class="shrink-0 px-3.5 py-1.5 rounded-xl kawaii-btn-green text-[11px] font-black shadow-xs flex items-center gap-1.5 hover:scale-105 transition-all">
+        <a href="https://wa.me/918269212182?text=Namaste%20Chintu's%20Gift%20Store!%20I%20want%20to%20know%20product%20rates" target="_blank" class="shrink-0 px-3.5 py-1.5 rounded-xl kawaii-btn-green text-[11px] font-black shadow-xs flex items-center gap-1.5 hover:scale-105 transition-all" title="WhatsApp Customer Support">
           <i class="fa-brands fa-whatsapp text-sm"></i>
-          <span>WhatsApp: +91 82692 12182</span>
+          <span>WhatsApp: 8269212182</span>
         </a>
       </div>
 
-      <!-- 3 Step Cards Grid (Bilingual English & Hindi, Short & Clear) -->
+      <!-- 3 Step Cards Grid (English Primary, Hindi Secondary) -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-2.5 sm:gap-3">
         <!-- Step 1 -->
-        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-200/90 shadow-2xs flex items-start gap-2.5">
+        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-200/90 shadow-2xs flex items-start gap-2.5 min-w-0">
           <span class="w-7 h-7 rounded-xl bg-pink-500 text-white font-black text-xs flex items-center justify-center shrink-0 shadow-2xs font-fun">
             1
           </span>
-          <div class="min-w-0">
-            <h4 class="text-xs font-black text-purple-950 font-fun">
-              Choose Product <span class="text-pink-600 font-bold text-[11px]">| प्रोडक्ट चुनें</span>
+          <div class="min-w-0 flex-1">
+            <h4 class="text-xs font-black text-purple-950 font-fun leading-tight truncate">
+              1. Choose Product
             </h4>
-            <p class="text-[11px] text-pink-950 font-medium leading-snug mt-1">
-              <strong>EN:</strong> Browse catalogue & pick your favorite items.<br>
-              <strong>HI:</strong> कैटलॉग में अपनी पसंद के प्रोडक्ट्स देखें।
-            </p>
+            <div class="text-[10px] font-bold text-pink-600 truncate mt-0.5">प्रोडक्ट पसंद करें</div>
+            <div class="mt-1 text-[11px] leading-snug">
+              <p class="font-bold text-slate-800 break-words">Browse catalogue and pick your favorites.</p>
+              <p class="text-[10px] text-pink-800/80 font-medium break-words mt-0.5">कैटलॉग में अपनी पसंद का सामान देखें।</p>
+            </div>
           </div>
         </div>
 
         <!-- Step 2 -->
-        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-200/90 shadow-2xs flex items-start gap-2.5">
+        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-200/90 shadow-2xs flex items-start gap-2.5 min-w-0">
           <span class="w-7 h-7 rounded-xl bg-purple-600 text-white font-black text-xs flex items-center justify-center shrink-0 shadow-2xs font-fun">
             2
           </span>
-          <div class="min-w-0">
-            <h4 class="text-xs font-black text-purple-950 font-fun">
-              Add to Bag <span class="text-pink-600 font-bold text-[11px]">| बैग में डालें</span>
+          <div class="min-w-0 flex-1">
+            <h4 class="text-xs font-black text-purple-950 font-fun leading-tight truncate">
+              2. Add to Inquiry Bag
             </h4>
-            <p class="text-[11px] text-pink-950 font-medium leading-snug mt-1">
-              <strong>EN:</strong> Tap <em>'Add to Bag'</em> to collect items for inquiry.<br>
-              <strong>HI:</strong> रेट जानने के लिए <em>'Add to Bag'</em> पर क्लिक करें।
-            </p>
+            <div class="text-[10px] font-bold text-pink-600 truncate mt-0.5">बैग में लिस्ट जोड़ें</div>
+            <div class="mt-1 text-[11px] leading-snug">
+              <p class="font-bold text-slate-800 break-words">Tap 'Add to Bag' to collect items for quote.</p>
+              <p class="text-[10px] text-pink-800/80 font-medium break-words mt-0.5">रेट जानने के लिए 'Add to Bag' दबाएं।</p>
+            </div>
           </div>
         </div>
 
         <!-- Step 3 -->
-        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-300 shadow-2xs flex items-start gap-2.5 ring-1 ring-emerald-300">
+        <div class="p-3 rounded-2xl bg-white/95 border border-emerald-300 shadow-2xs flex items-start gap-2.5 ring-1 ring-emerald-300 min-w-0">
           <span class="w-7 h-7 rounded-xl bg-emerald-500 text-white font-black text-xs flex items-center justify-center shrink-0 shadow-2xs font-fun">
             3
           </span>
-          <div class="min-w-0">
-            <h4 class="text-xs font-black text-emerald-800 font-fun">
-              Send on WhatsApp <span class="text-emerald-600 font-bold text-[11px]">| WhatsApp भेजें</span>
+          <div class="min-w-0 flex-1">
+            <h4 class="text-xs font-black text-emerald-800 font-fun leading-tight truncate">
+              3. Send on WhatsApp
             </h4>
-            <p class="text-[11px] text-emerald-950 font-medium leading-snug mt-1">
-              <strong>EN:</strong> Tap <em>'Send Inquiry on WhatsApp'</em> for best rate.<br>
-              <strong>HI:</strong> WhatsApp दबाएं — टीम तुरंत बेस्ट रेट और डिलीवरी बताएगी! 🌸
-            </p>
+            <div class="text-[10px] font-bold text-emerald-600 truncate mt-0.5">WhatsApp पर भेजें</div>
+            <div class="mt-1 text-[11px] leading-snug">
+              <p class="font-bold text-slate-800 break-words">Send list to get best rates & delivery info.</p>
+              <p class="text-[10px] text-emerald-700/90 font-medium break-words mt-0.5">तुरंत बेस्ट डिस्काउंटेड रेट व डिलीवरी पाएं।</p>
+            </div>
           </div>
         </div>
       </div>

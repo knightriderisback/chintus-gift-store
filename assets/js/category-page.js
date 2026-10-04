@@ -307,24 +307,24 @@ function renderSubcategoriesCards(cat) {
     const count = allProducts.filter(p => p.category === cat.id && p.subcategory === sub).length;
 
     return `
-      <div onclick="filterBySubcategory('${sub.replace(/'/g, "\\'")}')" class="subcat-card group relative p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between ${isActive ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white border-pink-600 shadow-md ring-2 ring-pink-400 scale-[1.02]' : 'bg-white hover:bg-pink-50 text-pink-950 border-pink-200/90 shadow-2xs hover:shadow-md hover:border-pink-300'}">
-        <div>
-          <div class="flex items-center justify-between mb-2">
-            <span class="w-8 h-8 rounded-xl ${isActive ? 'bg-white/20 text-white' : 'bg-pink-100 text-pink-600'} flex items-center justify-center text-base shadow-2xs group-hover:scale-110 transition-transform">
+      <div onclick="filterBySubcategory('${sub.replace(/'/g, "\\'")}')" class="subcat-card group relative p-3 sm:p-3.5 rounded-2xl border transition-all duration-200 cursor-pointer flex flex-col justify-between min-w-0 ${isActive ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white border-pink-600 shadow-md ring-2 ring-pink-400 scale-[1.02]' : 'bg-white hover:bg-pink-50 text-pink-950 border-pink-200/90 shadow-2xs hover:shadow-md hover:border-pink-300'}">
+        <div class="min-w-0">
+          <div class="flex items-center justify-between mb-2 gap-1.5">
+            <span class="w-8 h-8 rounded-xl ${isActive ? 'bg-white/20 text-white' : 'bg-pink-100 text-pink-600'} flex items-center justify-center text-base shadow-2xs group-hover:scale-110 transition-transform shrink-0">
               ${icon}
             </span>
-            <span class="px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? 'bg-white text-pink-600' : 'bg-pink-100 text-pink-700'}">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-black ${isActive ? 'bg-white text-pink-600' : 'bg-pink-100 text-pink-700'} shrink-0 whitespace-nowrap">
               ${count} items
             </span>
           </div>
-          <h3 class="text-xs sm:text-sm font-black ${isActive ? 'text-white' : 'text-purple-950'} font-fun line-clamp-1 leading-tight mb-0.5">
+          <h3 class="text-xs sm:text-sm font-black ${isActive ? 'text-white' : 'text-purple-950'} font-fun truncate leading-tight mb-0.5">
             ${sub}
           </h3>
           ${hindi ? `<div class="text-[10px] font-bold ${isActive ? 'text-pink-100' : 'text-pink-600'} truncate">${hindi}</div>` : ''}
         </div>
-        <div class="mt-2.5 pt-2 border-t ${isActive ? 'border-white/20 text-white' : 'border-pink-100 text-pink-600'} flex items-center justify-between text-[10px] font-extrabold">
-          <span>${isActive ? 'Selected ✓' : 'View Products'}</span>
-          <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform"></i>
+        <div class="mt-2.5 pt-2 border-t ${isActive ? 'border-white/20 text-white' : 'border-pink-100 text-pink-600'} flex items-center justify-between text-[10px] font-extrabold min-w-0">
+          <span class="truncate">${isActive ? 'Selected ✓' : 'View Products'}</span>
+          <i class="fa-solid fa-arrow-right text-[9px] group-hover:translate-x-1 transition-transform shrink-0 ml-1"></i>
         </div>
       </div>
     `;
@@ -467,41 +467,44 @@ function renderCategoryProducts() {
           </div>
         </div>
 
-        <!-- Product Details (No Price, No Stock Mode) -->
-        <div class="flex-1 flex flex-col">
+        <!-- Product Details (No Numeric Price, Rupee + WhatsApp Rate Mode) -->
+        <div class="flex-1 flex flex-col min-w-0">
           <!-- Subcategory Tag -->
-          <div class="flex items-center gap-1.5 mb-1.5">
-            <span class="text-[10px] font-extrabold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md border border-pink-100 truncate">
+          <div class="flex items-center gap-1.5 mb-1.5 min-w-0">
+            <span class="text-[10px] font-extrabold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md border border-pink-100 truncate max-w-full">
               ${product.subcategory || getActiveCategoryObject().name}
             </span>
           </div>
 
-          <h3 class="text-xs sm:text-sm font-black text-purple-950 group-hover:text-pink-600 transition line-clamp-2 mb-1.5 cursor-pointer font-fun" onclick="openQuickView('${product.id}')">
+          <h3 class="text-xs sm:text-sm font-black text-purple-950 group-hover:text-pink-600 transition line-clamp-2 mb-1.5 cursor-pointer font-fun leading-snug break-words" onclick="openQuickView('${product.id}')">
             ${product.name}
           </h3>
 
-          <p class="text-[11px] text-pink-900/70 line-clamp-2 mb-3 leading-relaxed">
+          <p class="text-[11px] text-pink-900/70 line-clamp-2 mb-2.5 leading-relaxed break-words">
             ${product.description || ''}
           </p>
 
-          <!-- WhatsApp Rate Indicator (Replaces numeric price) -->
-          <div class="mb-2 flex items-center justify-between">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-black shadow-2xs cursor-pointer hover:bg-emerald-100 transition" onclick="inquireOnWhatsApp('${product.id}')" title="Ask Rate on WhatsApp">
-              <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
-              <span>WhatsApp for Rate</span>
+          <!-- WhatsApp Rate Indicator with ₹ sign + WhatsApp logo -->
+          <div class="mb-2.5 flex items-center justify-between gap-1 min-w-0">
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-2xs cursor-pointer transition min-w-0" onclick="inquireOnWhatsApp('${product.id}')" title="Ask Rate on WhatsApp">
+              <span class="text-sm font-black text-pink-600 leading-none shrink-0">₹</span>
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-sm shrink-0"></i>
+              <span class="text-[11px] font-black text-emerald-900 truncate">Ask Rate</span>
             </div>
-            <span class="text-[9px] text-pink-600 font-extrabold uppercase tracking-wider">Inquire</span>
+            <span class="text-[9px] text-pink-600 font-extrabold uppercase tracking-wider shrink-0 bg-pink-50 px-1.5 py-0.5 rounded border border-pink-100">Inquire</span>
           </div>
 
           <!-- WhatsApp Inquiry & Add to Inquiry Bag Actions -->
           <div class="mt-auto pt-2 border-t border-pink-100">
-            <div class="grid grid-cols-2 gap-2">
-              <button onclick="addToCart('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-pink text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98" title="Add to Inquiry Bag">
-                <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
+            <div class="grid grid-cols-2 gap-1.5 sm:gap-2">
+              <button onclick="addToCart('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-pink text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98 min-w-0" title="Add to Inquiry Bag">
+                <i class="fa-solid fa-plus text-[10px] shrink-0"></i>
+                <span class="truncate">Add to Bag</span>
               </button>
               
-              <button onclick="inquireOnWhatsApp('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-green text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98" title="Inquire on WhatsApp">
-                <i class="fa-brands fa-whatsapp text-xs"></i> Inquire
+              <button onclick="inquireOnWhatsApp('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-green text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98 min-w-0" title="Inquire on WhatsApp">
+                <i class="fa-brands fa-whatsapp text-xs shrink-0"></i>
+                <span class="truncate">WhatsApp</span>
               </button>
             </div>
           </div>
@@ -632,32 +635,36 @@ function openQuickView(productId) {
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Subcategory:</span> <span>${product.subcategory || '-'}</span></div>
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Location:</span> <span>Subhash Chowk, Dalli Rajhara</span></div>
           </div>
-        <!-- WhatsApp Rate Indicator in Modal -->
-        <div class="mb-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between shadow-2xs">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center shrink-0 shadow-xs">
-              <i class="fa-brands fa-whatsapp text-xl"></i>
+        <!-- WhatsApp Rate Indicator in Modal with ₹ and WhatsApp Logo -->
+        <div class="mb-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between shadow-2xs gap-2">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="h-10 px-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white flex items-center justify-center gap-1.5 shrink-0 shadow-xs">
+              <span class="text-base font-black leading-none">₹</span>
+              <i class="fa-brands fa-whatsapp text-base"></i>
             </div>
-            <div>
+            <div class="min-w-0">
               <span class="text-[10px] uppercase font-black tracking-wider text-emerald-700 block">Rate & Pricing</span>
-              <span class="text-xs font-black text-purple-950 font-fun">WhatsApp for Best Rate & Availability</span>
+              <span class="text-xs sm:text-sm font-black text-purple-950 font-fun truncate block">WhatsApp for Best Rate & Availability</span>
             </div>
           </div>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-xs">Direct Support</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-xs shrink-0 whitespace-nowrap">Ask Rate</span>
         </div>
 
         <!-- Action Buttons -->
         <div class="pt-2 border-t border-pink-200 flex flex-col gap-2">
           <div class="grid grid-cols-2 gap-2">
-            <button onclick="addToCart('${product.id}'); closeQuickView();" class="py-2.5 rounded-xl kawaii-btn-pink text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer">
-              <i class="fa-solid fa-plus"></i> Add to Bag
+            <button onclick="addToCart('${product.id}'); closeQuickView();" class="py-2.5 rounded-xl kawaii-btn-pink text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer min-w-0">
+              <i class="fa-solid fa-plus shrink-0"></i>
+              <span class="truncate">Add to Bag</span>
             </button>
-            <button onclick="inquireOnWhatsApp('${product.id}')" class="py-2.5 rounded-xl kawaii-btn-green text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer">
-              <i class="fa-brands fa-whatsapp text-sm"></i> Inquire WhatsApp
+            <button onclick="inquireOnWhatsApp('${product.id}')" class="py-2.5 rounded-xl kawaii-btn-green text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer min-w-0">
+              <i class="fa-brands fa-whatsapp text-sm shrink-0"></i>
+              <span class="truncate">Inquire WhatsApp</span>
             </button>
           </div>
-          <button type="button" onclick="closeQuickView()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-black transition flex items-center justify-center gap-1.5 border border-slate-300 hover:border-rose-300 shadow-sm cursor-pointer mt-1">
-            <i class="fa-solid fa-xmark text-sm"></i> <span>Close Product View (बंद करें ✕)</span>
+          <button type="button" onclick="closeQuickView()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-black transition flex items-center justify-center gap-1.5 border border-slate-300 hover:border-rose-300 shadow-sm cursor-pointer mt-1">
+            <i class="fa-solid fa-xmark text-sm shrink-0"></i>
+            <span class="truncate">Close Product View (बंद करें ✕)</span>
           </button>
         </div>
       </div>

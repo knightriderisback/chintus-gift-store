@@ -745,7 +745,7 @@ function setCustomizerProduct(type) {
   });
 
   const priceEl = document.getElementById("customizer-price-display");
-  if (priceEl) priceEl.innerHTML = '<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-black shadow-xs"><i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i> WhatsApp for Rate</span>';
+  if (priceEl) priceEl.textContent = "WhatsApp for Rate";
 
   updateCustomizerPreview();
 }
