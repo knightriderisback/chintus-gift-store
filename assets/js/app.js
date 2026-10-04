@@ -28,7 +28,7 @@ let customizerState = {
   uploadedPhoto: null
 };
 
-const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0";
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_official_logo.png?v=11.0";
 
 function resolveSafeLogo(logo) {
   if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;
@@ -964,7 +964,7 @@ function updateCartUI() {
 
   cartItemsContainer.innerHTML = cart.map((item, index) => `
     <div class="flex gap-2.5 py-2.5 border-b border-pink-100 items-center">
-      <img src="${item.image || 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0'}" alt="${item.name}" onerror="this.onerror=null; this.src='assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0';" class="w-14 h-14 rounded-xl object-cover bg-white border border-pink-200">
+      <img src="${item.image || 'assets/images/chintus_official_logo.png?v=11.0'}" alt="${item.name}" onerror="this.onerror=null; this.src='assets/images/chintus_official_logo.png?v=11.0';" class="w-14 h-14 rounded-xl object-contain bg-white border border-pink-200">
       <div class="flex-1 min-w-0">
         <h4 class="text-xs font-bold text-purple-950 truncate">${item.name}</h4>
         <div class="flex items-center gap-2 text-[10px] text-pink-600 font-bold">

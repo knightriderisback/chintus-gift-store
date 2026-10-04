@@ -16,7 +16,7 @@ let cart = [];
 let quickViewImages = [];
 let quickViewCurrentIndex = 0;
 
-const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0";
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_official_logo.png?v=11.0";
 
 function resolveSafeLogo(logo) {
   if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;

@@ -14,16 +14,16 @@
   <meta property="og:type" content="website">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0">
+  <link rel="icon" type="image/png" href="assets/images/chintus_official_favicon.png?v=11.0">
 
-  <!-- Zero-Latency Logo & Settings Hydration (Permanently guarantees new pink mascot logo) -->
+  <!-- Zero-Latency Logo & Settings Hydration (Permanently guarantees official logo) -->
   <script>
     (function() {
-      var CANONICAL_MASCOT = 'assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0';
+      var CANONICAL_MASCOT = 'assets/images/chintus_official_logo.png?v=11.0';
       try {
         var s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
         s.storeLogo = CANONICAL_MASCOT;
-        s.favicon = CANONICAL_MASCOT;
+        s.favicon = 'assets/images/chintus_official_favicon.png?v=11.0';
         try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
         window.__CHINTU_STORE_LOGO__ = CANONICAL_MASCOT;
         window.__CHINTU_LOGO_SHAPE__ = (s && s.logoShape) ? s.logoShape : 'natural';
@@ -132,7 +132,7 @@
       <!-- Logo & Brand with Cartoon Mascot (Adaptive PNG Molding) -->
       <a href="#home" class="flex items-center gap-2.5 sm:gap-3 group shrink min-w-0">
         <div id="store-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
-          <img id="store-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v7.png?v=7.0" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
+          <img id="store-logo-img" src="assets/images/chintus_official_logo.png?v=11.0" alt="Chintu's Fancy Stationery & Toys Logo" class="store-logo-img object-contain">
           <script>
             if (window.__CHINTU_STORE_LOGO__) document.getElementById('store-logo-img').src = window.__CHINTU_STORE_LOGO__;
             if (window.__CHINTU_LOGO_SHAPE__ || window.__CHINTU_LOGO_HEIGHT__) {
@@ -1130,7 +1130,7 @@
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
         <div>
           <div class="flex items-center gap-2 mb-2">
-            <img src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Logo" class="store-logo-img max-h-9 w-auto object-contain">
+            <img src="assets/images/chintus_official_logo.png?v=11.0" alt="Logo" class="store-logo-img max-h-9 w-auto object-contain">
             <span class="text-base font-black text-pink-600 font-fun store-brand-title">CHINTU'S</span>
           </div>
           <p class="text-[11px] text-pink-900/80 leading-relaxed mb-3">
@@ -1340,7 +1340,7 @@
   <div id="toast-container"></div>
 
   <!-- SCRIPTS (High-speed on-demand loading: Front page only loads Categories & App core) -->
-  <script defer src="assets/js/categories.js?v=10.0"></script>
-  <script defer src="assets/js/app.js?v=10.0"></script>
+  <script defer src="assets/js/categories.js?v=11.0"></script>
+  <script defer src="assets/js/app.js?v=11.0"></script>
 </body>
 </html>
