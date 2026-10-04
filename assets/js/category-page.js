@@ -33,7 +33,6 @@ function getProductFallbackImage(cat) {
   if (cat === 'stationery') return 'assets/images/kawaii_stationery.jpg';
   if (cat === 'skincare') return 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=75';
   if (cat === 'lifestyle') return 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75';
-  if (cat === 'references') return 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75';
   return CANONICAL_MASCOT_LOGO;
 }
 
@@ -54,28 +53,34 @@ window.handleProductImgError = function(img, cat) {
       applyPageSettings(parsed);
     }
 
-    // 2. Categories (Upgrade if old dummy cache exists)
+    // 2. Categories (Upgrade if old dummy cache exists & filter out references)
     const cachedCats = localStorage.getItem('chintu_categories');
     if (cachedCats) {
       const parsed = JSON.parse(cachedCats);
       if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(c => c.id === 'cosmetics')) {
-        allCategories = parsed;
+        allCategories = parsed.filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
+        try { localStorage.setItem('chintu_categories', JSON.stringify(allCategories)); } catch (_) {}
       } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
-        allCategories = [...DEFAULT_CATEGORIES];
+        allCategories = [...DEFAULT_CATEGORIES].filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
         try { localStorage.setItem('chintu_categories', JSON.stringify(allCategories)); } catch (_) {}
       }
+    } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
+      allCategories = [...DEFAULT_CATEGORIES].filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
     }
 
-    // 3. Products (Upgrade if old dummy cache exists)
+    // 3. Products (Upgrade if old dummy cache exists & filter out reference items)
     const cachedProds = localStorage.getItem('chintu_custom_products');
     if (cachedProds) {
       const parsed = JSON.parse(cachedProds);
       if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(p => p.sku && p.sku.startsWith('COSM'))) {
-        allProducts = parsed;
+        allProducts = parsed.filter(p => p.category !== 'references' && !String(p.id).startsWith('ref-'));
+        try { localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts)); } catch (_) {}
       } else if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
-        allProducts = [...PRODUCTS_DATA];
+        allProducts = [...PRODUCTS_DATA].filter(p => p.category !== 'references' && !String(p.id).startsWith('ref-'));
         try { localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts)); } catch (_) {}
       }
+    } else if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
+      allProducts = [...PRODUCTS_DATA].filter(p => p.category !== 'references' && !String(p.id).startsWith('ref-'));
     }
   } catch (_) {}
 })();
@@ -89,6 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (catParam) {
     currentCategory = catParam;
+  }
+  if (currentCategory === 'references' || currentCategory === 'shades-lookbook') {
+    currentCategory = 'cosmetics';
   }
   if (searchParam) {
     searchQuery = searchParam.trim();
@@ -158,8 +166,9 @@ async function fetchFreshData() {
     const res = await fetch('/api/categories');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-      const hasChanged = JSON.stringify(data.data) !== JSON.stringify(allCategories);
-      allCategories = data.data;
+      const cleanCats = data.data.filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
+      const hasChanged = JSON.stringify(cleanCats) !== JSON.stringify(allCategories);
+      allCategories = cleanCats;
       localStorage.setItem('chintu_categories', JSON.stringify(allCategories));
       if (hasChanged) renderCategoryView();
     }
@@ -170,8 +179,9 @@ async function fetchFreshData() {
     const res = await fetch('/api/products');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-      const hasChanged = JSON.stringify(data.data) !== JSON.stringify(allProducts);
-      allProducts = data.data;
+      const cleanProds = data.data.filter(p => p.category !== 'references' && !String(p.id).startsWith('ref-'));
+      const hasChanged = JSON.stringify(cleanProds) !== JSON.stringify(allProducts);
+      allProducts = cleanProds;
       localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts));
       if (hasChanged) renderCategoryProducts();
     }

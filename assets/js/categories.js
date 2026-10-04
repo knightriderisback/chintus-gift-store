@@ -63,20 +63,6 @@ const DEFAULT_CATEGORIES = [
       "Water Bottles & Sippers"
     ],
     "itemCount": 7
-  },
-  {
-    "id": "references",
-    "name": "Shades & Lookbook Guides",
-    "hindiName": "शेड चार्ट्स व कलर गाइड्स",
-    "icon": "🎨",
-    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
-    "tagline": "Lipstick shade matrix guides, 20-shade swatch charts & soft glam model lookbooks",
-    "subcategories": [
-      "Color Matrix Chart",
-      "Color Swatch Chart",
-      "Model Look Reference"
-    ],
-    "itemCount": 3
   }
 ];
 

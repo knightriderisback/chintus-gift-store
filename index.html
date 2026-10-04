@@ -627,7 +627,7 @@
     </div>
 
     <!-- Dynamic Categories Grid (Populated dynamically from categories.json / admin updates) -->
-    <div id="categories-showcase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+    <div id="categories-showcase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
       <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
         <div>
           <!-- Category Cover Image & Icon Badge -->
@@ -823,55 +823,6 @@
         <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
           <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
           <a href="/category?cat=lifestyle" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
-            <span>Explore Collection</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
-          </a>
-        </div>
-      </div>
-      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
-        <div>
-          <!-- Category Cover Image & Icon Badge -->
-          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=references'">
-            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80" alt="Shades & Lookbook Guides" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
-            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
-            
-            <!-- Top Badges -->
-            <div class="absolute top-3 left-3 flex items-center gap-1.5">
-              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
-                🎨
-              </span>
-            </div>
-            
-            <div class="absolute top-3 right-3">
-              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
-                3 Guides
-              </span>
-            </div>
-
-            <!-- Bottom Title on Image -->
-            <div class="absolute bottom-3 left-3 right-3">
-              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
-                <span>Shades & Lookbook Guides</span>
-              </h3>
-              <div class="text-[11px] font-bold text-pink-200 drop-shadow">शेड चार्ट्स व कलर गाइड्स</div>
-            </div>
-          </div>
-
-          <!-- Tagline -->
-          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
-            Lipstick shade matrix guides, 20-shade swatch charts & soft glam model lookbooks
-          </p>
-
-          <!-- Subcategories chips preview -->
-          <div class="flex flex-wrap gap-1.5 mb-4">
-            <a href="/category?cat=references&subcat=Color Matrix Chart" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Color Matrix Chart</a><a href="/category?cat=references&subcat=Color Swatch Chart" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Color Swatch Chart</a><a href="/category?cat=references&subcat=Model Look Reference" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">Model Look Reference</a>
-          </div>
-        </div>
-
-        <!-- Action Button -->
-        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
-          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
-          <a href="/category?cat=references" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
             <span>Explore Collection</span>
             <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
           </a>
@@ -1340,7 +1291,7 @@
   <div id="toast-container"></div>
 
   <!-- SCRIPTS (High-speed on-demand loading: Front page only loads Categories & App core) -->
-  <script defer src="assets/js/categories.js?v=11.0"></script>
-  <script defer src="assets/js/app.js?v=11.0"></script>
+  <script defer src="assets/js/categories.js?v=12.0"></script>
+  <script defer src="assets/js/app.js?v=12.0"></script>
 </body>
 </html>

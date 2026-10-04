@@ -53,13 +53,14 @@ function resolveSafeLogo(logo) {
     if (cachedCats) {
       const cats = JSON.parse(cachedCats);
       if (Array.isArray(cats) && cats.length > 0 && cats.some(c => c.id === 'cosmetics')) {
-        categoriesList = cats;
+        categoriesList = cats.filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
+        try { localStorage.setItem('chintu_categories', JSON.stringify(categoriesList)); } catch (_) {}
       } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
-        categoriesList = [...DEFAULT_CATEGORIES];
+        categoriesList = [...DEFAULT_CATEGORIES].filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
         try { localStorage.setItem('chintu_categories', JSON.stringify(categoriesList)); } catch (_) {}
       }
     } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
-      categoriesList = [...DEFAULT_CATEGORIES];
+      categoriesList = [...DEFAULT_CATEGORIES].filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
     }
   } catch (_) {}
 })();
@@ -416,8 +417,9 @@ async function fetchCategoriesAndRender() {
     const res = await fetch('/api/categories');
     const data = await res.json();
     if (data.success && Array.isArray(data.data) && data.data.length > 0) {
-      const hasChanged = JSON.stringify(categoriesList) !== JSON.stringify(data.data);
-      categoriesList = data.data;
+      const cleanCats = data.data.filter(c => c.id !== 'references' && c.id !== 'shades-lookbook');
+      const hasChanged = JSON.stringify(categoriesList) !== JSON.stringify(cleanCats);
+      categoriesList = cleanCats;
       localStorage.setItem('chintu_categories', JSON.stringify(categoriesList));
       if (hasChanged) renderCategoriesShowcase(categoriesList);
     }
