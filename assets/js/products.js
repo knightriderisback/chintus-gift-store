@@ -1,771 +1,797 @@
-// Static Fallback Catalogue Data for Chintu's Gift & Kawaii Store - Dalli Rajhara
+// Static Products Data for Chintu's Gift & Kawaii Store - Dalli Rajhara
 
 const PRODUCTS_DATA = [
   {
-    "id": "prod-1",
-    "name": "Pink Acrylic 3D Heart Bear LED Illusion Lamp",
-    "hindiName": "पिंक एक्रिलिक 3D हार्ट बियर LED लैंप (नाम सहित)",
-    "category": "personalized",
-    "price": 699,
-    "originalPrice": 1299,
-    "rating": 4.9,
-    "reviewsCount": 42,
-    "image": "assets/images/pink_acrylic_lamp.jpg",
-    "badge": "Kawaii Hot",
-    "customizable": true,
-    "customType": "lamp",
-    "description": "Premium laser-cut frosted pink acrylic night lamp featuring an adorable cartoon bear hugging an illuminated glowing heart. Custom name and anniversary/birthday date engraved. Multi-color warm pastel glow with touch switch.",
-    "specs": [
-      "Cast Pink Frosted Acrylic 5mm",
-      "Soft Touch Pastel Base",
-      "Warm Golden / Soft Pink LED",
-      "USB Powered (5V)",
-      "Dimensions: 7.5 x 8 inches"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "subcategory": "3D LED Acrylic Lamps"
-  },
-  {
-    "id": "prod-2",
-    "name": "Pastel Aesthetic Highlighters & Kawaii Diary Gift Set",
-    "hindiName": "पेस्टेल हाइलाइटर्स और कवाई लॉक्ड डायरी सेट",
+    "id": "prod-stat-1",
+    "name": "Kawaii Gradient Pastel Plush Lock & Key Secret Diary (A5)",
+    "hindiName": "कवाई पेस्टल लॉक व की सीक्रेट डायरी",
     "category": "stationery",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 4.9,
-    "reviewsCount": 58,
-    "image": "assets/images/kawaii_stationery.jpg",
+    "subcategory": "Pastel Diaries & Locks",
+    "price": 349,
+    "originalPrice": 599,
+    "rating": 5,
+    "reviewsCount": 38,
+    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg"
+    ],
     "badge": "Bestseller",
     "customizable": false,
-    "description": "Complete dream stationery hamper! Includes 1 pastel hardcover secret diary with golden lock and key, 4 cute bear-shaped pastel highlighters, 6 roll decorative washi tapes, sticky notes, and aesthetic sticker sheets.",
+    "customType": "stationery",
+    "description": "Super-fluffy gradient pastel secret diary with metallic heart lock and 2 keys. Premium 100 GSM ruled pages with ribbon bookmark.",
     "specs": [
-      "Diary with Solid Metal Lock & 2 Keys",
-      "4 Bear Pastel Highlighters",
-      "6 Washi Tape Rolls",
-      "3 Kawaii Sticker Sheets"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Aesthetic Highlighters & Pens"
-  },
-  {
-    "id": "prod-3",
-    "name": "Giant 3-Foot Blush Pink Cuddle Teddy Bear",
-    "hindiName": "3-फुट ब्लश पिंक सुपर सॉफ्ट टेडी बियर",
-    "category": "toys",
-    "price": 899,
-    "originalPrice": 1599,
-    "rating": 5,
-    "reviewsCount": 67,
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-    "badge": "Super Huggable",
-    "customizable": false,
-    "description": "Ultra-soft micro-plush giant teddy bear in gentle pastel blush pink. Stuffed with 100% hypoallergenic virgin PP cotton. Perfect for birthday surprises, Valentine's gifts, and cozy bedroom decor.",
-    "specs": [
-      "Height: 90 cm (3 Feet)",
-      "Ultra-soft Velvet Plush",
-      "100% Non-toxic PP Cotton",
-      "Satin Bow Ribbon Included"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Giant Cuddle Teddies"
-  },
-  {
-    "id": "prod-4",
-    "name": "Cute Boba Milk Tea Squishy Plushie (Large)",
-    "hindiName": "क्यूट बोबा मिल्क टी स्क्विशी प्लशी",
-    "category": "toys",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 4.8,
-    "reviewsCount": 49,
-    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-    "badge": "Trending",
-    "customizable": false,
-    "description": "Viral sweet smiling Boba cup plushie with embroidered tapioca pearls and cute 3D straw. Super squishy stress-relief companion for desks and beds.",
-    "specs": [
-      "Size: 35 cm",
-      "Super Elastic Spandex Plush",
-      "Down Cotton Filling",
-      "Machine Washable"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Boba & Food Squishies"
-  },
-  {
-    "id": "prod-5",
-    "name": "Pastel Dual-Tip Aesthetic Highlighters (Pack of 6)",
-    "hindiName": "पेस्टेल डुअल-टिप एस्थेटिक हाइलाइटर्स (6 का पैक)",
-    "category": "stationery",
-    "price": 249,
-    "originalPrice": 449,
-    "rating": 4.8,
-    "reviewsCount": 35,
-    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
-    "badge": "Study Must",
-    "customizable": false,
-    "description": "Japanese style non-bleed soft pastel highlighters in dreamy shades: Macaron Pink, Lavender Mist, Mint Green, Butter Yellow, Peach Cream, and Sky Blue. Chisel and fine tips.",
-    "specs": [
-      "Set of 6 Pastel Shades",
-      "Dual Chisel & Bullet Tip",
-      "Quick-Dry Anti-Smear Ink",
-      "Clear Acrylic Case"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Aesthetic Highlighters & Pens"
-  },
-  {
-    "id": "prod-6",
-    "name": "Photo Magic Color-Changing Ceramic Mug",
-    "hindiName": "फोटो मैजिक कलर-चेंजिंग सेरामिक मग",
-    "category": "personalized",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 4.9,
-    "reviewsCount": 51,
-    "image": "assets/images/product_mug.jpg",
-    "badge": "Magic Gift",
-    "customizable": true,
-    "customType": "mug",
-    "description": "Black ceramic mug that magically reveals your uploaded photo and cute cartoon greetings when hot chai, coffee, or milk is poured! Food safe and microwave safe.",
-    "specs": [
-      "325ml Premium Ceramic",
-      "Thermosensitive High Gloss Coat",
-      "Microwave & Dishwasher Safe",
-      "Custom Photo Print"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/product_mug.jpg",
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg"
-    ],
-    "subcategory": "Photo Magic Mugs"
-  },
-  {
-    "id": "prod-7",
-    "name": "Kawaii Sanrio Plush Head Retractable Gel Pens (Set of 4)",
-    "hindiName": "कवाई प्लश हेड जेल पेन्स (4 का सेट)",
-    "category": "stationery",
-    "price": 199,
-    "originalPrice": 349,
-    "rating": 4.9,
-    "reviewsCount": 62,
-    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
-    "badge": "Super Cute",
-    "customizable": false,
-    "description": "Smooth 0.5mm black gel pens topped with super cute mini plush heads of bunnies, kitties, and bears. Smooth smudge-free writing for students and office notes.",
-    "specs": [
-      "4 Different Kawaii Toppers",
-      "0.5mm Japanese Black Gel Ink",
-      "Comfort Soft Grip",
-      "Refillable Body"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Pastel Diaries & Locks"
-  },
-  {
-    "id": "prod-8",
-    "name": "Personalized Pink Acrylic Spotify Song Plaque with Stand",
-    "hindiName": "पर्सनलाइज्ड पिंक एक्रिलिक स्पॉटिफाई म्यूजिक प्लेक",
-    "category": "personalized",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 4.9,
-    "reviewsCount": 44,
-    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
-    "badge": "Top Romantic",
-    "customizable": true,
-    "customType": "plaque",
-    "description": "Crystal acrylic glass with gentle rose-tinted edge, scannable Spotify song code, couple photo, and your song title. Plays your song directly on phone camera scan!",
-    "specs": [
-      "Cast Acrylic Plaque 6x8 Inch",
-      "UV High-Def Color Printing",
-      "Natural Solid Pine Stand",
-      "Scannable Working Spotify Barcode"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg"
-    ],
-    "subcategory": "Cute Animal Plushies"
-  },
-  {
-    "id": "prod-9",
-    "name": "Sweet Kawaii Birthday Explosion Surprise Box with Plushie",
-    "hindiName": "स्वीट कवाई बर्थडे एक्सप्लोजन बॉक्स विथ प्लशी",
-    "category": "birthday",
-    "price": 549,
-    "originalPrice": 999,
-    "rating": 4.9,
-    "reviewsCount": 39,
-    "image": "assets/images/birthday_hampers.jpg",
-    "badge": "Surprise Box",
-    "customizable": true,
-    "customType": "box",
-    "description": "Multi-layer pastel explosion box packed with 24 photo slots, pop-up heartfelt cartoon greeting cards, assorted chocolates, and a center cute mini teddy bear surprise!",
-    "specs": [
-      "Handmade Thick Pastel Cardstock",
-      "3 Pop-Open Cascading Layers",
-      "Center Pocket with Mini Teddy",
-      "Includes 24 Photo Slots"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/birthday_hampers.jpg",
-      "assets/images/hero_store.jpg",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "subcategory": "Washi Tapes & Stickers"
-  },
-  {
-    "id": "prod-10",
-    "name": "Kawaii Bear Cartoon Sipper Water Bottle (800ml)",
-    "hindiName": "कवाई बियर सिपर बोतल विथ स्ट्रैप (800ml)",
-    "category": "novelties",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 4.8,
-    "reviewsCount": 41,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
-    "badge": "Trendy",
-    "customizable": false,
-    "description": "Chubby cartoon bear shaped water bottle with silicone pop-up straw, leak-proof lock, motivational time markers, and cute adjustable rainbow shoulder carrying strap.",
-    "specs": [
-      "800ml Capacity",
-      "BPA-Free Food Grade Tritan",
-      "Pop-up Soft Silicone Straw",
-      "Adjustable Shoulder Strap"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Birthday Gift Hampers"
-  },
-  {
-    "id": "prod-11",
-    "name": "Super Fluffy Bunny Long-Ear Soft Plushie",
-    "hindiName": "सुपर फ्लफी लॉन्ग-इयर बन्नी प्लशी (पिंक)",
-    "category": "toys",
-    "price": 449,
-    "originalPrice": 799,
-    "rating": 5,
-    "reviewsCount": 53,
-    "image": "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
-    "badge": "Fan Favorite",
-    "customizable": false,
-    "description": "Silky soft pastel pink bunny with extra-long floppy ears and embroidered smiling face. Washable and irresistible to cuddle for kids and girls.",
-    "specs": [
-      "Size: 40 cm",
-      "Silky Cloud Velvet",
-      "Safety Embroidered Eyes",
-      "Washable Fabric"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Spotify Music Plaques"
-  },
-  {
-    "id": "prod-12",
-    "name": "Multi-Layer Pastel Desk Organizer with Mini Drawers",
-    "hindiName": "पेस्टेल डेस्क ऑर्गेनाइज़र विथ ड्रावर्स",
-    "category": "stationery",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 4.8,
-    "reviewsCount": 28,
-    "image": "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
-    "badge": "Organize",
-    "customizable": false,
-    "description": "Cute pastel pink acrylic desk caddy with 6 compartments and 2 pull-out clear drawers. Keeps your pens, highlighters, tapes, clips, and cosmetics neat and aesthetic.",
-    "specs": [
-      "High Impact Pink Acrylic/ABS",
-      "2 Transparent Mini Drawers",
-      "6 Pen & Brush Slots",
-      "Non-Slip Base Feet"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Pastel Sippers & Bottles"
-  },
-  {
-    "id": "prod-13",
-    "name": "Enchanted Rose with Glass Dome & Fairy Lights",
-    "hindiName": "एन्चांटेड रोज विथ ग्लास डोम और फेयरी लाइट्स",
-    "category": "birthday",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 4.9,
-    "reviewsCount": 47,
-    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
-    "badge": "Romantic",
-    "customizable": false,
-    "description": "Timeless 24K gold foil rose encased inside a clear glass dome surrounded by warm micro fairy LED string lights. Operates on 3 AAA batteries.",
-    "specs": [
-      "Borosilicate Glass Dome",
-      "24K Gold Foil Plated Rose",
-      "Micro Copper String LEDs",
-      "Wood Texture Base"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
-      "assets/images/birthday_hampers.jpg",
-      "assets/images/hero_store.jpg"
-    ],
-    "subcategory": "Surprise Explosion Boxes"
-  },
-  {
-    "id": "prod-14",
-    "name": "Customized Cute Pink Acrylic Name & Charm Keychain",
-    "hindiName": "कस्टम क्यूट पिंक एक्रिलिक नाम और चार्म कीचेन",
-    "category": "personalized",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 73,
-    "image": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
-    "badge": "Pocket Cute",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "Laser-cut 3D pink frosted acrylic keychain customized with your name or nickname, adorned with a pastel star charm and golden key ring clasp.",
-    "specs": [
-      "4mm Pink Cast Acrylic",
-      "Golden Lobster Swivel Clasp",
-      "Permanent Laser Engraved Name",
-      "Mini Acrylic Charm Included"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg"
-    ],
-    "subcategory": "Pencil Pouches & Organizers"
-  },
-  {
-    "id": "prod-15",
-    "name": "Cute Cartoon Plush Headband & Hair Scrunchie Set",
-    "hindiName": "क्यूट कार्टून प्लश हेडबैंड और हेयर स्क्रंची सेट",
-    "category": "novelties",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.8,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
-    "badge": "Girl Favorite",
-    "customizable": false,
-    "description": "Super soft elastic makeup & skincare headband with plush bear ears plus 2 pastel satin cloud hair scrunchies. Ultra comfortable and fashionable.",
-    "specs": [
-      "Elastic Soft Microfiber",
-      "3D Cute Plush Bear Ears",
-      "Includes 2 Pastel Scrunchies",
-      "Gentle on Hair"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Plush Keychains & Charms"
-  },
-  {
-    "id": "prod-16",
-    "name": "Ultimate Kawaii Birthday Celebration Hamper Basket",
-    "hindiName": "अल्टीमेट कवाई बर्थडे सेलिब्रेशन हैंपर बास्केट",
-    "category": "birthday",
-    "price": 999,
-    "originalPrice": 1799,
-    "rating": 5,
-    "reviewsCount": 61,
-    "image": "assets/images/kawaii_hero.jpg",
-    "badge": "Mega Hamper",
-    "customizable": true,
-    "customType": "hamper",
-    "description": "The showstopper gift basket! Contains 1 Fluffy Bunny Plushie, 1 Pastel Locked Diary, 1 Magic Mug with custom photo, 1 Kawaii Gel Pen, assorted chocolates, fairy lights, and a customized greeting card.",
-    "specs": [
-      "Pastel Acrylic Gift Basket",
-      "Plushie + Mug + Diary + Pen",
-      "Includes Fairy Lights & Chocolates",
-      "Free Handwritten Greeting Card"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/kawaii_hero.jpg",
-      "assets/images/birthday_hampers.jpg",
-      "assets/images/hero_store.jpg"
-    ],
-    "subcategory": "Custom Acrylic Keychains"
-  },
-  {
-    "id": "prod-17",
-    "name": "Kawaii Cinnamoroll Cloud Soft Cushion",
-    "hindiName": "कवाई सिनामोरोल क्लाउड सॉफ्ट कुशन",
-    "category": "toys",
-    "price": 449,
-    "originalPrice": 799,
-    "rating": 4.9,
-    "reviewsCount": 33,
-    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-    "badge": "Anime Cutie",
-    "customizable": false,
-    "description": "Fluffy cloud-soft plush cushion with iconic long floppy bunny ears and baby blue blush cheeks. Great for bed decor or reading support.",
-    "specs": [
-      "Size: 38 x 30 cm",
-      "Cloud Elastic Velvet",
-      "Memory Cotton Filling",
-      "Removable Washable Cover"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Aesthetic Highlighters & Pens"
-  },
-  {
-    "id": "prod-18",
-    "name": "Aesthetic Transparent Grid Pencil Case & Pastel Pen Set",
-    "hindiName": "एस्थेटिक ग्रिड पेंसिल केस और जेल पेन सेट",
-    "category": "stationery",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.8,
-    "reviewsCount": 29,
-    "image": "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
-    "badge": "Desk Aesthetic",
-    "customizable": false,
-    "description": "High-capacity clear mesh pencil case with zipper and internal organizer mesh pockets, bundled with 3 sweet pastel gel pens.",
-    "specs": [
-      "Water-resistant Mesh Fabric",
-      "Holds Up to 50 Pens",
-      "Includes 3 Pastel Pens",
-      "Smooth Metal Zipper"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Cute Animal Plushies"
-  },
-  {
-    "id": "prod-19",
-    "name": "Custom Engraved Acrylic Photo Keychain with Spotify Code",
-    "hindiName": "कस्टम एक्रिलिक फोटो कीचेन विथ स्पॉटिफाई कोड",
-    "category": "personalized",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 54,
-    "image": "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
-    "badge": "Pocket Magic",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "Mini crystal acrylic charm printed with your couple photo and scannable Spotify music code on high-durability acrylic.",
-    "specs": [
-      "5x7 cm Cast Acrylic",
-      "Anti-scratch Clear Coat",
-      "Golden Swivel Clasp",
-      "Working Spotify Barcode"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?auto=format&fit=crop&w=600&q=80",
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg"
-    ],
-    "subcategory": "Birthday Gift Hampers"
-  },
-  {
-    "id": "prod-20",
-    "name": "Cute Cat Paw Electric Hand Warmer & Night Light",
-    "hindiName": "क्यूट कैट पॉ हैंड वार्मर और नाइट लाइट",
-    "category": "novelties",
-    "price": 599,
-    "originalPrice": 999,
-    "rating": 4.9,
-    "reviewsCount": 37,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
-    "badge": "Winter Warm",
-    "customizable": false,
-    "description": "Pocket-sized cat paw shaped rechargeable instant warmer with 2 heat levels and a gentle glowing ambient pastel night lamp.",
-    "specs": [
-      "USB Rechargeable Battery (2400mAh)",
-      "Instant 3-Second Heating",
-      "Warm LED Night Light",
-      "Silicone Hanging Lanyard"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Mini Crossbody Bags"
-  },
-  {
-    "id": "prod-21",
-    "name": "Deluxe Pink Birthday Surprise Hamper with Fairy Lights",
-    "hindiName": "डीलक्स पिंक बर्थडे सरप्राइज हैंपर विथ फेयरी लाइट्स",
-    "category": "birthday",
-    "price": 1299,
-    "originalPrice": 2299,
-    "rating": 5,
-    "reviewsCount": 46,
-    "image": "assets/images/birthday_hampers.jpg",
-    "badge": "Royal Hamper",
-    "customizable": true,
-    "customType": "hamper",
-    "description": "Grand celebratory gift box featuring a 30cm blush teddy, personalized LED photo mug, chocolate box, scented lavender candle, and fairy lights.",
-    "specs": [
-      "Premium Rigid Pink Gift Box",
-      "Includes Teddy, Mug & Candle",
-      "Fairy String Lights Included",
-      "Free Custom Calligraphy Card"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/birthday_hampers.jpg",
-      "assets/images/hero_store.jpg",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "subcategory": "3D LED Acrylic Lamps"
-  },
-  {
-    "id": "prod-22",
-    "name": "Giant 40cm Marshmallow Bunny Sleep Plushie",
-    "hindiName": "जायंट 40cm मार्शमैलो बन्नी स्लीप प्लशी",
-    "category": "toys",
-    "price": 699,
-    "originalPrice": 1199,
-    "rating": 5,
-    "reviewsCount": 42,
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-    "badge": "Cloud Soft",
-    "customizable": false,
-    "description": "Super squishy lying bunny companion made with marshmallow stretch fabric and slow-rebound feather cotton.",
-    "specs": [
-      "Length: 40 cm",
-      "High Elastic Spandex",
-      "Anti-allergy Cotton Core",
-      "Machine Washable"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Pastel Diaries & Locks"
-  },
-  {
-    "id": "prod-23",
-    "name": "Aesthetic Retro Mechanical Keyboard Calculator",
-    "hindiName": "एस्थेटिक रेट्रो मैकेनिकल कीबोर्ड कैलकुलेटर",
-    "category": "stationery",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 4.8,
-    "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
-    "badge": "Clicky ASMR",
-    "customizable": false,
-    "description": "Fun pastel desktop calculator with clicky mechanical keyboard keys, retro round buttons, and 12-digit wide LCD screen.",
-    "specs": [
-      "Clicky Mechanical Switch Keys",
-      "12-Digit Large Screen Display",
-      "Auto Power Off (AAA Battery)",
-      "Non-slip Silicone Pads"
-    ],
-    "inStock": true,
-    "images": [
-      "https://images.unsplash.com/photo-1594787318286-3d835c1d207f?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg",
-      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
-    ],
-    "subcategory": "Cute Desk Gadgets"
-  },
-  {
-    "id": "prod-24",
-    "name": "3D Moonlight Crystal Ball with Wooden LED Base",
-    "hindiName": "3D मूनलाइट क्रिस्टल बॉल विथ वुडन LED बेस",
-    "category": "personalized",
-    "price": 749,
-    "originalPrice": 1399,
-    "rating": 4.9,
-    "reviewsCount": 59,
-    "image": "assets/images/pink_acrylic_lamp.jpg",
-    "badge": "Night Glow",
-    "customizable": true,
-    "customType": "crystal",
-    "description": "Optical K9 glass crystal ball with laser-engraved 3D solar system or moon crater, illuminated by a solid beechwood warm LED pedestal.",
-    "specs": [
-      "60mm K9 Optical Crystal Sphere",
-      "Natural Beech Wood Lamp Base",
-      "USB Cable with Inline Switch",
-      "Gift Box Packaging"
-    ],
-    "inStock": true,
-    "images": [
-      "assets/images/pink_acrylic_lamp.jpg",
-      "assets/images/product_lamp.jpg",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "subcategory": "Celebration Baskets"
-  },
-  {
-    "id": "prod-cosm-1",
-    "name": "Kawaii Bear Hydrating Color-Tint Lip Balm Set",
-    "hindiName": "क्यूट बियर कलर-टिंट लिप बाम सेट",
-    "category": "cosmetics",
-    "subcategory": "Cute Lip Balms & Tints",
-    "price": 199,
-    "originalPrice": 349,
-    "rating": 4.9,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
-    "images": [
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
-    ],
-    "badge": "Cute Essential",
-    "customizable": false,
-    "description": "Super-nourishing moisturizing tint lip balm shaped in an adorable pastel bear tube. Enriched with shea butter and vitamin E for naturally soft, glowing baby lips.",
-    "specs": [
-      "Enriched with Shea Butter & Vit E",
-      "Gentle Peach Pink Tint",
-      "Cute Bear Shaped Tube",
-      "Safe for All Skin Types"
+      "A5 Size (160 Pages)",
+      "100 GSM Thick No-Bleed Paper",
+      "Metal Heart Padlock + 2 Keys",
+      "Fluffy Washable Plush Cover"
     ],
     "inStock": true
   },
   {
-    "id": "prod-cosm-2",
-    "name": "Pink Acrylic LED Lighted Pocket Vanity Mirror",
-    "hindiName": "पिंक ऐक्रेलिक LED पॉकेट वैनिटी मिरर",
-    "category": "cosmetics",
-    "subcategory": "Pocket Vanity Mirrors & Brushes",
-    "price": 349,
-    "originalPrice": 699,
+    "id": "prod-stat-2",
+    "name": "Aesthetic Dual-Tip Soft Pastel Highlighters (Pack of 6)",
+    "hindiName": "एस्थेटिक डुअल-टिप पेस्टल हाइलाइटर्स (6 का पैक)",
+    "category": "stationery",
+    "subcategory": "Aesthetic Highlighters & Pens",
+    "price": 199,
+    "originalPrice": 399,
+    "rating": 4.9,
+    "reviewsCount": 52,
+    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1585776245991-cf89dd7fc73a?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Kawaii Viral",
+    "customizable": false,
+    "customType": "stationery",
+    "description": "Subtle eye-friendly pastel tones: Milk Pink, Mint Green, Peach Orange, Lavender Violet, Soft Gold, and Sky Blue. No paper bleed-through.",
+    "specs": [
+      "6 Pastel Shades",
+      "Chisel Tip & Fine Tip",
+      "Quick-Dry Water Based Ink",
+      "No Smudge Over Ballpoint Pens"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-stat-3",
+    "name": "Kawaii Sanrio Plush Head Retractable Black Gel Pens (Set of 4)",
+    "hindiName": "कवाई प्लश हेड जेल पेन्स (4 का सेट)",
+    "category": "stationery",
+    "subcategory": "Aesthetic Highlighters & Pens",
+    "price": 229,
+    "originalPrice": 449,
     "rating": 4.9,
     "reviewsCount": 44,
+    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_stationery.jpg"
+    ],
+    "badge": "Super Cute",
+    "customizable": false,
+    "customType": "stationery",
+    "description": "Ultra-smooth 0.5mm Japanese quick-drying black ink with soft rubber grip and cute plush toppers of bunny, bear, and puppy.",
+    "specs": [
+      "4 Different Plush Toppers",
+      "0.5mm Japanese Gel Ink",
+      "Smudge-Free Ergonomic Grip",
+      "Refillable Pen Barrel"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-stat-4",
+    "name": "Vintage Floral & Kawaii Cartoon Washi Tape Box (10 Rolls + Stickers)",
+    "hindiName": "विंटेज फ्लोरल व कवाई वाशी टेप गिफ्ट बॉक्स",
+    "category": "stationery",
+    "subcategory": "Washi Tapes & Stickers",
+    "price": 299,
+    "originalPrice": 499,
+    "rating": 4.8,
+    "reviewsCount": 31,
+    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "DIY Scrapbook",
+    "customizable": false,
+    "customType": "stationery",
+    "description": "Deluxe decorative washi masking tapes with gold foil detailing and 10 matching die-cut sticker sheets for bullet journaling.",
+    "specs": [
+      "10 Washi Rolls (Various Widths)",
+      "10 Waterproof Sticker Sheets",
+      "Residue-Free Peel & Stick",
+      "Gold Foil Accent Printing"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-stat-5",
+    "name": "Multi-Layer Expandable Standing Canvas Pencil Pouch with Cute Bear Charm",
+    "hindiName": "मल्टी-लेयर एक्सपैंडेबल स्टैंडिंग पेंसिल पाउच",
+    "category": "stationery",
+    "subcategory": "Pencil Pouches & Organizers",
+    "price": 279,
+    "originalPrice": 499,
+    "rating": 4.9,
+    "reviewsCount": 29,
+    "image": "https://images.unsplash.com/photo-1546938576-6e6a64f317cc?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1546938576-6e6a64f317cc?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "High Capacity",
+    "customizable": false,
+    "customType": "stationery",
+    "description": "Holds up to 50+ pens, scissors, calculators and markers. Converts into a standing desk pen holder when unzipped.",
+    "specs": [
+      "50+ Pens Capacity",
+      "Expandable Bottom Zipper",
+      "Interior Mesh Pockets",
+      "Durable Washable Canvas"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cos-1",
+    "name": "Sweet Fruit Flavor Kawaii Bear Tinted Lip Balm (Pack of 3)",
+    "hindiName": "स्वीट फ्रूट फ्लेवर कवाई बेयर लिप बाम (3 का पैक)",
+    "category": "cosmetics",
+    "subcategory": "Cute Lip Balms & Tints",
+    "price": 249,
+    "originalPrice": 449,
+    "rating": 4.9,
+    "reviewsCount": 36,
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Natural Tint",
+    "customizable": false,
+    "customType": "cosmetics",
+    "description": "Enriched with shea butter, vitamin E, and natural strawberry, peach, and berry tints. Keeps lips plump, soft, and glossy.",
+    "specs": [
+      "3 Fruit Flavors (Peach, Berry, Cherry)",
+      "With Shea Butter & Vitamin E",
+      "Natural Tinted Hydration",
+      "Cruelty Free"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cos-2",
+    "name": "LED Illuminated Folding Pocket Vanity Mirror with 3 Light Modes",
+    "hindiName": "एलईडी फोल्डिंग पॉकेट वैनिटी मिरर (3 लाइट मोड्स)",
+    "category": "cosmetics",
+    "subcategory": "Pocket Vanity Mirrors & Brushes",
+    "price": 399,
+    "originalPrice": 699,
+    "rating": 5,
+    "reviewsCount": 41,
     "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
     "images": [
       "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
-      "assets/images/pink_acrylic_lamp.jpg"
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80"
     ],
-    "badge": "Viral Beauty",
-    "customizable": true,
-    "customType": "mirror",
-    "description": "Compact folding travel vanity mirror featuring ring LED illumination with 3 brightness modes. Rechargeable via USB-C with custom name engraving on frosted pink acrylic cover.",
+    "badge": "USB Rechargeable",
+    "customizable": false,
+    "customType": "cosmetics",
+    "description": "Rechargeable compact mirror with Warm, Cool, and Natural daylight LED ring lights. 1X normal and 2X magnifying double-sided glass.",
     "specs": [
-      "Touch-Sensor Ring LED Light",
-      "1x Normal & 3x Magnified Mirror",
-      "USB-C Rechargeable",
-      "Custom Name Engraved"
+      "3 Light Temperatures (Touch Dimmable)",
+      "1X & 2X Dual Mirrors",
+      "Type-C USB Fast Charging",
+      "Slim Handbag Friendly Size"
     ],
     "inStock": true
   },
   {
-    "id": "prod-cosm-3",
-    "name": "Pastel Cloud Aesthetic Hair Clips & Scrunchies Hamper (8 Pcs)",
-    "hindiName": "पेस्टेल क्लाउड एस्थेटिक हेयर क्लिप्स व स्क्रंचीज सेट",
+    "id": "prod-cos-3",
+    "name": "Pastel Sakura Makeup Brush Set with Cute Travel Roll Pouch (8 Pcs)",
+    "hindiName": "पेस्टल साकुरा मेकअप ब्रश सेट विथ ट्रैवल पाउच (8 पीस)",
+    "category": "cosmetics",
+    "subcategory": "Pocket Vanity Mirrors & Brushes",
+    "price": 349,
+    "originalPrice": 649,
+    "rating": 4.8,
+    "reviewsCount": 28,
+    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Ultra-Soft Bristles",
+    "customizable": false,
+    "customType": "cosmetics",
+    "description": "Synthetic cruelty-free velvet bristles with sakura blossom pink handles. Includes powder brush, blending brush, eyeshadow and fan brushes.",
+    "specs": [
+      "8 Professional Face & Eye Brushes",
+      "Velvety Synthetic Bristles (No Shedding)",
+      "Rose Gold Aluminum Ferrules",
+      "Roll-up Storage Pouch Included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-cos-4",
+    "name": "Kawaii Pastel Matte Bow Hair Claw Clips & Pins Hamper (Pack of 6)",
+    "hindiName": "कवाई पेस्टल हेयर क्लॉ क्लिप्स व पिन्स हैंपर (6 का पैक)",
     "category": "cosmetics",
     "subcategory": "Aesthetic Hair Accessories",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.8,
-    "reviewsCount": 52,
-    "image": "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80",
+    "price": 199,
+    "originalPrice": 399,
+    "rating": 4.9,
+    "reviewsCount": 49,
+    "image": "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
-      "assets/images/kawaii_stationery.jpg"
+      "https://images.unsplash.com/photo-1595152772835-219674b2a8a6?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1606760227091-3dd870d97f1d?auto=format&fit=crop&w=600&q=80"
     ],
-    "badge": "Trending Set",
+    "badge": "Trendy Korean",
     "customizable": false,
-    "description": "Complete aesthetic Korean style hair accessory box! Contains 4 matte pastel claw clips, 2 pure silk scrunchies, and 2 cute bow bobby pins in a gift-ready kawaii acrylic box.",
+    "customType": "cosmetics",
+    "description": "Non-slip strong grip pastel claw clips in heart, butterfly, and bow designs. Made from durable eco-friendly cellulose acetate.",
     "specs": [
-      "4 Matte Pastel Acrylic Clips",
-      "2 Mulberry Silk Scrunchies",
-      "2 Ribbon Bow Pins",
-      "Kawaii Gift Box Included"
+      "6 Different Cute Hair Accessories",
+      "Matte Pastel Color Coat",
+      "Durable Rust-Proof Metal Spring",
+      "Comfortable All-Day Hold"
     ],
     "inStock": true
   },
   {
-    "id": "prod-cosm-4",
-    "name": "Aesthetic Peach Blossom Pocket Hand Cream & Hydrating Mist",
-    "hindiName": "पीच ब्लॉसम पॉकेट हैंड क्रीम व मिस्ट सेट",
+    "id": "prod-cos-5",
+    "name": "Hydrating Peach & Shea Butter Miniature Hand Cream Bouquet (4 Tubes)",
+    "hindiName": "हाइड्रेटिंग पीच व शीया बटर हैंड क्रीम बुके (4 ट्यूब)",
     "category": "cosmetics",
     "subcategory": "Pastel Skincare & Hand Creams",
     "price": 299,
-    "originalPrice": 549,
-    "rating": 5.0,
-    "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+    "originalPrice": 499,
+    "rating": 4.8,
+    "reviewsCount": 33,
+    "image": "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
     "images": [
-      "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Non-Greasy",
+    "customizable": false,
+    "customType": "cosmetics",
+    "description": "Pocket-sized hand lotions in Peach Honey, Green Tea Jasmine, Rose Blossom, and Lavender Milk fragrances.",
+    "specs": [
+      "4 x 30g Miniature Hand Lotions",
+      "Infused with Shea Butter & Aloe",
+      "Non-Sticky Fast Absorbing",
+      "Delightful Floral-Fruity Scent"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-toy-1",
+    "name": "Giant 3-Foot Super Soft Cuddle Teddy Bear with Bow Tie (Pink/Beige)",
+    "hindiName": "3-फीट सुपर सॉफ्ट कडल टेडी बेयर विथ बो टाई",
+    "category": "toys",
+    "subcategory": "Giant Cuddle Teddies",
+    "price": 999,
+    "originalPrice": 1699,
+    "rating": 5,
+    "reviewsCount": 65,
+    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_hero.jpg"
+    ],
+    "badge": "Giant 90cm",
+    "customizable": false,
+    "customType": "toys",
+    "description": "Big huggable teddy stuffed with 100% hypoallergenic virgin PP cotton. Washable, super fluffy, and velvety to touch.",
+    "specs": [
+      "Height: 90 cm (3 Feet)",
+      "Ultra-Soft Velboa Plush",
+      "100% Virgin Fiber Poly-fill",
+      "Embroidered Paws & Satin Bow"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-toy-2",
+    "name": "Cute Boba Milk Tea Pearl Squishy Plush Pillow (35cm)",
+    "hindiName": "क्यूट बोबा मिल्क टी स्क्विशी प्लश पिलो",
+    "category": "toys",
+    "subcategory": "Boba & Food Squishies",
+    "price": 449,
+    "originalPrice": 799,
+    "rating": 4.9,
+    "reviewsCount": 54,
+    "image": "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1589254065878-42c9da997008?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1533038590840-1cde6e668a91?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Viral Trend",
+    "customizable": false,
+    "customType": "toys",
+    "description": "Viral Boba drink plushie with embroidered tapioca pearls and plush drinking straw. Ultra-elastic marshmallow fabric.",
+    "specs": [
+      "35cm Hugging Size",
+      "Memory Rebound Elastic Spandex",
+      "Embroidered Kawaii Face",
+      "Zippered Removable Outer Cover"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-toy-3",
+    "name": "Chubby Sleeping Shiba Inu Dog Cuddle Body Pillow (50cm)",
+    "hindiName": "चब्बी स्लीपिंग शीबा इनु डॉग कडल पिलो",
+    "category": "toys",
+    "subcategory": "Cute Animal Plushies",
+    "price": 599,
+    "originalPrice": 999,
+    "rating": 5,
+    "reviewsCount": 47,
+    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Cozy Nap",
+    "customizable": false,
+    "customType": "toys",
+    "description": "Adorable lying Shiba dog plushie designed for resting your arms or head while studying or sleeping. Gentle on sensitive skin.",
+    "specs": [
+      "50cm Long Body",
+      "Premium Four-Sided Stretch Fabric",
+      "Down Cotton Soft Filling",
+      "Machine Washable on Gentle Cycle"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-toy-4",
+    "name": "Pastel Long-Eared Floppy Bunny Rabbit Plush Toy (40cm)",
+    "hindiName": "पेस्टल लॉन्ग-इयर्ड फ्लॉपी बनी खरगोश प्लशी",
+    "category": "toys",
+    "subcategory": "Cute Animal Plushies",
+    "price": 499,
+    "originalPrice": 849,
+    "rating": 4.9,
+    "reviewsCount": 39,
+    "image": "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1556012018-50c5c0da73bf?auto=format&fit=crop&w=600&q=80",
+      "assets/images/kawaii_hero.jpg"
+    ],
+    "badge": "Sweet Bunny",
+    "customizable": false,
+    "customType": "toys",
+    "description": "Super sweet bunny with posable long ears and kawaii pink cheeks. Perfect birthday gift for girls and kids.",
+    "specs": [
+      "40cm Sitting Height",
+      "Extra Silky Fur",
+      "Safe Embroidered Eyes (No Beads)",
+      "Cute Ribbon Neck Accent"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-toy-5",
+    "name": "Kawaii Plush Animal Bag Charms & Keychains (Set of 2)",
+    "hindiName": "कवाई प्लश एनिमल बैग चार्म्स व कीचेन्स (2 का सेट)",
+    "category": "toys",
+    "subcategory": "Plush Keychains & Charms",
+    "price": 179,
+    "originalPrice": 349,
+    "rating": 4.8,
+    "reviewsCount": 26,
+    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Bag Accessory",
+    "customizable": false,
+    "customType": "toys",
+    "description": "Miniature plush bear and cat charms with gold keyrings and ringing bell. Clips easily to backpacks, tote bags, and keys.",
+    "specs": [
+      "Set of 2 Pocket Plush Charms (10cm)",
+      "Golden Swivel Clasp",
+      "Mini Jingle Bell Accent",
+      "Stuffed with Soft Cotton"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-pers-1",
+    "name": "Pink Acrylic 3D Heart Bear LED Lamp (Custom Name & Date)",
+    "hindiName": "पिंक एक्रिलिक 3D हार्ट बेयर एलईडी लैंप (कस्टम नेम)",
+    "category": "personalized",
+    "subcategory": "3D LED Acrylic Lamps",
+    "price": 699,
+    "originalPrice": 1199,
+    "rating": 5,
+    "reviewsCount": 78,
+    "image": "assets/images/pink_acrylic_lamp.jpg",
+    "images": [
+      "assets/images/pink_acrylic_lamp.jpg",
+      "assets/images/product_lamp.jpg",
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Bestseller Custom",
+    "customizable": true,
+    "customType": "lamp",
+    "description": "Laser-engraved acrylic plate with glowing warm LED wooden base. Custom couple name, anniversary date, and heart bear motif.",
+    "specs": [
+      "4mm Optical Grade Acrylic",
+      "Natural Beech Wood LED Base",
+      "USB Powered with On/Off Switch",
+      "Free Custom Name Engraving"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-pers-2",
+    "name": "Heat Sensitive Color Changing Magic Photo Mug (Upload Your Photo)",
+    "hindiName": "कलर चेंजिंग मैजिक फोटो मग (फोटो प्रिंटेड)",
+    "category": "personalized",
+    "subcategory": "Photo Magic Mugs",
+    "price": 349,
+    "originalPrice": 599,
+    "rating": 4.9,
+    "reviewsCount": 62,
+    "image": "assets/images/product_mug.jpg",
+    "images": [
+      "assets/images/product_mug.jpg",
+      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Magic Surprise",
+    "customizable": true,
+    "customType": "mug",
+    "description": "Appears plain glossy black at room temperature. Magically reveals your high-definition photo and custom message when hot liquid is poured!",
+    "specs": [
+      "325ml Premium Ceramic",
+      "Thermosensitive Magic Coating",
+      "Microwave & Dishwasher Safe",
+      "HD Glossy Custom Photo Print"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-pers-3",
+    "name": "Personalized Scannable Spotify Music Plaque with Solid Wood Stand",
+    "hindiName": "पर्सनलाइज्ड स्कैनेबल स्पॉटिफाई म्यूजिक प्लेक विथ स्टैंड",
+    "category": "personalized",
+    "subcategory": "Spotify Music Plaques",
+    "price": 499,
+    "originalPrice": 899,
+    "rating": 4.9,
+    "reviewsCount": 51,
+    "image": "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=600&q=80",
+      "assets/images/custom_gifts.jpg"
+    ],
+    "badge": "Top Romantic",
+    "customizable": true,
+    "customType": "plaque",
+    "description": "Custom acrylic glass plaque engraved with your favorite song, favorite couple photo, and working Spotify scan code.",
+    "specs": [
+      "6x8 Inch Cast Acrylic",
+      "High Resolution UV Ink Print",
+      "Real Scannable Working Spotify Barcode",
+      "Natural Solid Pine Stand Included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-pers-4",
+    "name": "Custom Cut Photo & Name Acrylic Keychain with Tassel",
+    "hindiName": "कस्टम फोटो व नेम ऐक्रेलिक कीचेन विथ टैसल",
+    "category": "personalized",
+    "subcategory": "Custom Acrylic Keychains",
+    "price": 199,
+    "originalPrice": 399,
+    "rating": 4.8,
+    "reviewsCount": 37,
+    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Cute Keepsake",
+    "customizable": true,
+    "customType": "keychain",
+    "description": "Crystal-clear waterproof double-sided acrylic photo keychain with cute pastel pompom tassel.",
+    "specs": [
+      "Double-Sided HD Photo Print",
+      "Scratch-Proof Acrylic Seal",
+      "Pastel Suede Tassel Charm",
+      "Heavy Duty Keyring Hook"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-pers-5",
+    "name": "Personalized LED Moon Night Lamp with 3D Engraved Photo (15cm)",
+    "hindiName": "पर्सनलाइज्ड 3D मून नाइट लैंप विथ एनग्रेव्ड फोटो",
+    "category": "personalized",
+    "subcategory": "3D LED Acrylic Lamps",
+    "price": 849,
+    "originalPrice": 1399,
+    "rating": 5,
+    "reviewsCount": 43,
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+      "assets/images/product_lamp.jpg"
+    ],
+    "badge": "3D Moon",
+    "customizable": true,
+    "customType": "lamp",
+    "description": "3D printed realistic lunar surface lamp customized with your photo and text. Touch control with 3 color options (Warm White, Yellow, Cool White).",
+    "specs": [
+      "15cm Diameter 3D Moon",
+      "USB Rechargeable Battery (8h Backup)",
+      "Touch Sensor to Change Colors",
+      "Geometric Wooden Stand Included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-bday-1",
+    "name": "Deluxe Kawaii Celebration Birthday Hamper Box with Teddy & Chocolates",
+    "hindiName": "डीलक्स कवाई बर्थडे सेलिब्रेशन हैंपर बॉक्स",
+    "category": "birthday",
+    "subcategory": "Birthday Gift Hampers",
+    "price": 1199,
+    "originalPrice": 1899,
+    "rating": 5,
+    "reviewsCount": 56,
+    "image": "assets/images/birthday_hampers.jpg",
+    "images": [
+      "assets/images/birthday_hampers.jpg",
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
+      "assets/images/custom_gifts.jpg"
+    ],
+    "badge": "Deluxe Hamper",
+    "customizable": true,
+    "customType": "hamper",
+    "description": "Premium pink gift box packed with cuddly 25cm plush bear, Ferrero Rocher pack, scented soy candle, pastel diary, and golden fairy lights.",
+    "specs": [
+      "25cm Huggable Cuddle Teddy",
+      "Ferrero Rocher & Gourmet Chocolates",
+      "Aesthetic Diary & Scented Candle",
+      "LED Fairy Lights & Greeting Card Included"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-bday-2",
+    "name": "Surprise Hexagonal 4-Tier Photo Explosion Box",
+    "hindiName": "सरप्राइज हेक्सागोनल 4-टियर फोटो एक्सप्लोजन बॉक्स",
+    "category": "birthday",
+    "subcategory": "Surprise Explosion Boxes",
+    "price": 599,
+    "originalPrice": 999,
+    "rating": 4.9,
+    "reviewsCount": 39,
+    "image": "assets/images/custom_gifts.jpg",
+    "images": [
+      "assets/images/custom_gifts.jpg",
+      "assets/images/birthday_hampers.jpg",
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Handmade Surprise",
+    "customizable": true,
+    "customType": "hamper",
+    "description": "When closed it looks like an exquisite gift box. When opened, all 4 layers unfold to reveal 24 customized photo slots and a central surprise gift compartment.",
+    "specs": [
+      "4 Layers of Pop-Out Panels",
+      "24 Photos / Sweet Message Slots",
+      "Center Small Gift Box for Ring/Chocolates",
+      "Hand-Crafted Rigid 300 GSM Board"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-bday-3",
+    "name": "Sweet Pastel Treat Celebration Basket with Scented Bath & Candies",
+    "hindiName": "स्वीट पेस्टल ट्रीट सेलिब्रेशन बास्केट",
+    "category": "birthday",
+    "subcategory": "Celebration Baskets",
+    "price": 799,
+    "originalPrice": 1299,
+    "rating": 4.8,
+    "reviewsCount": 32,
+    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80",
       "assets/images/birthday_hampers.jpg"
     ],
-    "badge": "Bestseller",
+    "badge": "Gourmet & Bath",
     "customizable": false,
-    "description": "Lightweight quick-absorbing hand moisturizing cream infused with real peach blossom extract and sweet floral aroma mist. Pocket-sized luxury for handbags and study desks.",
+    "customType": "hamper",
+    "description": "Woven ribbon basket filled with organic strawberry bath salts, scented fizzy bath bomb, marshmallow candies, and mini pink teddy.",
     "specs": [
-      "Real Peach Blossom Extract",
-      "Non-Sticky Fast Absorption",
-      "Pocket-Friendly 45ml Tube",
-      "Sweet Natural Floral Aroma"
+      "Handwoven Wicker Gift Basket",
+      "Fizzy Bath Bomb & Strawberry Salts",
+      "Imported Marshmallow Candy Tin",
+      "Silk Ribbon Wrap & Free Card"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-bday-4",
+    "name": "Handmade 3D Pop-Up Birthday & Anniversary Greeting Cards (Set of 2)",
+    "hindiName": "हैंडमेड 3D पॉप-अप ग्रीटिंग कार्ड्स (2 का सेट)",
+    "category": "birthday",
+    "subcategory": "Greeting Cards & Gift Tags",
+    "price": 189,
+    "originalPrice": 349,
+    "rating": 4.9,
+    "reviewsCount": 27,
+    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=600&q=80",
+      "assets/images/birthday_hampers.jpg"
+    ],
+    "badge": "3D Pop-Up",
+    "customizable": false,
+    "customType": "stationery",
+    "description": "Laser-cut 3D pop-up cherry blossom and birthday cake cards with blank message insert notes and luxury envelopes.",
+    "specs": [
+      "2 Pop-Up 3D Cards with Envelopes",
+      "Laser-Cut Precision Paper Art",
+      "Hidden Pull-Out Message Note",
+      "Heavy 250 GSM Pearlescent Paper"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-nov-1",
+    "name": "Pastel Gradient Motivational Time Marker Sipper Bottle with Straw (1000ml)",
+    "hindiName": "पेस्टल ग्रेडिएंट मोटिवेशनल सिपर बोतल (1000ml)",
+    "category": "novelties",
+    "subcategory": "Pastel Sippers & Bottles",
+    "price": 399,
+    "originalPrice": 699,
+    "rating": 4.9,
+    "reviewsCount": 58,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "BPA Free",
+    "customizable": false,
+    "customType": "novelties",
+    "description": "Leak-proof tritan frosted bottle with silicone straw, one-click flip lid, safety lock, and time markers to stay hydrated all day.",
+    "specs": [
+      "1000ml (1 Liter) Capacity",
+      "100% BPA Free Frosted Tritan",
+      "Pop-up Silicone Straw & Carry Loop",
+      "Leakproof Safety Clasp Lock"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-nov-2",
+    "name": "Double-Wall Insulated Stainless Steel Coffee Sipper Mug with Handle (450ml)",
+    "hindiName": "इंसुलेटेड स्टेनलेस स्टील कॉफी सिपर मग (450ml)",
+    "category": "novelties",
+    "subcategory": "Pastel Sippers & Bottles",
+    "price": 499,
+    "originalPrice": 849,
+    "rating": 5,
+    "reviewsCount": 44,
+    "image": "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1523362628745-0c100150b504?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "6h Hot / Cold",
+    "customizable": false,
+    "customType": "novelties",
+    "description": "Food-grade 304 stainless steel tumbler keeping hot coffee steaming for 6 hours or iced chai cold for 12 hours. Spill-proof slider lid.",
+    "specs": [
+      "450ml Capacity",
+      "Double Wall Vacuum 304 Steel",
+      "Ergonomic Sturdy Handle",
+      "Splash-Proof Slider Lid"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-nov-3",
+    "name": "Kawaii Corduroy Mini Crossbody Shoulder Bag with Bear Badge",
+    "hindiName": "कवाई कॉरडरॉय मिनी क्रॉसबॉडी शोल्डर बैग",
+    "category": "novelties",
+    "subcategory": "Mini Crossbody Bags",
+    "price": 379,
+    "originalPrice": 649,
+    "rating": 4.8,
+    "reviewsCount": 35,
+    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Trendy Bag",
+    "customizable": false,
+    "customType": "novelties",
+    "description": "Soft-textured corduroy mini sling bag with adjustable strap, magnetic snap closure, and detachable cute bear pin badge.",
+    "specs": [
+      "Size: 20 x 16 x 6 cm",
+      "Vintage Pastel Corduroy Fabric",
+      "Adjustable Crossbody Webbing Strap",
+      "Removable Cute Plush Bear Pin"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-nov-4",
+    "name": "Retro Kawaii Bunny Alarm Clock with Soft Warm Night Light",
+    "hindiName": "रेट्रो कवाई बनी अलार्म क्लॉक विथ नाइट लाइट",
+    "category": "novelties",
+    "subcategory": "Night Lights & Clocks",
+    "price": 449,
+    "originalPrice": 799,
+    "rating": 4.9,
+    "reviewsCount": 31,
+    "image": "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Silent Sweep",
+    "customizable": false,
+    "customType": "novelties",
+    "description": "Non-ticking silent sweep second hand with twin bells and soft backlight button. Cute bunny ears design in blush pink.",
+    "specs": [
+      "Silent Non-Ticking Quartz Engine",
+      "Loud Twin Bell Ringer",
+      "Soft Manual Backlight Button",
+      "Runs on 1x AA Battery"
+    ],
+    "inStock": true
+  },
+  {
+    "id": "prod-nov-5",
+    "name": "USB Cute Bear Desktop Mini Humidifier with 7-Color Breathing Light",
+    "hindiName": "यूएसबी मिनी डेस्कटॉप ह्यूमिडिफायर विथ 7-कलर लाइट",
+    "category": "novelties",
+    "subcategory": "Cute Desk Gadgets",
+    "price": 499,
+    "originalPrice": 899,
+    "rating": 4.9,
+    "reviewsCount": 42,
+    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+    "images": [
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=600&q=80"
+    ],
+    "badge": "Desk Essential",
+    "customizable": false,
+    "customType": "novelties",
+    "description": "Silent ultrasonic cool mist maker for study desks and bedrooms. Features cute bear figurine floating inside a water capsule with rainbow LEDs.",
+    "specs": [
+      "300ml Water Tank (8h Mist)",
+      "Super Quiet (<30dB) Ultrasonic Spray",
+      "7-Color Rainbow Ambient Light",
+      "USB Powered with Auto-Off Sensor"
     ],
     "inStock": true
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { PRODUCTS_DATA };
+}
+

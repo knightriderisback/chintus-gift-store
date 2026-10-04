@@ -655,6 +655,135 @@ app.delete('/api/categories/:id', requireAdmin, (req, res) => {
   res.json({ success: true, message: 'Category deleted successfully' });
 });
 
+// --- VISITOR TRACKING & TELEGRAM BOT ALERTS API ---
+const recentVisitors = [];
+
+async function sendTelegramNotification(text) {
+  const settings = readJSON(SETTINGS_FILE, {});
+  const token = settings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = settings.telegramChatId || process.env.TELEGRAM_CHAT_ID;
+
+  if (!token || !chatId) {
+    return { success: false, reason: 'Telegram bot token or chat ID not configured' };
+  }
+
+  try {
+    const url = `https://api.telegram.org/bot${token.trim()}/sendMessage`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: String(chatId).trim(),
+        text: text,
+        parse_mode: 'Markdown'
+      })
+    });
+    const resData = await response.json();
+    return { success: resData.ok, data: resData };
+  } catch (err) {
+    console.error('Telegram send error:', err.message);
+    return { success: false, error: err.message };
+  }
+}
+
+app.post('/api/track-visitor', (req, res) => {
+  const { page, path, referrer, device, isNewSession } = req.body || {};
+
+  const record = {
+    id: `vis-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
+    time: new Date().toISOString(),
+    timestamp: Date.now(),
+    page: String(page || 'Storefront').slice(0, 100),
+    path: String(path || '/').slice(0, 150),
+    referrer: String(referrer || 'Direct').slice(0, 150),
+    device: String(device || 'Mobile').slice(0, 50),
+    isNewSession: Boolean(isNewSession)
+  };
+
+  recentVisitors.unshift(record);
+  if (recentVisitors.length > 50) recentVisitors.pop();
+
+  // If this is a fresh session / new visitor, trigger instant Telegram Alert!
+  if (isNewSession) {
+    const istTime = new Date().toLocaleTimeString('en-IN', {
+      timeZone: 'Asia/Kolkata',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true
+    });
+
+    const telegramText = 
+      `🔔 *NEW VISITOR ON CHINTU'S GIFT STORE!*\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `📄 *Page:* ${record.page}\n` +
+      `🔗 *Path:* \`${record.path}\`\n` +
+      `📱 *Device:* ${record.device}\n` +
+      `🌐 *Source:* ${record.referrer || 'Direct / Social'}\n` +
+      `⏰ *Time:* ${istTime} (IST)\n` +
+      `━━━━━━━━━━━━━━━━━━━━━━\n` +
+      `🏪 *Store:* Subhash Chowk, Dalli Rajhara`;
+
+    sendTelegramNotification(telegramText).catch(e => console.error("Telegram notification error:", e));
+  }
+
+  res.json({ success: true });
+});
+
+app.get('/api/live-visitors', (req, res) => {
+  const fiveMinAgo = Date.now() - 5 * 60 * 1000;
+  const activeVisitors = recentVisitors.filter(v => v.timestamp > fiveMinAgo);
+
+  res.json({
+    success: true,
+    activeCount: Math.max(1, activeVisitors.length),
+    totalRecent: recentVisitors.length,
+    visitors: recentVisitors.slice(0, 15)
+  });
+});
+
+app.post('/api/telegram/test', requireAdmin, async (req, res) => {
+  const { token, chatId } = req.body || {};
+  const settings = readJSON(SETTINGS_FILE, {});
+  const effectiveToken = token || settings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN;
+  const effectiveChatId = chatId || settings.telegramChatId || process.env.TELEGRAM_CHAT_ID;
+
+  if (!effectiveToken || !effectiveChatId) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please provide Telegram Bot Token and Chat ID to send test message.'
+    });
+  }
+
+  const testText = 
+    `🌸 *TEST NOTIFICATION - CHINTU'S GIFT STORE*\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `✅ *Telegram Visitor Alerts are Working 100%!* \n` +
+    `You will receive instant alerts here whenever a new customer opens your website.\n` +
+    `━━━━━━━━━━━━━━━━━━━━━━\n` +
+    `🏪 *Store:* Subhash Chowk, Dalli Rajhara • 8269212182`;
+
+  try {
+    const url = `https://api.telegram.org/bot${effectiveToken.trim()}/sendMessage`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: String(effectiveChatId).trim(),
+        text: testText,
+        parse_mode: 'Markdown'
+      })
+    });
+    const resData = await response.json();
+    if (resData.ok) {
+      res.json({ success: true, message: 'Test message sent to your Telegram successfully! Check your Telegram app 🔔' });
+    } else {
+      res.status(400).json({ success: false, message: resData.description || 'Telegram API error' });
+    }
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Serve Static Files
 app.use(express.static(__dirname));
 

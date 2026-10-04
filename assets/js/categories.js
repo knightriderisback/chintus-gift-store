@@ -14,7 +14,7 @@ const DEFAULT_CATEGORIES = [
       "Washi Tapes & Stickers",
       "Pencil Pouches & Organizers"
     ],
-    "itemCount": 6
+    "itemCount": 5
   },
   {
     "id": "cosmetics",
@@ -29,7 +29,7 @@ const DEFAULT_CATEGORIES = [
       "Aesthetic Hair Accessories",
       "Pastel Skincare & Hand Creams"
     ],
-    "itemCount": 4
+    "itemCount": 5
   },
   {
     "id": "toys",
@@ -59,7 +59,7 @@ const DEFAULT_CATEGORIES = [
       "Spotify Music Plaques",
       "Custom Acrylic Keychains"
     ],
-    "itemCount": 6
+    "itemCount": 5
   },
   {
     "id": "birthday",
@@ -89,6 +89,11 @@ const DEFAULT_CATEGORIES = [
       "Cute Desk Gadgets",
       "Night Lights & Clocks"
     ],
-    "itemCount": 3
+    "itemCount": 5
   }
 ];
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { DEFAULT_CATEGORIES };
+}
+

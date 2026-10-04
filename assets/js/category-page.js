@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   renderCategoryView();
   fetchFreshData();
+  initVisitorTracker("Category: " + currentCategory);
 });
 
 // Settings & Branding
@@ -623,3 +624,44 @@ function showToast(message, type = "success") {
     setTimeout(() => toast.remove(), 300);
   }, 3000);
 }
+
+// Real-Time Visitor Tracking for Push Notifications & Admin Radar
+function initVisitorTracker(pageName) {
+  try {
+    const isNewSession = !sessionStorage.getItem('chintu_visited_session');
+    if (isNewSession) {
+      sessionStorage.setItem('chintu_visited_session', 'visit_' + Date.now());
+    }
+
+    const ua = navigator.userAgent || '';
+    let device = 'Desktop PC';
+    if (/android/i.test(ua)) device = 'Android Phone';
+    else if (/iphone/i.test(ua)) device = 'Apple iPhone';
+    else if (/ipad/i.test(ua)) device = 'Apple iPad';
+    else if (/tablet/i.test(ua)) device = 'Tablet Device';
+    else if (/mobile/i.test(ua)) device = 'Mobile Phone';
+
+    let referrer = document.referrer ? document.referrer : 'Direct / WhatsApp / Social';
+    try {
+      if (document.referrer && document.referrer.includes(window.location.host)) {
+        referrer = 'Internal Store Browsing';
+      }
+    } catch (_) {}
+
+    const payload = {
+      page: pageName || document.title || 'Category Storefront',
+      path: window.location.pathname + window.location.search,
+      referrer: referrer,
+      device: device,
+      isNewSession: isNewSession
+    };
+
+    fetch('/api/track-visitor', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true
+    }).catch(() => {});
+  } catch (_) {}
+}
+

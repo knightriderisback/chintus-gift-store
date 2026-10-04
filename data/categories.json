@@ -12,7 +12,7 @@
       "Washi Tapes & Stickers",
       "Pencil Pouches & Organizers"
     ],
-    "itemCount": 6
+    "itemCount": 5
   },
   {
     "id": "cosmetics",
@@ -27,7 +27,7 @@
       "Aesthetic Hair Accessories",
       "Pastel Skincare & Hand Creams"
     ],
-    "itemCount": 4
+    "itemCount": 5
   },
   {
     "id": "toys",
@@ -57,7 +57,7 @@
       "Spotify Music Plaques",
       "Custom Acrylic Keychains"
     ],
-    "itemCount": 6
+    "itemCount": 5
   },
   {
     "id": "birthday",
@@ -87,6 +87,6 @@
       "Cute Desk Gadgets",
       "Night Lights & Clocks"
     ],
-    "itemCount": 3
+    "itemCount": 5
   }
 ]
