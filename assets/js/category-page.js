@@ -1,5 +1,5 @@
 // Client script for Chintu's Gift & Kawaii Store - Category Pages
-// Handles Category Banner, Subcategories filtering, 8-product pagination, and multi-photo galleries
+// Handles Category Banner, Subcategories filtering, 8-product pagination, multi-photo galleries, and WhatsApp Inquiries (No Price, No Stock Mode)
 
 const STORE_PHONE = "8269212182";
 const STORE_DISPLAY_PHONE = "+91 82692 12182";
@@ -7,12 +7,14 @@ const STORE_WA = "918269212182";
 
 let allCategories = typeof DEFAULT_CATEGORIES !== 'undefined' ? [...DEFAULT_CATEGORIES] : [];
 let allProducts = typeof PRODUCTS_DATA !== 'undefined' ? [...PRODUCTS_DATA] : [];
-let currentCategory = "stationery";
+let currentCategory = "cosmetics";
 let currentSubcategory = "all";
 let searchQuery = "";
 let sortBy = "default";
 let visibleProductsCount = 8;
 let cart = [];
+let quickViewImages = [];
+let quickViewCurrentIndex = 0;
 
 const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0";
 
@@ -24,6 +26,21 @@ function resolveSafeLogo(logo) {
   }
   return l;
 }
+
+// Fallback images when Google Drive links are not public yet or on network error
+function getProductFallbackImage(cat) {
+  if (cat === 'cosmetics') return 'https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75';
+  if (cat === 'stationery') return 'assets/images/kawaii_stationery.jpg';
+  if (cat === 'skincare') return 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=400&q=75';
+  if (cat === 'lifestyle') return 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75';
+  if (cat === 'references') return 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75';
+  return CANONICAL_MASCOT_LOGO;
+}
+
+window.handleProductImgError = function(img, cat) {
+  img.onerror = null;
+  img.src = getProductFallbackImage(cat);
+};
 
 // Instant Fast Cache Initialization
 (function initFastData() {
@@ -37,18 +54,28 @@ function resolveSafeLogo(logo) {
       applyPageSettings(parsed);
     }
 
-    // 2. Categories
+    // 2. Categories (Upgrade if old dummy cache exists)
     const cachedCats = localStorage.getItem('chintu_categories');
     if (cachedCats) {
       const parsed = JSON.parse(cachedCats);
-      if (Array.isArray(parsed) && parsed.length > 0) allCategories = parsed;
+      if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(c => c.id === 'cosmetics')) {
+        allCategories = parsed;
+      } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
+        allCategories = [...DEFAULT_CATEGORIES];
+        try { localStorage.setItem('chintu_categories', JSON.stringify(allCategories)); } catch (_) {}
+      }
     }
 
-    // 3. Products
+    // 3. Products (Upgrade if old dummy cache exists)
     const cachedProds = localStorage.getItem('chintu_custom_products');
     if (cachedProds) {
       const parsed = JSON.parse(cachedProds);
-      if (Array.isArray(parsed) && parsed.length > 0) allProducts = parsed;
+      if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(p => p.sku && p.sku.startsWith('COSM'))) {
+        allProducts = parsed;
+      } else if (typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
+        allProducts = [...PRODUCTS_DATA];
+        try { localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts)); } catch (_) {}
+      }
     }
   } catch (_) {}
 })();
@@ -76,6 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
   loadCart();
   renderCategoryView();
   fetchFreshData();
+  setupCategoryListeners();
   initVisitorTracker("Category: " + currentCategory);
 
   // Close QuickView on Outside Click or Escape
@@ -155,12 +183,12 @@ function getActiveCategoryObject() {
   if (found) return found;
   if (allCategories.length > 0) return allCategories[0];
   return {
-    id: "stationery",
-    name: "Fancy Stationery",
-    hindiName: "फैंसी स्टेशनरी",
-    icon: "✏️",
-    tagline: "Pastel diaries, aesthetic highlighters & kawaii stickers",
-    subcategories: ["Pastel Diaries & Locks", "Aesthetic Highlighters & Pens", "Washi Tapes & Stickers", "Pencil Pouches & Organizers"]
+    id: "cosmetics",
+    name: "Beauty & Cosmetics",
+    hindiName: "कॉस्मेटिक्स व ब्यूटी प्रोडक्ट्स",
+    icon: "💄",
+    tagline: "High coverage liquid foundations, ultra-matte lipsticks, moisturizing glosses & beauty essentials",
+    subcategories: ["Lipsticks", "Foundations & Face Base", "Lip Glosses", "Lip Products", "Lip Glosses & Balms", "Lip Care & Treatments", "Lip Liners", "Nail Art & Press-ons", "Eye & Face Palettes", "Single Eye Shadows"]
   };
 }
 
@@ -186,7 +214,7 @@ function renderCategoryView() {
   if (hindiEl) hindiEl.textContent = cat.hindiName || "";
 
   const taglineEl = document.getElementById("cat-banner-tagline");
-  if (taglineEl) taglineEl.textContent = cat.tagline || `Browse our cutest collection of ${cat.name} in Dalli Rajhara!`;
+  if (taglineEl) taglineEl.textContent = cat.tagline || `Browse our exclusive collection of ${cat.name} in Dalli Rajhara!`;
 
   // Render Category Switcher dropdown/pills
   const switcher = document.getElementById("category-switcher-container");
@@ -207,44 +235,34 @@ function renderCategoryView() {
 }
 
 const SUBCAT_ICONS = {
-  // Stationery
-  "Pencils & Gel Pens": "✏️",
-  "Cute Erasers & Sharpeners": "🧼",
-  "Pastel Diaries & Locks": "📔",
-  "Aesthetic Highlighters": "🖍️",
-  "Pencil Pouches & Organizers": "👝",
-  "Washi Tapes & Stickers": "🎀",
-  // Cosmetics
-  "Cute Lip Balms & Glosses": "💄",
-  "Korean Velvet Tint Mud": "💋",
-  "Pocket Mirrors & Brushes": "🪞",
-  "Hand Creams & Skincare": "🌸",
-  "Hair Accessories & Clips": "✨",
-  "Makeup Vanity Pouches": "👛",
-  // Toys
-  "Giant Cuddle Teddies": "🧸",
-  "Boba & Food Plushies": "🧋",
-  "Kawaii Animal Plushies": "🐰",
-  "Reversible Emotion Plushies": "🐙",
-  "Plush Backpacks & Charms": "🎒",
-  // Personalized
-  "3D LED Acrylic Lamps": "💡",
-  "Photo Magic Mugs": "☕",
-  "Spotify Music Plaques": "🎵",
-  "Photo Rotating Cube Lamps": "🪵",
-  "Custom Name Keychains": "🔑",
-  // Birthday
-  "Birthday Gift Hampers": "🎁",
-  "Surprise Explosion Boxes": "📦",
-  "Celebration Baskets": "🧺",
-  "Greeting Cards & Seals": "💌",
-  "Birthday Party Props": "👑",
-  // Novelties
-  "Pastel Sippers & Bottles": "🥤",
-  "Mini Crossbody Bags": "👜",
-  "Silicone Night Lamps": "🐼",
-  "Smart Desk Clocks": "⏰",
-  "Mini Mist Humidifiers": "💨"
+  // Beauty & Cosmetics
+  "Lipsticks": "💄",
+  "Foundations & Face Base": "✨",
+  "Lip Glosses": "💋",
+  "Lip Products": "🫦",
+  "Lip Glosses & Balms": "🌸",
+  "Lip Care & Treatments": "🧴",
+  "Lip Liners": "✏️",
+  "Nail Art & Press-ons": "💅",
+  "Eye & Face Palettes": "🎨",
+  "Single Eye Shadows": "👁️",
+  // Stationery & School Supplies
+  "Rulers & Geometry": "📐",
+  "Pencil Cases & Pouches": "👝",
+  "Pencil Sharpeners": "✏️",
+  "Erasers & Novelty": "🧼",
+  "Pens & Highlighters": "🖊️",
+  // Skincare & Personal Care
+  "Face Packs & Masks": "🧖‍♀️",
+  "Face & Body Scrubs": "🫧",
+  "Face Wash & Cleansers": "🧴",
+  "Moisturizers & Creams": "💧",
+  // Kids & Lifestyle
+  "Water Bottles & Sippers": "🥤",
+  // Marketing & Reference
+  "Color Matrix Chart": "📊",
+  "Color Swatch Chart": "🎨",
+  "Model Look Reference": "📸"
 };
 
 function renderSubcategoriesPills(cat) {
@@ -286,46 +304,47 @@ function switchCategory(catId) {
 function switchSubcategory(subcat) {
   currentSubcategory = subcat;
   visibleProductsCount = 8;
-  renderCategoryView();
+  renderCategoryProducts();
 }
 
-// Render Products Grid with 8 items pagination & "Show More"
+// Render Products Grid with 8 items pagination & "Show More" (NO PRICE, NO STOCK MODE)
 function renderCategoryProducts() {
   const container = document.getElementById("category-products-grid");
   const loadMoreContainer = document.getElementById("category-load-more-container");
   const countBadge = document.getElementById("cat-products-count-badge");
   if (!container) return;
 
-  // Filter by category
+  // Filter by category, subcategory, search
   let filtered = allProducts.filter(p => {
     const matchCat = currentCategory === "all" || p.category === currentCategory;
     const matchSubcat = currentSubcategory === "all" || p.subcategory === currentSubcategory;
     const matchSearch = !searchQuery || 
                         p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        (p.hindiName && p.hindiName.includes(searchQuery)) ||
+                        (p.sku && p.sku.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                        (p.brand && p.brand.toLowerCase().includes(searchQuery.toLowerCase())) ||
                         (p.description && p.description.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchCat && matchSubcat && matchSearch;
   });
 
-  // Sorting
-  if (sortBy === "price-low") {
-    filtered.sort((a, b) => a.price - b.price);
-  } else if (sortBy === "price-high") {
-    filtered.sort((a, b) => b.price - a.price);
+  // Sorting (No price sorting)
+  if (sortBy === "name") {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+  } else if (sortBy === "brand") {
+    filtered.sort((a, b) => (a.brand || '').localeCompare(b.brand || ''));
   } else if (sortBy === "rating") {
     filtered.sort((a, b) => b.rating - a.rating);
   }
 
   if (countBadge) {
-    countBadge.textContent = `${filtered.length} Cute Gifts`;
+    countBadge.textContent = `${filtered.length} Items`;
   }
 
   if (filtered.length === 0) {
     container.innerHTML = `
       <div class="col-span-full py-16 text-center text-pink-700 bg-white/60 rounded-3xl border border-pink-200 p-8 shadow-sm">
         <div class="text-5xl mb-3 animate-bounce">🎀</div>
-        <h4 class="text-lg font-black text-pink-900 mb-1 font-fun">No products found in this collection</h4>
-        <p class="text-xs text-pink-700 mb-4">Try selecting "All" subcategory or searching another term.</p>
+        <h4 class="text-lg font-black text-pink-900 mb-1 font-fun">No products found in this selection</h4>
+        <p class="text-xs text-pink-700 mb-4">Try selecting "All Items" subcategory or searching another term.</p>
         <button onclick="switchSubcategory('all')" class="px-5 py-2 rounded-full kawaii-btn-pink text-xs font-black shadow-md">
           View All ${getActiveCategoryObject().name}
         </button>
@@ -338,66 +357,62 @@ function renderCategoryProducts() {
   const displayed = filtered.slice(0, visibleProductsCount);
 
   container.innerHTML = displayed.map((product, pIndex) => {
-    const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
     const hasMultipleImages = Array.isArray(product.images) && product.images.length > 1;
     const photoCount = hasMultipleImages ? product.images.length : 1;
+    const primaryImg = (Array.isArray(product.images) && product.images.length > 0) ? product.images[0] : (product.image || getProductFallbackImage(product.category));
 
     return `
-      <div class="product-card group relative pink-acrylic p-3 sm:p-4 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-sm hover:shadow-xl transition-all rounded-3xl bg-white/80">
+      <div class="product-card group relative pink-acrylic p-3 sm:p-4 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-sm hover:shadow-xl transition-all rounded-3xl bg-white/85">
         
         <!-- Top Badges -->
         <div class="absolute top-3 left-3 z-10 flex flex-col gap-1 items-start">
-          ${product.badge ? `<span class="kawaii-badge">${product.badge}</span>` : ''}
-          ${hasMultipleImages ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-600/90 text-white shadow-sm flex items-center gap-1"><i class="fa-solid fa-camera text-[9px]"></i> ${photoCount} Photos</span>` : ''}
-          ${product.customizable ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-pink-600 text-white shadow-sm flex items-center gap-1"><i class="fa-solid fa-wand-magic-sparkles text-[9px]"></i> Custom</span>` : ''}
+          ${product.brand ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-pink-600 text-white shadow-sm">${product.brand}</span>` : ''}
+          ${hasMultipleImages ? `<span class="px-2 py-0.5 rounded-full text-[9px] font-black bg-purple-700/90 text-white shadow-sm flex items-center gap-1"><i class="fa-solid fa-camera text-[8px]"></i> ${photoCount} Photos</span>` : ''}
+        </div>
+
+        <!-- SKU Tag Top Right -->
+        <div class="absolute top-3 right-3 z-10">
+          <span class="px-2 py-0.5 rounded-md text-[9px] font-mono font-black bg-white/95 text-pink-800 border border-pink-200 shadow-sm">
+            ${product.sku || product.id}
+          </span>
         </div>
 
         <!-- Product Image -->
         <div class="relative w-full aspect-square rounded-2xl overflow-hidden mb-3 bg-pink-50 cursor-pointer border border-pink-100" onclick="openQuickView('${product.id}')">
-          <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="${pIndex < 2 ? 'eager' : 'lazy'}" decoding="async" ${pIndex < 2 ? 'fetchpriority="high"' : ''}>
+          <img src="${primaryImg}" alt="${product.name}" onerror="handleProductImgError(this, '${product.category}')" class="w-full h-full object-cover transition duration-300 group-hover:scale-105" loading="${pIndex < 2 ? 'eager' : 'lazy'}" decoding="async">
           <div class="absolute inset-0 bg-pink-900/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
             <span class="text-xs font-black text-pink-700 bg-white/95 px-3 py-1.5 rounded-full shadow-md backdrop-blur flex items-center gap-1.5">
-              <i class="fa-solid fa-eye text-pink-500"></i> Quick View
+              <i class="fa-solid fa-eye text-pink-500"></i> View Details
             </span>
           </div>
         </div>
 
-        <!-- Product Details -->
+        <!-- Product Details (No Price, No Stock Mode) -->
         <div class="flex-1 flex flex-col">
-          <!-- Rating & Stock -->
-          <div class="flex items-center gap-1.5 mb-1">
-            <div class="flex text-amber-400 text-xs">
-              ${renderStars(product.rating || 5.0)}
-            </div>
-            <span class="text-[11px] text-pink-700 font-bold">(${product.reviewsCount || 15})</span>
-            ${product.inStock ? '<span class="text-[10px] text-emerald-600 font-bold ml-auto">● In Stock</span>' : '<span class="text-[10px] text-rose-500 font-bold ml-auto">✕ Out of Stock</span>'}
+          <!-- Subcategory Tag -->
+          <div class="flex items-center gap-1.5 mb-1.5">
+            <span class="text-[10px] font-extrabold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md border border-pink-100 truncate">
+              ${product.subcategory || getActiveCategoryObject().name}
+            </span>
           </div>
 
-          <h3 class="text-xs sm:text-sm font-black text-purple-950 group-hover:text-pink-600 transition line-clamp-2 mb-1 cursor-pointer font-fun" onclick="openQuickView('${product.id}')">
+          <h3 class="text-xs sm:text-sm font-black text-purple-950 group-hover:text-pink-600 transition line-clamp-2 mb-1.5 cursor-pointer font-fun" onclick="openQuickView('${product.id}')">
             ${product.name}
           </h3>
-
-          ${product.hindiName ? `<p class="text-[10px] font-bold text-pink-700 truncate mb-1">${product.hindiName}</p>` : ''}
 
           <p class="text-[11px] text-pink-900/70 line-clamp-2 mb-3 leading-relaxed">
             ${product.description || ''}
           </p>
 
-          <!-- Price & Order Actions -->
+          <!-- WhatsApp Inquiry & Add to Inquiry Bag Actions -->
           <div class="mt-auto pt-2.5 border-t border-pink-100">
-            <div class="flex items-baseline gap-2 mb-2.5">
-              <span class="text-lg sm:text-xl font-black text-pink-600 font-fun">₹${product.price}</span>
-              <span class="text-xs text-slate-400 line-through">₹${product.originalPrice}</span>
-              <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">${discount}% OFF</span>
-            </div>
-
             <div class="grid grid-cols-2 gap-2">
-              <button onclick="addToCart('${product.id}')" ${!product.inStock ? 'disabled' : ''} class="px-2 py-2 rounded-xl kawaii-btn-pink text-[11px] font-black flex items-center justify-center gap-1 shadow-sm">
-                <i class="fa-solid fa-bag-shopping text-[10px]"></i> Add Cart
+              <button onclick="addToCart('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-pink text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98" title="Add to Inquiry Bag">
+                <i class="fa-solid fa-plus text-[10px]"></i> Add to Bag
               </button>
               
-              <button onclick="buyOnWhatsApp('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-green text-[11px] font-black flex items-center justify-center gap-1 shadow-sm">
-                <i class="fa-brands fa-whatsapp text-xs"></i> Order
+              <button onclick="inquireOnWhatsApp('${product.id}')" class="px-2 py-2 rounded-xl kawaii-btn-green text-[11px] font-black flex items-center justify-center gap-1 shadow-sm transition hover:scale-102 active:scale-98" title="Inquire on WhatsApp">
+                <i class="fa-brands fa-whatsapp text-xs"></i> Inquire
               </button>
             </div>
           </div>
@@ -413,7 +428,7 @@ function renderCategoryProducts() {
       loadMoreContainer.innerHTML = `
         <button id="show-more-products-btn" onclick="loadMoreCategoryProducts()" class="px-8 py-3 rounded-full kawaii-btn-pink text-xs sm:text-sm font-black shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2.5 border-2 border-pink-300 cursor-pointer">
           <i class="fa-solid fa-sparkles text-yellow-300"></i>
-          <span>Show More Gifts (और देखें)</span>
+          <span>Show More Items (और देखें)</span>
           <span class="text-[10px] bg-white/30 text-pink-900 px-2 py-0.5 rounded-full font-black">Showing ${displayed.length} of ${filtered.length}</span>
           <i class="fa-solid fa-chevron-down text-xs animate-bounce"></i>
         </button>
@@ -422,7 +437,7 @@ function renderCategoryProducts() {
       loadMoreContainer.innerHTML = `
         <div class="flex items-center gap-2 py-2.5 px-5 rounded-full bg-pink-100/90 text-pink-800 text-xs font-bold border border-pink-200 shadow-sm">
           <span>✨</span>
-          <span>You've seen all <strong>${filtered.length}</strong> gifts in ${getActiveCategoryObject().name}! 🎀</span>
+          <span>You've explored all <strong>${filtered.length}</strong> items in ${getActiveCategoryObject().name}! 🎀</span>
         </div>
       `;
     } else {
@@ -448,7 +463,7 @@ function renderStars(rating) {
   return stars;
 }
 
-// Quick View Modal
+// Quick View Modal with Multi-Photo Gallery (NO PRICE, NO STOCK MODE)
 function openQuickView(productId) {
   const product = allProducts.find(p => p.id === productId);
   if (!product) return;
@@ -457,58 +472,87 @@ function openQuickView(productId) {
   const modalBody = document.getElementById("quickview-body");
   if (!modal || !modalBody) return;
 
-  const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-
-  const allImages = (Array.isArray(product.images) && product.images.length > 0)
+  quickViewImages = (Array.isArray(product.images) && product.images.length > 0)
     ? product.images
-    : [product.image || 'assets/images/kawaii_stationery.jpg'];
+    : [product.image || getProductFallbackImage(product.category)];
+  quickViewCurrentIndex = 0;
 
   modalBody.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="flex flex-col gap-2">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      
+      <!-- Multi-Photo Gallery -->
+      <div class="flex flex-col gap-2.5">
         <div class="aspect-square rounded-2xl overflow-hidden bg-pink-50 border border-pink-200 relative group">
-          <img id="quickview-main-img" src="${allImages[0]}" alt="${product.name}" class="w-full h-full object-cover transition duration-300">
+          <img id="quickview-main-img" src="${quickViewImages[0]}" alt="${product.name}" onerror="handleProductImgError(this, '${product.category}')" class="w-full h-full object-cover transition duration-300">
+          
+          ${quickViewImages.length > 1 ? `
+            <button onclick="prevQuickViewImage('${product.category}')" class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-pink-700 shadow-md flex items-center justify-center transition active:scale-95 cursor-pointer">
+              <i class="fa-solid fa-chevron-left text-xs"></i>
+            </button>
+            <button onclick="nextQuickViewImage('${product.category}')" class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 hover:bg-white text-pink-700 shadow-md flex items-center justify-center transition active:scale-95 cursor-pointer">
+              <i class="fa-solid fa-chevron-right text-xs"></i>
+            </button>
+            <span id="quickview-counter-badge" class="absolute bottom-2 right-2 px-2.5 py-1 rounded-full text-[10px] font-black bg-purple-950/70 text-white backdrop-blur">
+              1 / ${quickViewImages.length} Photos
+            </span>
+          ` : ''}
         </div>
-        ${allImages.length > 1 ? `
-          <div class="flex items-center gap-2 overflow-x-auto py-1 px-0.5">
-            ${allImages.map((imgUrl, idx) => `
-              <button type="button" onclick="selectQuickViewImage('${imgUrl}', this)" class="qv-thumb shrink-0 w-14 h-14 rounded-xl overflow-hidden border-2 transition-all ${idx === 0 ? 'border-pink-600 ring-2 ring-pink-400 scale-105' : 'border-pink-200 opacity-80 hover:opacity-100'}">
-                <img src="${imgUrl}" alt="Thumb" class="w-full h-full object-cover">
+
+        ${quickViewImages.length > 1 ? `
+          <div class="flex items-center gap-2 overflow-x-auto py-1 px-0.5 no-scrollbar">
+            ${quickViewImages.map((imgUrl, idx) => `
+              <button type="button" onclick="selectQuickViewImageByIndex(${idx}, '${product.category}')" class="qv-thumb shrink-0 w-14 h-14 rounded-xl overflow-hidden border-2 transition-all cursor-pointer ${idx === 0 ? 'border-pink-600 ring-2 ring-pink-400 scale-105' : 'border-pink-200 opacity-80 hover:opacity-100'}">
+                <img src="${imgUrl}" alt="Photo ${idx + 1}" onerror="handleProductImgError(this, '${product.category}')" class="w-full h-full object-cover">
               </button>
             `).join('')}
           </div>
         ` : ''}
       </div>
+
+      <!-- Details (No Price, No Stock Mode) -->
       <div class="flex flex-col justify-between">
         <div>
-          <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
-            ${product.badge ? `<span class="kawaii-badge">${product.badge}</span>` : ''}
-            ${allImages.length > 1 ? `<span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-purple-100 text-purple-800 border border-purple-200"><i class="fa-solid fa-camera mr-1"></i>${allImages.length} Photos</span>` : ''}
-            <span class="text-xs text-emerald-700 font-extrabold"><i class="fa-solid fa-circle-check mr-1"></i>In Stock at Subhash Chowk</span>
+          <!-- Badges & SKU -->
+          <div class="flex items-center gap-2 mb-2 flex-wrap">
+            ${product.brand ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-pink-600 text-white shadow-sm">${product.brand}</span>` : ''}
+            <span class="px-2.5 py-0.5 rounded-md text-xs font-mono font-black bg-purple-100 text-purple-800 border border-purple-200">
+              SKU: ${product.sku || product.id}
+            </span>
+            <span class="text-xs text-pink-700 bg-pink-100 px-2 py-0.5 rounded-full font-bold">
+              ${product.subcategory || ''}
+            </span>
           </div>
-          <h2 class="text-base sm:text-lg font-black text-purple-950 mb-1 font-fun">${product.name}</h2>
-          ${product.hindiName ? `<p class="text-xs font-bold text-pink-700 mb-2">${product.hindiName}</p>` : ''}
+
+          <h2 class="text-base sm:text-lg font-black text-purple-950 mb-1.5 font-fun">${product.name}</h2>
+          
           <div class="flex items-center gap-2 mb-3">
-            <div class="flex text-amber-400 text-xs">${renderStars(product.rating || 5.0)}</div>
-            <span class="text-xs text-pink-700 font-bold">(${product.reviewsCount || 12} reviews)</span>
+            <div class="flex text-amber-400 text-xs">${renderStars(product.rating || 4.9)}</div>
+            <span class="text-xs text-pink-700 font-bold">(${product.reviewsCount || 15} Customer inquiries)</span>
           </div>
 
-          <div class="flex items-baseline gap-2 mb-3">
-            <span class="text-2xl font-black text-pink-600 font-fun">₹${product.price}</span>
-            <span class="text-xs text-slate-400 line-through">₹${product.originalPrice}</span>
-            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full">${discount}% OFF</span>
+          <!-- Description -->
+          <div class="bg-pink-50/70 p-3 rounded-2xl border border-pink-100 mb-3">
+            <h4 class="text-[11px] font-black text-pink-900 uppercase tracking-wide mb-1">Product Description</h4>
+            <p class="text-xs text-pink-950/80 leading-relaxed">${product.description || 'Premium quality product available at Chintu\'s Gift Store, Subhash Chowk, Dalli Rajhara.'}</p>
           </div>
 
-          <p class="text-xs text-pink-900/80 mb-4 leading-relaxed">${product.description || ''}</p>
+          <!-- Product Specifications -->
+          <div class="space-y-1 mb-4 text-[11px] text-pink-900">
+            <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Brand:</span> <span>${product.brand || 'Chintu\'s Boutique'}</span></div>
+            <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Category:</span> <span>${product.categoryName || getActiveCategoryObject().name}</span></div>
+            <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Subcategory:</span> <span>${product.subcategory || '-'}</span></div>
+            <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Location:</span> <span>Subhash Chowk, Dalli Rajhara</span></div>
+          </div>
         </div>
 
+        <!-- Action Buttons -->
         <div class="pt-3 border-t border-pink-200 flex flex-col gap-2">
           <div class="grid grid-cols-2 gap-2">
-            <button onclick="addToCart('${product.id}'); closeQuickView();" class="py-2.5 rounded-xl kawaii-btn-pink text-xs font-black flex items-center justify-center gap-1.5 shadow-md">
-              <i class="fa-solid fa-bag-shopping"></i> Add to Cart
+            <button onclick="addToCart('${product.id}'); closeQuickView();" class="py-2.5 rounded-xl kawaii-btn-pink text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer">
+              <i class="fa-solid fa-plus"></i> Add to Bag
             </button>
-            <button onclick="buyOnWhatsApp('${product.id}')" class="py-2.5 rounded-xl kawaii-btn-green text-xs font-black flex items-center justify-center gap-1.5 shadow-md">
-              <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp Buy
+            <button onclick="inquireOnWhatsApp('${product.id}')" class="py-2.5 rounded-xl kawaii-btn-green text-xs font-black flex items-center justify-center gap-1.5 shadow-md transition hover:scale-102 active:scale-98 cursor-pointer">
+              <i class="fa-brands fa-whatsapp text-sm"></i> Inquire WhatsApp
             </button>
           </div>
           <button type="button" onclick="closeQuickView()" class="w-full py-2 rounded-xl bg-slate-100 hover:bg-rose-50 text-slate-700 hover:text-rose-700 text-xs font-black transition flex items-center justify-center gap-1.5 border border-slate-300 hover:border-rose-300 shadow-sm cursor-pointer mt-1">
@@ -527,20 +571,58 @@ function closeQuickView() {
   if (modal) modal.classList.add("hidden");
 }
 
-function selectQuickViewImage(imgUrl, clickedBtn) {
+function selectQuickViewImageByIndex(idx, cat) {
+  if (idx < 0 || idx >= quickViewImages.length) return;
+  quickViewCurrentIndex = idx;
   const mainImg = document.getElementById("quickview-main-img");
-  if (mainImg) mainImg.src = imgUrl;
-  document.querySelectorAll(".qv-thumb").forEach(b => {
-    b.classList.remove("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
-    b.classList.add("border-pink-200", "opacity-80");
-  });
-  if (clickedBtn) {
-    clickedBtn.classList.remove("border-pink-200", "opacity-80");
-    clickedBtn.classList.add("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
+  if (mainImg) {
+    mainImg.src = quickViewImages[idx];
+    mainImg.onerror = function() { handleProductImgError(this, cat); };
   }
+  const badge = document.getElementById("quickview-counter-badge");
+  if (badge) {
+    badge.textContent = `${idx + 1} / ${quickViewImages.length} Photos`;
+  }
+  document.querySelectorAll(".qv-thumb").forEach((b, i) => {
+    if (i === idx) {
+      b.classList.remove("border-pink-200", "opacity-80");
+      b.classList.add("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
+    } else {
+      b.classList.remove("border-pink-600", "ring-2", "ring-pink-400", "scale-105");
+      b.classList.add("border-pink-200", "opacity-80");
+    }
+  });
 }
 
-// Shopping Cart & WhatsApp Flow
+function prevQuickViewImage(cat) {
+  const nextIdx = (quickViewCurrentIndex - 1 + quickViewImages.length) % quickViewImages.length;
+  selectQuickViewImageByIndex(nextIdx, cat);
+}
+
+function nextQuickViewImage(cat) {
+  const nextIdx = (quickViewCurrentIndex + 1) % quickViewImages.length;
+  selectQuickViewImageByIndex(nextIdx, cat);
+}
+
+// Single Product Direct WhatsApp Inquiry
+function inquireOnWhatsApp(productId) {
+  const product = allProducts.find(p => p.id === productId);
+  if (!product) return;
+
+  const catObj = getActiveCategoryObject();
+  const text = `🌸 *Namaste Chintu's Gift Store (8269212182)*,\n\n` +
+               `I would like to inquire about this product from your catalogue:\n` +
+               `📦 *Product:* ${product.name}\n` +
+               `🏷️ *SKU:* ${product.sku || product.id}\n` +
+               `📁 *Category:* ${product.categoryName || catObj.name} > ${product.subcategory || ''}\n` +
+               (product.brand ? `🏢 *Brand:* ${product.brand}\n` : '') +
+               `\nPlease share the price, availability, and ordering details! Thank you! 🎀`;
+
+  const url = `https://wa.me/${STORE_WA}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+
+// Inquiry Bag (Cart) Management (No Price Mode)
 function loadCart() {
   const saved = localStorage.getItem("chintu_cart");
   if (saved) {
@@ -565,96 +647,105 @@ function addToCart(productId) {
   } else {
     cart.push({
       id: product.id,
+      sku: product.sku || product.id,
       name: product.name,
-      price: product.price,
-      image: product.image,
+      brand: product.brand || '',
+      category: product.category,
+      categoryName: product.categoryName || '',
+      subcategory: product.subcategory || '',
+      image: (Array.isArray(product.images) && product.images.length > 0) ? product.images[0] : (product.image || getProductFallbackImage(product.category)),
       qty: 1
     });
   }
 
   saveCart();
   updateCartUI();
-  showToast(`Added "${product.name.slice(0, 22)}..." to cart! 🛍️`);
+  showToast(`Added to Inquiry Bag! 🛍️`);
 }
 
 function updateCartUI() {
-  const countEl = document.getElementById("cart-count-badge");
+  const countBadge = document.getElementById("cart-count-badge");
   const drawer = document.getElementById("cart-items-container");
-  const totalEl = document.getElementById("cart-subtotal");
+  const totalCountEl = document.getElementById("cart-total-count");
   const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  if (countEl) countEl.textContent = totalCount;
+  if (countBadge) countBadge.textContent = totalCount;
+  if (totalCountEl) totalCountEl.textContent = `${totalCount} items`;
 
   if (drawer) {
     if (cart.length === 0) {
       drawer.innerHTML = `
         <div class="py-12 text-center text-pink-700">
           <div class="text-4xl mb-2">🛍️</div>
-          <p class="font-bold text-xs">Your kawaii bag is empty!</p>
+          <p class="font-bold text-xs">Your inquiry bag is empty!</p>
+          <p class="text-[11px] text-pink-600/80 mt-1">Explore categories and add items to inquire on WhatsApp.</p>
         </div>
       `;
     } else {
       drawer.innerHTML = cart.map((item, idx) => `
         <div class="flex items-center gap-3 p-2.5 rounded-2xl bg-white border border-pink-200/80 shadow-sm">
-          <img src="${item.image}" alt="${item.name}" class="w-12 h-12 rounded-xl object-cover border border-pink-100">
+          <img src="${item.image}" alt="${item.name}" onerror="handleProductImgError(this, '${item.category}')" class="w-12 h-12 rounded-xl object-cover border border-pink-100">
           <div class="flex-1 min-w-0">
-            <h4 class="text-xs font-black text-pink-950 truncate">${item.name}</h4>
-            <span class="text-xs font-black text-pink-600">₹${item.price}</span>
+            <h4 class="text-xs font-black text-purple-950 truncate">${item.name}</h4>
+            <div class="flex items-center gap-2 text-[10px] text-pink-600 font-bold">
+              <span>SKU: ${item.sku || item.id}</span>
+              ${item.brand ? `<span>• ${item.brand}</span>` : ''}
+            </div>
+            <div class="flex items-center gap-2 mt-1">
+              <button onclick="changeCartQty(${idx}, -1)" class="w-5 h-5 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center text-xs font-bold">-</button>
+              <span class="text-xs font-bold text-pink-900">${item.qty}</span>
+              <button onclick="changeCartQty(${idx}, 1)" class="w-5 h-5 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 flex items-center justify-center text-xs font-bold">+</button>
+            </div>
           </div>
-          <div class="flex items-center gap-1.5">
-            <button onclick="changeCartQty(${idx}, -1)" class="w-6 h-6 rounded-lg bg-pink-100 hover:bg-pink-200 text-pink-800 font-bold flex items-center justify-center text-xs">-</button>
-            <span class="text-xs font-black text-pink-900 w-4 text-center">${item.qty}</span>
-            <button onclick="changeCartQty(${idx}, 1)" class="w-6 h-6 rounded-lg bg-pink-100 hover:bg-pink-200 text-pink-800 font-bold flex items-center justify-center text-xs">+</button>
-          </div>
+          <button onclick="removeCartItem(${idx})" class="text-rose-400 hover:text-rose-600 p-1.5" title="Remove">
+            <i class="fa-solid fa-trash-can text-xs"></i>
+          </button>
         </div>
       `).join('');
     }
   }
-
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-  if (totalEl) totalEl.textContent = `₹${subtotal}`;
 }
 
 function changeCartQty(idx, delta) {
   if (!cart[idx]) return;
   cart[idx].qty += delta;
-  if (cart[idx].qty <= 0) cart.splice(idx, 1);
+  if (cart[idx].qty <= 0) {
+    cart.splice(idx, 1);
+  }
+  saveCart();
+  updateCartUI();
+}
+
+function removeCartItem(idx) {
+  cart.splice(idx, 1);
   saveCart();
   updateCartUI();
 }
 
 function toggleCartDrawer() {
   const drawer = document.getElementById("cart-drawer");
-  if (drawer) drawer.classList.toggle("hidden");
+  if (drawer) {
+    drawer.classList.toggle("hidden");
+    if (!drawer.classList.contains("hidden")) {
+      updateCartUI();
+    }
+  }
 }
 
-function buyOnWhatsApp(productId) {
-  const product = allProducts.find(p => p.id === productId);
-  if (!product) return;
-
-  const text = `🌸 *Hello Chintu's Gift Shop (8269212182)*,\n` +
-               `I want to order this item from ${getActiveCategoryObject().name}:\n` +
-               `🎁 *${product.name}*\n` +
-               `💰 Price: ₹${product.price}\n\n` +
-               `Is this available for fast home delivery or pickup at Subhash Chowk, Dalli Rajhara?`;
-
-  const url = `https://wa.me/${STORE_WA}?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank");
-}
-
+// Bulk Inquiry on WhatsApp for all selected items
 function checkoutCartWhatsApp() {
   if (cart.length === 0) {
-    showToast("Your cart is empty! Add gifts first 🎀", "error");
+    showToast("Your inquiry bag is empty! Add items first 🎀", "error");
     return;
   }
 
-  const itemsList = cart.map(i => `• ${i.name} (Qty: ${i.qty}) - ₹${i.price * i.qty}`).join('\n');
-  const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+  const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+  const itemsList = cart.map((i, idx) => `${idx + 1}. *${i.name}* (SKU: ${i.sku || i.id}) - Qty: ${i.qty}`).join('\n');
 
-  const msg = `🌸 *New Order from Chintu's Gift Store*\n\n` +
-              `*Items Ordered:*\n${itemsList}\n\n` +
-              `💰 *Total Amount:* ₹${subtotal}\n\n` +
-              `Please confirm availability & delivery details for Dalli Rajhara!`;
+  const msg = `🌸 *New Catalogue Inquiry from Chintu's Gift Store*\n\n` +
+              `*Selected Items for Inquiry:*\n${itemsList}\n\n` +
+              `📦 *Total Items:* ${totalCount} items selected\n\n` +
+              `Please share the price, availability, and delivery details for Dalli Rajhara. Thank you! 🎀`;
 
   window.open(`https://wa.me/${STORE_WA}?text=${encodeURIComponent(msg)}`, '_blank');
 }
@@ -679,8 +770,6 @@ function setupCategoryListeners() {
     });
   }
 }
-
-document.addEventListener("DOMContentLoaded", setupCategoryListeners);
 
 function showToast(message, type = "success") {
   const container = document.getElementById("toast-container");
@@ -739,4 +828,3 @@ function initVisitorTracker(pageName) {
     }).catch(() => {});
   } catch (_) {}
 }
-

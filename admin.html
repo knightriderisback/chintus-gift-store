@@ -1742,11 +1742,14 @@
       const cachedCats = localStorage.getItem('chintu_categories');
       if (cachedCats) {
         const parsed = JSON.parse(cachedCats);
-        if (Array.isArray(parsed) && parsed.length > 0) allCategories = parsed;
+        if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(c => c.id === 'cosmetics')) {
+          allCategories = parsed;
+        }
       }
     } catch (_) {}
     if (allCategories.length === 0 && typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
       allCategories = [...DEFAULT_CATEGORIES];
+      try { localStorage.setItem('chintu_categories', JSON.stringify(allCategories)); } catch (_) {}
     }
 
     let allProducts = [];
@@ -1754,11 +1757,14 @@
       const cachedProds = localStorage.getItem('chintu_custom_products');
       if (cachedProds) {
         const parsed = JSON.parse(cachedProds);
-        if (Array.isArray(parsed) && parsed.length > 0) allProducts = parsed;
+        if (Array.isArray(parsed) && parsed.length > 0 && parsed.some(p => p.sku && p.sku.startsWith('COSM'))) {
+          allProducts = parsed;
+        }
       }
     } catch (_) {}
     if (allProducts.length === 0 && typeof PRODUCTS_DATA !== 'undefined' && Array.isArray(PRODUCTS_DATA)) {
       allProducts = [...PRODUCTS_DATA];
+      try { localStorage.setItem('chintu_custom_products', JSON.stringify(allProducts)); } catch (_) {}
     }
 
     let allOrders = [];

@@ -1,2805 +1,4712 @@
-// Static Products Data for Chintu's Gift & Kawaii Store - Dalli Rajhara (100 Authentic Products)
-
+// Client Products Dataset for Chintu's Gift Store (Zero-Latency Hydration)
 const PRODUCTS_DATA = [
   {
-    "id": "prod-stat-1",
-    "name": "Japanese Retractable Sakura Flower Soft Gel Pens (0.5mm, Set of 4)",
-    "hindiName": "जापानी साकुरा सॉफ्ट जेल पेन (4 का सेट)",
-    "category": "stationery",
-    "subcategory": "Pencils & Gel Pens",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 18,
-    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
+    "id": "cosm-001",
+    "sku": "COSM-001",
+    "name": "ADS-PRO 12-Piece Mini Lip Gloss Set",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1JXZrNTs7FyKR3th_dm-5B_VKDH9ilY6S=w600",
     "images": [
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
+      "https://lh3.googleusercontent.com/d/1JXZrNTs7FyKR3th_dm-5B_VKDH9ilY6S=w600",
+      "https://lh3.googleusercontent.com/d/1MqnLenEi3ZZq44Nzlg0j8lIxEMUOyAQz=w600"
     ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Smooth black quick-drying Japanese ink with cute sakura cherry blossom clip.",
+    "driveFileIds": [
+      "1JXZrNTs7FyKR3th_dm-5B_VKDH9ilY6S",
+      "1MqnLenEi3ZZq44Nzlg0j8lIxEMUOyAQz"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO 12-Piece Mini Lip Gloss Set by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
     "specs": [
-      "0.5mm Fine Nib",
-      "Quick Dry Black Ink",
-      "Soft Comfort Grip",
-      "4 Aesthetic Floral Barrels"
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-001"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-stat-2",
-    "name": "Kawaii Pastel Mechanical Pencil Set with 2B Lead Refills",
-    "hindiName": "कवाई पेस्टल मैकेनिकल पेंसिल सेट",
-    "category": "stationery",
-    "subcategory": "Pencils & Gel Pens",
-    "price": 129,
-    "originalPrice": 249,
-    "rating": 4.9,
-    "reviewsCount": 19,
-    "image": "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Ergonomic pastel mechanical pencils with cute topper erasers and 100 extra leads.",
-    "specs": [
-      "0.5mm 2B Break-Resistant Lead",
-      "Rubber Grip Zone",
-      "Topper Eraser Included",
-      "Pastel Pink & Mint Colors"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-3",
-    "name": "Kawaii Cute Cartoon Animal Topper Rolling Gel Pens (Set of 6)",
-    "hindiName": "क्यूट कार्टून टॉपर जेल पेन (6 का सेट)",
-    "category": "stationery",
-    "subcategory": "Pencils & Gel Pens",
-    "price": 179,
-    "originalPrice": 349,
-    "rating": 4.9,
-    "reviewsCount": 20,
-    "image": "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Cute Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Adorable squishy animal heads perched on rainbow barrel smooth flowing gel pens.",
-    "specs": [
-      "0.5mm Needle Tip",
-      "Smooth Fade-Resistant Ink",
-      "Squishy Silicone Toppers",
-      "Great for School & Journaling"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-4",
-    "name": "Kawaii Miniature Japanese Dessert Food Erasers Gift Box (Set of 6)",
-    "hindiName": "कवाई मिनिएचर जापानी डेजर्ट इरेज़र सेट",
-    "category": "stationery",
-    "subcategory": "Cute Erasers & Sharpeners",
-    "price": 99,
-    "originalPrice": 199,
-    "rating": 4.9,
-    "reviewsCount": 21,
-    "image": "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Kawaii Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Puzzle pull-apart miniature cake, boba tea, and donut shaped soft rubber erasers.",
-    "specs": [
-      "Non-Toxic Dust-Free Rubber",
-      "Take-Apart 3D Puzzle Design",
-      "Clean Erasing Without Smudges",
-      "Gift Box Packaging"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-5",
-    "name": "Electric Automatic Cute Bear Desk Pencil Sharpener",
-    "hindiName": "इलेक्ट्रिक ऑटोमैटिक क्यूट बेयर शार्पनर",
-    "category": "stationery",
-    "subcategory": "Cute Erasers & Sharpeners",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 22,
-    "image": "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Must Have",
-    "customizable": false,
-    "customType": "none",
-    "description": "Battery powered rapid pencil sharpener with auto-stop and waste shavings container.",
-    "specs": [
-      "Auto-Stop Safety Feature",
-      "Heavy Duty Steel Blade",
-      "Fits 6-8mm Pencils",
-      "Cute Bear Ear Motif"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-6",
-    "name": "Retractable Pen-Style Click Rubber Eraser with 2 Refills",
-    "hindiName": "पेन-स्टाइल क्लिक रबर इरेज़र रिफिल सहित",
-    "category": "stationery",
-    "subcategory": "Cute Erasers & Sharpeners",
-    "price": 79,
-    "originalPrice": 149,
-    "rating": 4.9,
-    "reviewsCount": 23,
-    "image": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Budget Favorite",
-    "customizable": false,
-    "customType": "none",
-    "description": "Slim pen body holding precision round eraser core for clean erasing in tight notebook margins.",
-    "specs": [
-      "Click-To-Advance Mechanism",
-      "Fine 3.8mm Eraser Core",
-      "Pocket Clip Holder",
-      "Includes 2 Replacement Refills"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-7",
-    "name": "Kawaii Gradient Pastel Plush Lock & Key Secret Diary (A5)",
-    "hindiName": "कवाई पेस्टल लॉक व की सीक्रेट डायरी",
-    "category": "stationery",
-    "subcategory": "Pastel Diaries & Locks",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 5.0,
-    "reviewsCount": 24,
-    "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Super-fluffy gradient pastel secret diary with metallic heart lock and 2 keys.",
-    "specs": [
-      "A5 Size (160 Pages)",
-      "100 GSM Thick No-Bleed Paper",
-      "Metal Heart Padlock + 2 Keys",
-      "Fluffy Washable Plush Cover"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-8",
-    "name": "Aesthetic Pastel PU Leather Magnetic Buckle Journal Diary",
-    "hindiName": "एस्थेटिक लेदर मैग्नेटिक बकल जर्नल डायरी",
-    "category": "stationery",
-    "subcategory": "Pastel Diaries & Locks",
-    "price": 299,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 25,
-    "image": "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Top Rated",
-    "customizable": false,
-    "customType": "none",
-    "description": "Premium soft leather journal with gold edge pages, ribbon marker and magnetic snap clasp.",
-    "specs": [
-      "B6 Compact Diary",
-      "192 Illustrated Color Pages",
-      "Magnetic Gold Clasp",
-      "Ribbon Page Marker"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-9",
-    "name": "Kawaii Mini Pocket Notebook with Matching Mini Ballpoint Pen",
-    "hindiName": "क्यूट मिनी पॉकेट नोटबुक व मिनी पेन",
-    "category": "stationery",
-    "subcategory": "Pastel Diaries & Locks",
-    "price": 89,
-    "originalPrice": 169,
-    "rating": 4.9,
-    "reviewsCount": 26,
-    "image": "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Pocket Buddy",
-    "customizable": false,
-    "customType": "none",
-    "description": "Palm-sized spiral notebook with adorable strawberry prints and miniature snap-in pen.",
-    "specs": [
-      "100 Ruled Mini Pages",
-      "Spiral Ring Binding",
-      "Mini Pocket Size (8x10cm)",
-      "Snap-in Matching Pen"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-10",
-    "name": "Aesthetic Soft Morandi Pastel Highlighters (6 Pastel Chisel Tips)",
-    "hindiName": "एस्थेटिक सॉफ्ट मोरंडी पेस्टल हाइलाइटर (6 शेड्स)",
-    "category": "stationery",
-    "subcategory": "Aesthetic Highlighters",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 27,
-    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Gentle eye-care water-based pastel highlighters that never bleed through textbook pages.",
-    "specs": [
-      "6 Soft Pastel Shades",
-      "Versatile Chisel Tip (1-4mm)",
-      "Non-Bleed Water Ink",
-      "Square Anti-Roll Barrel"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-11",
-    "name": "Dual-Tip Pastel Stamp Highlighter Pens (Set of 6 Shapes)",
-    "hindiName": "ड्यूल-टिप पेस्टल स्टैम्प हाइलाइटर सेट",
-    "category": "stationery",
-    "subcategory": "Aesthetic Highlighters",
+    "id": "cosm-002",
+    "sku": "COSM-002",
+    "name": "ADS-PRO 12HR Matte Lip Gloss Retail Card",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
     "price": 229,
-    "originalPrice": 449,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1Vn1NnjPZcdv6xALaBhrDw1V0TlQG_Th3=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1Vn1NnjPZcdv6xALaBhrDw1V0TlQG_Th3=w600"
+    ],
+    "driveFileIds": [
+      "1Vn1NnjPZcdv6xALaBhrDw1V0TlQG_Th3"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO 12HR Matte Lip Gloss Retail Card by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-002"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-003",
+    "sku": "COSM-003",
+    "name": "ADS-PRO 4-Piece Metallic Heart Lip Gloss Pack",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1ZSAZdJ8m-IzkQdTTiyqHjtsWUIKFYl4P=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ZSAZdJ8m-IzkQdTTiyqHjtsWUIKFYl4P=w600"
+    ],
+    "driveFileIds": [
+      "1ZSAZdJ8m-IzkQdTTiyqHjtsWUIKFYl4P"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO 4-Piece Metallic Heart Lip Gloss Pack by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-003"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-004",
+    "sku": "COSM-004",
+    "name": "ADS-PRO Color Awakening Lip Gloss Set",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1tbV0gzptcou4__RezLD2vPA90CeWSUJ7=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1tbV0gzptcou4__RezLD2vPA90CeWSUJ7=w600",
+      "https://lh3.googleusercontent.com/d/1SWsdYzeQRMwomjRptzYzoL9ZEQXoZonO=w600"
+    ],
+    "driveFileIds": [
+      "1tbV0gzptcou4__RezLD2vPA90CeWSUJ7",
+      "1SWsdYzeQRMwomjRptzYzoL9ZEQXoZonO"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Color Awakening Lip Gloss Box by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-004"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-005",
+    "sku": "COSM-005",
+    "name": "ADS-PRO Girls Club 12-Piece Lipstick Box",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/120C8dLylP8eq3_WtQ_CzBtCNTEOQ8YmH=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/120C8dLylP8eq3_WtQ_CzBtCNTEOQ8YmH=w600",
+      "https://lh3.googleusercontent.com/d/19wi8t4D_djJhG__5DzDALvGfCSPfkoC-=w600",
+      "https://lh3.googleusercontent.com/d/1d1JaIZBA8HisHlqeX6LDREbywN3xl4o6=w600",
+      "https://lh3.googleusercontent.com/d/1Cy-hkFCCTyCdZsuGDz3OCcK3ucu6ZV29=w600",
+      "https://lh3.googleusercontent.com/d/1SmySXAkZc4SQOhxFxjJCaoUTc8YIOn5l=w600",
+      "https://lh3.googleusercontent.com/d/1ioUv7_fsdQpIM4P3HB8PdC5g-EHtx47I=w600",
+      "https://lh3.googleusercontent.com/d/1lBKoipsW7mmcrmg1LDZM6D-1n345nFA-=w600",
+      "https://lh3.googleusercontent.com/d/1-5xO-OTPPF1rwt26UYkeYfkOpNZCKh6-=w600"
+    ],
+    "driveFileIds": [
+      "120C8dLylP8eq3_WtQ_CzBtCNTEOQ8YmH",
+      "19wi8t4D_djJhG__5DzDALvGfCSPfkoC-",
+      "1d1JaIZBA8HisHlqeX6LDREbywN3xl4o6",
+      "1Cy-hkFCCTyCdZsuGDz3OCcK3ucu6ZV29",
+      "1SmySXAkZc4SQOhxFxjJCaoUTc8YIOn5l",
+      "1ioUv7_fsdQpIM4P3HB8PdC5g-EHtx47I",
+      "1lBKoipsW7mmcrmg1LDZM6D-1n345nFA-",
+      "1-5xO-OTPPF1rwt26UYkeYfkOpNZCKh6-"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Experience rich color payoff with ADS-PRO Girls Club 12-Piece Lipstick Box from ADS-PRO. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-005"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-006",
+    "sku": "COSM-006",
+    "name": "ADS-PRO Kiss Me Lip Gloss Set Box",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1ToqiH5bnkJlM24YH2zCcgjFxeezyq_JZ=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ToqiH5bnkJlM24YH2zCcgjFxeezyq_JZ=w600"
+    ],
+    "driveFileIds": [
+      "1ToqiH5bnkJlM24YH2zCcgjFxeezyq_JZ"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Kiss Me Lip Gloss Set Box by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-006"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-007",
+    "sku": "COSM-007",
+    "name": "ADS-PRO Matte Lip Gloss 12-Piece Book Box",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
     "reviewsCount": 28,
-    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1cizPh1zUAXR3r3PQGMF23jfXTKM0PMJo=w600",
     "images": [
-      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1cizPh1zUAXR3r3PQGMF23jfXTKM0PMJo=w600"
     ],
-    "badge": "New Arrival",
-    "customizable": false,
-    "customType": "none",
-    "description": "One side chisel highlighter and one side cute shape stamp (star, heart, flower, paw).",
+    "driveFileIds": [
+      "1cizPh1zUAXR3r3PQGMF23jfXTKM0PMJo"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Matte Lip Gloss 12-Piece Book Box by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
     "specs": [
-      "Dual-End Functional Design",
-      "6 Cute Stamping Shapes",
-      "Pastel Fade-Proof Ink",
-      "Great for BuJo & Planners"
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-007"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-stat-12",
-    "name": "Double-End Cute Cat Paw Pastel Highlighters (Set of 6)",
-    "hindiName": "डबल-एंड कैट पॉ पेस्टल हाइलाइटर",
-    "category": "stationery",
-    "subcategory": "Aesthetic Highlighters",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 29,
-    "image": "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Kawaii Hot",
-    "customizable": false,
-    "customType": "none",
-    "description": "Cat paw shaped translucent caps with ultra-smooth pastel Japanese formulation ink.",
-    "specs": [
-      "Cute Cat Paw Silicone Cap",
-      "6 Vibrant Pastel Colors",
-      "Dry-Safe Cap Off Ink",
-      "Quick Drying Smear Proof"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-13",
-    "name": "Transparent Multi-Compartment Standing Kawaii Desk Pencil Pouch",
-    "hindiName": "ट्रांसपेरेंट स्टैंडिंग पेंसिल पाउच",
-    "category": "stationery",
-    "subcategory": "Pencil Pouches & Organizers",
-    "price": 299,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 30,
-    "image": "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Stands upright like a pen holder cup on desk and zips closed into a travel pouch.",
-    "specs": [
-      "Telescopic Pop-Up / Down",
-      "Holds 35+ Pens & Markers",
-      "Waterproof PVC Front",
-      "Interior Card Slots"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-stat-14",
-    "name": "Large Capacity Multi-Layer Aesthetic Canvas Pencil Case",
-    "hindiName": "लार्ज कैपेसिटी मल्टी-लेयर कैनवास पेंसिल केस",
-    "category": "stationery",
-    "subcategory": "Pencil Pouches & Organizers",
-    "price": 349,
-    "originalPrice": 599,
+    "id": "cosm-008",
+    "sku": "COSM-008",
+    "name": "ADS-PRO Matte Lip Gloss 12-Piece Collection Tray",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1ptgHMTihmYE6C-1fJqv4Dr-HWDnpHtQ0=w600",
     "images": [
-      "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1ptgHMTihmYE6C-1fJqv4Dr-HWDnpHtQ0=w600"
     ],
-    "badge": "Spacious",
-    "customizable": false,
-    "customType": "none",
-    "description": "Roomy organizer with mesh zippered pockets and elastic pen loop dividers.",
+    "driveFileIds": [
+      "1ptgHMTihmYE6C-1fJqv4Dr-HWDnpHtQ0"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Matte Lip Gloss 12-Piece Collection Tray by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
     "specs": [
-      "3 Separate Compartments",
-      "High Density Washable Canvas",
-      "Smooth Dual Gold Zippers",
-      "Holds up to 50 Pens"
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-008"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-stat-15",
-    "name": "Clear Holographic Laser Aesthetic Stationery Pouch",
-    "hindiName": "क्लियर होलोग्राफिक स्टेशनरी पाउच",
-    "category": "stationery",
-    "subcategory": "Pencil Pouches & Organizers",
-    "price": 149,
+    "id": "cosm-009",
+    "sku": "COSM-009",
+    "name": "ADS-PRO Matte Lip Gloss 24H Retail Pack",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
     "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 32,
-    "image": "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1ysIzZTb3vIuioumTqpKCuaVGq30IH8ac=w600",
     "images": [
-      "https://images.unsplash.com/photo-1516962215378-7fa2e137ae93?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1ysIzZTb3vIuioumTqpKCuaVGq30IH8ac=w600"
     ],
-    "badge": "Shine",
-    "customizable": false,
-    "customType": "none",
-    "description": "Shimmering rainbow iridescent clear organizer bag for pens, sticky notes, and makeup.",
+    "driveFileIds": [
+      "1ysIzZTb3vIuioumTqpKCuaVGq30IH8ac"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Matte Lip Gloss 24H Retail Pack by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
     "specs": [
-      "Iridescent Rainbow Sheen",
-      "Waterproof Wipe-Clean TPU",
-      "Smooth Metal Zipper",
-      "Compact Travel Friendly"
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-009"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-stat-16",
-    "name": "Aesthetic Pastel Gradient Grid Washi Tape Gift Box (10 Rolls)",
-    "hindiName": "पेस्टल ग्रिड वाशी टेप गिफ्ट बॉक्स (10 रोल्स)",
-    "category": "stationery",
-    "subcategory": "Washi Tapes & Stickers",
-    "price": 249,
+    "id": "cosm-010",
+    "sku": "COSM-010",
+    "name": "ADS-PRO Mega Matte Lip Gloss",
+    "brand": "ADS-PRO",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/19K3YpcleVW8YhyFDj5ZTOZ9dGyQ__Leu=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/19K3YpcleVW8YhyFDj5ZTOZ9dGyQ__Leu=w600",
+      "https://lh3.googleusercontent.com/d/1P1Msxvx2gleAg3rUTNeBHUdgWxQpl70E=w600",
+      "https://lh3.googleusercontent.com/d/1Nt9KVOh7kphnw3HjqHY8-FemxH5hkHAK=w600",
+      "https://lh3.googleusercontent.com/d/1fdmseKYWeRZv_eQxyjWTHgYP1RJlz3v_=w600",
+      "https://lh3.googleusercontent.com/d/1UfLoa7lQoZ5RoSji-QLxrWkGbVIz-Fmx=w600",
+      "https://lh3.googleusercontent.com/d/1SPxt8t2UYAeJjiEN4ZQir56tNj7F23NC=w600",
+      "https://lh3.googleusercontent.com/d/1l2mMabhRoI1erCjDpAVmRF9S-WGo3LeU=w600"
+    ],
+    "driveFileIds": [
+      "19K3YpcleVW8YhyFDj5ZTOZ9dGyQ__Leu",
+      "1P1Msxvx2gleAg3rUTNeBHUdgWxQpl70E",
+      "1Nt9KVOh7kphnw3HjqHY8-FemxH5hkHAK",
+      "1fdmseKYWeRZv_eQxyjWTHgYP1RJlz3v_",
+      "1UfLoa7lQoZ5RoSji-QLxrWkGbVIz-Fmx",
+      "1SPxt8t2UYAeJjiEN4ZQir56tNj7F23NC",
+      "1l2mMabhRoI1erCjDpAVmRF9S-WGo3LeU"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "ADS-PRO",
+    "description": "Add brilliant shine and hydration with ADS-PRO Mega Matte Lip Gloss by ADS-PRO. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: ADS-PRO",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-010"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-011",
+    "sku": "COSM-011",
+    "name": "Angel Rose Matte Capsule Lipstick Set",
+    "brand": "Angel Rose",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1_Atb9-zKJwROc2RsXZ89POcuNPW55ojt=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1_Atb9-zKJwROc2RsXZ89POcuNPW55ojt=w600",
+      "https://lh3.googleusercontent.com/d/1SPRmRLKIr9tSoMdwZKLkK4enHTcB9pb4=w600",
+      "https://lh3.googleusercontent.com/d/1eCAiQxcOfUoxMYYpeGuw3YcPcR8XbXLI=w600",
+      "https://lh3.googleusercontent.com/d/1_FCl7e6aTQ-ypIBKr0SJfMqWypi5F4am=w600"
+    ],
+    "driveFileIds": [
+      "1_Atb9-zKJwROc2RsXZ89POcuNPW55ojt",
+      "1SPRmRLKIr9tSoMdwZKLkK4enHTcB9pb4",
+      "1eCAiQxcOfUoxMYYpeGuw3YcPcR8XbXLI",
+      "1_FCl7e6aTQ-ypIBKr0SJfMqWypi5F4am"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Angel Rose",
+    "description": "Experience rich color payoff with Angel Rose Matte Capsule Lipstick Set from Angel Rose. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Angel Rose",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-011"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-012",
+    "sku": "COSM-012",
+    "name": "AnyLady Ingenuous Bear Makeup Palette 8614HL",
+    "brand": "AnyLady",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Eye & Face Palettes",
+    "price": 449,
+    "originalPrice": 599,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1j0ASU-tpY3XMOs3V7Gf3g8S2kKKB9xie=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1j0ASU-tpY3XMOs3V7Gf3g8S2kKKB9xie=w600",
+      "https://lh3.googleusercontent.com/d/1-bnHw13wqvVLo0aWTRq_v1sk7C_9prMN=w600"
+    ],
+    "driveFileIds": [
+      "1j0ASU-tpY3XMOs3V7Gf3g8S2kKKB9xie",
+      "1-bnHw13wqvVLo0aWTRq_v1sk7C_9prMN"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "AnyLady",
+    "description": "Premium quality AnyLady Ingenuous Bear Makeup Palette 8614HL by AnyLady designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: AnyLady",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Eye & Face Palettes",
+      "SKU: COSM-012"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-013",
+    "sku": "COSM-013",
+    "name": "Crazy Girl Matte Lipstick Retail Countertop Display",
+    "brand": "Crazy Girl",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/11OJyXKW3yo7S--v_F61HRDVaq7mA-R33=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/11OJyXKW3yo7S--v_F61HRDVaq7mA-R33=w600",
+      "https://lh3.googleusercontent.com/d/17caQlUVcJPZOA5r0GPA2KPO_5SHbBteB=w600"
+    ],
+    "driveFileIds": [
+      "11OJyXKW3yo7S--v_F61HRDVaq7mA-R33",
+      "17caQlUVcJPZOA5r0GPA2KPO_5SHbBteB"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Girl",
+    "description": "Experience rich color payoff with Crazy Girl Matte Lipstick Countertop Display Stand from Crazy Girl. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Crazy Girl",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-013"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-014",
+    "sku": "COSM-014",
+    "name": "Crazy Girl Matte Long Lasting Lipstick",
+    "brand": "Crazy Girl",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1shsGOwprXlyLh0-XR8oo4GwgCy2VW-ZM=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1shsGOwprXlyLh0-XR8oo4GwgCy2VW-ZM=w600",
+      "https://lh3.googleusercontent.com/d/1dK5lJB670SI2NfD6EwTwB-q13J0_0_zQ=w600",
+      "https://lh3.googleusercontent.com/d/1_ezLIwh7mS2VzO2ahNUdSEJHf7nq0FvI=w600",
+      "https://lh3.googleusercontent.com/d/1o5nbdS-QunxRXJXOixKni6uuuI-1oN-V=w600",
+      "https://lh3.googleusercontent.com/d/1hYEZn76KTiz9_v6L6N4nEBNdQ4rzJ8R-=w600",
+      "https://lh3.googleusercontent.com/d/1OmmR08WRafIGPVAAkHK4ya187S24QX6J=w600",
+      "https://lh3.googleusercontent.com/d/1GSk90ryhfRW5YT5ntpHXh7ws3apGbFfd=w600",
+      "https://lh3.googleusercontent.com/d/1YkRSdKkLnkmltTkTePM0nbKDmeH_tS9k=w600",
+      "https://lh3.googleusercontent.com/d/1T-xHYf1fARbX3Lu3jWmSBqkRGHtA4azB=w600",
+      "https://lh3.googleusercontent.com/d/182kDrK1toUqR06HWELYrK_DWk3Eofn2O=w600",
+      "https://lh3.googleusercontent.com/d/1D1tH5quN0dR1rvP1aI1syCXGufr-Diwu=w600",
+      "https://lh3.googleusercontent.com/d/1VlUd_Ts155Jc1Iiibv0Ao90uWv0ZMub9=w600",
+      "https://lh3.googleusercontent.com/d/1GdOsYkb4_72AZ30Yzc6b5PdIExgyaFEl=w600",
+      "https://lh3.googleusercontent.com/d/1qlYMrhpiA3yJ_g95rP_cUyF0CFx0cXbo=w600",
+      "https://lh3.googleusercontent.com/d/1Kr9GyBdj-vR2stvtlAKm6bWkgxfaSpbv=w600",
+      "https://lh3.googleusercontent.com/d/1KuY-UyscMt4R15RWoOWIT9aDhHgvQvNJ=w600",
+      "https://lh3.googleusercontent.com/d/16zWeQ9snRiE8LWKZ9DRvblqdlwZyykL3=w600",
+      "https://lh3.googleusercontent.com/d/1DiIH6c2C9pG5EdTJAj2FBDvlTIqs9PYh=w600"
+    ],
+    "driveFileIds": [
+      "1shsGOwprXlyLh0-XR8oo4GwgCy2VW-ZM",
+      "1dK5lJB670SI2NfD6EwTwB-q13J0_0_zQ",
+      "1_ezLIwh7mS2VzO2ahNUdSEJHf7nq0FvI",
+      "1o5nbdS-QunxRXJXOixKni6uuuI-1oN-V",
+      "1hYEZn76KTiz9_v6L6N4nEBNdQ4rzJ8R-",
+      "1OmmR08WRafIGPVAAkHK4ya187S24QX6J",
+      "1GSk90ryhfRW5YT5ntpHXh7ws3apGbFfd",
+      "1YkRSdKkLnkmltTkTePM0nbKDmeH_tS9k",
+      "1T-xHYf1fARbX3Lu3jWmSBqkRGHtA4azB",
+      "182kDrK1toUqR06HWELYrK_DWk3Eofn2O",
+      "1D1tH5quN0dR1rvP1aI1syCXGufr-Diwu",
+      "1VlUd_Ts155Jc1Iiibv0Ao90uWv0ZMub9",
+      "1GdOsYkb4_72AZ30Yzc6b5PdIExgyaFEl",
+      "1qlYMrhpiA3yJ_g95rP_cUyF0CFx0cXbo",
+      "1Kr9GyBdj-vR2stvtlAKm6bWkgxfaSpbv",
+      "1KuY-UyscMt4R15RWoOWIT9aDhHgvQvNJ",
+      "16zWeQ9snRiE8LWKZ9DRvblqdlwZyykL3",
+      "1DiIH6c2C9pG5EdTJAj2FBDvlTIqs9PYh"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Girl",
+    "description": "Experience rich color payoff with Crazy Girl Matte Long Lasting Lipstick 1 from Crazy Girl. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Crazy Girl",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-014"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-015",
+    "sku": "COSM-015",
+    "name": "Crazy Girl Mini Pocket Lipstick Set",
+    "brand": "Crazy Girl",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1W9ksx2eCFmqOUlC2vpUSuQi6HzYsICge=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1W9ksx2eCFmqOUlC2vpUSuQi6HzYsICge=w600"
+    ],
+    "driveFileIds": [
+      "1W9ksx2eCFmqOUlC2vpUSuQi6HzYsICge"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Girl",
+    "description": "Experience rich color payoff with Crazy Girl Mini Pocket Lipstick Set from Crazy Girl. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Crazy Girl",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-015"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-016",
+    "sku": "COSM-016",
+    "name": "Crazy Girl Waterproof Lipstick",
+    "brand": "Crazy Girl",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1da57J5v1b0d5LHP09gk-AW57QSgnb5GK=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1da57J5v1b0d5LHP09gk-AW57QSgnb5GK=w600",
+      "https://lh3.googleusercontent.com/d/17eoLVNleT2hIWMa8apXMOuPGRgLc-Lpi=w600",
+      "https://lh3.googleusercontent.com/d/1-fiKNROnBZPxhuZ46zCGX5IGLjji4Cyd=w600",
+      "https://lh3.googleusercontent.com/d/1QfRf7quHU7rOBKwhL3nD2EqVe7v4XT-T=w600",
+      "https://lh3.googleusercontent.com/d/1_MkvcZdvWtcWsxqhRZpTXJ067p47yL0k=w600",
+      "https://lh3.googleusercontent.com/d/14aufd0sRahpNWLZ2xonEZLMLwdjjjlmd=w600",
+      "https://lh3.googleusercontent.com/d/10eg2YqblCANrJRyy9FLGVdaE8WAW4dC0=w600",
+      "https://lh3.googleusercontent.com/d/1nvhNxeOnJAqz5xqzvntS7QBfSwo5B0SC=w600",
+      "https://lh3.googleusercontent.com/d/1eo051C_XwKN2qZs9TbREqNTBX6tCuDt7=w600",
+      "https://lh3.googleusercontent.com/d/1icaZoUCRNnW6F6DApSoGqhjHQfF9hCc3=w600"
+    ],
+    "driveFileIds": [
+      "1da57J5v1b0d5LHP09gk-AW57QSgnb5GK",
+      "17eoLVNleT2hIWMa8apXMOuPGRgLc-Lpi",
+      "1-fiKNROnBZPxhuZ46zCGX5IGLjji4Cyd",
+      "1QfRf7quHU7rOBKwhL3nD2EqVe7v4XT-T",
+      "1_MkvcZdvWtcWsxqhRZpTXJ067p47yL0k",
+      "14aufd0sRahpNWLZ2xonEZLMLwdjjjlmd",
+      "10eg2YqblCANrJRyy9FLGVdaE8WAW4dC0",
+      "1nvhNxeOnJAqz5xqzvntS7QBfSwo5B0SC",
+      "1eo051C_XwKN2qZs9TbREqNTBX6tCuDt7",
+      "1icaZoUCRNnW6F6DApSoGqhjHQfF9hCc3"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Girl",
+    "description": "Experience rich color payoff with Crazy Girl Waterproof Lipstick Bullet 1 from Crazy Girl. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Crazy Girl",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-016"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-017",
+    "sku": "COSM-017",
+    "name": "Crazy Queen Non Transfer Lip Gloss Display Stand",
+    "brand": "Crazy Queen",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1ABCLFlX1Q0v-iR77H7OPuCDf3iGg6nSv=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ABCLFlX1Q0v-iR77H7OPuCDf3iGg6nSv=w600",
+      "https://lh3.googleusercontent.com/d/1l346BnFGsV5ZVJmH78dw3tFyIfSySIk8=w600"
+    ],
+    "driveFileIds": [
+      "1ABCLFlX1Q0v-iR77H7OPuCDf3iGg6nSv",
+      "1l346BnFGsV5ZVJmH78dw3tFyIfSySIk8"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Queen",
+    "description": "Add brilliant shine and hydration with Crazy Queen Non Transfer Lip Gloss Display Stand by Crazy Queen. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Crazy Queen",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-017"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-018",
+    "sku": "COSM-018",
+    "name": "Crazy Queen Non Transfer Lip Gloss Set",
+    "brand": "Crazy Queen",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/16h5dC8jcwZfK80pwd_G4EFWGwLbo16u3=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/16h5dC8jcwZfK80pwd_G4EFWGwLbo16u3=w600",
+      "https://lh3.googleusercontent.com/d/1nz-pOFduWsrT6DnSZzC9XSp_IvYl3O_h=w600"
+    ],
+    "driveFileIds": [
+      "16h5dC8jcwZfK80pwd_G4EFWGwLbo16u3",
+      "1nz-pOFduWsrT6DnSZzC9XSp_IvYl3O_h"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Crazy Queen",
+    "description": "Add brilliant shine and hydration with Crazy Queen Non Transfer Lip Gloss 12 Shades by Crazy Queen. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Crazy Queen",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-018"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-019",
+    "sku": "COSM-019",
+    "name": "Dr Rashel On-The-Go Sunscreen Wipes SPF 15",
+    "brand": "Dr. Rashel",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1KfEnnzq8M5hvpeEA0JbAO57iBJQTq0KY=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1KfEnnzq8M5hvpeEA0JbAO57iBJQTq0KY=w600"
+    ],
+    "driveFileIds": [
+      "1KfEnnzq8M5hvpeEA0JbAO57iBJQTq0KY"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Premium quality Dr Rashel On-The-Go Sunscreen Wipes SPF by Dr. Rashel designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-019"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-020",
+    "sku": "COSM-020",
+    "name": "Fashion Colour Glossip Non Transfer Lipstick",
+    "brand": "Fashion Colour",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/14WksCEICjLqmp7oiuLcdPzbiAAqIEDeU=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/14WksCEICjLqmp7oiuLcdPzbiAAqIEDeU=w600",
+      "https://lh3.googleusercontent.com/d/1_rYhAkMmKkcfbxw61RZr3FiCTeZ_scQ5=w600",
+      "https://lh3.googleusercontent.com/d/1zApyssAGqBWAvbwRRxV00HlwnfowumaW=w600",
+      "https://lh3.googleusercontent.com/d/1w_28VT3rS73rH6ySKo5oi2U2FAlf_OsH=w600",
+      "https://lh3.googleusercontent.com/d/1mQRs82qqiLb25P8zkUrMjX_Jb-CdYCMr=w600",
+      "https://lh3.googleusercontent.com/d/19s3SgybPkecnyIv_7y2Sqf01A1ulttwD=w600"
+    ],
+    "driveFileIds": [
+      "14WksCEICjLqmp7oiuLcdPzbiAAqIEDeU",
+      "1_rYhAkMmKkcfbxw61RZr3FiCTeZ_scQ5",
+      "1zApyssAGqBWAvbwRRxV00HlwnfowumaW",
+      "1w_28VT3rS73rH6ySKo5oi2U2FAlf_OsH",
+      "1mQRs82qqiLb25P8zkUrMjX_Jb-CdYCMr",
+      "19s3SgybPkecnyIv_7y2Sqf01A1ulttwD"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Fashion Colour",
+    "description": "Experience rich color payoff with Fashion Colour Glossip Non Transfer Lipstick 1 from Fashion Colour. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Fashion Colour",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-020"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-021",
+    "sku": "COSM-021",
+    "name": "Fashion Colour No Filter Matte Foundation",
+    "brand": "Fashion Colour",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
     "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 33,
-    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=75",
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1wxfDSjvyf9h8Ch8DOPyn_RFt08S7PODa=w600",
     "images": [
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1wxfDSjvyf9h8Ch8DOPyn_RFt08S7PODa=w600",
+      "https://lh3.googleusercontent.com/d/125ThCAdvM9TVi5RqkRuphgUFul1obU5T=w600",
+      "https://lh3.googleusercontent.com/d/1FUAGRVkwmkiisGTl5pSwJH1n-H_hdXXL=w600",
+      "https://lh3.googleusercontent.com/d/1r46be1AljjspOAXTo5UHsgkNNle4tsh0=w600",
+      "https://lh3.googleusercontent.com/d/1R-eezrUcLY9O_1H-XkdmrLZKTjuhDBhD=w600",
+      "https://lh3.googleusercontent.com/d/12QiXfFI81Yrx50iVMesbk30oKzDGvuMD=w600",
+      "https://lh3.googleusercontent.com/d/1FYi5sc438TrfjcqtWx7PndPs6XZ-1I38=w600"
     ],
-    "badge": "Creative Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "10 rolls of pastel Japanese washi paper masking tapes with grid and foil accents.",
+    "driveFileIds": [
+      "1wxfDSjvyf9h8Ch8DOPyn_RFt08S7PODa",
+      "125ThCAdvM9TVi5RqkRuphgUFul1obU5T",
+      "1FUAGRVkwmkiisGTl5pSwJH1n-H_hdXXL",
+      "1r46be1AljjspOAXTo5UHsgkNNle4tsh0",
+      "1R-eezrUcLY9O_1H-XkdmrLZKTjuhDBhD",
+      "12QiXfFI81Yrx50iVMesbk30oKzDGvuMD",
+      "1FYi5sc438TrfjcqtWx7PndPs6XZ-1I38"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Fashion Colour",
+    "description": "Fashion Colour No Filter Matte Foundation by Fashion Colour delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "10 Rolls (15mm x 3m each)",
-      "Tear by Hand & Leaves No Residue",
-      "Foil Stamped Details",
-      "Designer Storage Box"
+      "Brand: Fashion Colour",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-021"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-stat-17",
-    "name": "100-Sheet Kawaii Anime Girl Waterproof PET Sticker Gift Box",
-    "hindiName": "100-शीट कवाई वाटरप्रूफ स्टिकर गिफ्ट बॉक्स",
-    "category": "stationery",
-    "subcategory": "Washi Tapes & Stickers",
+    "id": "cosm-022",
+    "sku": "COSM-022",
+    "name": "Feilin and Coco Giving Liquid Lipstick Set",
+    "brand": "Feilin & Coco",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1XGno-tZMTp2Z6Q-iBfoyjnuD3KNrKK1-=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1XGno-tZMTp2Z6Q-iBfoyjnuD3KNrKK1-=w600",
+      "https://lh3.googleusercontent.com/d/1CJnv3-ywHJMGKY3UaUNV7xlVkVJvS10K=w600",
+      "https://lh3.googleusercontent.com/d/1jTj4nrIZ3KNud75faRWkDVRP39SNIe0H=w600"
+    ],
+    "driveFileIds": [
+      "1XGno-tZMTp2Z6Q-iBfoyjnuD3KNrKK1-",
+      "1CJnv3-ywHJMGKY3UaUNV7xlVkVJvS10K",
+      "1jTj4nrIZ3KNud75faRWkDVRP39SNIe0H"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Feilin & Coco",
+    "description": "Experience rich color payoff with Feilin and Coco Giving Liquid Lipstick Set from Feilin & Coco. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Feilin & Coco",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-022"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-023",
+    "sku": "COSM-023",
+    "name": "Glam21 Adore Matte Lipstick",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1_ovtG-sFGp9k0gve516E6oTQc3HEiPzm=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1_ovtG-sFGp9k0gve516E6oTQc3HEiPzm=w600"
+    ],
+    "driveFileIds": [
+      "1_ovtG-sFGp9k0gve516E6oTQc3HEiPzm"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Experience rich color payoff with Glam21 Adore Matte Lipstick from Glam21. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-023"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-024",
+    "sku": "COSM-024",
+    "name": "Glam21 Color Match BB Foundation SPF 15",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1uR1WaGMPNBI_g-Kn8bskPgx8eEWZ_yEd=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1uR1WaGMPNBI_g-Kn8bskPgx8eEWZ_yEd=w600",
+      "https://lh3.googleusercontent.com/d/1bLSDBqGzzQNIeSa-DpfdOWd8HKJ6cqIY=w600"
+    ],
+    "driveFileIds": [
+      "1uR1WaGMPNBI_g-Kn8bskPgx8eEWZ_yEd",
+      "1bLSDBqGzzQNIeSa-DpfdOWd8HKJ6cqIY"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Glam21 Color Match BB Foundation SPF by Glam21 delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-024"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-025",
+    "sku": "COSM-025",
+    "name": "Glam21 Liquid Lipstick 12-Piece Set",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1YPhLtP0P9LtcwaR0arjUVPFXu4N87M4h=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1YPhLtP0P9LtcwaR0arjUVPFXu4N87M4h=w600",
+      "https://lh3.googleusercontent.com/d/1OayvQcw-k90dfZRIs6B5N8OgqZp8k7mX=w600"
+    ],
+    "driveFileIds": [
+      "1YPhLtP0P9LtcwaR0arjUVPFXu4N87M4h",
+      "1OayvQcw-k90dfZRIs6B5N8OgqZp8k7mX"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Experience rich color payoff with Glam21 Liquid Lipstick 12-Piece Set from Glam21. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-025"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-026",
+    "sku": "COSM-026",
+    "name": "Glam21 Liquid Lipstick Bundle Display",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1pDmZlllOthQhZmBy4OAOi18FqIE_8PR4=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1pDmZlllOthQhZmBy4OAOi18FqIE_8PR4=w600",
+      "https://lh3.googleusercontent.com/d/1T5QzIxVkF_jGqiM5U3ZuRTaKahhBnlu7=w600",
+      "https://lh3.googleusercontent.com/d/1K0Wa7l4_tTlPCPfQh-tG_dKYRI1VKtGJ=w600"
+    ],
+    "driveFileIds": [
+      "1pDmZlllOthQhZmBy4OAOi18FqIE_8PR4",
+      "1T5QzIxVkF_jGqiM5U3ZuRTaKahhBnlu7",
+      "1K0Wa7l4_tTlPCPfQh-tG_dKYRI1VKtGJ"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Experience rich color payoff with Glam21 Liquid Lipstick Bundle Display from Glam21. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-026"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-027",
+    "sku": "COSM-027",
+    "name": "Glam21 Matte Lippie Lipstick",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1AeoVy8NMmU7MKCwrdYn6tw7Kwb_Uk0Yf=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1AeoVy8NMmU7MKCwrdYn6tw7Kwb_Uk0Yf=w600",
+      "https://lh3.googleusercontent.com/d/1xnrCqbj_FyON6yl5uCJNASvEMj5UNclN=w600",
+      "https://lh3.googleusercontent.com/d/10vAtEeCIN7D4E4vcgKu_XRj4VyZDJP-2=w600"
+    ],
+    "driveFileIds": [
+      "1AeoVy8NMmU7MKCwrdYn6tw7Kwb_Uk0Yf",
+      "1xnrCqbj_FyON6yl5uCJNASvEMj5UNclN",
+      "10vAtEeCIN7D4E4vcgKu_XRj4VyZDJP-2"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Experience rich color payoff with Glam21 Matte Lippie Shade Chart 01 to 06 from Glam21. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-027"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-028",
+    "sku": "COSM-028",
+    "name": "Glam21 Mattitude Liquid Lipstick",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1B5TQCv92JbZd7i8DGXKp4PoQxFeLYXO9=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1B5TQCv92JbZd7i8DGXKp4PoQxFeLYXO9=w600",
+      "https://lh3.googleusercontent.com/d/1z8NdmgnDY3HNDXy3vYlN6B92byoU5RRH=w600",
+      "https://lh3.googleusercontent.com/d/1w-z3CCT985FTKwnZHHIW6Zfb-MsbBLR-=w600",
+      "https://lh3.googleusercontent.com/d/1-CmyfCOQ5Hxe9r3r-YN7lR4IentU856E=w600"
+    ],
+    "driveFileIds": [
+      "1B5TQCv92JbZd7i8DGXKp4PoQxFeLYXO9",
+      "1z8NdmgnDY3HNDXy3vYlN6B92byoU5RRH",
+      "1w-z3CCT985FTKwnZHHIW6Zfb-MsbBLR-",
+      "1-CmyfCOQ5Hxe9r3r-YN7lR4IentU856E"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Experience rich color payoff with Glam21 Mattitude Lipsticks Emoji Shades Chart from Glam21. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-028"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-029",
+    "sku": "COSM-029",
+    "name": "Glam21 Passion Matte Lip Ink",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/12zUowcWcF7n4uJhId4EK_DsUN6RW9xDO=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/12zUowcWcF7n4uJhId4EK_DsUN6RW9xDO=w600",
+      "https://lh3.googleusercontent.com/d/11pBd8r9OV46vYUaqIYUW4buFnDrUsx65=w600",
+      "https://lh3.googleusercontent.com/d/171Qyp_CcX2hnNUFzgWXx1DrrF4jHQrPA=w600",
+      "https://lh3.googleusercontent.com/d/1-sv6ehxSWskIdJZwgkPwWAPGuZIjoGlz=w600",
+      "https://lh3.googleusercontent.com/d/1iglj8lgFe9HMvhP45c69S7Pfy4V93U7l=w600"
+    ],
+    "driveFileIds": [
+      "12zUowcWcF7n4uJhId4EK_DsUN6RW9xDO",
+      "11pBd8r9OV46vYUaqIYUW4buFnDrUsx65",
+      "171Qyp_CcX2hnNUFzgWXx1DrrF4jHQrPA",
+      "1-sv6ehxSWskIdJZwgkPwWAPGuZIjoGlz",
+      "1iglj8lgFe9HMvhP45c69S7Pfy4V93U7l"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Premium quality Glam21 Passion Matte Lip Ink Application Guide by Glam21 designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-029"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-030",
+    "sku": "COSM-030",
+    "name": "Glam21 Studio Perfection HD Matte Foundation",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1J4JMKojtJSHDjsBb5wrqI1eZcCnqJ0lP=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1J4JMKojtJSHDjsBb5wrqI1eZcCnqJ0lP=w600",
+      "https://lh3.googleusercontent.com/d/1V0NO--NnAOAlV2KxSCoZELNQ6doCilKx=w600",
+      "https://lh3.googleusercontent.com/d/1H791hnjz7BsWbDuA08gngm8Ad-e-W-hC=w600"
+    ],
+    "driveFileIds": [
+      "1J4JMKojtJSHDjsBb5wrqI1eZcCnqJ0lP",
+      "1V0NO--NnAOAlV2KxSCoZELNQ6doCilKx",
+      "1H791hnjz7BsWbDuA08gngm8Ad-e-W-hC"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Glam21 Studio Perfection HD Foundation by Glam21 delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-030"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-031",
+    "sku": "COSM-031",
+    "name": "Glam21 Super Matte Color Stick",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1a2tHjvu0tYwsa9hlV_3eCNxIOBnjbkB3=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1a2tHjvu0tYwsa9hlV_3eCNxIOBnjbkB3=w600",
+      "https://lh3.googleusercontent.com/d/13TqA2M-LxW61DxqVA0Ghs1-PwyEJcYqd=w600",
+      "https://lh3.googleusercontent.com/d/1VxFZGwmlDnJO8d9bN1Y6IjqnM3tI_b9P=w600",
+      "https://lh3.googleusercontent.com/d/1GjGgrODPJEy47PCigtm3k89YPt65c7oH=w600"
+    ],
+    "driveFileIds": [
+      "1a2tHjvu0tYwsa9hlV_3eCNxIOBnjbkB3",
+      "13TqA2M-LxW61DxqVA0Ghs1-PwyEJcYqd",
+      "1VxFZGwmlDnJO8d9bN1Y6IjqnM3tI_b9P",
+      "1GjGgrODPJEy47PCigtm3k89YPt65c7oH"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Premium quality Glam21 Super Matte Color Stick by Glam21 designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-031"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-032",
+    "sku": "COSM-032",
+    "name": "Glam21 Velvet Matte Touch Foundation",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/14BhQCi1muQKz6TQLICdYlTdPAnAMyT3b=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/14BhQCi1muQKz6TQLICdYlTdPAnAMyT3b=w600",
+      "https://lh3.googleusercontent.com/d/1QNbdffXUNqNfNuKDkub_zGQFJ0xUU5TZ=w600",
+      "https://lh3.googleusercontent.com/d/1aAR5QQn18y8yamMi1XjQ6D1IsEkZKENH=w600",
+      "https://lh3.googleusercontent.com/d/1-1O2pDHpL9Y9fgpp39we-fKOttXW-cqZ=w600",
+      "https://lh3.googleusercontent.com/d/1vEuXqTKnnlSaSjKTzecTUiuO8RDCuTr4=w600"
+    ],
+    "driveFileIds": [
+      "14BhQCi1muQKz6TQLICdYlTdPAnAMyT3b",
+      "1QNbdffXUNqNfNuKDkub_zGQFJ0xUU5TZ",
+      "1aAR5QQn18y8yamMi1XjQ6D1IsEkZKENH",
+      "1-1O2pDHpL9Y9fgpp39we-fKOttXW-cqZ",
+      "1vEuXqTKnnlSaSjKTzecTUiuO8RDCuTr4"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Glam21 Velvet Matte Touch Foundation by Glam21 delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-032"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-033",
+    "sku": "COSM-033",
+    "name": "Glam21 Whip Mousse Tint",
+    "brand": "Glam21",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 269,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/108BBP-OM1sB5wsncrVizMf9uXSFXyT7c=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/108BBP-OM1sB5wsncrVizMf9uXSFXyT7c=w600"
+    ],
+    "driveFileIds": [
+      "108BBP-OM1sB5wsncrVizMf9uXSFXyT7c"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Glam21",
+    "description": "Premium quality Glam21 Whip Mousse Tint by Glam21 designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Glam21",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-033"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-034",
+    "sku": "COSM-034",
+    "name": "HUDAMOJI Bear Lip Mask 12-Piece Display Box",
+    "brand": "HUDAMOJI",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Care & Treatments",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1WRary7SralW0JAZnqkUBcI_xP8ni-kAh=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1WRary7SralW0JAZnqkUBcI_xP8ni-kAh=w600"
+    ],
+    "driveFileIds": [
+      "1WRary7SralW0JAZnqkUBcI_xP8ni-kAh"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "HUDAMOJI",
+    "description": "Premium quality HUDAMOJI Bear Lip Mask 12-Piece Display Box by HUDAMOJI designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: HUDAMOJI",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Care & Treatments",
+      "SKU: COSM-034"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-035",
+    "sku": "COSM-035",
+    "name": "Hold Morning Heart Cap Lip Gloss Set",
+    "brand": "Hold Morning",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/1ugag0QSDpsoFdrtVz4qsFLyQHxsidAjD=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ugag0QSDpsoFdrtVz4qsFLyQHxsidAjD=w600",
+      "https://lh3.googleusercontent.com/d/1_6A7pzITUDpMrD9oMAB2rzwaaV6gZ7X6=w600",
+      "https://lh3.googleusercontent.com/d/1UFll39j_izFoGouuwfpWkar5Gq0n80KH=w600",
+      "https://lh3.googleusercontent.com/d/1w-qFkrT9hBmpKZdYMosNN-0789x33KKC=w600",
+      "https://lh3.googleusercontent.com/d/1suel9ZeUeBTmR_uZqXRE3LQw1dY9sx8Q=w600",
+      "https://lh3.googleusercontent.com/d/1jVvT-6P2iFXowrTuARArcAXQB9Yig0EP=w600"
+    ],
+    "driveFileIds": [
+      "1ugag0QSDpsoFdrtVz4qsFLyQHxsidAjD",
+      "1_6A7pzITUDpMrD9oMAB2rzwaaV6gZ7X6",
+      "1UFll39j_izFoGouuwfpWkar5Gq0n80KH",
+      "1w-qFkrT9hBmpKZdYMosNN-0789x33KKC",
+      "1suel9ZeUeBTmR_uZqXRE3LQw1dY9sx8Q",
+      "1jVvT-6P2iFXowrTuARArcAXQB9Yig0EP"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Hold Morning",
+    "description": "Add brilliant shine and hydration with Hold Morning Heart Cap Lip Gloss by Hold Morning. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Hold Morning",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-035"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-036",
+    "sku": "COSM-036",
+    "name": "Huda Color Matte Liquid Foundation",
+    "brand": "Huda Color",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/14fvs0tmgm71FgDnEI6_sayatteeoYKbi=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/14fvs0tmgm71FgDnEI6_sayatteeoYKbi=w600"
+    ],
+    "driveFileIds": [
+      "14fvs0tmgm71FgDnEI6_sayatteeoYKbi"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Huda Color",
+    "description": "Huda Color Matte Liquid Foundation by Huda Color delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Huda Color",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-036"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-037",
+    "sku": "COSM-037",
+    "name": "Huda Color Matte Liquid Lip Gloss",
+    "brand": "Huda Color",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses & Balms",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1bUQY3tMMMGXkJgUytAcpIgr3KOJe-k1g=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1bUQY3tMMMGXkJgUytAcpIgr3KOJe-k1g=w600"
+    ],
+    "driveFileIds": [
+      "1bUQY3tMMMGXkJgUytAcpIgr3KOJe-k1g"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Huda Color",
+    "description": "Add brilliant shine and hydration with Huda Color Matte Liquid Lip Gloss by Huda Color. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Huda Color",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses & Balms",
+      "SKU: COSM-037"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-038",
+    "sku": "COSM-038",
+    "name": "Huda Color Super Star Lip Gloss Box",
+    "brand": "Huda Color",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1wyu6iaZBXCGSIZil5-I9ORh71F1mF8ol=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1wyu6iaZBXCGSIZil5-I9ORh71F1mF8ol=w600",
+      "https://lh3.googleusercontent.com/d/1kHOhMvJfhorjldztQVTtzR7xkd4FauRo=w600"
+    ],
+    "driveFileIds": [
+      "1wyu6iaZBXCGSIZil5-I9ORh71F1mF8ol",
+      "1kHOhMvJfhorjldztQVTtzR7xkd4FauRo"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Huda Color",
+    "description": "Add brilliant shine and hydration with Huda Color Super Star Lip Gloss Box by Huda Color. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Huda Color",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-038"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-039",
+    "sku": "COSM-039",
+    "name": "Insight Matte Lip Serum with Avocado",
+    "brand": "Insight",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/12JUC56hni87st-8CGOuQjyLO8Y5-19w-=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/12JUC56hni87st-8CGOuQjyLO8Y5-19w-=w600",
+      "https://lh3.googleusercontent.com/d/1NOvn83r1uuc-qw0wc-EQDzd300Pq6X5P=w600"
+    ],
+    "driveFileIds": [
+      "12JUC56hni87st-8CGOuQjyLO8Y5-19w-",
+      "1NOvn83r1uuc-qw0wc-EQDzd300Pq6X5P"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Insight",
+    "description": "Premium quality Insight Matte Lip Serum with Avocado by Insight designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Insight",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-039"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-040",
+    "sku": "COSM-040",
+    "name": "Lakyou Beauty Filter Face Weightless Foundation",
+    "brand": "Lakyou Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1midjYNFkdBTmmawDHk6jez_i4QhitlSu=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1midjYNFkdBTmmawDHk6jez_i4QhitlSu=w600"
+    ],
+    "driveFileIds": [
+      "1midjYNFkdBTmmawDHk6jez_i4QhitlSu"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Lakyou Beauty",
+    "description": "Lakyou Beauty Filter Face Weightless Foundation by Lakyou Beauty delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Lakyou Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-040"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-041",
+    "sku": "COSM-041",
+    "name": "MAC Matte Lipstick with Swatch",
+    "brand": "MAC",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1AulCkGPSDdqq9B5yMGy6WgjCH4O5E6se=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1AulCkGPSDdqq9B5yMGy6WgjCH4O5E6se=w600"
+    ],
+    "driveFileIds": [
+      "1AulCkGPSDdqq9B5yMGy6WgjCH4O5E6se"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MAC",
+    "description": "Experience rich color payoff with MAC Matte Lipstick with Swatch from MAC. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: MAC",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-041"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-042",
+    "sku": "COSM-042",
+    "name": "MARS BB Cream Foundation Gold Box Packaging",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/12WG9gvmgv7PQn14i3DJkRi7anWxjD4_F=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/12WG9gvmgv7PQn14i3DJkRi7anWxjD4_F=w600"
+    ],
+    "driveFileIds": [
+      "12WG9gvmgv7PQn14i3DJkRi7anWxjD4_F"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "MARS BB Cream Foundation Gold Box Packaging by MARS delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-042"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-043",
+    "sku": "COSM-043",
+    "name": "MARS Bloom Matte BB Cream",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
     "price": 279,
-    "originalPrice": 549,
-    "rating": 4.9,
-    "reviewsCount": 34,
-    "image": "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "100 individual clear PET sheets packed with cute characters, drinks, and sweets.",
-    "specs": [
-      "100 Unique Sheets",
-      "Waterproof Clear PET Plastic",
-      "Pre-Cut Peeling Edges",
-      "Decorate Bottles, Diaries, Mugs"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-1",
-    "name": "Fruit Flavored Kawaii Roller Lip Gloss Set (4 Juicy Flavors)",
-    "hindiName": "फ्रूट फ्लेवर्ड कवाई रोलर लिप ग्लॉस सेट",
-    "category": "cosmetics",
-    "subcategory": "Cute Lip Balms & Glosses",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 35,
-    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Glossy roller-ball lip oils infused with strawberry, peach, orange, and grape extracts.",
-    "specs": [
-      "4 Fruity Gloss Flavors",
-      "Smooth Non-Sticky Rolling Ball",
-      "Vitamin E Nourishing Formula",
-      "Pocket Sized Kawaii Vials"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-2",
-    "name": "Honey Pot Kawaii Lip Sleeping Mask with Wooden Spoon Applicator",
-    "hindiName": "हनी पॉट कवाई लिप स्लीपिंग मास्क",
-    "category": "cosmetics",
-    "subcategory": "Cute Lip Balms & Glosses",
-    "price": 179,
     "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
-    "reviewsCount": 36,
-    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1oteagP6ZEQu_9DQe59HOj65xQk5u60pk=w600",
     "images": [
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1oteagP6ZEQu_9DQe59HOj65xQk5u60pk=w600"
     ],
-    "badge": "Hydrating",
-    "customizable": false,
-    "customType": "none",
-    "description": "Intense overnight honey lip treatment in a miniature honey jar with tiny wooden dipper.",
+    "driveFileIds": [
+      "1oteagP6ZEQu_9DQe59HOj65xQk5u60pk"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "MARS Bloom Matte BB Cream by MARS combines skincare and natural coverage. Infused with SPF and nourishing ingredients to protect, hydrate, and even out skin tone.",
     "specs": [
-      "Natural Beeswax & Honey Extract",
-      "Deep Overnight Lip Repair",
-      "Mini Applicator Included",
-      "Prevents Chapped Dry Lips"
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-043"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-cosm-3",
-    "name": "Color-Changing Temperature Flower Jelly Lipstick",
-    "hindiName": "कलर चेंजिंग फ्लावर जेली लिपस्टिक",
+    "id": "cosm-044",
+    "sku": "COSM-044",
+    "name": "MARS Creamy Matte Long Stay Lipstick",
+    "brand": "MARS",
     "category": "cosmetics",
-    "subcategory": "Cute Lip Balms & Glosses",
-    "price": 149,
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1ZV1DOPL3wwuU3s9DDNIG3RaPN2kPpVO5=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ZV1DOPL3wwuU3s9DDNIG3RaPN2kPpVO5=w600",
+      "https://lh3.googleusercontent.com/d/1XCaqCQ_xk9NjlqcbDG7SUHpLX3GVYXb5=w600",
+      "https://lh3.googleusercontent.com/d/1ZX6viEXelV0oNHeqqv3upKvDjx6PAqfD=w600",
+      "https://lh3.googleusercontent.com/d/1BC5S81cgZqDwSRsucpkArPQaS_srVaf1=w600",
+      "https://lh3.googleusercontent.com/d/1q0_3ybTOIjox4IHTKKFDNLQekOqwxgm8=w600",
+      "https://lh3.googleusercontent.com/d/1x3iMz9bLGx6UHNSMP_kDoNFIda6BV7oi=w600",
+      "https://lh3.googleusercontent.com/d/1oduuM9mdLJXqBVd4Qd9rDxPOn670CvTP=w600",
+      "https://lh3.googleusercontent.com/d/1_v4zdyGOI6U7mMY3TvYoRiggQPA70wnD=w600",
+      "https://lh3.googleusercontent.com/d/13zXaL6aTDqKf42boZT7NI-t9kfbBlEqw=w600",
+      "https://lh3.googleusercontent.com/d/1ENGmfJpCl44LQ4UA9C19u2pchO_S1Rgd=w600"
+    ],
+    "driveFileIds": [
+      "1ZV1DOPL3wwuU3s9DDNIG3RaPN2kPpVO5",
+      "1XCaqCQ_xk9NjlqcbDG7SUHpLX3GVYXb5",
+      "1ZX6viEXelV0oNHeqqv3upKvDjx6PAqfD",
+      "1BC5S81cgZqDwSRsucpkArPQaS_srVaf1",
+      "1q0_3ybTOIjox4IHTKKFDNLQekOqwxgm8",
+      "1x3iMz9bLGx6UHNSMP_kDoNFIda6BV7oi",
+      "1oduuM9mdLJXqBVd4Qd9rDxPOn670CvTP",
+      "1_v4zdyGOI6U7mMY3TvYoRiggQPA70wnD",
+      "13zXaL6aTDqKf42boZT7NI-t9kfbBlEqw",
+      "1ENGmfJpCl44LQ4UA9C19u2pchO_S1Rgd"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Experience rich color payoff with MARS Creamy Matte Lipstick 1 from MARS. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-044"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-045",
+    "sku": "COSM-045",
+    "name": "MARS Crown Yourself All Rounder Lipstick",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 239,
     "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 37,
-    "image": "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/10U3SVtnSPh2eF9vvjmX48B6E2JczqmjL=w600",
     "images": [
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/10U3SVtnSPh2eF9vvjmX48B6E2JczqmjL=w600",
+      "https://lh3.googleusercontent.com/d/1U5twWI4510gXNUpryMWj6vG3TQGq4KiQ=w600",
+      "https://lh3.googleusercontent.com/d/1JfMIxi2PKkdMjXw-DrVNK5qZz-DLRVDA=w600"
     ],
-    "badge": "Magic Look",
-    "customizable": false,
-    "customType": "none",
-    "description": "Clear jelly bullet with real dried flower inside that warms into custom natural pink tint.",
+    "driveFileIds": [
+      "10U3SVtnSPh2eF9vvjmX48B6E2JczqmjL",
+      "1U5twWI4510gXNUpryMWj6vG3TQGq4KiQ",
+      "1JfMIxi2PKkdMjXw-DrVNK5qZz-DLRVDA"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Experience rich color payoff with MARS Crown Yourself All Rounder Lipstick Benefits Infographic from MARS. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
     "specs": [
-      "pH & Temperature Responsive",
-      "Real Dried Blossom Core",
-      "Long-Lasting Natural Flush",
-      "Gold Bullet Packaging"
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-045"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-cosm-4",
-    "name": "Korean Soft Mousse Velvet Matte Tint Lip Mud (Peach Pink)",
-    "hindiName": "कोरियन सॉफ्ट मूस वेलवेट मैट लिप मड",
+    "id": "cosm-046",
+    "sku": "COSM-046",
+    "name": "MARS Edge of Desire Lip Liner",
+    "brand": "MARS",
     "category": "cosmetics",
-    "subcategory": "Korean Velvet Tint Mud",
-    "price": 249,
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Liners",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/11BkbyRp0GNYZdWNq_3amSS3a2pPnD1Un=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/11BkbyRp0GNYZdWNq_3amSS3a2pPnD1Un=w600",
+      "https://lh3.googleusercontent.com/d/1P2GnJaNP_2lkK4nDMecudEj4dyiQY1vp=w600",
+      "https://lh3.googleusercontent.com/d/1TfNub_Es4Gdj6th9a6_mEgOHQAovlnv8=w600"
+    ],
+    "driveFileIds": [
+      "11BkbyRp0GNYZdWNq_3amSS3a2pPnD1Un",
+      "1P2GnJaNP_2lkK4nDMecudEj4dyiQY1vp",
+      "1TfNub_Es4Gdj6th9a6_mEgOHQAovlnv8"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Define and sculpt your lips effortlessly with MARS Edge of Desire Lip Liner 12 Shades Chart by MARS. Features a smooth glide formula for precise contours and smudge-free lip makeup.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Liners",
+      "SKU: COSM-046"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-047",
+    "sku": "COSM-047",
+    "name": "MARS High Coverage Liquid Foundation",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
     "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1Rw0gw1-2MFcd4jM8sDMsQ7i9pTb_-cMq=w600",
     "images": [
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1Rw0gw1-2MFcd4jM8sDMsQ7i9pTb_-cMq=w600",
+      "https://lh3.googleusercontent.com/d/1XQMb4bmL5KjIHYZFJtIFxqmq93uwFf7m=w600"
     ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Airy whipped mousse texture that blurs lip lines for a soft-focus Korean petal lip look.",
+    "driveFileIds": [
+      "1Rw0gw1-2MFcd4jM8sDMsQ7i9pTb_-cMq",
+      "1XQMb4bmL5KjIHYZFJtIFxqmq93uwFf7m"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "MARS High Coverage Liquid Foundation by MARS delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "Silky Velvet Mud Texture",
-      "Transfer-Proof Matte Finish",
-      "Lightweight Non-Drying Wear",
-      "Sweet Peach Fragrance"
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-047"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-cosm-5",
-    "name": "Watery Dewy Mirror Glass Long-Lasting Lip Stain",
-    "hindiName": "वाटरी डेवी मिरर ग्लास लिप स्टेन",
+    "id": "cosm-048",
+    "sku": "COSM-048",
+    "name": "MARS Muse Matte Mousse Lipstick",
+    "brand": "MARS",
     "category": "cosmetics",
-    "subcategory": "Korean Velvet Tint Mud",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 239,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1ueU6P6sbL0h4MsAwpzmVudM-nGr0MQT4=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ueU6P6sbL0h4MsAwpzmVudM-nGr0MQT4=w600",
+      "https://lh3.googleusercontent.com/d/1PppYiU0fiBN-yc0g45LqEb8h4yrVNdNU=w600",
+      "https://lh3.googleusercontent.com/d/1jb-wIE8zzMI35MVEnlPhG5HYm_sVoF97=w600",
+      "https://lh3.googleusercontent.com/d/1g9n4t70lF_iSyK1L0KAH2hrFTvUX8J7N=w600"
+    ],
+    "driveFileIds": [
+      "1ueU6P6sbL0h4MsAwpzmVudM-nGr0MQT4",
+      "1PppYiU0fiBN-yc0g45LqEb8h4yrVNdNU",
+      "1jb-wIE8zzMI35MVEnlPhG5HYm_sVoF97",
+      "1g9n4t70lF_iSyK1L0KAH2hrFTvUX8J7N"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Experience rich color payoff with MARS Matte Muse Mousse Lipstick Features Infographic from MARS. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-048"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-049",
+    "sku": "COSM-049",
+    "name": "MARS Queen of Mattes Compact Powder",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 239,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1hCYmCNyQtKtZt8mFbBRN92uBmgEKoaZ3=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1hCYmCNyQtKtZt8mFbBRN92uBmgEKoaZ3=w600"
+    ],
+    "driveFileIds": [
+      "1hCYmCNyQtKtZt8mFbBRN92uBmgEKoaZ3"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Premium quality MARS Queen of Mattes Compact Powder by MARS designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-049"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-050",
+    "sku": "COSM-050",
+    "name": "MARS Silk Matte Lipstick NT03",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 239,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/17nIu8Fb6gVZNYtYIEJkG2qRoddJv9lG-=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/17nIu8Fb6gVZNYtYIEJkG2qRoddJv9lG-=w600"
+    ],
+    "driveFileIds": [
+      "17nIu8Fb6gVZNYtYIEJkG2qRoddJv9lG-"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Experience rich color payoff with MARS Silk Matte Lipstick NT03 from MARS. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-050"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-051",
+    "sku": "COSM-051",
+    "name": "MARS Skin Perfection Color Correcting BB Cream",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 279,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1TC8jMp7mkOkNHTS3d4alxwlYdDfzw3sw=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1TC8jMp7mkOkNHTS3d4alxwlYdDfzw3sw=w600"
+    ],
+    "driveFileIds": [
+      "1TC8jMp7mkOkNHTS3d4alxwlYdDfzw3sw"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "MARS Skin Perfection Color Correcting BB Cream by MARS combines skincare and natural coverage. Infused with SPF and nourishing ingredients to protect, hydrate, and even out skin tone.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-051"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-052",
+    "sku": "COSM-052",
+    "name": "MARS Velvet Lip Tint Collection",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 239,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1YF7d49kP_STu9jHVTTf2iSSbFudEUUt_=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1YF7d49kP_STu9jHVTTf2iSSbFudEUUt_=w600",
+      "https://lh3.googleusercontent.com/d/1ZPmIeVQBX8AkPdRBGlG1XPW5IlugNIsY=w600",
+      "https://lh3.googleusercontent.com/d/1O85-ywwMpp5k8-T4FxaVE5uCsnlsdNTO=w600",
+      "https://lh3.googleusercontent.com/d/1CAU2UYWuEI8e3IP_8dTboD-g7IZcxajn=w600",
+      "https://lh3.googleusercontent.com/d/1OOTJPte4f5LchgmqDCedSURtLaFdDkrz=w600",
+      "https://lh3.googleusercontent.com/d/1P-Iz7Nwl3WlOHjns8m8WFTq0o70NUaL1=w600",
+      "https://lh3.googleusercontent.com/d/1XWr1_Gi80iAG2m2qS6weBrFYFYGKkFl7=w600",
+      "https://lh3.googleusercontent.com/d/1Tl7cdzNwbecXNE4ylwFlEQLsIvgL47Dw=w600",
+      "https://lh3.googleusercontent.com/d/10S40YoLa9fJPfhucy0XHltBaGFXE6Pq5=w600"
+    ],
+    "driveFileIds": [
+      "1YF7d49kP_STu9jHVTTf2iSSbFudEUUt_",
+      "1ZPmIeVQBX8AkPdRBGlG1XPW5IlugNIsY",
+      "1O85-ywwMpp5k8-T4FxaVE5uCsnlsdNTO",
+      "1CAU2UYWuEI8e3IP_8dTboD-g7IZcxajn",
+      "1OOTJPte4f5LchgmqDCedSURtLaFdDkrz",
+      "1P-Iz7Nwl3WlOHjns8m8WFTq0o70NUaL1",
+      "1XWr1_Gi80iAG2m2qS6weBrFYFYGKkFl7",
+      "1Tl7cdzNwbecXNE4ylwFlEQLsIvgL47Dw",
+      "10S40YoLa9fJPfhucy0XHltBaGFXE6Pq5"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Premium quality MARS Five Dreams Velvet Lip Tint by MARS designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-052"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-053",
+    "sku": "COSM-053",
+    "name": "MARS Won't Smudge Won't Budge Matte Lip Crayon Box",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1C9_GEri2xnaiCPgkh9vZ586JxMX3Sv_s=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1C9_GEri2xnaiCPgkh9vZ586JxMX3Sv_s=w600"
+    ],
+    "driveFileIds": [
+      "1C9_GEri2xnaiCPgkh9vZ586JxMX3Sv_s"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "Experience rich color payoff with MARS Won't Smudge Won't Budge Matte Lip Crayon Box from MARS. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-053"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-054",
+    "sku": "COSM-054",
+    "name": "MARS Zero Blend Weightless Foundation",
+    "brand": "MARS",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1NF2Rcb2HuekEqzAojk31xY3ARZzs593N=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1NF2Rcb2HuekEqzAojk31xY3ARZzs593N=w600",
+      "https://lh3.googleusercontent.com/d/19nAeUnGhjAaACCKgf0rgCHIqDvMhNTrC=w600",
+      "https://lh3.googleusercontent.com/d/17ybSSp7l7Vj-dQgEsOjoi2nWGp-F7ye9=w600",
+      "https://lh3.googleusercontent.com/d/1-3fBsyDPRPjwL03zoietXgXusQYLttvC=w600"
+    ],
+    "driveFileIds": [
+      "1NF2Rcb2HuekEqzAojk31xY3ARZzs593N",
+      "19nAeUnGhjAaACCKgf0rgCHIqDvMhNTrC",
+      "17ybSSp7l7Vj-dQgEsOjoi2nWGp-F7ye9",
+      "1-3fBsyDPRPjwL03zoietXgXusQYLttvC"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "MARS",
+    "description": "MARS Zero Blend Weightless Foundation by MARS delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: MARS",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-054"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-055",
+    "sku": "COSM-055",
+    "name": "MaiLun Li Ren Flashy Color Single Eye Shadow",
+    "brand": "MaiLun Li Ren",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Single Eye Shadows",
     "price": 229,
-    "originalPrice": 449,
-    "rating": 4.9,
-    "reviewsCount": 39,
-    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Glass Glow",
-    "customizable": false,
-    "customType": "none",
-    "description": "High shine glossy tint that leaves a persistent stain that stays vibrant throughout the day.",
-    "specs": [
-      "Glassy Wet Look Shine",
-      "Waterproof Staining Action",
-      "Hyaluronic Acid Plumping",
-      "Rich Coral Pink Tone"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-6",
-    "name": "Heart Shaped Keychain Matte Lip Mud Pot with Applicator",
-    "hindiName": "हार्ट-शेप्ड कीचेन मैट लिप मड पॉट",
-    "category": "cosmetics",
-    "subcategory": "Korean Velvet Tint Mud",
-    "price": 169,
-    "originalPrice": 329,
-    "rating": 4.9,
-    "reviewsCount": 40,
-    "image": "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Cute Keychain",
-    "customizable": false,
-    "customType": "none",
-    "description": "Clip-on cute heart keychain container holding richly pigmented smooth velvet lip color.",
-    "specs": [
-      "Dual-Function Keychain & Lip Mud",
-      "Built-In Soft Silicone Brush",
-      "Velvety Creamy Pigment",
-      "Perfect On-The-Go Touchup"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-7",
-    "name": "Foldable LED Illuminated Compact Pocket Touch Mirror",
-    "hindiName": "फोल्डेबल LED टच कॉम्पैक्ट पॉकेट मिरर",
-    "category": "cosmetics",
-    "subcategory": "Pocket Mirrors & Brushes",
-    "price": 299,
-    "originalPrice": 599,
-    "rating": 4.9,
-    "reviewsCount": 41,
-    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Must Have",
-    "customizable": false,
-    "customType": "none",
-    "description": "Dual-sided compact mirror with natural day-white LED ring light and touch brightness control.",
-    "specs": [
-      "1x & 2x Magnifying Mirrors",
-      "Touch Sensitive Dimming LED",
-      "USB Rechargeable Lithium Battery",
-      "Slim Pastel Clamshell"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-8",
-    "name": "8-Piece Pastel Travel Makeup Brush Set in Leatherette Case",
-    "hindiName": "8-पीस पेस्टल मेकअप ब्रश सेट केस सहित",
-    "category": "cosmetics",
-    "subcategory": "Pocket Mirrors & Brushes",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 42,
-    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Complete Set",
-    "customizable": false,
-    "customType": "none",
-    "description": "Ultra-soft synthetic vegan bristles for flawless powder, blush, eyeshadow, and blending.",
-    "specs": [
-      "8 Professional Brush Types",
-      "Cruelty-Free Silky Bristles",
-      "Lightweight Pastel Handles",
-      "Matching Leather Snap Case"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-9",
-    "name": "Cute Bunny Soft Silicone Facial Cleansing Scrub Brush",
-    "hindiName": "क्यूट बनी सॉफ्ट सिलिकॉन फेशियल ब्रश",
-    "category": "cosmetics",
-    "subcategory": "Pocket Mirrors & Brushes",
-    "price": 129,
-    "originalPrice": 249,
-    "rating": 4.9,
-    "reviewsCount": 18,
-    "image": "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Skincare Tool",
-    "customizable": false,
-    "customType": "none",
-    "description": "Gentle manual exfoliating brush with micro-bristles for cleansing pores and massaging face.",
-    "specs": [
-      "Food-Grade BPA-Free Silicone",
-      "Hundreds of Micro-Bristles",
-      "Easy Grip Bunny Handle",
-      "Hygienic & Fast Drying"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-10",
-    "name": "Sakura Blossom Moisturizing Shea Butter Hand Cream (30g)",
-    "hindiName": "साकुरा ब्लॉसम मॉइस्चराइजिंग हैंड क्रीम",
-    "category": "cosmetics",
-    "subcategory": "Hand Creams & Skincare",
-    "price": 99,
-    "originalPrice": 199,
-    "rating": 4.9,
-    "reviewsCount": 19,
-    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Daily Care",
-    "customizable": false,
-    "customType": "none",
-    "description": "Fast absorbing floral hand lotion enriched with shea butter and Japanese cherry blossom.",
-    "specs": [
-      "Enriched with Organic Shea Butter",
-      "Non-Greasy Velvet Touch",
-      "Delicate Sakura Fragrance",
-      "Compact Handbag Sized Tube"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-11",
-    "name": "Hydrating Fruit Essence Facial Sheet Masks Gift Pack (5 Sheets)",
-    "hindiName": "फ्रूट एसेंस फेशियल शीट मास्क (5 का पैक)",
-    "category": "cosmetics",
-    "subcategory": "Hand Creams & Skincare",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 20,
-    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Pamper Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Infused with aloe vera, peach, cucumber, strawberry, and pomegranate botanicals.",
-    "specs": [
-      "5 Natural Botanical Essences",
-      "Ultra-Thin Bio-Cellulose Sheet",
-      "Intense 15-Minute Hydration",
-      "Glowing Dewy Complexion"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-12",
-    "name": "Sweet Peach Sugar Exfoliating Gentle Lip Scrub (15g)",
-    "hindiName": "स्वीट पीच शुगर जेंटल लिप स्क्रब",
-    "category": "cosmetics",
-    "subcategory": "Hand Creams & Skincare",
-    "price": 149,
     "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 21,
-    "image": "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1586495777744-4413f21062fa?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Smooth Lips",
-    "customizable": false,
-    "customType": "none",
-    "description": "Fine brown sugar crystals infused with peach oil to polish away dead skin flakes.",
-    "specs": [
-      "Natural Sugar Micro-Crystals",
-      "Nourishing Peach Seed Oil",
-      "Preps Lips for Smooth Lipstick",
-      "Sweet Peach Flavor & Smell"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-13",
-    "name": "Pastel Matte Flower Hair Claw Clips (Set of 6 Colors)",
-    "hindiName": "पेस्टल मैट फ्लावर हेयर क्लॉ क्लिप्स (6 का सेट)",
-    "category": "cosmetics",
-    "subcategory": "Hair Accessories & Clips",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 22,
-    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Strong hold non-slip interlocking hair claws in soft aesthetic pastel blossom shapes.",
-    "specs": [
-      "6 Aesthetic Pastel Shades",
-      "Strong Metal Spring Grip",
-      "Durable Matte Acrylic Resin",
-      "Fits Thick & Thin Hair"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-14",
-    "name": "Silk Satin Kawaii Oversized Hair Scrunchies Bundle (5-Pack)",
-    "hindiName": "सिल्क सैटिन कवाई हेयर स्क्रंचीज (5 का पैक)",
-    "category": "cosmetics",
-    "subcategory": "Hair Accessories & Clips",
-    "price": 129,
-    "originalPrice": 249,
-    "rating": 4.9,
-    "reviewsCount": 23,
-    "image": "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Hair Care",
-    "customizable": false,
-    "customType": "none",
-    "description": "Smooth friction-reducing satin scrunchies that protect hair from breakage and creases.",
-    "specs": [
-      "Pure Mulberry Silk Touch",
-      "Anti-Frizz & No Crease Hold",
-      "Pastel Gradient Color Assortment",
-      "Stretches Smoothly"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-15",
-    "name": "Glitter Star & Gummy Bear Aesthetic Hair Barrettes (Set of 8)",
-    "hindiName": "ग्लिटर स्टार व बेयर हेयर क्लिप्स (8 का सेट)",
-    "category": "cosmetics",
-    "subcategory": "Hair Accessories & Clips",
-    "price": 99,
-    "originalPrice": 199,
-    "rating": 4.9,
-    "reviewsCount": 24,
-    "image": "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Cute Accent",
-    "customizable": false,
-    "customType": "none",
-    "description": "Y2K pastel jelly resin hair snap clips with embedded sparkles and cute gummy bears.",
-    "specs": [
-      "8 Cute Designer Clips",
-      "Non-Snag Metal Clip Base",
-      "Sparkly Jelly Resin Charms",
-      "Great for Girls & Teens"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-16",
-    "name": "Sparkly Holographic Butterfly Makeup Vanity Pouch",
-    "hindiName": "होलोग्राफिक बटरफ्लाई मेकअप वैनिटी पाउच",
-    "category": "cosmetics",
-    "subcategory": "Makeup Vanity Pouches",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 25,
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Waterproof iridescent cosmetic organizer featuring embossed holographic butterflies.",
-    "specs": [
-      "Large Main Zipper Compartment",
-      "Waterproof Clear Holographic TPU",
-      "Smooth Pink Metal Zipper Pull",
-      "Fits Palettes, Brushes & Skincare"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-cosm-17",
-    "name": "Quilted Cotton Floral Aesthetic Cosmetic Zipper Organizer",
-    "hindiName": "क्विल्टेड फ्लोरल कॉटन कॉस्मेटिक पाउच",
-    "category": "cosmetics",
-    "subcategory": "Makeup Vanity Pouches",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 26,
-    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1616683693504-3ea7e9ad6fec?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Cozy Aesthetic",
-    "customizable": false,
-    "customType": "none",
-    "description": "Puffy soft quilted cotton makeup pouch with vintage floral pastel lining and zipper.",
-    "specs": [
-      "100% Padded Soft Cotton",
-      "Vintage Pastel Floral Print",
-      "Washable & Crush-Proof",
-      "Lightweight Travel Toiletry Bag"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-1",
-    "name": "Giant 3-Foot Fluffy Hugging Teddy Bear with Velvet Ribbon Bow",
-    "hindiName": "जायंट 3-फुट हगिंग टेडी बियर",
-    "category": "toys",
-    "subcategory": "Giant Cuddle Teddies",
-    "price": 899,
-    "originalPrice": 1499,
-    "rating": 5.0,
-    "reviewsCount": 27,
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Super cuddly 90cm plush giant bear stuffed with cloud-soft virgin cotton and satin bow.",
-    "specs": [
-      "90cm Tall Hugging Size",
-      "Ultra-Plush Fur Won't Shed",
-      "100% Hypoallergenic Virgin Fill",
-      "Hand Washable Construction"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-2",
-    "name": "Pastel Pink Cozy Love Teddy Bear with Embroidered Paws (50cm)",
-    "hindiName": "पेस्टल पिंक लव टेडी बियर (50cm)",
-    "category": "toys",
-    "subcategory": "Giant Cuddle Teddies",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 5.0,
-    "reviewsCount": 28,
-    "image": "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Popular",
-    "customizable": false,
-    "customType": "none",
-    "description": "Sweet baby pink soft bear with red heart embroidered on foot pad and cozy hug shape.",
-    "specs": [
-      "50cm Huggable Height",
-      "Embroidered Paw Details",
-      "Feather-Soft Velvet Texture",
-      "Perfect Birthday & Romantic Gift"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-3",
-    "name": "Cute Hoodie Bear Soft Plush Doll with Removable Knitted Cap",
-    "hindiName": "क्यूट हूडी बेयर सॉफ्ट प्लश डॉल (40cm)",
-    "category": "toys",
-    "subcategory": "Giant Cuddle Teddies",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 29,
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "New Trend",
-    "customizable": false,
-    "customType": "none",
-    "description": "Gentle beige teddy dressed in a knitted frog-eared hoodie sweater that can be removed.",
-    "specs": [
-      "40cm Sitting Height",
-      "Removable Knitted Hoodie",
-      "Ultra-Plush Soft Minky Body",
-      "Cute Bedroom Decor Piece"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-4",
-    "name": "Giant Kawaii Smiling Boba Milk Tea Plushie Pillow (40cm)",
-    "hindiName": "कवाई स्माइलिंग बोबा मिल्क टी प्लशी (40cm)",
-    "category": "toys",
-    "subcategory": "Boba & Food Plushies",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 5.0,
-    "reviewsCount": 30,
-    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Viral Hit",
-    "customizable": false,
-    "customType": "none",
-    "description": "Viral cute brown sugar boba cup plushie with embroidered smiling face and soft straw.",
-    "specs": [
-      "40cm Jumbo Hug Pillow",
-      "Embroidered Pearls & Straw",
-      "Squishy Slow-Rebound Elastic",
-      "Double Stitched Durability"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-5",
-    "name": "Plush Strawberry Milk Carton Cute Bedside Pillow (35cm)",
-    "hindiName": "स्ट्रॉबेरी मिल्क कार्टन प्लश पिलो",
-    "category": "toys",
-    "subcategory": "Boba & Food Plushies",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Kawaii Hot",
-    "customizable": false,
-    "customType": "none",
-    "description": "Box shaped Japanese strawberry milk carton plush with cute Japanese lettering and straw.",
-    "specs": [
-      "35cm Cube Hug Cushion",
-      "Vibrant Fade-Resistant Printing",
-      "Super Soft Spandex Exterior",
-      "Aesthetic Room Decor Accent"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-6",
-    "name": "Kawaii Stuffed Avocado Hugging Plush with Dangler Legs (30cm)",
-    "hindiName": "कवाई एवोकाडो प्लश टॉय (30cm)",
-    "category": "toys",
-    "subcategory": "Boba & Food Plushies",
-    "price": 299,
-    "originalPrice": 549,
-    "rating": 4.9,
-    "reviewsCount": 32,
-    "image": "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Fan Favorite",
-    "customizable": false,
-    "customType": "none",
-    "description": "Plump green avocado with cute smiling brown seed tummy and playful brown corduroy legs.",
-    "specs": [
-      "30cm Cuddle Size",
-      "Brown Corduroy Dangler Legs",
-      "Embroidered Rosy Cheeks",
-      "Super Fluffy Microfiber"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-7",
-    "name": "Cute Toast Bread Slice Soft Plush Cushion Pillow (35cm)",
-    "hindiName": "क्यूट टोस्ट ब्रेड स्लाइस प्लश कुशन",
-    "category": "toys",
-    "subcategory": "Boba & Food Plushies",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 5.0,
-    "reviewsCount": 33,
-    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Cozy Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Warm buttered toast slice plushie with happy smiling expression and butter pat embroidery.",
-    "specs": [
-      "35cm Square Cushion",
-      "Great for Chairs & Beds",
-      "Ultra Soft Minky Fleece",
-      "Hidden Zipper Removable Cover"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-8",
-    "name": "Fluffy Pastel Strawberry Bunny Rabbit Plush Doll (35cm)",
-    "hindiName": "फ्लफी स्ट्रॉबेरी बनी रैबिट प्लश डॉल (35cm)",
-    "category": "toys",
-    "subcategory": "Kawaii Animal Plushies",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 34,
-    "image": "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Super-long floppy ears bunny rabbit hugging a bright pink embroidered plush strawberry.",
-    "specs": [
-      "35cm Tall Sitting Size",
-      "Floppy Velveteen Long Ears",
-      "Hugging Embroidered Strawberry",
-      "Washable Premium Plush Fabric"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-9",
-    "name": "Super-Soft Chubby Corgi Dog Hugging Cushion (45cm)",
-    "hindiName": "सुपर-सॉफ्ट चब्बी कॉर्गी डॉग कुशन",
-    "category": "toys",
-    "subcategory": "Kawaii Animal Plushies",
-    "price": 449,
-    "originalPrice": 799,
-    "rating": 5.0,
-    "reviewsCount": 35,
-    "image": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Cylindrical hug roll plush corgi dog with tiny paws, perky ears, and heart-shaped bum.",
-    "specs": [
-      "45cm Sleeping Long Cushion",
-      "Ultra-Elastic Spandex Fabric",
-      "Heart-Shaped Corgi Bum Design",
-      "Relieves Back Pressure When Sitting"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-10",
-    "name": "Magical Pastel Rainbow Stuffed Unicorn Plush Toy (30cm)",
-    "hindiName": "रेनबो यूनिकॉर्न प्लश टॉय (30cm)",
-    "category": "toys",
-    "subcategory": "Kawaii Animal Plushies",
-    "price": 349,
-    "originalPrice": 649,
-    "rating": 5.0,
-    "reviewsCount": 36,
-    "image": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Magical",
-    "customizable": false,
-    "customType": "none",
-    "description": "Snow-white unicorn with glittering rainbow metallic horn, pastel mane, and embroidered stars.",
-    "specs": [
-      "30cm Length",
-      "Glitter Gold Fabric Horn",
-      "Silky Pastel Multi-Tone Mane",
-      "Sparkly Embroidered Eyes"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-11",
-    "name": "Cute Chubby Winter Penguin Plush with Knitted Earmuffs",
-    "hindiName": "क्यूट पेंगुइन प्लश टॉय ईयरमफ्स सहित",
-    "category": "toys",
-    "subcategory": "Kawaii Animal Plushies",
-    "price": 299,
-    "originalPrice": 549,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
     "reviewsCount": 37,
-    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1Ukj4HI7KsWqK-_o0b3EDGaCc-aX_unFk=w600",
     "images": [
-      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1Ukj4HI7KsWqK-_o0b3EDGaCc-aX_unFk=w600"
     ],
-    "badge": "Cute Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Round chubby baby penguin with yellow beak and cozy fleece winter earmuffs.",
+    "driveFileIds": [
+      "1Ukj4HI7KsWqK-_o0b3EDGaCc-aX_unFk"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "MaiLun Li Ren",
+    "description": "Premium quality MaiLun Li Ren Flashy Color Single Eye Shadow by MaiLun Li Ren designed for exceptional performance, durability, and customer satisfaction.",
     "specs": [
-      "28cm Chubby Sphere Shape",
-      "Cozy Fluffy Winter Earmuffs",
-      "Silky Soft Belly Surface",
-      "Weighted Bottom Sturdy Sitting"
+      "Brand: MaiLun Li Ren",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Single Eye Shadows",
+      "SKU: COSM-055"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-toy-12",
-    "name": "Reversible Mood Happy & Angry Octopus Plush Toy (20cm)",
-    "hindiName": "रिवर्सिबल ऑक्टोपस मूड प्लश टॉय",
-    "category": "toys",
-    "subcategory": "Reversible Emotion Plushies",
-    "price": 179,
+    "id": "cosm-056",
+    "sku": "COSM-056",
+    "name": "Maliao Color Changing Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1v_VorqtToO8gqO5isMl7OP7HVASl-I_I=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1v_VorqtToO8gqO5isMl7OP7HVASl-I_I=w600",
+      "https://lh3.googleusercontent.com/d/1zw9qZur_g4y-f_sv3Io9AlW0PGIMuVXH=w600",
+      "https://lh3.googleusercontent.com/d/1MT9qoAb9eE7uur8-EyrA5mavC13iKSii=w600"
+    ],
+    "driveFileIds": [
+      "1v_VorqtToO8gqO5isMl7OP7HVASl-I_I",
+      "1zw9qZur_g4y-f_sv3Io9AlW0PGIMuVXH",
+      "1MT9qoAb9eE7uur8-EyrA5mavC13iKSii"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Color Changing Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-056"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-057",
+    "sku": "COSM-057",
+    "name": "Maliao Fit Me Matte and Poreless Liquid Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1qru-DNVgoYeM-Wk3aiRMr45VrHdiY2yg=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1qru-DNVgoYeM-Wk3aiRMr45VrHdiY2yg=w600",
+      "https://lh3.googleusercontent.com/d/1LRWoeIM6t1t0jhtUo7kkiUxp1BLwcj1O=w600"
+    ],
+    "driveFileIds": [
+      "1qru-DNVgoYeM-Wk3aiRMr45VrHdiY2yg",
+      "1LRWoeIM6t1t0jhtUo7kkiUxp1BLwcj1O"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Fit Me Matte and Poreless Liquid Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-057"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-058",
+    "sku": "COSM-058",
+    "name": "Maliao HD High Definition Oil-Free Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1xPbyUtXGMtt3DLAi6GPKzXDgMqXh8iGL=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1xPbyUtXGMtt3DLAi6GPKzXDgMqXh8iGL=w600",
+      "https://lh3.googleusercontent.com/d/1JjwWRiE7SvqnI3r54swr1ywIsaF1yO0R=w600"
+    ],
+    "driveFileIds": [
+      "1xPbyUtXGMtt3DLAi6GPKzXDgMqXh8iGL",
+      "1JjwWRiE7SvqnI3r54swr1ywIsaF1yO0R"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao HD High Definition Foundation 02 Ivory by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-058"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-059",
+    "sku": "COSM-059",
+    "name": "Maliao Matte Lip and Eye Pencil Set",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1o-9qQhtMunxXloTArgaF4OMCY-dcPAqw=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1o-9qQhtMunxXloTArgaF4OMCY-dcPAqw=w600",
+      "https://lh3.googleusercontent.com/d/1GuCR_wGWc5uXK9syTORtzRq2wLF99fby=w600",
+      "https://lh3.googleusercontent.com/d/1TMmCuxafwsmRvnLin8njcuoCQca8-JIN=w600"
+    ],
+    "driveFileIds": [
+      "1o-9qQhtMunxXloTArgaF4OMCY-dcPAqw",
+      "1GuCR_wGWc5uXK9syTORtzRq2wLF99fby",
+      "1TMmCuxafwsmRvnLin8njcuoCQca8-JIN"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Premium quality Maliao Matte Lip and Eye Pencil Set by Maliao designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-059"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-060",
+    "sku": "COSM-060",
+    "name": "Maliao Matte Lipstick",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1P2-NkG6I3_c-mGj6-tpFDiknVF8NqHGl=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1P2-NkG6I3_c-mGj6-tpFDiknVF8NqHGl=w600",
+      "https://lh3.googleusercontent.com/d/1YjSkKcIaiIRwxAkAvzJJZTPCCX2AA9wC=w600",
+      "https://lh3.googleusercontent.com/d/1_mVEouktGYvScz8XNppL9YTIKtnFXVht=w600",
+      "https://lh3.googleusercontent.com/d/1ddfNn6JrDsOQHNodt1uhvbJFq_-pE7lD=w600",
+      "https://lh3.googleusercontent.com/d/1JVT6K4MJHI77JsVA3Xx2fQWrxhJTeb4Y=w600",
+      "https://lh3.googleusercontent.com/d/1Ilb_rEPjCFNxek1F4Y0zxwXqw-MzIUbW=w600",
+      "https://lh3.googleusercontent.com/d/18vs26A3LdrXO3Kt141-pSnc_Mots-FzP=w600"
+    ],
+    "driveFileIds": [
+      "1P2-NkG6I3_c-mGj6-tpFDiknVF8NqHGl",
+      "1YjSkKcIaiIRwxAkAvzJJZTPCCX2AA9wC",
+      "1_mVEouktGYvScz8XNppL9YTIKtnFXVht",
+      "1ddfNn6JrDsOQHNodt1uhvbJFq_-pE7lD",
+      "1JVT6K4MJHI77JsVA3Xx2fQWrxhJTeb4Y",
+      "1Ilb_rEPjCFNxek1F4Y0zxwXqw-MzIUbW",
+      "18vs26A3LdrXO3Kt141-pSnc_Mots-FzP"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Experience rich color payoff with Maliao Matte Lipstick Shade Brick Wine from Maliao. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-060"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-061",
+    "sku": "COSM-061",
+    "name": "Maliao Matte Liquid Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1OkNNcZ4TF1S1xdUzm8ADwOSmtyqFAwtu=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1OkNNcZ4TF1S1xdUzm8ADwOSmtyqFAwtu=w600"
+    ],
+    "driveFileIds": [
+      "1OkNNcZ4TF1S1xdUzm8ADwOSmtyqFAwtu"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Matte Liquid Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-061"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-062",
+    "sku": "COSM-062",
+    "name": "Maliao Oil Free Liquid Foundation Bottle",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1sllEqOoszeOLwrpjpMTswheDBSA4P4FB=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1sllEqOoszeOLwrpjpMTswheDBSA4P4FB=w600"
+    ],
+    "driveFileIds": [
+      "1sllEqOoszeOLwrpjpMTswheDBSA4P4FB"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Oil Free Liquid Foundation Bottle by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-062"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-063",
+    "sku": "COSM-063",
+    "name": "Maliao Pearl Illuminator Makeup Base",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1xHFO1XBdZoSPakCDBMHinhKgB12iHFxd=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1xHFO1XBdZoSPakCDBMHinhKgB12iHFxd=w600",
+      "https://lh3.googleusercontent.com/d/1HJan9aGL35Ziam9gWReBZHnElTST4rEW=w600"
+    ],
+    "driveFileIds": [
+      "1xHFO1XBdZoSPakCDBMHinhKgB12iHFxd",
+      "1HJan9aGL35Ziam9gWReBZHnElTST4rEW"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Premium quality Maliao Pearl Illuminator Makeup Base by Maliao designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-063"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-064",
+    "sku": "COSM-064",
+    "name": "Maliao Prestige Light-in-White BB Cream",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 279,
     "originalPrice": 349,
-    "rating": 4.9,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Viral Hit",
-    "customizable": false,
-    "customType": "none",
-    "description": "Flip inside out to instantly change mood between smiling pink happy face and angry blue face.",
-    "specs": [
-      "Easy 2-Sided Flip Mechanism",
-      "Happy Pink / Pouty Sky Blue",
-      "High Contrast Embroidered Faces",
-      "Viral TikTok & Reels Favorite"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-13",
-    "name": "Reversible Kawaii Mood Cat Happy/Fierce Plush Toy (20cm)",
-    "hindiName": "रिवर्सिबल कवाई कैट मूड प्लशी",
-    "category": "toys",
-    "subcategory": "Reversible Emotion Plushies",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 39,
-    "image": "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Top Trend",
-    "customizable": false,
-    "customType": "none",
-    "description": "Flip inside out from purring cute white cat to fierce black ninja kitten in one second.",
-    "specs": [
-      "Flippable 2-In-1 Kitty",
-      "High Durability Reinforced Seams",
-      "Super Soft Velvet Plush",
-      "Great Desk Mood Communicator"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-14",
-    "name": "Reversible Smiling/Sleeping Boba Tea Pocket Plushie",
-    "hindiName": "रिवर्सिबल बोबा टी पॉकेट प्लशी",
-    "category": "toys",
-    "subcategory": "Reversible Emotion Plushies",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 40,
-    "image": "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1577741314755-048d8525d31e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Pocket Cutie",
-    "customizable": false,
-    "customType": "none",
-    "description": "Miniature reversible boba cup that flips from wide awake smiling to fast asleep with closed eyes.",
-    "specs": [
-      "15cm Compact Pocket Size",
-      "Two Fun Emotional Faces",
-      "Squishy Sponge Interior",
-      "Includes Keychain Ring Hook"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-15",
-    "name": "Kawaii Fluffy Bunny Plush Mini Backpack with Pastel Straps",
-    "hindiName": "कवाई फ्लफी बनी प्लश मिनी बैकपैक",
-    "category": "toys",
-    "subcategory": "Plush Backpacks & Charms",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 5.0,
-    "reviewsCount": 41,
-    "image": "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Wearable plush rabbit backpack with long floppy ears, zip storage compartment and straps.",
-    "specs": [
-      "Lightweight Wearable Plush Bag",
-      "Fits Phone, Lip Balm, Keys",
-      "Adjustable Rainbow Webbing Straps",
-      "Super Fluffy Sherpa Body"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-16",
-    "name": "Cute Fluffy Bear Soft Plush Keychain Bag Charm (Set of 2)",
-    "hindiName": "क्यूट बेयर प्लश कीचेन चार्म (2 का सेट)",
-    "category": "toys",
-    "subcategory": "Plush Backpacks & Charms",
-    "price": 129,
-    "originalPrice": 249,
-    "rating": 4.9,
-    "reviewsCount": 42,
-    "image": "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1533228876829-65c94e7b5025?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bag Charm",
-    "customizable": false,
-    "customType": "none",
-    "description": "Pair of tiny plush bears wearing miniature plaid bowties with golden lobster clasp rings.",
-    "specs": [
-      "Pair of 12cm Plush Mini Bears",
-      "Gold-Plated Metal Keychain Clasp",
-      "Cute Plaid Bowtie Detail",
-      "Clips on College & School Bags"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-toy-17",
-    "name": "Sanrio Style Kuromi & Melody Soft Plush Bag Hanging Clip",
-    "hindiName": "क्यूट कार्टून कैरेक्टर प्लश बैग क्लिप",
-    "category": "toys",
-    "subcategory": "Plush Backpacks & Charms",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 18,
-    "image": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Adorable pastel anime character plushie with embroidered eyes and sturdy plastic backpack clip.",
-    "specs": [
-      "14cm Hanging Plush Charm",
-      "Durable Swivel Bag Clip",
-      "Embroidered Character Details",
-      "Collector's Kawaii Edition"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-1",
-    "name": "Personalized 3D Acrylic Couple Heart & Teddy LED Night Lamp",
-    "hindiName": "पर्सनलाइज्ड 3D एक्रिलिक कपल हार्ट LED लैंप",
-    "category": "personalized",
-    "subcategory": "3D LED Acrylic Lamps",
-    "price": 699,
-    "originalPrice": 1199,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 19,
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1bx0nOTXYCpvxExVuLkYX9IMosxy5KsMZ=w600",
     "images": [
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "assets/images/pink_acrylic_lamp.jpg"
+      "https://lh3.googleusercontent.com/d/1bx0nOTXYCpvxExVuLkYX9IMosxy5KsMZ=w600"
     ],
-    "badge": "Bestseller",
-    "customizable": true,
-    "customType": "lamp",
-    "description": "Custom engraved optical 3D illusion acrylic with couple names, anniversary date & warm glow base.",
+    "driveFileIds": [
+      "1bx0nOTXYCpvxExVuLkYX9IMosxy5KsMZ"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Prestige Light-in-White BB Cream by Maliao combines skincare and natural coverage. Infused with SPF and nourishing ingredients to protect, hydrate, and even out skin tone.",
     "specs": [
-      "Laser Engraved 4mm Cast Acrylic",
-      "Natural Beech Wooden LED Base",
-      "Warm White & Rose Dual Tone Light",
-      "USB Powered with Inline Switch"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-064"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-pers-2",
-    "name": "Custom Couple Photo & Names Optical 3D Acrylic Night Lamp",
-    "hindiName": "कस्टम कपल फोटो व नाम एक्रिलिक लैंप",
-    "category": "personalized",
-    "subcategory": "3D LED Acrylic Lamps",
-    "price": 799,
-    "originalPrice": 1399,
-    "rating": 5.0,
-    "reviewsCount": 20,
-    "image": "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "assets/images/product_lamp.jpg"
-    ],
-    "badge": "Top Gift",
-    "customizable": true,
-    "customType": "lamp",
-    "description": "High definition laser etched actual photo of you and your loved one onto crystal clear acrylic.",
-    "specs": [
-      "Photo Laser Engraving Technology",
-      "Solid Wood Glowing Stand",
-      "Touch Button Dimmer Included",
-      "Custom Inscription Message Box"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-3",
-    "name": "Personalized Birthday Mubarak / Special Day 3D Acrylic Illusion Lamp",
-    "hindiName": "पर्सनलाइज्ड बर्थडे 3D एक्रिलिक इल्यूजन लैंप",
-    "category": "personalized",
-    "subcategory": "3D LED Acrylic Lamps",
-    "price": 649,
-    "originalPrice": 1099,
-    "rating": 5.0,
-    "reviewsCount": 21,
-    "image": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "assets/images/pink_acrylic_lamp.jpg"
-    ],
-    "badge": "Birthday Hit",
-    "customizable": true,
-    "customType": "lamp",
-    "description": "Glowing festive balloons and birthday wishes customized with receiver's name and age.",
-    "specs": [
-      "Laser Cut Balloon & Cake Motif",
-      "Bright Festive LED Illumination",
-      "Sturdy Shatterproof Acrylic",
-      "Includes Gift Box Ready Packaging"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-4",
-    "name": "Custom Initial Letter & Floral 3D LED Desk Monogram Lamp",
-    "hindiName": "कस्टम इनिशियल लेटर व फ्लोरल 3D LED लैंप",
-    "category": "personalized",
-    "subcategory": "3D LED Acrylic Lamps",
-    "price": 599,
-    "originalPrice": 999,
-    "rating": 5.0,
+    "id": "cosm-065",
+    "sku": "COSM-065",
+    "name": "Maliao Sheer Shimmer Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
     "reviewsCount": 22,
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1MbgKKa1_v_nZEb9twIRlszR8zqWMbXSJ=w600",
     "images": [
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-      "assets/images/product_lamp.jpg"
+      "https://lh3.googleusercontent.com/d/1MbgKKa1_v_nZEb9twIRlszR8zqWMbXSJ=w600"
     ],
-    "badge": "Modern Chic",
-    "customizable": true,
-    "customType": "lamp",
-    "description": "Personalized with any alphabet letter of your choice filled with intricate botanical floral lines.",
+    "driveFileIds": [
+      "1MbgKKa1_v_nZEb9twIRlszR8zqWMbXSJ"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Sheer Shimmer Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "Single or Couple Monogram Letter",
-      "Laser Engraved Botanical Design",
-      "Subtle Relaxing Ambient Bedroom Light",
-      "USB Plug-and-Play Cord"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-065"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-pers-5",
-    "name": "Heat Sensitive Magic Color Changing Photo Coffee Mug (350ml)",
-    "hindiName": "कलर चेंजिंग मैजिक फोटो कॉफी मग (350ml)",
-    "category": "personalized",
-    "subcategory": "Photo Magic Mugs",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 5.0,
-    "reviewsCount": 23,
-    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/product_mug.jpg"
-    ],
-    "badge": "Viral Gift",
-    "customizable": true,
-    "customType": "mug",
-    "description": "Matte black mug that mysteriously reveals your custom photos and heartfelt quotes when hot tea is poured.",
-    "specs": [
-      "Heat Activated Thermochromic Coating",
-      "350ml Premium Glossy Ceramic",
-      "Reveals Full Color HD Photo",
-      "Microwave & Dishwasher Safe"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-6",
-    "name": "Personalized Golden Rim Ceramic Coffee Mug with Gold Spoon",
-    "hindiName": "पर्सनलाइज्ड गोल्डन रिम सिरेमिक मग व स्पून",
-    "category": "personalized",
-    "subcategory": "Photo Magic Mugs",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 24,
-    "image": "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Luxury Feel",
-    "customizable": false,
-    "customType": "none",
-    "description": "Elegant blush pink ceramic coffee cup printed with permanent gold script name and date.",
-    "specs": [
-      "Electroplated Gold Rim & Handle",
-      "Includes Matching Gold Stirring Spoon",
-      "380ml High Fired Stoneware",
-      "Comes in Satin Lined Gift Box"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-7",
-    "name": "Custom Couple 4-Photo Collage Glossy White Ceramic Mug",
-    "hindiName": "कस्टम 4-फोटो कोलाज सिरेमिक मग",
-    "category": "personalized",
-    "subcategory": "Photo Magic Mugs",
-    "price": 299,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 25,
-    "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/product_mug.jpg"
-    ],
-    "badge": "Memories",
-    "customizable": true,
-    "customType": "mug",
-    "description": "Bright high-gloss white mug customized with 4 of your favorite photos in a cute film strip collage.",
-    "specs": [
-      "Sublimation Permanent Ink Print",
-      "Will Not Fade, Peel or Scratch",
-      "Comfortable Ergonomic C-Handle",
-      "100% Food Grade Quality"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-8",
-    "name": "Custom Spotify Song Plaque with Scannable Code & Wooden Base",
-    "hindiName": "कस्टम स्पॉटिफाई सॉन्ग प्लेक वुडन बेस सहित",
-    "category": "personalized",
-    "subcategory": "Spotify Music Plaques",
-    "price": 599,
-    "originalPrice": 999,
-    "rating": 5.0,
-    "reviewsCount": 26,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Trending",
-    "customizable": true,
-    "customType": "spotify",
-    "description": "Clear acrylic music player plaque featuring your favorite song title, artist, photo, and scannable code.",
-    "specs": [
-      "Scannable Spotify URI Barcode",
-      "Custom Album Art Photo Print",
-      "Solid Beechwood Display Stand",
-      "High Quality 3mm Thick Acrylic"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-9",
-    "name": "Personalized Illuminated Spotify Song Plaque with Warm LED Base",
-    "hindiName": "कस्टम LED स्पॉटिफाई म्यूजिक प्लेक लैंप",
-    "category": "personalized",
-    "subcategory": "Spotify Music Plaques",
-    "price": 749,
-    "originalPrice": 1299,
-    "rating": 5.0,
-    "reviewsCount": 27,
-    "image": "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/pink_acrylic_lamp.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": true,
-    "customType": "spotify",
-    "description": "Spotify acrylic plaque with an integrated warm glowing wooden LED stand that illuminates the song text.",
-    "specs": [
-      "LED Light-Emitting Wooden Slot",
-      "Crystal Clear Edge-To-Edge Acrylic",
-      "Custom Song Timecode & Lyrics",
-      "USB Cable with On/Off Button"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-10",
-    "name": "Custom Mini Spotify Code Keychain Plaque with Ring",
-    "hindiName": "कस्टम मिनी स्पॉटिफाई कोड कीचेन प्लेक",
-    "category": "personalized",
-    "subcategory": "Spotify Music Plaques",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 28,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Cute Keepsake",
-    "customizable": false,
-    "customType": "none",
-    "description": "Pocket-sized acrylic music card with scannable Spotify code of your song and couple initials.",
-    "specs": [
-      "Mini Portable Acrylic Tag",
-      "Scannable with Phone Camera",
-      "Stainless Steel Jump Ring",
-      "Scratch-Resistant Coating"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-11",
-    "name": "Personalized Wooden 6-Photo Rotating LED Crystal Cube Lamp",
-    "hindiName": "वुडन 6-फोटो रोटेटिंग LED क्यूब लैंप",
-    "category": "personalized",
-    "subcategory": "Photo Magic Mugs",
-    "price": 799,
-    "originalPrice": 1499,
-    "rating": 5.0,
-    "reviewsCount": 29,
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/product_lamp.jpg"
-    ],
-    "badge": "Luxury Gift",
-    "customizable": true,
-    "customType": "cube",
-    "description": "6-sided solid wood cube showcasing your custom photographs with warm built-in ambient illumination.",
-    "specs": [
-      "Displays 6 Custom Photographs",
-      "Smooth Hand-Finished Pine Wood",
-      "Warm LED Internal Core",
-      "Rotates 360 Degrees on Base"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-12",
-    "name": "Custom 3D Hexagonal Memory Lantern Photo Lamp",
-    "hindiName": "कस्टम 3D हेक्सागोनल मेमोरी लालटेन लैंप",
-    "category": "personalized",
-    "subcategory": "Photo Rotating Cube Lamps",
-    "price": 849,
-    "originalPrice": 1599,
-    "rating": 5.0,
-    "reviewsCount": 30,
-    "image": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "assets/images/pink_acrylic_lamp.jpg"
-    ],
-    "badge": "Centerpiece",
-    "customizable": true,
-    "customType": "cube",
-    "description": "Hexagonal wooden tabletop lantern featuring 6 laser-translucent photo panels that glow warmly.",
-    "specs": [
-      "6 Translucent Photo Windows",
-      "Decorative Laser Cut Lattice Top",
-      "Flickering Candle Effect LED",
-      "Battery Powered for Anywhere"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-13",
-    "name": "Custom Photo Printed Crystal Prism Glass LED Keychain Lamp",
-    "hindiName": "कस्टम फोटो क्रिस्टल LED कीचेन लैंप",
-    "category": "personalized",
-    "subcategory": "Photo Rotating Cube Lamps",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Sparkle",
-    "customizable": false,
-    "customType": "none",
-    "description": "Laser etched photo inside real K9 crystal keychain with multi-color cycling LED light twist cap.",
-    "specs": [
-      "3D Sub-Surface Laser Engraving",
-      "7-Color Rainbow Cycling LED",
-      "Heavyweight K9 Optical Glass",
-      "Gift Box with Spare Batteries"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-14",
-    "name": "Laser Engraved Stainless Steel 'Drive Safe' Name & Date Bar Keychain",
-    "hindiName": "लेजर एनग्रेव्ड स्टेनलेस स्टील ड्राइव सेफ कीचेन",
-    "category": "personalized",
-    "subcategory": "Custom Name Keychains",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 32,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "Solid mirror-polished surgical steel bar custom engraved with your personal message and name.",
-    "specs": [
-      "316L Surgical Stainless Steel",
-      "Permanent Deep Laser Engraving",
-      "Tarnish & Rust Proof Lifetime",
-      "Includes Mini Heart Tag Charm"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-15",
-    "name": "Personalized Custom Acrylic Couple Calendar Date Keychain",
-    "hindiName": "पर्सनलाइज्ड एक्रिलिक कपल कैलेंडर कीचेन",
-    "category": "personalized",
-    "subcategory": "Custom Name Keychains",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 33,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Romantic Date",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "Calendar month grid with your anniversary or birth date circled with a red glitter heart.",
-    "specs": [
-      "Custom Month & Year Grid",
-      "Red Heart Marked Date",
-      "Thick 4mm Clear Acrylic",
-      "Lightweight Pocket Companion"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-16",
-    "name": "Custom Double-Sided Photo Acrylic Heart Keychain",
-    "hindiName": "कस्टम डबल-साइडेड फोटो एक्रिलिक हार्ट कीचेन",
-    "category": "personalized",
-    "subcategory": "Custom Name Keychains",
-    "price": 129,
-    "originalPrice": 249,
-    "rating": 4.9,
-    "reviewsCount": 34,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1514517521153-1be72277b32f?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Cute Photo",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "High-clarity heart keychain holding two different photos on front and back with glitter resin seal.",
-    "specs": [
-      "Two Custom Photos Front & Back",
-      "Glitter Infused Acrylic Core",
-      "Stainless Steel Key Ring",
-      "Waterproof Sealed Edge"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-pers-17",
-    "name": "Custom Vintage Leatherette Embossed Name Keyring Strap",
-    "hindiName": "कस्टम लेदरेट एम्बोस्ड नेम कीरिंग स्ट्रैप",
-    "category": "personalized",
-    "subcategory": "Custom Name Keychains",
-    "price": 179,
+    "id": "cosm-066",
+    "sku": "COSM-066",
+    "name": "Maliao Skin BB Cream",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 279,
     "originalPrice": 349,
-    "rating": 4.9,
-    "reviewsCount": 35,
-    "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "assets/images/custom_gifts.jpg"
-    ],
-    "badge": "Classy Style",
-    "customizable": true,
-    "customType": "keychain",
-    "description": "Tan leatherette keychain strap foil-embossed with your recipient's name or initials in gold.",
-    "specs": [
-      "Durable PU Leather Strap",
-      "Metallic Gold Foil Lettering",
-      "Heavy Duty Antique Brass Ring",
-      "Sleek Everyday Pocket Style"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-1",
-    "name": "Ultimate Kawaii Birthday Celebration Gift Hamper Box",
-    "hindiName": "अल्टीमेट कवाई बर्थडे सेलिब्रेशन गिफ्ट हैम्पर",
-    "category": "birthday",
-    "subcategory": "Birthday Gift Hampers",
-    "price": 999,
-    "originalPrice": 1899,
-    "rating": 5.0,
-    "reviewsCount": 36,
-    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "All-in-one curated birthday gift set containing plushie, scented candle, diary, chocolates & card.",
-    "specs": [
-      "Cute Plushie (25cm)",
-      "Pastel Lock & Key Secret Diary",
-      "4 Ferrero Rocher Chocolates",
-      "Scented Soy Glass Candle + Card"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-2",
-    "name": "Luxury Pink Self-Care & Pamper Birthday Gift Hamper Basket",
-    "hindiName": "लक्जरी पिंक सेल्फ-केयर बर्थडे गिफ्ट हैम्पर",
-    "category": "birthday",
-    "subcategory": "Birthday Gift Hampers",
-    "price": 1199,
-    "originalPrice": 2199,
-    "rating": 5.0,
-    "reviewsCount": 37,
-    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Luxury Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Pamper basket with hand cream, roller lip gloss, hair scrunchies, face masks, and mug.",
-    "specs": [
-      "Ceramic Kawaii Coffee Mug",
-      "Sakura Blossom Hand Cream",
-      "Juicy Lip Gloss & Silk Scrunchie",
-      "Wicker Basket with Pink Ribbon"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-3",
-    "name": "Aesthetic Pastel Stationery & Art Mega Birthday Gift Box",
-    "hindiName": "एस्थेटिक पेस्टल स्टेशनरी मेगा बर्थडे बॉक्स",
-    "category": "birthday",
-    "subcategory": "Birthday Gift Hampers",
-    "price": 799,
-    "originalPrice": 1499,
-    "rating": 5.0,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "assets/images/kawaii_stationery.jpg"
-    ],
-    "badge": "Creative Gift",
-    "customizable": false,
-    "customType": "none",
-    "description": "Loaded with washi tapes, Morandi pastel highlighters, sakura gel pens, and spiral journal.",
-    "specs": [
-      "10 Rolls Pastel Washi Tapes",
-      "6-Pack Morandi Highlighters",
-      "4 Sakura Gel Ink Pens",
-      "A5 Hardbound Floral Notebook"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-4",
-    "name": "Sweet Chocolate & Teddy Birthday Celebration Gift Box",
-    "hindiName": "स्वीट चॉकलेट व टेडी बर्थडे सेलिब्रेशन बॉक्स",
-    "category": "birthday",
-    "subcategory": "Birthday Gift Hampers",
-    "price": 599,
-    "originalPrice": 1099,
-    "rating": 5.0,
-    "reviewsCount": 39,
-    "image": "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Sweet Surprise",
-    "customizable": false,
-    "customType": "none",
-    "description": "Cute 20cm hugging teddy bear nestled in red shredded paper with dairy milk silk bars.",
-    "specs": [
-      "Fluffy 20cm Hugging Teddy Bear",
-      "Cadbury Silk Chocolate Bar (150g)",
-      "Custom Greeting Card with Envelope",
-      "Gold Stamped Hard Gift Box"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-5",
-    "name": "Handcrafted 4-Layer Hexagonal Surprise Explosion Photo Box",
-    "hindiName": "हैंडक्राफ्टेड 4-लेयर हेक्सागोनल एक्सप्लोजन फोटो बॉक्स",
-    "category": "birthday",
-    "subcategory": "Surprise Explosion Boxes",
-    "price": 699,
-    "originalPrice": 1299,
-    "rating": 5.0,
-    "reviewsCount": 40,
-    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": true,
-    "customType": "box",
-    "description": "Explodes into 24 interactive photo flaps, secret pockets, and pull-out message sliders when lid opens.",
-    "specs": [
-      "4 Cascading Nested Layers",
-      "Fits up to 24 Photos & Notes",
-      "Central Ring / Gift Compartment",
-      "Handcrafted from 300 GSM Board"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-6",
-    "name": "Heart Pop-Up Surprise Explosion Photo Cube Box",
-    "hindiName": "हार्ट पॉप-अप सरप्राइज एक्सप्लोजन फोटो क्यूब",
-    "category": "birthday",
-    "subcategory": "Surprise Explosion Boxes",
-    "price": 499,
-    "originalPrice": 899,
-    "rating": 5.0,
-    "reviewsCount": 41,
-    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Trending",
-    "customizable": true,
-    "customType": "box",
-    "description": "Compact cube that pops open into 4 unfolding heart shaped photo frames and candy holder.",
-    "specs": [
-      "4 Pop-Up Heart Photo Panels",
-      "Center Compartment for Small Gift",
-      "Glossy Ribbon Tie Closure",
-      "Pre-Assembled & Ready to Gift"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-7",
-    "name": "Romantic Memories Waterfall Card Explosion Gift Box",
-    "hindiName": "रोमांटिक मेमोरीज़ वाटरफॉल कार्ड गिफ्ट बॉक्स",
-    "category": "birthday",
-    "subcategory": "Surprise Explosion Boxes",
-    "price": 549,
-    "originalPrice": 999,
-    "rating": 5.0,
-    "reviewsCount": 42,
-    "image": "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Special Touch",
-    "customizable": true,
-    "customType": "box",
-    "description": "Features an interactive pull-tab waterfall photo slider that reveals 6 pictures sequentially.",
-    "specs": [
-      "Pull-Tab Waterfall Slider",
-      "Secret Message Envelope Slot",
-      "Premium Matte Black & Gold Look",
-      "Includes Glue Dots & Gel Pen"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-8",
-    "name": "Romantic Pastel Teddy & Ferrero Rocher Celebration Basket",
-    "hindiName": "रोमांटिक पेस्टल टेडी व रोशर सेलिब्रेशन बास्केट",
-    "category": "birthday",
-    "subcategory": "Celebration Baskets",
-    "price": 899,
-    "originalPrice": 1599,
-    "rating": 5.0,
-    "reviewsCount": 18,
-    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Romantic Pick",
-    "customizable": false,
-    "customType": "none",
-    "description": "Handwoven wicker basket filled with 8 Ferrero Rocher pralines, 25cm cuddly teddy, and fairy lights.",
-    "specs": [
-      "8 Ferrero Rocher Chocolates",
-      "25cm Soft Cuddle Teddy Bear",
-      "Warm LED Fairy Light String",
-      "Wrapped in Cellophane & Big Bow"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-9",
-    "name": "Cute Kawaii Accessories & Ceramic Mug Wicker Gift Basket",
-    "hindiName": "क्यूट एक्सेसरीज व मग विकर गिफ्ट बास्केट",
-    "category": "birthday",
-    "subcategory": "Celebration Baskets",
-    "price": 749,
-    "originalPrice": 1399,
-    "rating": 5.0,
-    "reviewsCount": 19,
-    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Pretty Basket",
-    "customizable": false,
-    "customType": "none",
-    "description": "Contains ceramic mug with spoon, pastel sipper, hair claw clips, and fruit lip balm.",
-    "specs": [
-      "Ceramic Mug with Gold Stirrer",
-      "Pastel Hair Claw Clips (Set of 2)",
-      "Fruity Lip Gloss & Scrunchie",
-      "Woven Basket with Fairy Lights"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-10",
-    "name": "Golden Ribbon Celebration Birthday Surprise Hamper Tray",
-    "hindiName": "गोल्डन रिबन सेलिब्रेशन बर्थडे सरप्राइज ट्रे",
-    "category": "birthday",
-    "subcategory": "Celebration Baskets",
-    "price": 649,
-    "originalPrice": 1199,
-    "rating": 5.0,
-    "reviewsCount": 20,
-    "image": "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Party Ready",
-    "customizable": false,
-    "customType": "none",
-    "description": "Wooden presentation tray lined with gold crinkle paper, imported chocolates, and party blower.",
-    "specs": [
-      "Solid Pine Wood Hamper Tray",
-      "Assorted Premium Chocolates",
-      "Party Popper & Mini Greeting Card",
-      "Golden Organza Ribbon Wrap"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-11",
-    "name": "Set of 6 Aesthetic Pastel Happy Birthday 3D Pop-Up Cards",
-    "hindiName": "एस्थेटिक पेस्टल 3D पॉप-अप कार्ड्स (6 का सेट)",
-    "category": "birthday",
-    "subcategory": "Greeting Cards & Seals",
-    "price": 199,
-    "originalPrice": 399,
-    "rating": 4.9,
-    "reviewsCount": 21,
-    "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513151233558-d860c5398176?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "6 different laser-cut pop up cards that unfold into 3D cakes, balloons, flowers, and presents.",
-    "specs": [
-      "6 Unique 3D Pop-Up Designs",
-      "Includes 6 Pastel Envelopes",
-      "Gold Foil Seal Stickers Included",
-      "Thick 250 GSM Pearl Cardstock"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-12",
-    "name": "Handcrafted Wooden Slice Engraved Birthday Greeting Card",
-    "hindiName": "हैंडक्राफ्टेड वुडन स्लाइस एनग्रेव्ड कार्ड",
-    "category": "birthday",
-    "subcategory": "Greeting Cards & Seals",
-    "price": 149,
-    "originalPrice": 299,
-    "rating": 4.9,
-    "reviewsCount": 22,
-    "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Unique Touch",
-    "customizable": false,
-    "customType": "none",
-    "description": "Real pine wood bark slice laser engraved with heartfelt birthday wishes and hanging twine.",
-    "specs": [
-      "Real Natural Pine Bark Slice",
-      "Laser Engraved Deep Lettering",
-      "Will Never Fade or Tear",
-      "Doubles as Room Wall Hanging"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-13",
-    "name": "Vintage Wax Seal Stamp Set with Happy Birthday Brass Head",
-    "hindiName": "विंटेज वैक्स सील स्टैम्प सेट (बर्थडे स्पेशल)",
-    "category": "birthday",
-    "subcategory": "Greeting Cards & Seals",
-    "price": 299,
-    "originalPrice": 599,
-    "rating": 4.9,
-    "reviewsCount": 23,
-    "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Vintage Vibe",
-    "customizable": false,
-    "customType": "none",
-    "description": "Solid rosewood handle with removable brass stamp head and 3 wax melting sticks for luxury letters.",
-    "specs": [
-      "Solid Brass Engraved Seal Head",
-      "Rosewood Detachable Handle",
-      "3 Metallic Sealing Wax Sticks",
-      "Includes Melting Metal Spoon"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-14",
-    "name": "Rose Gold 'Birthday Queen' Satin Sash & Rhinestone Tiara Set",
-    "hindiName": "रोज़ गोल्ड बर्थडे क्वीन सैश व टियारा क्राउन सेट",
-    "category": "birthday",
-    "subcategory": "Birthday Party Props",
-    "price": 249,
-    "originalPrice": 499,
-    "rating": 4.9,
-    "reviewsCount": 24,
-    "image": "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Party Queen",
-    "customizable": false,
-    "customType": "none",
-    "description": "Glittering crystal rhinestone princess tiara with silky rose gold satin sash printed with gold glitter.",
-    "specs": [
-      "Sparkly Crystal Rhinestone Tiara",
-      "Silky Rose Gold Satin Sash",
-      "Comes with Safety Pin Fastener",
-      "Makes the Birthday Girl Shine"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-bday-15",
-    "name": "50-Piece Pastel Macaron Balloon Garland Arch Decoration Kit",
-    "hindiName": "50-पीस पेस्टल मैकरून बैलून गारलैंड किट",
-    "category": "birthday",
-    "subcategory": "Birthday Party Props",
-    "price": 299,
-    "originalPrice": 599,
-    "rating": 4.9,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
     "reviewsCount": 25,
-    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1Li0LJxkiesEAlxWh47rpzjY7r9SjV6nX=w600",
     "images": [
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
+      "https://lh3.googleusercontent.com/d/1Li0LJxkiesEAlxWh47rpzjY7r9SjV6nX=w600"
     ],
-    "badge": "Party Decor",
-    "customizable": false,
-    "customType": "none",
-    "description": "50 pastel balloons in soft pink, lilac, mint, and yellow with balloon decorating arch strip tape.",
+    "driveFileIds": [
+      "1Li0LJxkiesEAlxWh47rpzjY7r9SjV6nX"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Skin BB Cream by Maliao combines skincare and natural coverage. Infused with SPF and nourishing ingredients to protect, hydrate, and even out skin tone.",
     "specs": [
-      "50 Thick Latex Pastel Balloons",
-      "5-Meter Arch Strip Tape",
-      "100 Glue Dots Sheet Included",
-      "Safe Non-Toxic Helium Grade"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-066"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-bday-16",
-    "name": "Warm LED Photo Clip Fairy Lights String Garland (16 Clips)",
-    "hindiName": "वार्म LED फोटो क्लिप फेयरी लाइट्स गारलैंड",
-    "category": "birthday",
-    "subcategory": "Birthday Party Props",
-    "price": 199,
-    "originalPrice": 399,
+    "id": "cosm-067",
+    "sku": "COSM-067",
+    "name": "Maliao Skinveil High Coverage Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
-    "reviewsCount": 26,
-    "image": "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-      "assets/images/birthday_hampers.jpg"
-    ],
-    "badge": "Cozy Lights",
-    "customizable": false,
-    "customType": "none",
-    "description": "3-meter flexible copper wire fairy lights with 16 transparent glowing photo holding clothespins.",
-    "specs": [
-      "3-Meter String (16 LED Clips)",
-      "Battery Operated (2x AA)",
-      "Warm Golden Cozy Illumination",
-      "Hang Polaroid Photos & Cards"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-nov-1",
-    "name": "Kawaii Bear Gradient Pastel Water Sipper with Straw & Strap (800ml)",
-    "hindiName": "कवाई बेयर ग्रेडिएंट वाटर सिपर (800ml)",
-    "category": "novelties",
-    "subcategory": "Pastel Sippers & Bottles",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 27,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Chubby bear shaped gradient pastel water bottle with pop-up silicone straw and carrying shoulder strap.",
-    "specs": [
-      "800ml Large Hydration Capacity",
-      "Food-Grade BPA-Free Tritan",
-      "Adjustable Shoulder Carry Strap",
-      "Leak-Proof Safety Flip Lock"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-nov-2",
-    "name": "Matte Pastel Stainless Steel Vacuum Insulated Flask (500ml)",
-    "hindiName": "मैट पेस्टल वैक्यूम इंसुलेटेड फ्लास्क (500ml)",
-    "category": "novelties",
-    "subcategory": "Pastel Sippers & Bottles",
-    "price": 449,
-    "originalPrice": 799,
-    "rating": 5.0,
     "reviewsCount": 28,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1kFo04cAw1mf7vSIg0vGUfWYgixmSIs4T=w600",
     "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1kFo04cAw1mf7vSIg0vGUfWYgixmSIs4T=w600"
     ],
-    "badge": "Hot & Cold",
-    "customizable": false,
-    "customType": "none",
-    "description": "Double-wall stainless steel thermos that keeps drinks icy cold for 24h or piping hot for 12h.",
+    "driveFileIds": [
+      "1kFo04cAw1mf7vSIg0vGUfWYgixmSIs4T"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Skinveil High Coverage Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "Double Wall 304 Stainless Steel",
-      "24h Cold / 12h Hot Insulation",
-      "Matte Powder Coat Grip",
-      "Sweat-Free & 100% Leakproof"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-067"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-3",
-    "name": "Cute Doughnut Silicone Case Water Bottle for Kids & Girls (400ml)",
-    "hindiName": "क्यूट डोनट सिलिकॉन वाटर बॉटल (400ml)",
-    "category": "novelties",
-    "subcategory": "Pastel Sippers & Bottles",
-    "price": 349,
-    "originalPrice": 599,
-    "rating": 5.0,
-    "reviewsCount": 29,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Kids Favorite",
-    "customizable": false,
-    "customType": "none",
-    "description": "Circular doughnut shaped bottle protected by squishy silicone sprinkles casing with neck strap.",
-    "specs": [
-      "Fun Doughnut Ring Design",
-      "Shockproof Silicone Armor",
-      "Soft Silicone Sipper Spout",
-      "Detachable Rainbow Strap"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-nov-4",
-    "name": "Dual-Drinking Spout Pastel Sports Motivational Bottle (1000ml)",
-    "hindiName": "ड्यूल-ड्रिंक पेस्टल 1-लीटर मोटिवेशनल बॉटल",
-    "category": "novelties",
-    "subcategory": "Pastel Sippers & Bottles",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 30,
-    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-    "images": [
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75"
-    ],
-    "badge": "Daily Goal",
-    "customizable": false,
-    "customType": "none",
-    "description": "1-liter gradient gym and study bottle with time markers and dual direct chug or straw spout.",
-    "specs": [
-      "1000ml Motivational Time Scale",
-      "Dual Drinking Lid (Chug or Straw)",
-      "Convenient Carry Handle Cap",
-      "Shatterproof Tritan Plastic"
-    ],
-    "inStock": true
-  },
-  {
-    "id": "prod-nov-5",
-    "name": "Cute Rabbit Ear Sherpa Fleece Mini Crossbody Shoulder Bag",
-    "hindiName": "क्यूट रैबिट ईयर शेरपा मिनी शोल्डर बैग",
-    "category": "novelties",
-    "subcategory": "Mini Crossbody Bags",
-    "price": 349,
-    "originalPrice": 649,
+    "id": "cosm-068",
+    "sku": "COSM-068",
+    "name": "Maliao Super Non Transfer Lipstick",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 31,
-    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/12RG3XEoh5DddPPqEh03d072S4Qt--76-=w600",
     "images": [
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/12RG3XEoh5DddPPqEh03d072S4Qt--76-=w600",
+      "https://lh3.googleusercontent.com/d/1Q7NvvvrLY9YaNPcKeA1Ki-qh4YkCJfOv=w600",
+      "https://lh3.googleusercontent.com/d/1wvihFtvoA6RGIDoJqgXH1AJV-LUaMmL1=w600"
     ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Ultra-soft teddy sherpa fleece sling bag with perky bunny ears and adjustable shoulder strap.",
+    "driveFileIds": [
+      "12RG3XEoh5DddPPqEh03d072S4Qt--76-",
+      "1Q7NvvvrLY9YaNPcKeA1Ki-qh4YkCJfOv",
+      "1wvihFtvoA6RGIDoJqgXH1AJV-LUaMmL1"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Experience rich color payoff with Maliao Super Non Transfer Lipstick from Maliao. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
     "specs": [
-      "Cozy Teddy Sherpa Fleece",
-      "Fits Smartphones & Lipsticks",
-      "Smooth Metal Zipper Closure",
-      "Detachable Webbing Strap"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-068"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-6",
-    "name": "Clear Aesthetic Itabag Display Shoulder Pouch with Pin Insert",
-    "hindiName": "क्लियर एस्थेटिक इटाबैग शोल्डर पाउच",
-    "category": "novelties",
-    "subcategory": "Mini Crossbody Bags",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 32,
-    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
+    "id": "cosm-069",
+    "sku": "COSM-069",
+    "name": "Maliao Ultra HD Foundation",
+    "brand": "Maliao",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/101C7lc2SB1Htrh98cLQ_koeu9dpFvbKT=w600",
     "images": [
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/101C7lc2SB1Htrh98cLQ_koeu9dpFvbKT=w600"
     ],
-    "badge": "Anime Trend",
-    "customizable": false,
-    "customType": "none",
-    "description": "Transparent front window pouch designed to safely showcase enamel pins, badges, and plush toys.",
+    "driveFileIds": [
+      "101C7lc2SB1Htrh98cLQ_koeu9dpFvbKT"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Maliao",
+    "description": "Maliao Ultra HD Foundation by Maliao delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "Clear Scratch-Resistant Front",
-      "Removable Fabric Pin Insert Board",
-      "Waterproof PU Leather Shell",
-      "Adjustable Crossbody Strap"
+      "Brand: Maliao",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-069"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-7",
-    "name": "Pastel Quilted Leatherette Mini Phone Pouch with Chain",
-    "hindiName": "पेस्टल क्विल्टेड मिनी फोन पाउच",
-    "category": "novelties",
-    "subcategory": "Mini Crossbody Bags",
-    "price": 299,
-    "originalPrice": 549,
+    "id": "cosm-070",
+    "sku": "COSM-070",
+    "name": "Matt Look Desi Diva Matte Lipstick",
+    "brand": "Matt Look",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1i3KMh5HSsZuudhWIiWftZoJJO57NDTBr=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1i3KMh5HSsZuudhWIiWftZoJJO57NDTBr=w600",
+      "https://lh3.googleusercontent.com/d/1U7rowR0wkKq2RYHYtHFKtCZ3E6jt4MQ0=w600",
+      "https://lh3.googleusercontent.com/d/1NMBxHEgG1Bkrvgf5IF6H9qKGdWvILJGS=w600"
+    ],
+    "driveFileIds": [
+      "1i3KMh5HSsZuudhWIiWftZoJJO57NDTBr",
+      "1U7rowR0wkKq2RYHYtHFKtCZ3E6jt4MQ0",
+      "1NMBxHEgG1Bkrvgf5IF6H9qKGdWvILJGS"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Matt Look",
+    "description": "Experience rich color payoff with Matt Look Desi Diva Matte Lipstick 1 from Matt Look. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Matt Look",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-070"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-071",
+    "sku": "COSM-071",
+    "name": "Matt Look Swipe It Off Nail Paint Remover Wipes",
+    "brand": "Matt Look",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Nail Art & Press-ons",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 4.9,
-    "reviewsCount": 33,
-    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1exAfVuYOWMUzjqy0sRv8a5qNWtjVz6-z=w600",
     "images": [
-      "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1exAfVuYOWMUzjqy0sRv8a5qNWtjVz6-z=w600",
+      "https://lh3.googleusercontent.com/d/1g1u3IqtsLwTYeI1O9yvsxcUG3m7DgD2e=w600"
     ],
-    "badge": "Chic Look",
-    "customizable": false,
-    "customType": "none",
-    "description": "Diamond quilted faux leather phone wallet with golden turn-lock clasp and chain link strap.",
+    "driveFileIds": [
+      "1exAfVuYOWMUzjqy0sRv8a5qNWtjVz6-z",
+      "1g1u3IqtsLwTYeI1O9yvsxcUG3m7DgD2e"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Matt Look",
+    "description": "Premium quality Matt Look Swipe It Off Nail Paint Remover Wipes by Matt Look designed for exceptional performance, durability, and customer satisfaction.",
     "specs": [
-      "Soft Vegan Leatherette",
-      "Holds iPhone / Android Phones",
-      "Internal Card Holder Slots",
-      "Gold Chain Crossbody Strap"
+      "Brand: Matt Look",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Nail Art & Press-ons",
+      "SKU: COSM-071"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-8",
-    "name": "Silicone Squishy Sleeping Panda LED Night Lamp with Touch Sensor",
-    "hindiName": "सिलिकॉन स्क्विशी स्लीपिंग पांडा LED लैंप",
-    "category": "novelties",
-    "subcategory": "Silicone Night Lamps",
-    "price": 499,
-    "originalPrice": 899,
+    "id": "cosm-072",
+    "sku": "COSM-072",
+    "name": "Ocean Beauty Oval Pebble Matte Lipstick Set",
+    "brand": "Ocean Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1NkEJbUGSClG8KFumF-cBQ6aSyjp1lCTi=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1NkEJbUGSClG8KFumF-cBQ6aSyjp1lCTi=w600",
+      "https://lh3.googleusercontent.com/d/1LLbu_hW9uWelm517beWrqPkDu0SWDJEI=w600",
+      "https://lh3.googleusercontent.com/d/1gyhpNNpC7i4BqQhBCHO09grNdXR0ekiw=w600",
+      "https://lh3.googleusercontent.com/d/1iXNcv54LTFplGgxQdvul73dFyYhjnSvz=w600"
+    ],
+    "driveFileIds": [
+      "1NkEJbUGSClG8KFumF-cBQ6aSyjp1lCTi",
+      "1LLbu_hW9uWelm517beWrqPkDu0SWDJEI",
+      "1gyhpNNpC7i4BqQhBCHO09grNdXR0ekiw",
+      "1iXNcv54LTFplGgxQdvul73dFyYhjnSvz"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Ocean Beauty",
+    "description": "Experience rich color payoff with Ocean Beauty Oval Pebble Matte Lipstick 2 from Ocean Beauty. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Ocean Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-072"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-073",
+    "sku": "COSM-073",
+    "name": "Party Story Press On Nails Set",
+    "brand": "Party Story",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Nail Art & Press-ons",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1F8VqL0HqzsQZ3IJpPE3MyWPGYYkHa5Ch=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1F8VqL0HqzsQZ3IJpPE3MyWPGYYkHa5Ch=w600"
+    ],
+    "driveFileIds": [
+      "1F8VqL0HqzsQZ3IJpPE3MyWPGYYkHa5Ch"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Party Story",
+    "description": "Premium quality Party Story Press On Nails Set by Party Story designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Party Story",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Nail Art & Press-ons",
+      "SKU: COSM-073"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-074",
+    "sku": "COSM-074",
+    "name": "Chanlanya Jelly Moisturizing Lip Gloss with Keychain",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses & Balms",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1FEcPCbCRjSNECIsLFt5qCax2ZDAFer8D=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1FEcPCbCRjSNECIsLFt5qCax2ZDAFer8D=w600",
+      "https://lh3.googleusercontent.com/d/1howxYFb8PQYpO72MzTGMzUjHIa9lLJJw=w600"
+    ],
+    "driveFileIds": [
+      "1FEcPCbCRjSNECIsLFt5qCax2ZDAFer8D",
+      "1howxYFb8PQYpO72MzTGMzUjHIa9lLJJw"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Add brilliant shine and hydration with Chanlanya Jelly Moisturizing Lip Gloss with Keychain by Premium Retail. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses & Balms",
+      "SKU: COSM-074"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-075",
+    "sku": "COSM-075",
+    "name": "Chocolate Matte Lip Gloss and Lip Liner Duo",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/10ANyuz7sCNQEVHkaraiG7nEP9lOdJmAX=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/10ANyuz7sCNQEVHkaraiG7nEP9lOdJmAX=w600"
+    ],
+    "driveFileIds": [
+      "10ANyuz7sCNQEVHkaraiG7nEP9lOdJmAX"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Add brilliant shine and hydration with Chocolate Matte Lip Gloss and Lip Liner Duo by Premium Retail. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-075"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-076",
+    "sku": "COSM-076",
+    "name": "Cute Bear Lip Balm Pot Set",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Care & Treatments",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1qI_REKuuMgxjNNNABgdLHZBPGlGfaDSq=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1qI_REKuuMgxjNNNABgdLHZBPGlGfaDSq=w600"
+    ],
+    "driveFileIds": [
+      "1qI_REKuuMgxjNNNABgdLHZBPGlGfaDSq"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Premium quality Cute Bear Lip Balm Pot Set by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Care & Treatments",
+      "SKU: COSM-076"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-077",
+    "sku": "COSM-077",
+    "name": "Davis Recover Vitamin C and E Foundation",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1Gb-oUx56Rco4iTrts4tYNAA12Tra2jnH=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1Gb-oUx56Rco4iTrts4tYNAA12Tra2jnH=w600"
+    ],
+    "driveFileIds": [
+      "1Gb-oUx56Rco4iTrts4tYNAA12Tra2jnH"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Davis Recover Vitamin C and E Foundation by Premium Retail delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-077"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-078",
+    "sku": "COSM-078",
+    "name": "Diamond Beauty Fit Me 24H Matte Foundation",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1CZXlwfSDjWXK0F6LrNqXWbD3H-H2a4LG=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1CZXlwfSDjWXK0F6LrNqXWbD3H-H2a4LG=w600"
+    ],
+    "driveFileIds": [
+      "1CZXlwfSDjWXK0F6LrNqXWbD3H-H2a4LG"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Diamond Beauty Fit Me 24H Matte Foundation by Premium Retail delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-078"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-079",
+    "sku": "COSM-079",
+    "name": "Diamond Beauty Glass Like Dewy Lip Gloss",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1o47sZivjCgHDjeCdz3JD2TCDGAbrUaaM=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1o47sZivjCgHDjeCdz3JD2TCDGAbrUaaM=w600",
+      "https://lh3.googleusercontent.com/d/1Qp8D9RprV8NlShlEFD6U34oAtUc_pYYE=w600"
+    ],
+    "driveFileIds": [
+      "1o47sZivjCgHDjeCdz3JD2TCDGAbrUaaM",
+      "1Qp8D9RprV8NlShlEFD6U34oAtUc_pYYE"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Add brilliant shine and hydration with Diamond Beauty Glass Like Dewy Lip Gloss by Premium Retail. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-079"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-080",
+    "sku": "COSM-080",
+    "name": "Dual Ended Matte and Gloss Liquid Lipstick Graphic",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/15KwvVFZKhwyccTo4uHtnVbtkdg6kYHEw=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/15KwvVFZKhwyccTo4uHtnVbtkdg6kYHEw=w600"
+    ],
+    "driveFileIds": [
+      "15KwvVFZKhwyccTo4uHtnVbtkdg6kYHEw"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Dual Ended Matte and Gloss Liquid Lipstick Graphic from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-080"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-081",
+    "sku": "COSM-081",
+    "name": "Edge of Desire Lip Liner Pack of 10",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Liners",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1iCez90ZflpXQoKLh-_n4xJGmIMNm0Mf8=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1iCez90ZflpXQoKLh-_n4xJGmIMNm0Mf8=w600",
+      "https://lh3.googleusercontent.com/d/1P7kx4-z8SgZx2mb7JeArk1S44Mr-CqW1=w600"
+    ],
+    "driveFileIds": [
+      "1iCez90ZflpXQoKLh-_n4xJGmIMNm0Mf8",
+      "1P7kx4-z8SgZx2mb7JeArk1S44Mr-CqW1"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Define and sculpt your lips effortlessly with Edge of Desire Lip Liner Pack of 10 by Premium Retail. Features a smooth glide formula for precise contours and smudge-free lip makeup.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Liners",
+      "SKU: COSM-081"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-082",
+    "sku": "COSM-082",
+    "name": "Fluted Shell Matte Lipstick",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/10_MMBwM89XWMbe3X7Uq61eB880JKgWl9=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/10_MMBwM89XWMbe3X7Uq61eB880JKgWl9=w600",
+      "https://lh3.googleusercontent.com/d/1tN0cj315H4kEefdFaTouTvQgqtZRLz21=w600"
+    ],
+    "driveFileIds": [
+      "10_MMBwM89XWMbe3X7Uq61eB880JKgWl9",
+      "1tN0cj315H4kEefdFaTouTvQgqtZRLz21"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Fluted Shell Matte Lipstick from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-082"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-083",
+    "sku": "COSM-083",
+    "name": "Luxury Gold Knot Matte Lipstick",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1H6waP5EbHAN3xGF6S5d_3KmVf6ZzDNhs=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1H6waP5EbHAN3xGF6S5d_3KmVf6ZzDNhs=w600",
+      "https://lh3.googleusercontent.com/d/166R71avuA-n_BFZ0fAfBvoPUWLQMWR7S=w600"
+    ],
+    "driveFileIds": [
+      "1H6waP5EbHAN3xGF6S5d_3KmVf6ZzDNhs",
+      "166R71avuA-n_BFZ0fAfBvoPUWLQMWR7S"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Luxury Gold Knot Matte Lipstick 1 from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-083"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-084",
+    "sku": "COSM-084",
+    "name": "Matte Liquid Lipstick and Lip Liner Duo Magenta",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 34,
-    "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1KQnumjof7kkleGt6rl0qy6euEvM7Rtha=w600",
     "images": [
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1KQnumjof7kkleGt6rl0qy6euEvM7Rtha=w600"
     ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Squishy BPA-free silicone sleeping panda that changes warm glow modes when tapped.",
+    "driveFileIds": [
+      "1KQnumjof7kkleGt6rl0qy6euEvM7Rtha"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Matte Liquid Lipstick and Lip Liner Duo Magenta from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
     "specs": [
-      "Tap Control 3 Brightness Levels",
-      "100% Safe Washable Soft Silicone",
-      "USB Rechargeable (8h Glow)",
-      "Soothing Warm White Light"
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-084"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-9",
-    "name": "Cute Pear Shaped Silicone RGB Color Changing Night Light",
-    "hindiName": "क्यूट पियर सिलिकॉन RGB कलर चेंजिंग लाइट",
-    "category": "novelties",
-    "subcategory": "Silicone Night Lamps",
-    "price": 449,
+    "id": "cosm-085",
+    "sku": "COSM-085",
+    "name": "Mega Matte Lip Gloss Collection Vanity Box",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 599,
     "originalPrice": 799,
-    "rating": 5.0,
-    "reviewsCount": 35,
-    "image": "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1dEwhTuCIqo7S6_YIzeY1n_psGcl1KOyd=w600",
     "images": [
-      "https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1dEwhTuCIqo7S6_YIzeY1n_psGcl1KOyd=w600"
     ],
-    "badge": "Colorful",
-    "customizable": false,
-    "customType": "none",
-    "description": "Pear fruit shaped night light with dangling legs and 7-color cycling RGB tap mode.",
+    "driveFileIds": [
+      "1dEwhTuCIqo7S6_YIzeY1n_psGcl1KOyd"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Add brilliant shine and hydration with Mega Matte Lip Gloss Collection Vanity Box by Premium Retail. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
     "specs": [
-      "7-Color Rainbow Cycling RGB",
-      "Timer Function (30/60 Mins)",
-      "Soft Squishy Tactile Body",
-      "Bedside Table & Nursery Safe"
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-085"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-10",
-    "name": "Sleeping Duck Silicone Bedside Tap Night Lamp with Phone Stand",
-    "hindiName": "स्लीपिंग डक सिलिकॉन बेडसाइड टैप लैंप",
-    "category": "novelties",
-    "subcategory": "Silicone Night Lamps",
-    "price": 549,
-    "originalPrice": 999,
-    "rating": 5.0,
-    "reviewsCount": 36,
-    "image": "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
+    "id": "cosm-086",
+    "sku": "COSM-086",
+    "name": "Perfect Touch Foundation Cream",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1NX53EBGbFojZkOI4JvPT2hFMBe-QvSgR=w600",
     "images": [
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1NX53EBGbFojZkOI4JvPT2hFMBe-QvSgR=w600",
+      "https://lh3.googleusercontent.com/d/14KZ0LYFSj1hLk931yDvB19WX0-rPQ3hS=w600"
     ],
-    "badge": "Trending",
-    "customizable": false,
-    "customType": "none",
-    "description": "Relaxing duck laying flat with long rubbery legs that conveniently prop up your smartphone.",
+    "driveFileIds": [
+      "1NX53EBGbFojZkOI4JvPT2hFMBe-QvSgR",
+      "14KZ0LYFSj1hLk931yDvB19WX0-rPQ3hS"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Perfect Touch 5 in 1 BB Foundation Cream by Premium Retail delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
     "specs": [
-      "Doubles as a Smartphone Stand",
-      "Touch Sensitive On/Off & Dimming",
-      "Warm Eye-Care Ambient Light",
-      "Rechargeable 1200mAh Battery"
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-086"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-11",
-    "name": "Aesthetic LED Wooden Digital Smart Alarm Clock with Date & Temp",
-    "hindiName": "एस्थेटिक वुडन डिजिटल स्मार्ट अलार्म क्लॉक",
-    "category": "novelties",
-    "subcategory": "Smart Desk Clocks",
-    "price": 499,
-    "originalPrice": 999,
+    "id": "cosm-087",
+    "sku": "COSM-087",
+    "name": "Ribbed Matte Lipstick Dual Pack",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1dLAGXAb6064EMbG74LwWGa5vfMmYmG3j=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1dLAGXAb6064EMbG74LwWGa5vfMmYmG3j=w600"
+    ],
+    "driveFileIds": [
+      "1dLAGXAb6064EMbG74LwWGa5vfMmYmG3j"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Ribbed Matte Lipstick Dual Pack from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-087"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-088",
+    "sku": "COSM-088",
+    "name": "Trending Dripping Bullet Lipstick",
+    "brand": "Premium Retail",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1TuY1e6TLRyF1EPa7Pu2Jc3M7v5oVzaXw=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1TuY1e6TLRyF1EPa7Pu2Jc3M7v5oVzaXw=w600",
+      "https://lh3.googleusercontent.com/d/1eCGV8gjx9t9SMdMfbyJVWaprx1jhOV1R=w600",
+      "https://lh3.googleusercontent.com/d/1o6405hLb4OTJzRPMS5L9tXez2jy3v53q=w600",
+      "https://lh3.googleusercontent.com/d/1phvKcC511HMmGXMeerQ1gK2qD-RA5NA0=w600",
+      "https://lh3.googleusercontent.com/d/17X7Ba797M2YHYm40o8-0X3g-hE6BPBDX=w600"
+    ],
+    "driveFileIds": [
+      "1TuY1e6TLRyF1EPa7Pu2Jc3M7v5oVzaXw",
+      "1eCGV8gjx9t9SMdMfbyJVWaprx1jhOV1R",
+      "1o6405hLb4OTJzRPMS5L9tXez2jy3v53q",
+      "1phvKcC511HMmGXMeerQ1gK2qD-RA5NA0",
+      "17X7Ba797M2YHYm40o8-0X3g-hE6BPBDX"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Premium Retail",
+    "description": "Experience rich color payoff with Trending Dripping Bullet Lipstick 1 from Premium Retail. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-088"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-089",
+    "sku": "COSM-089",
+    "name": "RENEE Everyday Liquid Lipstick",
+    "brand": "RENEE",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 399,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1_KN8k5ga0GiKteAu7rsP6VKRfaI2erP9=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1_KN8k5ga0GiKteAu7rsP6VKRfaI2erP9=w600"
+    ],
+    "driveFileIds": [
+      "1_KN8k5ga0GiKteAu7rsP6VKRfaI2erP9"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "RENEE",
+    "description": "Experience rich color payoff with Renee Everyday Liquid Lipstick from RENEE. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: RENEE",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-089"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-090",
+    "sku": "COSM-090",
+    "name": "RENEE Everyday Matte Lipstick",
+    "brand": "RENEE",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 399,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1UUQfllP0QQU5rFq4SV32v8TgxKpB2BON=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1UUQfllP0QQU5rFq4SV32v8TgxKpB2BON=w600",
+      "https://lh3.googleusercontent.com/d/1FrmPsE68qfUuACnrr0e9wTzDKJZZRL66=w600",
+      "https://lh3.googleusercontent.com/d/102w7cZ7OEoV0eK831tU_TasY8g_nZaWv=w600",
+      "https://lh3.googleusercontent.com/d/1NSEeefvzvMlKLzEcT6aA4bEZsaFih0H4=w600",
+      "https://lh3.googleusercontent.com/d/1WfcCEKA4i_3X4LHt1p51-dzTS2NGgzrA=w600",
+      "https://lh3.googleusercontent.com/d/1npDWqLRZMQW-6iVQGwaFgL1p0Awn_jnO=w600",
+      "https://lh3.googleusercontent.com/d/1Ml0oceUA3iCw7qDCrVHFNqHPRpsRm0tX=w600"
+    ],
+    "driveFileIds": [
+      "1UUQfllP0QQU5rFq4SV32v8TgxKpB2BON",
+      "1FrmPsE68qfUuACnrr0e9wTzDKJZZRL66",
+      "102w7cZ7OEoV0eK831tU_TasY8g_nZaWv",
+      "1NSEeefvzvMlKLzEcT6aA4bEZsaFih0H4",
+      "1WfcCEKA4i_3X4LHt1p51-dzTS2NGgzrA",
+      "1npDWqLRZMQW-6iVQGwaFgL1p0Awn_jnO",
+      "1Ml0oceUA3iCw7qDCrVHFNqHPRpsRm0tX"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "RENEE",
+    "description": "Experience rich color payoff with Renee Everyday Matte Lipstick from RENEE. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: RENEE",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-090"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-091",
+    "sku": "COSM-091",
+    "name": "RENEE Matte Lip Color Play of Clay Lipstick",
+    "brand": "RENEE",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 399,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1hEyvuoZfgiYVR_4hDNLBiahUJPZuzdoi=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1hEyvuoZfgiYVR_4hDNLBiahUJPZuzdoi=w600"
+    ],
+    "driveFileIds": [
+      "1hEyvuoZfgiYVR_4hDNLBiahUJPZuzdoi"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "RENEE",
+    "description": "Experience rich color payoff with RENEE Matte Lip Color Play of Clay Lipstick from RENEE. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: RENEE",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-091"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-092",
+    "sku": "COSM-092",
+    "name": "RENEE Stay With Me Matte Lip Color Mad For Maroon",
+    "brand": "RENEE",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Products",
+    "price": 399,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/17PB-5zD8ybN5sd4A7c_0qL6jdOvyhSTk=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/17PB-5zD8ybN5sd4A7c_0qL6jdOvyhSTk=w600",
+      "https://lh3.googleusercontent.com/d/1kjLi4In2cXeFMcsORkQ7hVYtYamwHG8X=w600"
+    ],
+    "driveFileIds": [
+      "17PB-5zD8ybN5sd4A7c_0qL6jdOvyhSTk",
+      "1kjLi4In2cXeFMcsORkQ7hVYtYamwHG8X"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "RENEE",
+    "description": "Premium quality RENEE Stay With Me Matte Lip Color Mad For Maroon by RENEE designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: RENEE",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Products",
+      "SKU: COSM-092"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-093",
+    "sku": "COSM-093",
+    "name": "SS Beauty High Coverage Waterproof Foundation",
+    "brand": "SS Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1tXqqcvXy7y_PvO6pNT-bGwRJwVbLhAXl=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1tXqqcvXy7y_PvO6pNT-bGwRJwVbLhAXl=w600"
+    ],
+    "driveFileIds": [
+      "1tXqqcvXy7y_PvO6pNT-bGwRJwVbLhAXl"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "SS Beauty",
+    "description": "SS Beauty High Coverage Waterproof Foundation by SS Beauty delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: SS Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-093"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-094",
+    "sku": "COSM-094",
+    "name": "SS Beauty Oil Free Natural Liquid Foundation 50ml",
+    "brand": "SS Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 369,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1qThwI6ZLiIakvS1SS4zeDT5HU9CXbDEa=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1qThwI6ZLiIakvS1SS4zeDT5HU9CXbDEa=w600"
+    ],
+    "driveFileIds": [
+      "1qThwI6ZLiIakvS1SS4zeDT5HU9CXbDEa"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "SS Beauty",
+    "description": "SS Beauty Oil Free Natural Liquid Foundation 50ml by SS Beauty delivers high-definition flawless coverage with a smooth, blendable matte finish. Lightweight, oil-free formula designed for long-lasting all-day wear.",
+    "specs": [
+      "Brand: SS Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-094"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-095",
+    "sku": "COSM-095",
+    "name": "SUGAR Matte As Hell Crayon Lipstick",
+    "brand": "SUGAR",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 479,
+    "originalPrice": 599,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/1gWmekGrdXJK9mEUFe3a_h4QrC5mpRimi=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1gWmekGrdXJK9mEUFe3a_h4QrC5mpRimi=w600",
+      "https://lh3.googleusercontent.com/d/114b1yHIrYp7X-f_PgRW4wMBKXetIFa-9=w600",
+      "https://lh3.googleusercontent.com/d/1S5VgFh7nKKWPDlG6Pdm_zvwEuUWJ7Fix=w600"
+    ],
+    "driveFileIds": [
+      "1gWmekGrdXJK9mEUFe3a_h4QrC5mpRimi",
+      "114b1yHIrYp7X-f_PgRW4wMBKXetIFa-9",
+      "1S5VgFh7nKKWPDlG6Pdm_zvwEuUWJ7Fix"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "SUGAR",
+    "description": "Experience rich color payoff with SUGAR Matte As Hell Crayon Lipstick from SUGAR. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: SUGAR",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-095"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-096",
+    "sku": "COSM-096",
+    "name": "SUGAR Satin Comfort Lipstick",
+    "brand": "SUGAR",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 479,
+    "originalPrice": 599,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1ka75OhV4AnYROxQe3C5zBMLcrfqWV5nd=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ka75OhV4AnYROxQe3C5zBMLcrfqWV5nd=w600",
+      "https://lh3.googleusercontent.com/d/1F69mYgInvlYEgDCqQVyGBKYBFoIfIPSV=w600",
+      "https://lh3.googleusercontent.com/d/1RZ5AboII10E3gOZe-YSXheribqbjZVaF=w600",
+      "https://lh3.googleusercontent.com/d/1AEgl92FObNHe9L-IrTuKtJNmNgkzKXKx=w600"
+    ],
+    "driveFileIds": [
+      "1ka75OhV4AnYROxQe3C5zBMLcrfqWV5nd",
+      "1F69mYgInvlYEgDCqQVyGBKYBFoIfIPSV",
+      "1RZ5AboII10E3gOZe-YSXheribqbjZVaF",
+      "1AEgl92FObNHe9L-IrTuKtJNmNgkzKXKx"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "SUGAR",
+    "description": "Experience rich color payoff with SUGAR Premium Satin Lipstick with Swatch from SUGAR. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: SUGAR",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-096"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-097",
+    "sku": "COSM-097",
+    "name": "Kuromi Character Glitter Lip Gloss",
+    "brand": "Sanrio Kuromi",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses & Balms",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1iAzvFElkyb-6TDXYXOYte7lzEUTUlC6X=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1iAzvFElkyb-6TDXYXOYte7lzEUTUlC6X=w600",
+      "https://lh3.googleusercontent.com/d/1bJahY-QXTOKV8AtY_aNTFgJRukZx1hXJ=w600"
+    ],
+    "driveFileIds": [
+      "1iAzvFElkyb-6TDXYXOYte7lzEUTUlC6X",
+      "1bJahY-QXTOKV8AtY_aNTFgJRukZx1hXJ"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Sanrio Kuromi",
+    "description": "Add brilliant shine and hydration with Kuromi Character Glitter Lip Gloss by Sanrio Kuromi. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Sanrio Kuromi",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses & Balms",
+      "SKU: COSM-097"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-098",
+    "sku": "COSM-098",
+    "name": "Shills Professional Matte Liquid Lipstick",
+    "brand": "Shills Professional",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 229,
+    "originalPrice": 299,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1RQO4HNMWJMEyqMHFa0w3TDPDnRVHZDX-=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1RQO4HNMWJMEyqMHFa0w3TDPDnRVHZDX-=w600"
+    ],
+    "driveFileIds": [
+      "1RQO4HNMWJMEyqMHFa0w3TDPDnRVHZDX-"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Shills Professional",
+    "description": "Experience rich color payoff with Shills Professional Matte Liquid Lipstick from Shills Professional. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Shills Professional",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-098"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-099",
+    "sku": "COSM-099",
+    "name": "Sky High Lip Gloss and Lip Liner Duo",
+    "brand": "Sky High",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lip Glosses",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1mZA0xi3G4AagmCOeZ_DHDmRf57xUueQQ=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1mZA0xi3G4AagmCOeZ_DHDmRf57xUueQQ=w600",
+      "https://lh3.googleusercontent.com/d/16eNAQsmuFzGKav9PWVI1ZhK_LHWB57Ke=w600",
+      "https://lh3.googleusercontent.com/d/1beH7DW91HXQSp_cVkU3Qt47-JKIn-jrg=w600",
+      "https://lh3.googleusercontent.com/d/1RMhrM69ZhunxMFr9SBLx2tISdaVyNpAW=w600"
+    ],
+    "driveFileIds": [
+      "1mZA0xi3G4AagmCOeZ_DHDmRf57xUueQQ",
+      "16eNAQsmuFzGKav9PWVI1ZhK_LHWB57Ke",
+      "1beH7DW91HXQSp_cVkU3Qt47-JKIn-jrg",
+      "1RMhrM69ZhunxMFr9SBLx2tISdaVyNpAW"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Sky High",
+    "description": "Add brilliant shine and hydration with Sky High Lip Gloss and Lip Liner Duo by Sky High. Non-sticky texture provides a plumping effect with irresistible color and moisture.",
+    "specs": [
+      "Brand: Sky High",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lip Glosses",
+      "SKU: COSM-099"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-100",
+    "sku": "COSM-100",
+    "name": "Sky High Liquid Lipstick 5-Piece Bundle",
+    "brand": "Sky High",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 37,
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1O7uFI4uLEkZeVnp8QK6TYh0e7k9O2qAj=w600",
     "images": [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1O7uFI4uLEkZeVnp8QK6TYh0e7k9O2qAj=w600"
     ],
-    "badge": "Modern Desk",
-    "customizable": false,
-    "customType": "none",
-    "description": "Minimalist natural wood grain block that displays digital LED time, date, and room temperature.",
+    "driveFileIds": [
+      "1O7uFI4uLEkZeVnp8QK6TYh0e7k9O2qAj"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Sky High",
+    "description": "Experience rich color payoff with Sky High Liquid Lipstick 5-Piece Bundle from Sky High. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
     "specs": [
-      "Real Wood Grain Texture",
-      "Sound Control Voice Wake-Up",
-      "Displays Time, Date & Room Temp",
-      "Dual Power (USB or AAA)"
+      "Brand: Sky High",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-100"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-12",
-    "name": "Cute Rabbit Ear RGB Bedside Alarm Clock with Night Light",
-    "hindiName": "क्यूट रैबिट ईयर RGB बेडसाइड अलार्म क्लॉक",
-    "category": "novelties",
-    "subcategory": "Smart Desk Clocks",
-    "price": 599,
-    "originalPrice": 1099,
+    "id": "cosm-101",
+    "sku": "COSM-101",
+    "name": "Swiss Beauty Duo Lipstick & Gloss",
+    "brand": "Swiss Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 199,
+    "originalPrice": 249,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1bV35hJtM6Jq5GJ6fFuOkRD7Tl0L2dcHn=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1bV35hJtM6Jq5GJ6fFuOkRD7Tl0L2dcHn=w600",
+      "https://lh3.googleusercontent.com/d/1AywdT3wGEDCFXLOdONj0DG2jO6DjyH1q=w600",
+      "https://lh3.googleusercontent.com/d/1oUGfBiqKdY03VQ1EssvuBS8rym8qQQtH=w600",
+      "https://lh3.googleusercontent.com/d/1hwtTxSQ4ne3EI5XF5DOQI0UkdEcpLaEE=w600",
+      "https://lh3.googleusercontent.com/d/1vfN2gAk_5d8wMeNro6-PKb-cwF4Tr_sq=w600"
+    ],
+    "driveFileIds": [
+      "1bV35hJtM6Jq5GJ6fFuOkRD7Tl0L2dcHn",
+      "1AywdT3wGEDCFXLOdONj0DG2jO6DjyH1q",
+      "1oUGfBiqKdY03VQ1EssvuBS8rym8qQQtH",
+      "1hwtTxSQ4ne3EI5XF5DOQI0UkdEcpLaEE",
+      "1vfN2gAk_5d8wMeNro6-PKb-cwF4Tr_sq"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Swiss Beauty",
+    "description": "Experience rich color payoff with Swiss Beauty Duo Lipstick & Gloss Product Display from Swiss Beauty. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Swiss Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-101"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-102",
+    "sku": "COSM-102",
+    "name": "Swiss Beauty Satin Comfort Lipstick",
+    "brand": "Swiss Beauty",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Lipsticks",
+    "price": 199,
+    "originalPrice": 249,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1sKw1GB7JoYPRuQ3DjMg1ifvsKBvXrEGW=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1sKw1GB7JoYPRuQ3DjMg1ifvsKBvXrEGW=w600",
+      "https://lh3.googleusercontent.com/d/1NWQbFRKwR21y8BceRjmPJGkoEuILcJJn=w600",
+      "https://lh3.googleusercontent.com/d/1iMMi5czFdinLLSR-6u_gV0plYvemELJi=w600"
+    ],
+    "driveFileIds": [
+      "1sKw1GB7JoYPRuQ3DjMg1ifvsKBvXrEGW",
+      "1NWQbFRKwR21y8BceRjmPJGkoEuILcJJn",
+      "1iMMi5czFdinLLSR-6u_gV0plYvemELJi"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Swiss Beauty",
+    "description": "Experience rich color payoff with Swiss Beauty Satin Comfort Lipstick 20 Shades Overview from Swiss Beauty. Formulated with ultra-pigmented matte and moisturizing agents that glide smoothly for velvety soft, kiss-proof lips.",
+    "specs": [
+      "Brand: Swiss Beauty",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Lipsticks",
+      "SKU: COSM-102"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "cosm-103",
+    "sku": "COSM-103",
+    "name": "Teen Teen 7 in One BB Cream SPF 33",
+    "brand": "Teen Teen",
+    "category": "cosmetics",
+    "categoryName": "Beauty & Cosmetics",
+    "subcategory": "Foundations & Face Base",
+    "price": 279,
+    "originalPrice": 349,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1vKA_9RtbKEBPcgXNn60pFwc-JUQo_jNB=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1vKA_9RtbKEBPcgXNn60pFwc-JUQo_jNB=w600"
+    ],
+    "driveFileIds": [
+      "1vKA_9RtbKEBPcgXNn60pFwc-JUQo_jNB"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Teen Teen",
+    "description": "Teen Teen 7 in One BB Cream SPF 33 Shades Chart by Teen Teen combines skincare and natural coverage. Infused with SPF and nourishing ingredients to protect, hydrate, and even out skin tone.",
+    "specs": [
+      "Brand: Teen Teen",
+      "Category: Beauty & Cosmetics",
+      "Subcategory: Foundations & Face Base",
+      "SKU: COSM-103"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "kids-104",
+    "sku": "KIDS-104",
+    "name": "Cartoon Bear Sipper Water Bottle",
+    "brand": "Premium Retail",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
-    "reviewsCount": 38,
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1Mc7SPQN4mQD1h3_T7XZffOK5camq7ZZ9=w600",
     "images": [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1Mc7SPQN4mQD1h3_T7XZffOK5camq7ZZ9=w600"
     ],
-    "badge": "Cute Gadget",
-    "customizable": false,
-    "customType": "none",
-    "description": "Bunny ears glowing night light clock with snooze function, sunrise wake-up simulation and tunes.",
+    "driveFileIds": [
+      "1Mc7SPQN4mQD1h3_T7XZffOK5camq7ZZ9"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "BPA-free Cartoon Bear Sipper Water Bottle featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
     "specs": [
-      "Bunny Ears RGB Light Glow",
-      "6 Fun Wake-Up Chime Ringtones",
-      "Countdown Timer & Snooze",
-      "USB Rechargeable Lithium Battery"
+      "Brand: Premium Retail",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-104"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-13",
-    "name": "Aesthetic Pastel Mini Mechanical Desk Flip Clock",
-    "hindiName": "एस्थेटिक पेस्टल मैकेनिकल डेस्क फ्लिप क्लॉक",
-    "category": "novelties",
-    "subcategory": "Smart Desk Clocks",
-    "price": 449,
-    "originalPrice": 799,
+    "id": "kids-105",
+    "sku": "KIDS-105",
+    "name": "Cartoon Bunny Rocket Sipper Water Bottle",
+    "brand": "Premium Retail",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1RluVrF-CFxc02MrSt_0BZF9ebYilYs5z=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1RluVrF-CFxc02MrSt_0BZF9ebYilYs5z=w600"
+    ],
+    "driveFileIds": [
+      "1RluVrF-CFxc02MrSt_0BZF9ebYilYs5z"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "BPA-free Cartoon Bunny Rocket Sipper Water Bottle featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-105"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "kids-106",
+    "sku": "KIDS-106",
+    "name": "Cinnamoroll Cartoon Sipper Water Bottle",
+    "brand": "Premium Retail",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1LKVR9Yb_YSnuJcwf0cyDR1e957Qv52EY=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1LKVR9Yb_YSnuJcwf0cyDR1e957Qv52EY=w600"
+    ],
+    "driveFileIds": [
+      "1LKVR9Yb_YSnuJcwf0cyDR1e957Qv52EY"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "BPA-free Cinnamoroll Cartoon Sipper Water Bottle featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-106"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "kids-107",
+    "sku": "KIDS-107",
+    "name": "Dual Drink Hello Gradient Square Water Bottle",
+    "brand": "Premium Retail",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1U4sM6CKmKI0gD8-15mE6GEWi5HLooCjf=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1U4sM6CKmKI0gD8-15mE6GEWi5HLooCjf=w600",
+      "https://lh3.googleusercontent.com/d/1PGCyzLeMfPBCeZkN4X0gjS4iGRArHPP8=w600",
+      "https://lh3.googleusercontent.com/d/187TDqQ7uYVyDEODrHHm5FjRTeVeO-k4M=w600"
+    ],
+    "driveFileIds": [
+      "1U4sM6CKmKI0gD8-15mE6GEWi5HLooCjf",
+      "1PGCyzLeMfPBCeZkN4X0gjS4iGRArHPP8",
+      "187TDqQ7uYVyDEODrHHm5FjRTeVeO-k4M"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "BPA-free Dual Drink Hello Gradient Square Water Bottle 1 featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-107"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "kids-108",
+    "sku": "KIDS-108",
+    "name": "Stitch Cartoon Sipper Water Bottle",
+    "brand": "Premium Retail",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
-    "reviewsCount": 39,
-    "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1b_gkTxjp4Adc7zkLF6Eg1z6cVh5RiBVW=w600",
     "images": [
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1b_gkTxjp4Adc7zkLF6Eg1z6cVh5RiBVW=w600",
+      "https://lh3.googleusercontent.com/d/1JaP86AzWIJ0cSIGLFQDMPRkCUR0mVt6X=w600",
+      "https://lh3.googleusercontent.com/d/1CKNpgCyC173owfoZQyC3mK_KYKkadz9q=w600",
+      "https://lh3.googleusercontent.com/d/1HzUmuWx9sY00mxwpq0PzBKL8O9PyMmZ6=w600"
     ],
-    "badge": "Retro Charm",
-    "customizable": false,
-    "customType": "none",
-    "description": "Vintage style automatic mechanical page-turning flip clock with pastel housing.",
+    "driveFileIds": [
+      "1b_gkTxjp4Adc7zkLF6Eg1z6cVh5RiBVW",
+      "1JaP86AzWIJ0cSIGLFQDMPRkCUR0mVt6X",
+      "1CKNpgCyC173owfoZQyC3mK_KYKkadz9q",
+      "1HzUmuWx9sY00mxwpq0PzBKL8O9PyMmZ6"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "BPA-free Stitch Cartoon Sipper Water Bottle 1 featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
     "specs": [
-      "Retro Auto-Flipping Numbers",
-      "Ultra Quiet Quartz Precision",
-      "Compact Study Desk Footprint",
-      "Single Battery Powered"
+      "Brand: Premium Retail",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-108"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-14",
-    "name": "Mini Astronaut Capsule Ultrasonic Desk Cool Mist Humidifier",
-    "hindiName": "मिनी एस्ट्रोनॉट कैप्सूल अल्ट्रासोनिक ह्यूमिडिफायर",
-    "category": "novelties",
-    "subcategory": "Mini Mist Humidifiers",
-    "price": 499,
-    "originalPrice": 899,
+    "id": "kids-109",
+    "sku": "KIDS-109",
+    "name": "Kuromi Cartoon Sipper Water Bottle",
+    "brand": "Sanrio Kuromi",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1SdYnFsfjNjjTtpM7KseZT89CCyHmssoJ=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1SdYnFsfjNjjTtpM7KseZT89CCyHmssoJ=w600"
+    ],
+    "driveFileIds": [
+      "1SdYnFsfjNjjTtpM7KseZT89CCyHmssoJ"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Sanrio Kuromi",
+    "description": "BPA-free Kuromi Cartoon Sipper Water Bottle featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
+    "specs": [
+      "Brand: Sanrio Kuromi",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-109"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "kids-110",
+    "sku": "KIDS-110",
+    "name": "My Melody Cartoon Sipper Water Bottle",
+    "brand": "Sanrio My Melody",
+    "category": "lifestyle",
+    "categoryName": "Kids & Lifestyle Accessories",
+    "subcategory": "Water Bottles & Sippers",
+    "price": 349,
+    "originalPrice": 499,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/1r7hFFfuisMPGzO1qDjO_9bBEIN5BrPm5=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1r7hFFfuisMPGzO1qDjO_9bBEIN5BrPm5=w600",
+      "https://lh3.googleusercontent.com/d/1uEAlM4VHRo6MKgo_89jq5VAYjIFTd15R=w600"
+    ],
+    "driveFileIds": [
+      "1r7hFFfuisMPGzO1qDjO_9bBEIN5BrPm5",
+      "1uEAlM4VHRo6MKgo_89jq5VAYjIFTd15R"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Sanrio My Melody",
+    "description": "BPA-free My Melody Cartoon Sipper Water Bottle 1 featuring leak-proof lid, ergonomic grip, and cute aesthetic design, perfect for school, office, travel, and daily hydration.",
+    "specs": [
+      "Brand: Sanrio My Melody",
+      "Category: Kids & Lifestyle Accessories",
+      "Subcategory: Water Bottles & Sippers",
+      "SKU: KIDS-110"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-111",
+    "sku": "SKIN-111",
+    "name": "Dr Rashel Korean Glass Skin Essence Face Wash",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face Wash & Cleansers",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1QaKaxv8dulPTAt1Lk9xj6o0_9uSm_Ob1=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1QaKaxv8dulPTAt1Lk9xj6o0_9uSm_Ob1=w600"
+    ],
+    "driveFileIds": [
+      "1QaKaxv8dulPTAt1Lk9xj6o0_9uSm_Ob1"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Dr Rashel Korean Glass Skin Essence Face Wash deeply cleanses and purifies skin while locking in hydration. Leaves complexion radiant, refreshed, and glowing.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face Wash & Cleansers",
+      "SKU: SKIN-111"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-112",
+    "sku": "SKIN-112",
+    "name": "Dr Rashel Pearl Face Pack",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face Packs & Masks",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1lzvs3IntlLZwgHp8dYCHA8g8hUkkjnMO=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1lzvs3IntlLZwgHp8dYCHA8g8hUkkjnMO=w600"
+    ],
+    "driveFileIds": [
+      "1lzvs3IntlLZwgHp8dYCHA8g8hUkkjnMO"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Revitalize your skincare routine with Dr Rashel Pearl Face Pack. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face Packs & Masks",
+      "SKU: SKIN-112"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-113",
+    "sku": "SKIN-113",
+    "name": "Dr Rashel Vitamin C Cream",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Moisturizers & Creams",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1-osYn1gbWasv1KCdCBTIXvcqM-Y77PA1=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1-osYn1gbWasv1KCdCBTIXvcqM-Y77PA1=w600"
+    ],
+    "driveFileIds": [
+      "1-osYn1gbWasv1KCdCBTIXvcqM-Y77PA1"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Premium quality Dr Rashel Vitamin C Cream by Dr. Rashel designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Moisturizers & Creams",
+      "SKU: SKIN-113"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-114",
+    "sku": "SKIN-114",
+    "name": "Dr Rashel Vitamin C Face Pack",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face Packs & Masks",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1JQj4sXsMiGS6Rs5V3O39bQiyV03a3Ehy=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1JQj4sXsMiGS6Rs5V3O39bQiyV03a3Ehy=w600",
+      "https://lh3.googleusercontent.com/d/1c7Nj-dkxX0YiHR1NuhNL60zsycB_DY6l=w600"
+    ],
+    "driveFileIds": [
+      "1JQj4sXsMiGS6Rs5V3O39bQiyV03a3Ehy",
+      "1c7Nj-dkxX0YiHR1NuhNL60zsycB_DY6l"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Revitalize your skincare routine with Dr Rashel Vitamin C Face Pack 1. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face Packs & Masks",
+      "SKU: SKIN-114"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-115",
+    "sku": "SKIN-115",
+    "name": "Dr Rashel Vitamin C Scrub",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face & Body Scrubs",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1mL6xPtSJeQHlYv1I6efEjrncjflCsKIX=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1mL6xPtSJeQHlYv1I6efEjrncjflCsKIX=w600",
+      "https://lh3.googleusercontent.com/d/1tXvVR3sfkqprU8ALhcXRWOvFgRSKHM0k=w600"
+    ],
+    "driveFileIds": [
+      "1mL6xPtSJeQHlYv1I6efEjrncjflCsKIX",
+      "1tXvVR3sfkqprU8ALhcXRWOvFgRSKHM0k"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Revitalize your skincare routine with Dr Rashel Vitamin C Scrub 1. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face & Body Scrubs",
+      "SKU: SKIN-115"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-116",
+    "sku": "SKIN-116",
+    "name": "Dr Rashel White Skin Face Pack",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face Packs & Masks",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
     "rating": 5.0,
     "reviewsCount": 40,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
+    "image": "https://lh3.googleusercontent.com/d/1LSOS9J1L_Tn7eSvu5I7pMI_kS0f69DWr=w600",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1LSOS9J1L_Tn7eSvu5I7pMI_kS0f69DWr=w600"
     ],
-    "badge": "Bestseller",
-    "customizable": false,
-    "customType": "none",
-    "description": "Silent ultrasonic cool mist maker with cute astronaut figurine inside cockpit with rainbow lights.",
+    "driveFileIds": [
+      "1LSOS9J1L_Tn7eSvu5I7pMI_kS0f69DWr"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Revitalize your skincare routine with Dr Rashel White Skin Face Pack. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
     "specs": [
-      "300ml Water Tank (8h Mist)",
-      "Super Quiet (<30dB) Ultrasonic Spray",
-      "7-Color Rainbow Ambient Light",
-      "USB Powered with Auto-Off Sensor"
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face Packs & Masks",
+      "SKU: SKIN-116"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-15",
-    "name": "Cute Cat Figurine USB Tabletop Mist Maker with Rainbow Light",
-    "hindiName": "क्यूट कैट टेबलटॉप मिस्ट मेकर लाइट सहित",
-    "category": "novelties",
-    "subcategory": "Mini Mist Humidifiers",
-    "price": 449,
+    "id": "skin-117",
+    "sku": "SKIN-117",
+    "name": "Dr Rashel White Skin Scrub",
+    "brand": "Dr. Rashel",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face & Body Scrubs",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1ar_QmPOtj62cd_CEjSyzicWZ878WPL2Y=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ar_QmPOtj62cd_CEjSyzicWZ878WPL2Y=w600",
+      "https://lh3.googleusercontent.com/d/1F87np2lNsVK91DFY4BQUzeJzxU9z9C1R=w600"
+    ],
+    "driveFileIds": [
+      "1ar_QmPOtj62cd_CEjSyzicWZ878WPL2Y",
+      "1F87np2lNsVK91DFY4BQUzeJzxU9z9C1R"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Dr. Rashel",
+    "description": "Revitalize your skincare routine with Dr Rashel White Skin Scrub 1. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
+    "specs": [
+      "Brand: Dr. Rashel",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face & Body Scrubs",
+      "SKU: SKIN-117"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "skin-118",
+    "sku": "SKIN-118",
+    "name": "DILY Glow Charcoal Gel Mask Scrub",
+    "brand": "Premium Retail",
+    "category": "skincare",
+    "categoryName": "Skincare & Personal Care",
+    "subcategory": "Face & Body Scrubs",
+    "price": 299,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1IRbjSRQmrDB88VsPN-aZVYhiHYqia_ub=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1IRbjSRQmrDB88VsPN-aZVYhiHYqia_ub=w600"
+    ],
+    "driveFileIds": [
+      "1IRbjSRQmrDB88VsPN-aZVYhiHYqia_ub"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Revitalize your skincare routine with DILY Glow Charcoal Gel Mask Scrub. Gently exfoliates and detoxifies pores to unveil a clearer, visibly smooth skin texture.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Skincare & Personal Care",
+      "Subcategory: Face & Body Scrubs",
+      "SKU: SKIN-118"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-119",
+    "sku": "STAT-119",
+    "name": "Spider-Man 3D Embossed Pencil Case",
+    "brand": "Marvel Spider-Man",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Cases & Pouches",
+    "price": 279,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/17aEtuokl-gFYAYzrzP3o-t_mc5Fr0KhD=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/17aEtuokl-gFYAYzrzP3o-t_mc5Fr0KhD=w600",
+      "https://lh3.googleusercontent.com/d/196hN1C2BwannZn4TyrWko_piD_KtZeiQ=w600",
+      "https://lh3.googleusercontent.com/d/18fLdNiu5pWtTpMNttd2f8-V4fnSvPhqv=w600"
+    ],
+    "driveFileIds": [
+      "17aEtuokl-gFYAYzrzP3o-t_mc5Fr0KhD",
+      "196hN1C2BwannZn4TyrWko_piD_KtZeiQ",
+      "18fLdNiu5pWtTpMNttd2f8-V4fnSvPhqv"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Marvel Spider-Man",
+    "description": "Durable and stylish Spider-Man 3D Embossed Pencil Case 1 featuring vibrant 3D embossed designs, spacious dual-compartment interior, and premium zipper closure for stationery essentials.",
+    "specs": [
+      "Brand: Marvel Spider-Man",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Cases & Pouches",
+      "SKU: STAT-119"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-120",
+    "sku": "STAT-120",
+    "name": "3D Embossed Anime Girl Pencil Case",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Cases & Pouches",
+    "price": 279,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/17wL24o7JZAvAJdmNAepzHhGleFXAuPS4=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/17wL24o7JZAvAJdmNAepzHhGleFXAuPS4=w600",
+      "https://lh3.googleusercontent.com/d/19LYevXd3Acr9aXuDOoZLZ_yDA6U6yHfb=w600",
+      "https://lh3.googleusercontent.com/d/1NjQClmz7whzN0PrF2WfCCWetH4VGKw_9=w600"
+    ],
+    "driveFileIds": [
+      "17wL24o7JZAvAJdmNAepzHhGleFXAuPS4",
+      "19LYevXd3Acr9aXuDOoZLZ_yDA6U6yHfb",
+      "1NjQClmz7whzN0PrF2WfCCWetH4VGKw_9"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Durable and stylish 3D Embossed Anime Girl Pencil Case 1 featuring vibrant 3D embossed designs, spacious dual-compartment interior, and premium zipper closure for stationery essentials.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Cases & Pouches",
+      "SKU: STAT-120"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-121",
+    "sku": "STAT-121",
+    "name": "Capybara Geometry Ruler Set 4-Piece",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Rulers & Geometry",
+    "price": 599,
     "originalPrice": 799,
-    "rating": 5.0,
-    "reviewsCount": 41,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 10,
+    "image": "https://lh3.googleusercontent.com/d/1R2KM8jNWB1TRbQzeMo5lyaN99PIcXd5S=w600",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1R2KM8jNWB1TRbQzeMo5lyaN99PIcXd5S=w600",
+      "https://lh3.googleusercontent.com/d/1_mXe8RK1L7PPUiVREqBjTyYyWZ8UIlcJ=w600"
     ],
-    "badge": "Cozy Mist",
-    "customizable": false,
-    "customType": "none",
-    "description": "Compact 250ml water humidifier topped with playful kitten sleeping in fishbowl.",
+    "driveFileIds": [
+      "1R2KM8jNWB1TRbQzeMo5lyaN99PIcXd5S",
+      "1_mXe8RK1L7PPUiVREqBjTyYyWZ8UIlcJ"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Capybara Geometry Ruler Set-Piece by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
     "specs": [
-      "250ml Capacity Ultrasonic Mist",
-      "Continuous & Intermittent Spray",
-      "Whisper Quiet Operation",
-      "Deeply Hydrates Air & Skin"
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Rulers & Geometry",
+      "SKU: STAT-121"
     ],
-    "inStock": true
+    "status": "Active"
   },
   {
-    "id": "prod-nov-16",
-    "name": "Antler Deer Pastel Nano Cool Mist Facial Desk Humidifier",
-    "hindiName": "एंटलर डियर नैनो कूल मिस्ट ह्यूमिडिफायर",
-    "category": "novelties",
-    "subcategory": "Mini Mist Humidifiers",
-    "price": 399,
-    "originalPrice": 699,
-    "rating": 5.0,
-    "reviewsCount": 42,
-    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
+    "id": "stat-122",
+    "sku": "STAT-122",
+    "name": "Capybara Liquid Glitter Ruler",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Rulers & Geometry",
+    "price": 89,
+    "originalPrice": 129,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 13,
+    "image": "https://lh3.googleusercontent.com/d/1qzZWV_sMIl6EcoyV2hweqezFX_Sqg1S4=w600",
     "images": [
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=400&q=75",
-      "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=400&q=75"
+      "https://lh3.googleusercontent.com/d/1qzZWV_sMIl6EcoyV2hweqezFX_Sqg1S4=w600",
+      "https://lh3.googleusercontent.com/d/1Ak60UWEmVGIG2uCjiFZ5n0Z_lCc5cmeJ=w600"
     ],
-    "badge": "Pastel Charm",
-    "customizable": false,
-    "customType": "none",
-    "description": "Soft pastel pink body crowned with golden deer antlers, emitting soothing ultra-fine mist.",
+    "driveFileIds": [
+      "1qzZWV_sMIl6EcoyV2hweqezFX_Sqg1S4",
+      "1Ak60UWEmVGIG2uCjiFZ5n0Z_lCc5cmeJ"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Capybara Liquid Glitter Ruler by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
     "specs": [
-      "Nano-Fine Cool Mist Output",
-      "Golden Metallic Antler Accent",
-      "Soft Night Lamp Mode",
-      "Auto Shut-Off When Water Low"
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Rulers & Geometry",
+      "SKU: STAT-122"
     ],
-    "inStock": true
+    "status": "Active"
+  },
+  {
+    "id": "stat-123",
+    "sku": "STAT-123",
+    "name": "Cute Cartoon Flip Top Dual Pencil Sharpener",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Sharpeners",
+    "price": 99,
+    "originalPrice": 149,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 16,
+    "image": "https://lh3.googleusercontent.com/d/1XeWJC17A4F55wL0J-vyetRrBEvaqhB4S=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1XeWJC17A4F55wL0J-vyetRrBEvaqhB4S=w600"
+    ],
+    "driveFileIds": [
+      "1XeWJC17A4F55wL0J-vyetRrBEvaqhB4S"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Convenient Cute Cartoon Flip Top Dual Pencil Sharpener equipped with durable carbon steel blades, dual sharpening slots, and an integrated shavings container.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Sharpeners",
+      "SKU: STAT-123"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-124",
+    "sku": "STAT-124",
+    "name": "Cute Panda LCD Drawing Tablet Pencil Case",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Cases & Pouches",
+    "price": 279,
+    "originalPrice": 399,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 19,
+    "image": "https://lh3.googleusercontent.com/d/1NQaqROND9GSkNYVHOnjTAvdEj1v2kqne=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1NQaqROND9GSkNYVHOnjTAvdEj1v2kqne=w600",
+      "https://lh3.googleusercontent.com/d/1cl41BRYXU9LW71jJJRZE6PWdRvag6Mjw=w600"
+    ],
+    "driveFileIds": [
+      "1NQaqROND9GSkNYVHOnjTAvdEj1v2kqne",
+      "1cl41BRYXU9LW71jJJRZE6PWdRvag6Mjw"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Durable and stylish Cute Panda LCD Drawing Tablet Pencil Case 1 featuring vibrant 3D embossed designs, spacious dual-compartment interior, and premium zipper closure for stationery essentials.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Cases & Pouches",
+      "SKU: STAT-124"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-125",
+    "sku": "STAT-125",
+    "name": "Gummy Bear Lollipop Erasers Pack",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Erasers & Novelty",
+    "price": 69,
+    "originalPrice": 99,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 22,
+    "image": "https://lh3.googleusercontent.com/d/1hAHNgmXjdBOSjisMaK-ElLL8yyz7Z4Wu=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1hAHNgmXjdBOSjisMaK-ElLL8yyz7Z4Wu=w600",
+      "https://lh3.googleusercontent.com/d/11ePn05trwLRwoJ2Nfbt2fTRajnDR4JHQ=w600"
+    ],
+    "driveFileIds": [
+      "1hAHNgmXjdBOSjisMaK-ElLL8yyz7Z4Wu",
+      "11ePn05trwLRwoJ2Nfbt2fTRajnDR4JHQ"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Gummy Bear Lollipop Erasers Pack by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Erasers & Novelty",
+      "SKU: STAT-125"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-126",
+    "sku": "STAT-126",
+    "name": "Heart Shape Dual Pencil Sharpener",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Sharpeners",
+    "price": 99,
+    "originalPrice": 149,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 25,
+    "image": "https://lh3.googleusercontent.com/d/1c5WzGsJLIWEEUxVlrjST2rxsOy-x9zEL=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1c5WzGsJLIWEEUxVlrjST2rxsOy-x9zEL=w600",
+      "https://lh3.googleusercontent.com/d/1ShLDQBn9xxzjfasVyVe4DjeNJ_sX8sMP=w600"
+    ],
+    "driveFileIds": [
+      "1c5WzGsJLIWEEUxVlrjST2rxsOy-x9zEL",
+      "1ShLDQBn9xxzjfasVyVe4DjeNJ_sX8sMP"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Convenient Heart Shape Dual Pencil Sharpener 1 equipped with durable carbon steel blades, dual sharpening slots, and an integrated shavings container.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Sharpeners",
+      "SKU: STAT-126"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-127",
+    "sku": "STAT-127",
+    "name": "Magic Color Glitter Highlighter Pens",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pens & Highlighters",
+    "price": 149,
+    "originalPrice": 199,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 28,
+    "image": "https://lh3.googleusercontent.com/d/1WCdjxwNE25dF9X6oiX39oi4tvTtWX0Gq=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1WCdjxwNE25dF9X6oiX39oi4tvTtWX0Gq=w600",
+      "https://lh3.googleusercontent.com/d/1Zr-s2fcwdPTui3qU9ZXdy4yWnJER84K_=w600"
+    ],
+    "driveFileIds": [
+      "1WCdjxwNE25dF9X6oiX39oi4tvTtWX0Gq",
+      "1Zr-s2fcwdPTui3qU9ZXdy4yWnJER84K_"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Magic Color Glitter Highlighter Pens by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pens & Highlighters",
+      "SKU: STAT-127"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-128",
+    "sku": "STAT-128",
+    "name": "Rainbow Swirl Lollipop Erasers Pack",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Erasers & Novelty",
+    "price": 69,
+    "originalPrice": 99,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 31,
+    "image": "https://lh3.googleusercontent.com/d/1ICK9HisCxGYMzCTPXr7fgVidvR4hUDn4=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1ICK9HisCxGYMzCTPXr7fgVidvR4hUDn4=w600"
+    ],
+    "driveFileIds": [
+      "1ICK9HisCxGYMzCTPXr7fgVidvR4hUDn4"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Rainbow Swirl Lollipop Erasers Pack by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Erasers & Novelty",
+      "SKU: STAT-128"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-129",
+    "sku": "STAT-129",
+    "name": "Rainbow Unicorn Geometry Ruler Set 4-Piece",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Rulers & Geometry",
+    "price": 599,
+    "originalPrice": 799,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 34,
+    "image": "https://lh3.googleusercontent.com/d/1RGfTPvplqS3jNPDAkgV_p6Zk93Ph1c8m=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1RGfTPvplqS3jNPDAkgV_p6Zk93Ph1c8m=w600"
+    ],
+    "driveFileIds": [
+      "1RGfTPvplqS3jNPDAkgV_p6Zk93Ph1c8m"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Rainbow Unicorn Geometry Ruler Set-Piece by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Rulers & Geometry",
+      "SKU: STAT-129"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-130",
+    "sku": "STAT-130",
+    "name": "Smiley Face Lollipop Erasers Pack",
+    "brand": "Premium Retail",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Erasers & Novelty",
+    "price": 69,
+    "originalPrice": 99,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 37,
+    "image": "https://lh3.googleusercontent.com/d/1aG2CLsTkq5JTMXSSe9yQEmEVIUByT5SM=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1aG2CLsTkq5JTMXSSe9yQEmEVIUByT5SM=w600",
+      "https://lh3.googleusercontent.com/d/1pIpLefFi3By-I6WxVeWW9CMSGaJD34T0=w600"
+    ],
+    "driveFileIds": [
+      "1aG2CLsTkq5JTMXSSe9yQEmEVIUByT5SM",
+      "1pIpLefFi3By-I6WxVeWW9CMSGaJD34T0"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Premium Retail",
+    "description": "Premium quality Smiley Face Lollipop Erasers Pack by Premium Retail designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Premium Retail",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Erasers & Novelty",
+      "SKU: STAT-130"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-131",
+    "sku": "STAT-131",
+    "name": "Sanrio Character Liquid Glitter Ruler",
+    "brand": "Sanrio",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Rulers & Geometry",
+    "price": 89,
+    "originalPrice": 129,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 40,
+    "image": "https://lh3.googleusercontent.com/d/1a1RuYPSZ24ZlaO9_Yb1ezbhpEubebl5h=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1a1RuYPSZ24ZlaO9_Yb1ezbhpEubebl5h=w600",
+      "https://lh3.googleusercontent.com/d/1dGx5UHb-I_XnmkfpWjiYxkXCocq9lLX_=w600",
+      "https://lh3.googleusercontent.com/d/10Z1tojxl61MmYA_JFSNa8wEu6mOi1hTF=w600"
+    ],
+    "driveFileIds": [
+      "1a1RuYPSZ24ZlaO9_Yb1ezbhpEubebl5h",
+      "1dGx5UHb-I_XnmkfpWjiYxkXCocq9lLX_",
+      "10Z1tojxl61MmYA_JFSNa8wEu6mOi1hTF"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Sanrio",
+    "description": "Premium quality Sanrio Character Liquid Glitter Ruler by Sanrio designed for exceptional performance, durability, and customer satisfaction.",
+    "specs": [
+      "Brand: Sanrio",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Rulers & Geometry",
+      "SKU: STAT-131"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "stat-132",
+    "sku": "STAT-132",
+    "name": "Sanrio Double Pencil Sharpener with Eraser",
+    "brand": "Sanrio",
+    "category": "stationery",
+    "categoryName": "Stationery & School Supplies",
+    "subcategory": "Pencil Sharpeners",
+    "price": 99,
+    "originalPrice": 149,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 5.0,
+    "reviewsCount": 43,
+    "image": "https://lh3.googleusercontent.com/d/1gW5rPmfHm-FCnsXcCHjj--aE5oycmnlR=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1gW5rPmfHm-FCnsXcCHjj--aE5oycmnlR=w600",
+      "https://lh3.googleusercontent.com/d/16LpxXCo7HqGd3JE6ZT-0Mh0Hd_g2p3z6=w600"
+    ],
+    "driveFileIds": [
+      "1gW5rPmfHm-FCnsXcCHjj--aE5oycmnlR",
+      "16LpxXCo7HqGd3JE6ZT-0Mh0Hd_g2p3z6"
+    ],
+    "folderSource": "Mere pass",
+    "badge": "Sanrio",
+    "description": "Convenient Sanrio Double Pencil Sharpener with Eraser 1 equipped with durable carbon steel blades, dual sharpening slots, and an integrated shavings container.",
+    "specs": [
+      "Brand: Sanrio",
+      "Category: Stationery & School Supplies",
+      "Subcategory: Pencil Sharpeners",
+      "SKU: STAT-132"
+    ],
+    "status": "Active"
+  },
+  {
+    "id": "ref-133",
+    "sku": "REF-133",
+    "name": "Pink Nudes Plum Lipstick Shades Matrix Chart",
+    "brand": "Marketing / Reference",
+    "category": "references",
+    "categoryName": "Shades & Lookbook Guides",
+    "subcategory": "Color Matrix Chart",
+    "price": 0,
+    "originalPrice": 0,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.7,
+    "reviewsCount": 46,
+    "image": "https://lh3.googleusercontent.com/d/1SNNA9OiLZPZ9kbTwiT4G6yLLNzTHvspe=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1SNNA9OiLZPZ9kbTwiT4G6yLLNzTHvspe=w600"
+    ],
+    "driveFileIds": [
+      "1SNNA9OiLZPZ9kbTwiT4G6yLLNzTHvspe"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Marketing / Reference",
+    "description": "Comprehensive visual color comparison matrix displaying pink, nude, and plum lipstick shade families. Reference asset only.",
+    "specs": [
+      "Brand: Marketing / Reference",
+      "Category: Shades & Lookbook Guides",
+      "Subcategory: Color Matrix Chart",
+      "SKU: REF-133"
+    ],
+    "status": "Non-Product / Reference"
+  },
+  {
+    "id": "ref-134",
+    "sku": "REF-134",
+    "name": "Satin Lipstick 20 Shades Swatch Chart",
+    "brand": "Marketing / Reference",
+    "category": "references",
+    "categoryName": "Shades & Lookbook Guides",
+    "subcategory": "Color Swatch Chart",
+    "price": 0,
+    "originalPrice": 0,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.8,
+    "reviewsCount": 49,
+    "image": "https://lh3.googleusercontent.com/d/1l8LeE6olDWyh9WIVAdSgUpnAv98pRpIE=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1l8LeE6olDWyh9WIVAdSgUpnAv98pRpIE=w600"
+    ],
+    "driveFileIds": [
+      "1l8LeE6olDWyh9WIVAdSgUpnAv98pRpIE"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Marketing / Reference",
+    "description": "Master 20-shade color swatch and undertone reference chart for satin lipsticks. Reference asset only.",
+    "specs": [
+      "Brand: Marketing / Reference",
+      "Category: Shades & Lookbook Guides",
+      "Subcategory: Color Swatch Chart",
+      "SKU: REF-134"
+    ],
+    "status": "Non-Product / Reference"
+  },
+  {
+    "id": "ref-135",
+    "sku": "REF-135",
+    "name": "Soft Glam Makeup Look Model Reference",
+    "brand": "Marketing / Reference",
+    "category": "references",
+    "categoryName": "Shades & Lookbook Guides",
+    "subcategory": "Model Look Reference",
+    "price": 0,
+    "originalPrice": 0,
+    "stockQuantity": 100,
+    "inStock": true,
+    "rating": 4.9,
+    "reviewsCount": 52,
+    "image": "https://lh3.googleusercontent.com/d/1LaB3dhIXNK4gWdrhHcF2v5-4kLUsskDo=w600",
+    "images": [
+      "https://lh3.googleusercontent.com/d/1LaB3dhIXNK4gWdrhHcF2v5-4kLUsskDo=w600"
+    ],
+    "driveFileIds": [
+      "1LaB3dhIXNK4gWdrhHcF2v5-4kLUsskDo"
+    ],
+    "folderSource": "Cosmatic",
+    "badge": "Marketing / Reference",
+    "description": "Editorial marketing model photo showcasing soft glam bridal and evening makeup style. Reference asset only (not an individual sale product).",
+    "specs": [
+      "Brand: Marketing / Reference",
+      "Category: Shades & Lookbook Guides",
+      "Subcategory: Model Look Reference",
+      "SKU: REF-135"
+    ],
+    "status": "Non-Product / Reference"
   }
 ];
 

@@ -1,103 +1,82 @@
-// Store Categories Configuration for Chintu's Gift & Kawaii Store - Dalli Rajhara
-
+// Categories Configuration for Chintu's Gift Store
 const DEFAULT_CATEGORIES = [
   {
+    "id": "cosmetics",
+    "name": "Beauty & Cosmetics",
+    "hindiName": "कॉस्मेटिक्स व ब्यूटी प्रोडक्ट्स",
+    "icon": "💄",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+    "tagline": "High coverage liquid foundations, ultra-matte lipsticks, moisturizing glosses & beauty essentials",
+    "subcategories": [
+      "Lipsticks",
+      "Foundations & Face Base",
+      "Lip Glosses",
+      "Lip Products",
+      "Lip Glosses & Balms",
+      "Lip Care & Treatments",
+      "Lip Liners",
+      "Nail Art & Press-ons",
+      "Eye & Face Palettes",
+      "Single Eye Shadows"
+    ],
+    "itemCount": 103
+  },
+  {
     "id": "stationery",
-    "name": "Fancy Stationery",
-    "hindiName": "फैंसी स्टेशनरी",
+    "name": "Stationery & School Supplies",
+    "hindiName": "फैंसी स्टेशनरी व स्कूल सप्लाइज",
     "icon": "✏️",
     "image": "assets/images/kawaii_stationery.jpg",
-    "tagline": "Pastel locked diaries, aesthetic highlighters, washi tapes, gel pens & pencil pouches",
+    "tagline": "Cute novelty erasers, aesthetic sharpeners, pencil pouches, geometry sets & highlighters",
     "subcategories": [
-      "Pencils & Gel Pens",
-      "Cute Erasers & Sharpeners",
-      "Pastel Diaries & Locks",
-      "Aesthetic Highlighters",
-      "Pencil Pouches & Organizers",
-      "Washi Tapes & Stickers"
+      "Rulers & Geometry",
+      "Pencil Cases & Pouches",
+      "Pencil Sharpeners",
+      "Erasers & Novelty",
+      "Pens & Highlighters"
     ],
-    "itemCount": 17
+    "itemCount": 14
   },
   {
-    "id": "cosmetics",
-    "name": "Cosmetic & Personal Care",
-    "hindiName": "कॉस्मेटिक व ब्यूटी",
-    "icon": "💄",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
-    "tagline": "Cute lip balms, velvet lip tints, LED vanity mirrors, hair accessories & vanity pouches",
+    "id": "skincare",
+    "name": "Skincare & Personal Care",
+    "hindiName": "स्किनकेयर व पर्सनल केयर",
+    "icon": "🧴",
+    "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Deep cleansing face & body scrubs, purifying masks, cleansers & nourishing moisturizers",
     "subcategories": [
-      "Cute Lip Balms & Glosses",
-      "Korean Velvet Tint Mud",
-      "Pocket Mirrors & Brushes",
-      "Hand Creams & Skincare",
-      "Hair Accessories & Clips",
-      "Makeup Vanity Pouches"
+      "Face Packs & Masks",
+      "Face & Body Scrubs",
+      "Face Wash & Cleansers",
+      "Moisturizers & Creams"
     ],
-    "itemCount": 17
+    "itemCount": 8
   },
   {
-    "id": "toys",
-    "name": "Soft Toys & Plushies",
-    "hindiName": "सॉफ्ट टॉयज व प्लशीज",
-    "icon": "🧸",
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
-    "tagline": "Giant cuddly teddy bears, viral Boba squishies, soft animal cushions & plush bag charms",
-    "subcategories": [
-      "Giant Cuddle Teddies",
-      "Boba & Food Plushies",
-      "Kawaii Animal Plushies",
-      "Reversible Emotion Plushies",
-      "Plush Backpacks & Charms"
-    ],
-    "itemCount": 17
-  },
-  {
-    "id": "personalized",
-    "name": "Personalized 3D Gifts",
-    "hindiName": "पर्सनलाइज्ड व कस्टम गिफ्ट्स",
-    "icon": "✨",
-    "image": "assets/images/pink_acrylic_lamp.jpg",
-    "tagline": "Laser-cut 3D LED lamps, photo magic mugs, custom Spotify plaques & rotating cube lamps",
-    "subcategories": [
-      "3D LED Acrylic Lamps",
-      "Photo Magic Mugs",
-      "Spotify Music Plaques",
-      "Photo Rotating Cube Lamps",
-      "Custom Name Keychains"
-    ],
-    "itemCount": 17
-  },
-  {
-    "id": "birthday",
-    "name": "Birthday Hampers",
-    "hindiName": "बर्थडे हैंपर्स व सेलिब्रेशन",
-    "icon": "🎂",
-    "image": "assets/images/birthday_hampers.jpg",
-    "tagline": "Curated celebration gift hampers, surprise explosion boxes, baskets & birthday props",
-    "subcategories": [
-      "Birthday Gift Hampers",
-      "Surprise Explosion Boxes",
-      "Celebration Baskets",
-      "Greeting Cards & Seals",
-      "Birthday Party Props"
-    ],
-    "itemCount": 16
-  },
-  {
-    "id": "novelties",
-    "name": "Bags, Bottles & Novelties",
-    "hindiName": "बैग्स, बॉटल्स व नॉवेल्टीज",
+    "id": "lifestyle",
+    "name": "Kids & Lifestyle Accessories",
+    "hindiName": "किड्स व लाइफस्टाइल सप्लाइज",
     "icon": "🎒",
-    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
-    "tagline": "Pastel sippers, cute water bottles, mini crossbody bags, silicone night lamps & clocks",
+    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Pastel motivational water bottles, aesthetic sippers & cute everyday hydration essentials",
     "subcategories": [
-      "Pastel Sippers & Bottles",
-      "Mini Crossbody Bags",
-      "Silicone Night Lamps",
-      "Smart Desk Clocks",
-      "Mini Mist Humidifiers"
+      "Water Bottles & Sippers"
     ],
-    "itemCount": 16
+    "itemCount": 7
+  },
+  {
+    "id": "references",
+    "name": "Shades & Lookbook Guides",
+    "hindiName": "शेड चार्ट्स व कलर गाइड्स",
+    "icon": "🎨",
+    "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80",
+    "tagline": "Lipstick shade matrix guides, 20-shade swatch charts & soft glam model lookbooks",
+    "subcategories": [
+      "Color Matrix Chart",
+      "Color Swatch Chart",
+      "Model Look Reference"
+    ],
+    "itemCount": 3
   }
 ];
 

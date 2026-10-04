@@ -104,7 +104,7 @@
             <span class="text-[9px] sm:text-[10px] px-1.5 sm:px-2 py-0.5 rounded-full bg-pink-100 text-pink-700 font-extrabold uppercase border border-pink-200">Catalog</span>
           </div>
           <p class="text-[9px] sm:text-xs text-pink-800/80 font-bold truncate">
-            🧸 Soft Toys, Stationery & Custom Gifts
+            💄 Beauty, Cosmetics & Fancy Stationery
           </p>
         </div>
       </a>
@@ -119,7 +119,7 @@
         <!-- Cart Button -->
         <button onclick="toggleCartDrawer()" class="relative px-3 sm:px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-md flex items-center gap-2 cursor-pointer">
           <i class="fa-solid fa-basket-shopping text-sm"></i>
-          <span class="hidden sm:inline">Bag</span>
+          <span class="hidden sm:inline">Inquiry Bag</span>
           <span id="cart-count-badge" class="px-1.5 py-0.5 rounded-full bg-white text-pink-600 text-[10px] font-black shadow-sm">0</span>
         </button>
       </div>
@@ -213,8 +213,8 @@
         <label class="text-[11px] font-bold text-pink-900 whitespace-nowrap hidden sm:inline">Sort by:</label>
         <select id="category-sort-select" class="w-full sm:w-auto px-3 py-2 rounded-xl bg-white border border-pink-200 text-pink-900 text-xs font-bold focus:outline-none focus:border-pink-500 shadow-sm">
           <option value="default">Featured Items</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
+          <option value="name">Product Name (A-Z)</option>
+          <option value="brand">Brand (A-Z)</option>
           <option value="rating">Top Customer Rated</option>
         </select>
       </div>
@@ -243,13 +243,13 @@
     </div>
   </div>
 
-  <!-- SHOPPING CART SLIDE-OVER DRAWER -->
+  <!-- INQUIRY BAG SLIDE-OVER DRAWER (NO PRICE MODE) -->
   <div id="cart-drawer" class="hidden fixed inset-0 z-[1300] bg-purple-950/40 backdrop-blur-sm flex justify-end">
     <div class="w-full max-w-md h-full bg-white shadow-2xl p-5 flex flex-col justify-between border-l border-pink-200">
       <div>
         <div class="flex items-center justify-between pb-4 border-b border-pink-100 mb-4">
           <h3 class="text-base font-black text-purple-950 font-fun flex items-center gap-2">
-            <span>🛍️</span> Your Kawaii Cart
+            <span>🛍️</span> Your Inquiry Bag
           </h3>
           <button onclick="toggleCartDrawer()" class="w-7 h-7 rounded-full bg-pink-50 hover:bg-pink-100 text-pink-800 flex items-center justify-center">
             <i class="fa-solid fa-xmark"></i>
@@ -260,13 +260,13 @@
 
       <div class="pt-4 border-t border-pink-100 space-y-3">
         <div class="flex items-center justify-between text-sm font-black">
-          <span class="text-pink-900">Subtotal:</span>
-          <span id="cart-subtotal" class="text-pink-600 text-base font-fun">₹0</span>
+          <span class="text-pink-900">Total Selected:</span>
+          <span id="cart-total-count" class="text-pink-600 text-base font-fun">0 items</span>
         </div>
-        <p class="text-[11px] text-pink-800/80 font-medium">Free Home Delivery in Dalli Rajhara area • WhatsApp confirmation</p>
+        <p class="text-[11px] text-pink-800/80 font-medium">Free Home Delivery in Dalli Rajhara area • Connect directly on WhatsApp</p>
         <button onclick="checkoutCartWhatsApp()" class="w-full py-3 rounded-2xl kawaii-btn-green text-xs font-black shadow-md flex items-center justify-center gap-2 cursor-pointer">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>Checkout on WhatsApp (8269212182)</span>
+          <span>Send Inquiry on WhatsApp (8269212182)</span>
         </button>
       </div>
     </div>

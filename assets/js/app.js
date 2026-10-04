@@ -52,9 +52,14 @@ function resolveSafeLogo(logo) {
     const cachedCats = localStorage.getItem('chintu_categories');
     if (cachedCats) {
       const cats = JSON.parse(cachedCats);
-      if (Array.isArray(cats) && cats.length > 0) {
+      if (Array.isArray(cats) && cats.length > 0 && cats.some(c => c.id === 'cosmetics')) {
         categoriesList = cats;
+      } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
+        categoriesList = [...DEFAULT_CATEGORIES];
+        try { localStorage.setItem('chintu_categories', JSON.stringify(categoriesList)); } catch (_) {}
       }
+    } else if (typeof DEFAULT_CATEGORIES !== 'undefined' && Array.isArray(DEFAULT_CATEGORIES)) {
+      categoriesList = [...DEFAULT_CATEGORIES];
     }
   } catch (_) {}
 })();
@@ -933,16 +938,14 @@ function loadCart() {
 
 function updateCartUI() {
   const countEls = document.querySelectorAll(".cart-count-badge");
-  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
   countEls.forEach(el => {
     el.textContent = totalItems;
     el.classList.toggle("hidden", totalItems === 0);
   });
 
   const cartItemsContainer = document.getElementById("cart-drawer-items");
-  const subtotalEl = document.getElementById("cart-subtotal");
-  const discountEl = document.getElementById("cart-discount");
-  const totalEl = document.getElementById("cart-total");
+  const totalCountEl = document.getElementById("cart-total-count");
 
   if (!cartItemsContainer) return;
 
@@ -950,33 +953,29 @@ function updateCartUI() {
     cartItemsContainer.innerHTML = `
       <div class="py-16 text-center text-pink-700">
         <div class="text-5xl mb-3 animate-cartoon-bounce">🛍️</div>
-        <p class="text-sm font-black text-pink-800 font-fun">Your cart is empty</p>
-        <p class="text-xs text-pink-600 mt-1">Add soft toys and fancy stationery!</p>
+        <p class="text-sm font-black text-pink-800 font-fun">Your inquiry bag is empty</p>
+        <p class="text-xs text-pink-600 mt-1">Explore categories & add items to inquire on WhatsApp!</p>
       </div>
     `;
-    if (subtotalEl) subtotalEl.textContent = "₹0";
-    if (discountEl) discountEl.textContent = "₹0";
-    if (totalEl) totalEl.textContent = "₹0";
+    if (totalCountEl) totalCountEl.textContent = "0 items";
     return;
   }
 
-  const subtotal = cart.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-  const discountAmount = Math.round(subtotal * (activeDiscount / 100));
-  const finalTotal = Math.max(0, subtotal - discountAmount);
+  if (totalCountEl) totalCountEl.textContent = `${totalItems} items`;
 
   cartItemsContainer.innerHTML = cart.map((item, index) => `
     <div class="flex gap-2.5 py-2.5 border-b border-pink-100 items-center">
-      <img src="${item.image}" alt="${item.name}" class="w-14 h-14 rounded-xl object-cover bg-white border border-pink-200">
+      <img src="${item.image || 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0'}" alt="${item.name}" onerror="this.onerror=null; this.src='assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0';" class="w-14 h-14 rounded-xl object-cover bg-white border border-pink-200">
       <div class="flex-1 min-w-0">
         <h4 class="text-xs font-bold text-purple-950 truncate">${item.name}</h4>
-        ${item.customDetails ? `
-          <div class="text-[10px] text-pink-600 font-bold">Custom: "${item.customDetails.name}"</div>
-        ` : ''}
-        <div class="text-xs font-extrabold text-pink-600 mt-0.5">₹${item.price}</div>
+        <div class="flex items-center gap-2 text-[10px] text-pink-600 font-bold">
+          <span>SKU: ${item.sku || item.id}</span>
+          ${item.brand ? `<span>• ${item.brand}</span>` : ''}
+        </div>
       </div>
       <div class="flex items-center gap-1.5">
         <button onclick="updateCartQuantity(${index}, -1)" class="w-6 h-6 rounded-lg bg-pink-100 hover:bg-pink-200 text-pink-900 font-bold flex items-center justify-center text-xs">-</button>
-        <span class="text-xs font-black text-purple-950 w-4 text-center">${item.quantity}</span>
+        <span class="text-xs font-black text-purple-950 w-4 text-center">${item.quantity || 1}</span>
         <button onclick="updateCartQuantity(${index}, 1)" class="w-6 h-6 rounded-lg bg-pink-100 hover:bg-pink-200 text-pink-900 font-bold flex items-center justify-center text-xs">+</button>
       </div>
       <button onclick="removeFromCart(${index})" class="text-slate-400 hover:text-rose-600 p-1">
@@ -984,10 +983,6 @@ function updateCartUI() {
       </button>
     </div>
   `).join("");
-
-  if (subtotalEl) subtotalEl.textContent = `₹${subtotal}`;
-  if (discountEl) discountEl.textContent = `-₹${discountAmount}`;
-  if (totalEl) totalEl.textContent = `₹${finalTotal}`;
 }
 
 function applyCoupon() {
@@ -1091,29 +1086,22 @@ async function completeCheckoutWhatsApp() {
   }
 
   // Format WhatsApp message to 8269212182
-  let msg = `🛍️ *NEW ORDER FROM WEBSITE - CHINTU'S GIFT SHOP*\n` +
+  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  const itemsText = cart.map((item, idx) => `${idx + 1}. *${item.name}* (SKU: ${item.sku || item.id}) - Qty: ${item.quantity || 1}`).join('\n');
+
+  let msg = `🌸 *NEW CATALOGUE INQUIRY - CHINTU'S GIFT STORE*\n` +
             `========================================\n` +
             `👤 *Customer Name:* ${name}\n` +
-            `📞 *Customer Phone:* ${phone}\n` +
-            `🚚 *Delivery:* ${deliveryType}\n` +
+            `📞 *WhatsApp Phone:* ${phone}\n` +
+            `🚚 *Preference:* ${deliveryType}\n` +
             (deliveryType === "Home Delivery" ? `📍 *Address:* ${address || 'Local Dalli Rajhara'}\n` : `📍 *Pickup Point:* Chintu's, Subhash Chowk, Dalli Rajhara\n`) +
-            (cardMsg ? `💌 *Greeting Card Message:* "${cardMsg}"\n` : '') +
+            (cardMsg ? `💌 *Inquiry Note:* "${cardMsg}"\n` : '') +
             `========================================\n` +
-            `📦 *ITEMS ORDERED:*\n`;
-
-  cart.forEach((item, i) => {
-    msg += `${i + 1}. ${item.name} x ${item.quantity} = ₹${item.price * item.quantity}\n`;
-    if (item.customDetails) {
-      msg += `   ↳ *Custom:* Name: "${item.customDetails.name}", Msg: "${item.customDetails.message}"\n`;
-    }
-  });
-
-  msg += `========================================\n` +
-         `💰 *Subtotal:* ₹${subtotal}\n` +
-         (activeDiscount > 0 ? `🎟️ *Coupon (${discountCode}):* -₹${discountAmount}\n` : '') +
-         `🚚 *Delivery Charges:* FREE\n` +
-         `⭐ *TOTAL PAYABLE:* ₹${finalTotal}\n\n` +
-         `Please confirm my order and share UPI / QR payment instructions!`;
+            `📦 *SELECTED ITEMS FOR INQUIRY:*\n` +
+            `${itemsText}\n` +
+            `========================================\n` +
+            `📊 *Total Items:* ${totalItems} items\n\n` +
+            `Please share the price, availability, and delivery details for Dalli Rajhara. Thank you! 🎀`;
 
   const waUrl = `https://wa.me/${STORE_WA}?text=${encodeURIComponent(msg)}`;
   window.open(waUrl, "_blank");
@@ -1122,7 +1110,7 @@ async function completeCheckoutWhatsApp() {
   saveCart();
   updateCartUI();
   closeCheckoutModal();
-  showToast("Order dispatched via WhatsApp to 8269212182! 💖");
+  showToast("Inquiry dispatched via WhatsApp to 8269212182! 💖");
 }
 
 function buyOnWhatsApp(productId) {
