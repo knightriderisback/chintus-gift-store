@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
+  <link rel="icon" type="image/png" href="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0">
   
   <!-- Zero-Latency Session Persistence & Logo Pre-Hydration (Prevents auth-gate and logo flash on page refresh) -->
   <style>
@@ -26,6 +26,7 @@
   </style>
   <script>
     (function() {
+      var CANONICAL_MASCOT = 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0';
       try {
         var token = localStorage.getItem("chintu_admin_token") || sessionStorage.getItem("chintu_admin_token");
         if (token && token !== "null" && token !== "undefined") {
@@ -35,18 +36,19 @@
         if (s) {
           var parsed = JSON.parse(s);
           if (parsed) {
-            if (parsed.storeLogo === 'assets/images/logo.jpg') {
-              parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
+            var str = String(parsed.storeLogo || '').trim();
+            if (str.includes('logo.jpg') || str.includes('badge') || str.includes('kawaii_logo.jpg') || str === '') {
+              parsed.storeLogo = CANONICAL_MASCOT;
               localStorage.setItem('chintu_store_settings', JSON.stringify(parsed));
             }
-            window.__CHINTU_STORE_LOGO__ = (parsed.storeLogo && parsed.storeLogo.trim() !== '' && parsed.storeLogo !== 'assets/images/logo.jpg') ? parsed.storeLogo : 'assets/images/kawaii_logo.jpg';
+            window.__CHINTU_STORE_LOGO__ = parsed.storeLogo;
           }
         }
         if (!window.__CHINTU_STORE_LOGO__) {
-          window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+          window.__CHINTU_STORE_LOGO__ = CANONICAL_MASCOT;
         }
       } catch (_) {
-        window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+        window.__CHINTU_STORE_LOGO__ = CANONICAL_MASCOT;
       }
     })();
   </script>
@@ -63,7 +65,7 @@
     <header class="w-full pink-acrylic-nav px-3.5 sm:px-6 py-2.5 sm:py-3.5 border-b border-pink-200 shrink-0 shadow-sm">
       <div class="max-w-7xl mx-auto flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2 sm:gap-2.5">
-          <img id="auth-gate-header-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0 object-contain">
+          <img id="auth-gate-header-logo" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Logo" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 border-pink-400 shadow-sm shrink-0 object-contain">
           <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('auth-gate-header-logo').src = window.__CHINTU_STORE_LOGO__;</script>
           <div>
             <div class="flex items-center gap-1.5">
@@ -86,7 +88,7 @@
         
         <!-- Mascot Badge -->
         <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto rounded-full overflow-hidden border-4 border-pink-400 shadow-lg mb-3 animate-cartoon-bounce">
-          <img id="auth-gate-mascot-logo" src="assets/images/kawaii_logo.jpg" alt="Logo" class="w-full h-full object-cover">
+          <img id="auth-gate-mascot-logo" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Logo" class="w-full h-full object-cover">
           <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('auth-gate-mascot-logo').src = window.__CHINTU_STORE_LOGO__;</script>
         </div>
 
@@ -213,7 +215,7 @@
         <!-- Left: Brand Logo & Title (Adaptive PNG Molding) -->
         <a href="admin.html" class="flex items-center gap-2 sm:gap-3 min-w-0">
           <div id="admin-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
-            <img id="admin-logo-img" src="assets/images/kawaii_logo.jpg" alt="Logo" class="store-logo-img object-contain">
+            <img id="admin-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Logo" class="store-logo-img object-contain">
             <script>if (window.__CHINTU_STORE_LOGO__) document.getElementById('admin-logo-img').src = window.__CHINTU_STORE_LOGO__;</script>
           </div>
           <div class="min-w-0">
@@ -678,7 +680,7 @@
 
                 <!-- Input & Upload Button -->
                 <div class="flex flex-col sm:flex-row gap-2">
-                  <input type="text" id="setting-store-logo" oninput="updateLogoPreview(this.value)" value="assets/images/kawaii_logo.jpg" placeholder="Image URL or upload transparent PNG" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
+                  <input type="text" id="setting-store-logo" oninput="updateLogoPreview(this.value)" value="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" placeholder="Image URL or upload transparent PNG" class="flex-1 px-3.5 py-2 rounded-xl bg-white border border-pink-200 text-xs font-mono text-pink-950 focus:outline-none focus:border-pink-500">
                   <label class="px-3.5 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-black shadow-sm flex items-center justify-center gap-1.5 cursor-pointer shrink-0 transition">
                     <i class="fa-solid fa-cloud-arrow-up text-xs"></i>
                     <span>Upload Logo (PNG/JPG)</span>
@@ -713,15 +715,15 @@
                 <div class="pt-2 flex items-center gap-3">
                   <div class="text-[10px] font-bold text-pink-800">Live Preview:</div>
                   <div id="admin-logo-preview-box" class="store-logo-wrap logo-shape-natural logo-size-md p-2 rounded-xl border border-pink-200 bg-[linear-gradient(45deg,#f1f5f9_25%,transparent_25%),linear-gradient(-45deg,#f1f5f9_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#f1f5f9_75%),linear-gradient(-45deg,transparent_75%,#f1f5f9_75%)] bg-[size:16px_16px] bg-[position:0_0,0_8px,8px_-8px,-8px_0] max-w-[200px] flex items-center justify-center shadow-inner">
-                    <img id="logo-preview-img" src="assets/images/kawaii_logo.jpg" alt="Logo Preview" class="store-logo-img object-contain">
+                    <img id="logo-preview-img" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Logo Preview" class="store-logo-img object-contain">
                   </div>
                 </div>
 
                 <!-- Quick Presets -->
                 <div class="flex items-center gap-1.5 pt-1 flex-wrap">
                   <span class="text-[10px] text-pink-800 font-bold">Quick Presets:</span>
-                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_logo.jpg', 'circle', 'md')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🌸 Mascot Circle</button>
-                  <button type="button" onclick="setLogoPreset('assets/images/kawaii_logo.jpg', 'natural', 'lg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🎀 Mascot Natural</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0', 'circle', 'md')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🌸 Mascot Circle</button>
+                  <button type="button" onclick="setLogoPreset('assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0', 'natural', 'lg')" class="text-[10px] bg-pink-100 hover:bg-pink-200 text-pink-800 px-2 py-0.5 rounded-full font-bold">🎀 Mascot Natural</button>
                 </div>
               </div>
             </div>

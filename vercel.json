@@ -1,5 +1,10 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    { "source": "/assets/images/logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true },
+    { "source": "/assets/images/kawaii_logo.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true },
+    { "source": "/assets/images/chintus_logo_badge.jpg", "destination": "/assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0", "permanent": true }
+  ],
   "rewrites": [
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/category", "destination": "/category.html" },

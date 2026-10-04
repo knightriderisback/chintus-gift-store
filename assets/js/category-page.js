@@ -14,17 +14,26 @@ let sortBy = "default";
 let visibleProductsCount = 8;
 let cart = [];
 
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0";
+
+function resolveSafeLogo(logo) {
+  if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;
+  const l = logo.trim();
+  if (l.includes('logo.jpg') || l.includes('badge') || l.includes('kawaii_logo.jpg') || l === '') {
+    return CANONICAL_MASCOT_LOGO;
+  }
+  return l;
+}
+
 // Instant Fast Cache Initialization
 (function initFastData() {
   try {
-    // 1. Settings & Logo (Sanitize old logo.jpg)
+    // 1. Settings & Logo (Sanitize any old logo)
     const cachedSettings = localStorage.getItem('chintu_store_settings');
     if (cachedSettings) {
       const parsed = JSON.parse(cachedSettings);
-      if (parsed.storeLogo === 'assets/images/logo.jpg' || !parsed.storeLogo) {
-        parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
-        try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
-      }
+      parsed.storeLogo = resolveSafeLogo(parsed.storeLogo);
+      try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
       applyPageSettings(parsed);
     }
 
@@ -88,10 +97,7 @@ function applyPageSettings(settings) {
     document.body.classList.remove('theme-sakura-pink', 'theme-lavender-dream', 'theme-peach-coral', 'theme-cotton-candy', 'theme-matcha-mint');
     document.body.classList.add(settings.theme);
   }
-  let targetLogo = settings.storeLogo || "assets/images/kawaii_logo.jpg";
-  if (targetLogo === "assets/images/logo.jpg") {
-    targetLogo = "assets/images/kawaii_logo.jpg";
-  }
+  let targetLogo = resolveSafeLogo(settings.storeLogo);
   document.querySelectorAll(".store-logo-img").forEach(el => {
     el.src = targetLogo;
     el.style.objectFit = 'contain';
@@ -112,6 +118,7 @@ async function loadStoreSettings() {
     const res = await fetch('/api/settings');
     const data = await res.json();
     if (data.success && data.data) {
+      data.data.storeLogo = resolveSafeLogo(data.data.storeLogo);
       applyPageSettings(data.data);
     }
   } catch (_) {}

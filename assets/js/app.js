@@ -28,16 +28,25 @@ let customizerState = {
   uploadedPhoto: null
 };
 
+const CANONICAL_MASCOT_LOGO = "assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0";
+
+function resolveSafeLogo(logo) {
+  if (!logo || typeof logo !== 'string') return CANONICAL_MASCOT_LOGO;
+  const l = logo.trim();
+  if (l.includes('logo.jpg') || l.includes('badge') || l.includes('kawaii_logo.jpg') || l === '') {
+    return CANONICAL_MASCOT_LOGO;
+  }
+  return l;
+}
+
 // Instant 0ms Fast Cache Rendering (Zero Latency on Page Load)
 (function initFastRender() {
   try {
     const cachedSettings = localStorage.getItem('chintu_store_settings');
     if (cachedSettings) {
       const parsed = JSON.parse(cachedSettings);
-      if (parsed.storeLogo === 'assets/images/logo.jpg' || !parsed.storeLogo) {
-        parsed.storeLogo = 'assets/images/kawaii_logo.jpg';
-        try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
-      }
+      parsed.storeLogo = resolveSafeLogo(parsed.storeLogo);
+      try { localStorage.setItem('chintu_store_settings', JSON.stringify(parsed)); } catch (_) {}
       applyStoreSettings(parsed);
     }
     const cachedCats = localStorage.getItem('chintu_categories');
@@ -80,8 +89,8 @@ async function loadStoreSettings() {
   if (local) {
     try {
       parsedLocal = JSON.parse(local);
-      if (parsedLocal && parsedLocal.storeLogo === 'assets/images/logo.jpg') {
-        parsedLocal.storeLogo = 'assets/images/kawaii_logo.jpg';
+      if (parsedLocal) {
+        parsedLocal.storeLogo = resolveSafeLogo(parsedLocal.storeLogo);
         localStorage.setItem('chintu_store_settings', JSON.stringify(parsedLocal));
       }
       applyStoreSettings(parsedLocal);
@@ -93,14 +102,15 @@ async function loadStoreSettings() {
     const data = await res.json();
     if (data.success && data.data) {
       const serverSettings = data.data;
+      serverSettings.storeLogo = resolveSafeLogo(serverSettings.storeLogo);
       let finalSettings;
 
       // Safe logo resolution: custom logo always prevails
-      let bestLogo = "assets/images/kawaii_logo.jpg";
-      if (parsedLocal && parsedLocal.storeLogo && parsedLocal.storeLogo.trim() !== "" && parsedLocal.storeLogo !== "assets/images/logo.jpg" && parsedLocal.storeLogo !== "assets/images/kawaii_logo.jpg") {
-        bestLogo = parsedLocal.storeLogo;
-      } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "" && serverSettings.storeLogo !== "assets/images/logo.jpg" && serverSettings.storeLogo !== "assets/images/kawaii_logo.jpg") {
-        bestLogo = serverSettings.storeLogo;
+      let bestLogo = CANONICAL_MASCOT_LOGO;
+      if (parsedLocal && parsedLocal.storeLogo && parsedLocal.storeLogo.trim() !== "") {
+        bestLogo = resolveSafeLogo(parsedLocal.storeLogo);
+      } else if (serverSettings.storeLogo && serverSettings.storeLogo.trim() !== "") {
+        bestLogo = resolveSafeLogo(serverSettings.storeLogo);
       }
 
       if (parsedLocal && typeof parsedLocal === 'object' && Object.keys(parsedLocal).length > 0) {
@@ -149,9 +159,7 @@ async function loadStoreSettings() {
 
 function applyStoreSettings(settings) {
   if (!settings) return;
-  if (settings.storeLogo === 'assets/images/logo.jpg') {
-    settings.storeLogo = 'assets/images/kawaii_logo.jpg';
-  }
+  settings.storeLogo = resolveSafeLogo(settings.storeLogo);
   window.currentStoreSettings = settings;
 
   // 1. Theme and Aesthetic Styling

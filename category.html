@@ -6,24 +6,33 @@
   <title>Category Showcase | Chintu's Gift & Kawaii Store Dalli Rajhara</title>
   
   <meta name="description" content="Shop cute gifts by category in Dalli Rajhara - Soft toys, kawaii fancy stationery, cosmetics, personalized acrylic lamps & birthday hampers at Subhash Chowk. Call/WhatsApp: 8269212182.">
-  <link rel="icon" type="image/jpeg" href="assets/images/kawaii_logo.jpg">
+  <link rel="icon" type="image/png" href="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0">
 
-  <!-- Zero-Latency Logo & Settings Hydration (Guarantees exact current logo on refresh without flashing old default) -->
+  <!-- Zero-Latency Logo & Settings Hydration (Permanently guarantees new pink mascot logo) -->
   <script>
     (function() {
+      var CANONICAL_MASCOT = 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0';
       try {
         var s = JSON.parse(localStorage.getItem('chintu_store_settings') || '{}');
-        var l = (s && s.storeLogo && s.storeLogo.trim() && s.storeLogo !== 'assets/images/logo.jpg') ? s.storeLogo : 'assets/images/kawaii_logo.jpg';
-        if (s && s.storeLogo === 'assets/images/logo.jpg') {
-          s.storeLogo = 'assets/images/kawaii_logo.jpg';
-          try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
+        var l = CANONICAL_MASCOT;
+        if (s && s.storeLogo) {
+          var str = String(s.storeLogo).trim();
+          if (str.includes('logo.jpg') || str.includes('badge') || str.includes('kawaii_logo.jpg') || str === '') {
+            s.storeLogo = CANONICAL_MASCOT;
+            try { localStorage.setItem('chintu_store_settings', JSON.stringify(s)); } catch(_) {}
+            l = CANONICAL_MASCOT;
+          } else {
+            l = str;
+          }
+        } else {
+          l = CANONICAL_MASCOT;
         }
         window.__CHINTU_STORE_LOGO__ = l;
         window.__CHINTU_LOGO_SHAPE__ = (s && s.logoShape) ? s.logoShape : 'natural';
         window.__CHINTU_LOGO_HEIGHT__ = (s && s.logoHeight) ? s.logoHeight : 'md';
         window.__CHINTU_STORE_NAME__ = (s && (s.brandShort || s.storeName)) ? (s.brandShort || s.storeName) : "CHINTU'S";
       } catch (e) {
-        window.__CHINTU_STORE_LOGO__ = 'assets/images/kawaii_logo.jpg';
+        window.__CHINTU_STORE_LOGO__ = CANONICAL_MASCOT;
       }
     })();
   </script>
@@ -80,7 +89,7 @@
       <!-- Logo & Brand with Synchronous Zero-Flash Rendering -->
       <a href="index.html" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
         <div id="store-logo-wrapper" class="store-logo-wrap logo-shape-natural logo-size-md shrink-0">
-          <img id="store-logo-img" src="assets/images/kawaii_logo.jpg" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
+          <img id="store-logo-img" src="assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0" alt="Chintu's Mascot Logo" class="store-logo-img object-contain">
           <script>
             if (window.__CHINTU_STORE_LOGO__) document.getElementById('store-logo-img').src = window.__CHINTU_STORE_LOGO__;
             if (window.__CHINTU_LOGO_SHAPE__ || window.__CHINTU_LOGO_HEIGHT__) {

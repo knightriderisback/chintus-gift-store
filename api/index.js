@@ -430,7 +430,7 @@ app.post('/api/auth/google', (req, res) => {
       user: {
         email: email || settings.authorizedAdminEmail || 'owner@chintus.com',
         name: name || 'Store Owner',
-        picture: picture || 'assets/images/kawaii_logo.jpg'
+        picture: picture || 'assets/images/chintus_pink_kawaii_mascot_v5.png?v=5.0'
       }
     });
   }
