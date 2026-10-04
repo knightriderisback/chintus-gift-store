@@ -745,7 +745,7 @@ function setCustomizerProduct(type) {
   });
 
   const priceEl = document.getElementById("customizer-price-display");
-  if (priceEl) priceEl.textContent = "WhatsApp for Rate";
+  if (priceEl) priceEl.textContent = "Inquire Rate";
 
   updateCustomizerPreview();
 }

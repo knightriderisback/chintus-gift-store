@@ -484,14 +484,15 @@ function renderCategoryProducts() {
             ${product.description || ''}
           </p>
 
-          <!-- WhatsApp Rate Indicator with ₹ sign + WhatsApp logo -->
-          <div class="mb-2.5 flex items-center justify-between gap-1 min-w-0">
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 shadow-2xs cursor-pointer transition min-w-0" onclick="inquireOnWhatsApp('${product.id}')" title="Ask Rate on WhatsApp">
-              <span class="text-sm font-black text-pink-600 leading-none shrink-0">₹</span>
-              <i class="fa-brands fa-whatsapp text-emerald-600 text-sm shrink-0"></i>
-              <span class="text-[11px] font-black text-emerald-900 truncate">Ask Rate</span>
+          <!-- Price/Rate Slot: Rupee Symbol + WhatsApp Logo ONLY -->
+          <div class="mb-2.5 flex items-center justify-between gap-1">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-50 hover:bg-emerald-100 border border-emerald-300 text-emerald-800 transition cursor-pointer shadow-2xs hover:scale-105 active:scale-95" onclick="inquireOnWhatsApp('${product.id}')" title="Ask Rate on WhatsApp">
+              <span class="text-xl font-black text-pink-600 font-fun leading-none shrink-0">₹</span>
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-xl shrink-0"></i>
             </div>
-            <span class="text-[9px] text-pink-600 font-extrabold uppercase tracking-wider shrink-0 bg-pink-50 px-1.5 py-0.5 rounded border border-pink-100">Inquire</span>
+            <span class="text-[10px] font-black text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md border border-pink-100 shrink-0">
+              Inquiry
+            </span>
           </div>
 
           <!-- WhatsApp Inquiry & Add to Inquiry Bag Actions -->
@@ -635,16 +636,16 @@ function openQuickView(productId) {
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Subcategory:</span> <span>${product.subcategory || '-'}</span></div>
             <div class="flex items-center gap-2"><span class="font-bold text-pink-600">Location:</span> <span>Subhash Chowk, Dalli Rajhara</span></div>
           </div>
-        <!-- WhatsApp Rate Indicator in Modal with ₹ and WhatsApp Logo -->
-        <div class="mb-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-200 flex items-center justify-between shadow-2xs gap-2">
+        <!-- Product Rate Indicator in Modal with prominent ₹ and WhatsApp Logo -->
+        <div class="mb-3 p-3 rounded-2xl bg-emerald-50 border border-emerald-300 flex items-center justify-between shadow-2xs gap-2">
           <div class="flex items-center gap-2.5 min-w-0">
-            <div class="h-10 px-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-rose-500 text-white flex items-center justify-center gap-1.5 shrink-0 shadow-xs">
-              <span class="text-base font-black leading-none">₹</span>
-              <i class="fa-brands fa-whatsapp text-base"></i>
+            <div class="h-10 px-3 rounded-xl bg-white border border-emerald-200 text-emerald-600 flex items-center justify-center gap-1.5 shrink-0 shadow-xs">
+              <span class="text-xl font-black text-pink-600 font-fun leading-none">₹</span>
+              <i class="fa-brands fa-whatsapp text-emerald-600 text-xl"></i>
             </div>
             <div class="min-w-0">
-              <span class="text-[10px] uppercase font-black tracking-wider text-emerald-700 block">Rate & Pricing</span>
-              <span class="text-xs sm:text-sm font-black text-purple-950 font-fun truncate block">WhatsApp for Best Rate & Availability</span>
+              <span class="text-[10px] uppercase font-black tracking-wider text-emerald-700 block">Rate & Availability</span>
+              <span class="text-xs sm:text-sm font-black text-purple-950 font-fun truncate block">Inquire via WhatsApp</span>
             </div>
           </div>
           <span class="px-2.5 py-1 rounded-full bg-emerald-600 text-white text-[10px] font-black shadow-xs shrink-0 whitespace-nowrap">Ask Rate</span>
