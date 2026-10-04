@@ -47,14 +47,16 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- Google Fonts & Font Awesome Icons (Non-blocking with print fallback) -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Great+Vibes&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&family=Great+Vibes&display=swap"></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <!-- Google Fonts & Font Awesome Icons (Optimized for instant FCP with display=swap) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Quicksand:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Custom Light Theme & Pink Acrylic Styles -->
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- Standalone Zero-Delay Prefetching: Pre-warms Category Page in idle time for 0ms transitions -->
+  <link rel="prefetch" href="category.html">
+  <link rel="prefetch" href="assets/js/category-page.js">
 
   <!-- LocalBusiness Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -542,7 +544,390 @@
 
     <!-- Dynamic Categories Grid (Populated dynamically from categories.json / admin updates) -->
     <div id="categories-showcase-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <!-- Rendered dynamically by app.js (with instant synchronous fallback) -->
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=stationery'">
+            <img src="assets/images/kawaii_stationery.jpg" alt="Fancy Stationery" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                ✏️
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                17+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Fancy Stationery</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">फैंसी स्टेशनरी</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Pastel locked diaries, aesthetic highlighters, washi tapes, gel pens & pencil pouches
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=stationery&subcat=Pencils%20%26%20Gel%20Pens" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Pencils & Gel Pens
+                </a>
+              
+                <a href="/category?cat=stationery&subcat=Cute%20Erasers%20%26%20Sharpeners" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Cute Erasers & Sharpeners
+                </a>
+              
+                <a href="/category?cat=stationery&subcat=Pastel%20Diaries%20%26%20Locks" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Pastel Diaries & Locks
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+3 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=stationery" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=cosmetics'">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75" alt="Cosmetic & Personal Care" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                💄
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                17+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Cosmetic & Personal Care</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">कॉस्मेटिक व ब्यूटी</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Cute lip balms, velvet lip tints, LED vanity mirrors, hair accessories & vanity pouches
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=cosmetics&subcat=Cute%20Lip%20Balms%20%26%20Glosses" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Cute Lip Balms & Glosses
+                </a>
+              
+                <a href="/category?cat=cosmetics&subcat=Korean%20Velvet%20Tint%20Mud" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Korean Velvet Tint Mud
+                </a>
+              
+                <a href="/category?cat=cosmetics&subcat=Pocket%20Mirrors%20%26%20Brushes" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Pocket Mirrors & Brushes
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+3 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=cosmetics" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=toys'">
+            <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75" alt="Soft Toys & Plushies" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                🧸
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                17+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Soft Toys & Plushies</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">सॉफ्ट टॉयज व प्लशीज</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Giant cuddly teddy bears, viral Boba squishies, soft animal cushions & plush bag charms
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=toys&subcat=Giant%20Cuddle%20Teddies" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Giant Cuddle Teddies
+                </a>
+              
+                <a href="/category?cat=toys&subcat=Boba%20%26%20Food%20Plushies" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Boba & Food Plushies
+                </a>
+              
+                <a href="/category?cat=toys&subcat=Kawaii%20Animal%20Plushies" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Kawaii Animal Plushies
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+2 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=toys" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=personalized'">
+            <img src="assets/images/pink_acrylic_lamp.jpg" alt="Personalized 3D Gifts" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                ✨
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                17+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Personalized 3D Gifts</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">पर्सनलाइज्ड व कस्टम गिफ्ट्स</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Laser-cut 3D LED lamps, photo magic mugs, custom Spotify plaques & rotating cube lamps
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=personalized&subcat=3D%20LED%20Acrylic%20Lamps" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  3D LED Acrylic Lamps
+                </a>
+              
+                <a href="/category?cat=personalized&subcat=Photo%20Magic%20Mugs" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Photo Magic Mugs
+                </a>
+              
+                <a href="/category?cat=personalized&subcat=Spotify%20Music%20Plaques" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Spotify Music Plaques
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+2 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=personalized" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=birthday'">
+            <img src="assets/images/birthday_hampers.jpg" alt="Birthday Hampers" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                🎂
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                16+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Birthday Hampers</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">बर्थडे हैंपर्स व सेलिब्रेशन</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Curated celebration gift hampers, surprise explosion boxes, baskets & birthday props
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=birthday&subcat=Birthday%20Gift%20Hampers" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Birthday Gift Hampers
+                </a>
+              
+                <a href="/category?cat=birthday&subcat=Surprise%20Explosion%20Boxes" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Surprise Explosion Boxes
+                </a>
+              
+                <a href="/category?cat=birthday&subcat=Celebration%20Baskets" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Celebration Baskets
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+2 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=birthday" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
+      <div class="category-card group relative pink-acrylic p-4 sm:p-5 flex flex-col justify-between overflow-hidden border border-pink-200/90 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 rounded-3xl">
+        <div>
+          <!-- Category Cover Image & Icon Badge -->
+          <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-4 bg-pink-100/70 border border-pink-100 cursor-pointer" onclick="window.location.href='/category?cat=novelties'">
+            <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75" alt="Bags, Bottles & Novelties" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-pink-950/70 via-pink-950/20 to-transparent"></div>
+            
+            <!-- Top Badges -->
+            <div class="absolute top-3 left-3 flex items-center gap-1.5">
+              <span class="w-9 h-9 rounded-2xl bg-white/95 backdrop-blur border border-pink-200 shadow-md flex items-center justify-center text-lg">
+                🎒
+              </span>
+            </div>
+            
+            <div class="absolute top-3 right-3">
+              <span class="px-3 py-1 rounded-full text-[11px] font-black bg-pink-600/90 text-white shadow-md backdrop-blur">
+                16+ Gifts
+              </span>
+            </div>
+
+            <!-- Bottom Title on Image -->
+            <div class="absolute bottom-3 left-3 right-3">
+              <h3 class="text-base sm:text-lg font-black text-white font-fun drop-shadow flex items-center gap-1.5">
+                <span>Bags, Bottles & Novelties</span>
+              </h3>
+              <div class="text-[11px] font-bold text-pink-200 drop-shadow">बैग्स, बॉटल्स व नॉवेल्टीज</div>
+            </div>
+          </div>
+
+          <!-- Tagline -->
+          <p class="text-xs text-pink-900/80 font-medium mb-3 line-clamp-2 leading-relaxed">
+            Pastel sippers, cute water bottles, mini crossbody bags, silicone night lamps & clocks
+          </p>
+
+          <!-- Subcategories chips preview -->
+          
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              
+                <a href="/category?cat=novelties&subcat=Pastel%20Sippers%20%26%20Bottles" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Pastel Sippers & Bottles
+                </a>
+              
+                <a href="/category?cat=novelties&subcat=Mini%20Crossbody%20Bags" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Mini Crossbody Bags
+                </a>
+              
+                <a href="/category?cat=novelties&subcat=Silicone%20Night%20Lamps" class="text-[10px] font-extrabold px-2.5 py-1 rounded-full bg-white/80 hover:bg-pink-100 text-pink-800 border border-pink-200 transition">
+                  Silicone Night Lamps
+                </a>
+              
+              <span class="text-[10px] font-bold px-2 py-1 rounded-full bg-pink-50 text-pink-600">+2 more</span>
+            </div>
+          
+        </div>
+
+        <!-- Action Button -->
+        <div class="pt-3 border-t border-pink-100 flex items-center justify-between">
+          <span class="text-xs font-black text-pink-700 font-fun">Subhash Chowk Store</span>
+          <a href="/category?cat=novelties" class="px-4 py-2 rounded-2xl kawaii-btn-pink text-xs font-black shadow-sm flex items-center gap-1.5 group-hover:shadow-md transition">
+            <span>Explore Gifts</span>
+            <i class="fa-solid fa-arrow-right text-[10px] transition-transform group-hover:translate-x-0.5"></i>
+          </a>
+        </div>
+      </div>
     </div>
 
   </section>

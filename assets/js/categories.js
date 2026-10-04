@@ -23,7 +23,7 @@ const DEFAULT_CATEGORIES = [
     "name": "Cosmetic & Personal Care",
     "hindiName": "कॉस्मेटिक व ब्यूटी",
     "icon": "💄",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=400&q=75",
     "tagline": "Cute lip balms, velvet lip tints, LED vanity mirrors, hair accessories & vanity pouches",
     "subcategories": [
       "Cute Lip Balms & Glosses",
@@ -40,7 +40,7 @@ const DEFAULT_CATEGORIES = [
     "name": "Soft Toys & Plushies",
     "hindiName": "सॉफ्ट टॉयज व प्लशीज",
     "icon": "🧸",
-    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=75",
     "tagline": "Giant cuddly teddy bears, viral Boba squishies, soft animal cushions & plush bag charms",
     "subcategories": [
       "Giant Cuddle Teddies",
@@ -88,7 +88,7 @@ const DEFAULT_CATEGORIES = [
     "name": "Bags, Bottles & Novelties",
     "hindiName": "बैग्स, बॉटल्स व नॉवेल्टीज",
     "icon": "🎒",
-    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=600&q=80",
+    "image": "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400&q=75",
     "tagline": "Pastel sippers, cute water bottles, mini crossbody bags, silicone night lamps & clocks",
     "subcategories": [
       "Pastel Sippers & Bottles",
