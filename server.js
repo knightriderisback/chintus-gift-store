@@ -787,6 +787,59 @@ app.post('/api/telegram/test', requireAdmin, async (req, res) => {
   }
 });
 
+app.post('/api/telegram/detect', requireAdmin, async (req, res) => {
+  const { token } = req.body || {};
+  const settings = readJSON(SETTINGS_FILE, {});
+  const effectiveToken = (token || settings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN || "").trim();
+
+  if (!effectiveToken) {
+    return res.status(400).json({
+      success: false,
+      message: 'Please provide Telegram Bot Token'
+    });
+  }
+
+  try {
+    const meRes = await fetch(`https://api.telegram.org/bot${effectiveToken}/getMe`);
+    const meData = await meRes.json();
+    if (!meData.ok) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid Bot Token: ' + (meData.description || 'Unauthorized')
+      });
+    }
+
+    const updRes = await fetch(`https://api.telegram.org/bot${effectiveToken}/getUpdates?limit=20`);
+    const updData = await updRes.json();
+    let detectedChatId = null;
+    let senderName = null;
+
+    if (updData.ok && Array.isArray(updData.result) && updData.result.length > 0) {
+      for (let i = updData.result.length - 1; i >= 0; i--) {
+        const u = updData.result[i];
+        const msg = u.message || u.channel_post || u.my_chat_member;
+        if (msg && msg.chat && msg.chat.id) {
+          detectedChatId = msg.chat.id;
+          senderName = msg.chat.first_name || msg.chat.username || msg.chat.title || 'User';
+          break;
+        }
+      }
+    }
+
+    res.json({
+      success: true,
+      bot: meData.result,
+      detectedChatId,
+      senderName,
+      message: detectedChatId
+        ? `Found Chat ID: ${detectedChatId} (${senderName})`
+        : `Bot verified (@${meData.result.username}), but no message received yet. Please open t.me/${meData.result.username} and tap START.`
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, message: err.message });
+  }
+});
+
 // Serve Static Files
 app.use(express.static(__dirname));
 
