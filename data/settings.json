@@ -29,5 +29,7 @@
   "supportEmail": "chintusgifts@gmail.com",
   "instagramHandle": "@chintusgiftstore",
   "authorizedAdminEmail": "owner@chintus.com",
-  "googleClientId": ""
+  "googleClientId": "",
+  "telegramBotToken": "8283649128:AAHWOe9ae7oC-aeTDFVZjMNYm-zvFoaiFOo",
+  "telegramBotUsername": "Chin2s_bot"
 }
