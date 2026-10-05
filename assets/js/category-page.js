@@ -911,9 +911,13 @@ function showToast(message, type = "success") {
 // Real-Time Visitor Tracking for Push Notifications & Admin Radar
 function initVisitorTracker(pageName) {
   try {
-    const isNewSession = !sessionStorage.getItem('chintu_visited_session');
+    const now = Date.now();
+    const lastTrackTime = parseInt(sessionStorage.getItem('chintu_last_tg_time') || '0', 10);
+    // Send Telegram alert if fresh visit, new tab, or at least 3 minutes passed since last alert
+    const isNewSession = (!sessionStorage.getItem('chintu_visited_session')) || (now - lastTrackTime > 3 * 60 * 1000);
     if (isNewSession) {
-      sessionStorage.setItem('chintu_visited_session', 'visit_' + Date.now());
+      sessionStorage.setItem('chintu_visited_session', 'visit_' + now);
+      sessionStorage.setItem('chintu_last_tg_time', String(now));
     }
 
     const ua = navigator.userAgent || '';
@@ -924,10 +928,10 @@ function initVisitorTracker(pageName) {
     else if (/tablet/i.test(ua)) device = 'Tablet Device';
     else if (/mobile/i.test(ua)) device = 'Mobile Phone';
 
-    let referrer = document.referrer ? document.referrer : 'Direct / WhatsApp / Social';
+    let referrer = document.referrer ? document.referrer : 'Direct / WhatsApp Link';
     try {
       if (document.referrer && document.referrer.includes(window.location.host)) {
-        referrer = 'Internal Store Browsing';
+        referrer = 'Store Browsing';
       }
     } catch (_) {}
 

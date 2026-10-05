@@ -947,8 +947,8 @@ async function sendTelegramNotification(text) {
   }
 }
 
-app.post('/api/track-visitor', (req, res) => {
-  const { page, path, referrer, device, isNewSession } = req.body || {};
+app.post('/api/track-visitor', async (req, res) => {
+  const { page, path, referrer, device, isNewSession, forceAlert } = req.body || {};
 
   const record = {
     id: `vis-${Date.now()}-${Math.floor(Math.random() * 1000)}`,
@@ -956,16 +956,19 @@ app.post('/api/track-visitor', (req, res) => {
     timestamp: Date.now(),
     page: String(page || 'Storefront').slice(0, 100),
     path: String(path || '/').slice(0, 150),
-    referrer: String(referrer || 'Direct').slice(0, 150),
-    device: String(device || 'Mobile').slice(0, 50),
+    referrer: String(referrer || 'Direct Visit').slice(0, 150),
+    device: String(device || 'Mobile Phone').slice(0, 50),
     isNewSession: Boolean(isNewSession)
   };
 
   recentVisitors.unshift(record);
   if (recentVisitors.length > 50) recentVisitors.pop();
 
-  // If this is a fresh session / new visitor, trigger instant Telegram Alert!
-  if (isNewSession) {
+  let telegramAlertSent = false;
+  let telegramAlertError = null;
+
+  // Trigger instant Telegram Alert if new session, fresh visit, or explicit alert
+  if (isNewSession || forceAlert) {
     const istTime = new Date().toLocaleTimeString('en-IN', {
       timeZone: 'Asia/Kolkata',
       hour: '2-digit',
@@ -977,17 +980,30 @@ app.post('/api/track-visitor', (req, res) => {
       `🔔 *NEW VISITOR ON CHINTU'S GIFT STORE!*\n` +
       `━━━━━━━━━━━━━━━━━━━━━━\n` +
       `📄 *Page:* ${record.page}\n` +
-      `🔗 *Path:* \`${record.path}\`\n` +
       `📱 *Device:* ${record.device}\n` +
-      `🌐 *Source:* ${record.referrer || 'Direct / Social'}\n` +
+      `🌐 *Source:* ${record.referrer || 'Direct Visit'}\n` +
       `⏰ *Time:* ${istTime} (IST)\n` +
       `━━━━━━━━━━━━━━━━━━━━━━\n` +
       `🏪 *Store:* Subhash Chowk, Dalli Rajhara`;
 
-    sendTelegramNotification(telegramText).catch(e => console.error("Telegram notification error:", e));
+    try {
+      const tgRes = await sendTelegramNotification(telegramText);
+      telegramAlertSent = Boolean(tgRes && tgRes.success);
+      if (!telegramAlertSent) {
+        telegramAlertError = tgRes ? (tgRes.error || tgRes.reason) : 'Unknown Telegram error';
+      }
+    } catch (e) {
+      telegramAlertError = e.message;
+      console.error("Telegram notification error:", e);
+    }
   }
 
-  res.json({ success: true });
+  res.json({
+    success: true,
+    visitorId: record.id,
+    telegramSent: telegramAlertSent,
+    telegramError: telegramAlertError
+  });
 });
 
 app.get('/api/live-visitors', (req, res) => {
