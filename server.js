@@ -867,6 +867,333 @@ app.post('/api/telegram/detect', requireAdmin, async (req, res) => {
   }
 });
 
+// Interactive Telegram Bot Webhook (Direct Rate Updates, Catalog Search, Visitor Radar via Telegram)
+app.post('/api/telegram-webhook', async (req, res) => {
+  try {
+    const update = req.body;
+    if (!update || !update.message) {
+      return res.status(200).json({ ok: true, note: 'no message' });
+    }
+
+    const msg = update.message;
+    const chatId = msg.chat ? String(msg.chat.id) : null;
+    const fromId = msg.from ? String(msg.from.id) : null;
+    const rawText = (msg.text || '').trim();
+
+    if (!rawText || !chatId) {
+      return res.status(200).json({ ok: true });
+    }
+
+    const settings = readJSON(SETTINGS_FILE, {});
+    const adminChatId = String(settings.telegramChatId || '8769715316').trim();
+    const botToken = (settings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN || '8283649128:AAHWOe9ae7oC-aeTDFVZjMNYm-zvFoaiFOo').trim();
+
+    // Helper to send reply directly to user
+    const reply = async (replyText) => {
+      try {
+        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            chat_id: chatId,
+            text: replyText,
+            parse_mode: 'Markdown'
+          })
+        });
+      } catch (err) {
+        console.error('Telegram reply error:', err.message);
+      }
+    };
+
+    // If chat is not the authorized admin
+    if (chatId !== adminChatId && fromId !== adminChatId) {
+      await reply(
+        `👋 *Namaste! Welcome to Chintu's Gift Store!* 🎀\n\n` +
+        `Subhash Chowk, Dalli Rajhara ki cutest gift & stationery boutique!\n\n` +
+        `🌐 *Shop Online:* https://chintus-gift-store.vercel.app\n` +
+        `💬 *WhatsApp Order:* https://wa.me/918269212182\n\n` +
+        `_Note: Store controls are reserved for the store owner._`
+      );
+      return res.status(200).json({ ok: true });
+    }
+
+    const lower = rawText.toLowerCase();
+
+    // 1. HELP / START / MENU
+    if (lower === '/start' || lower === '/help' || lower === 'help' || lower === 'hi' || lower === 'menu') {
+      const helpMsg = 
+        `🌸 *CHINTU'S STORE ASSISTANT BOT* 🌸\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `Aap direct yahan se apni website manage kar sakte hain:\n\n` +
+        `💰 *Rate Update Karein (Change Price):*\n` +
+        `• \`/rate <ID or Name> <NewPrice>\`\n` +
+        `_Examples:_\n` +
+        `  ➔ \`/rate cosm-001 499\`\n` +
+        `  ➔ \`/rate lip gloss 249\`\n` +
+        `  ➔ \`/rate magic mug 350\`\n` +
+        `  ➔ \`rate led lamp 450\`\n\n` +
+        `🔍 *Product Khojein:*\n` +
+        `• \`/find <name>\` (e.g. \`/find gloss\` ya \`/find diary\`)\n\n` +
+        `📦 *Catalogue & Rates:*\n` +
+        `• \`/products\` (Top 10 products with rates)\n\n` +
+        `👥 *Live Visitors:*\n` +
+        `• \`/visitors\` (Store par kaun active hai)\n\n` +
+        `📊 *Store Stats:*\n` +
+        `• \`/status\` (Total items & visitor count)\n\n` +
+        `💡 *Shortcut:* Aap bina slash ke seedha \`rate <item> <price>\` bhi likh sakte hain!`;
+      await reply(helpMsg);
+      return res.status(200).json({ ok: true });
+    }
+
+    // 2. STATUS
+    if (lower === '/status' || lower === 'status') {
+      const prods = readJSON(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+      const vists = readJSON(VISITORS_FILE, []);
+      const fiveMinAgo = Date.now() - 5 * 60 * 1000;
+      const active = vists.filter(v => v.timestamp > fiveMinAgo);
+
+      const statusMsg = 
+        `📊 *STORE LIVE STATUS* 📊\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `🏪 *Store:* Chintu's Gift & Kawaii Store\n` +
+        `📍 *Location:* Subhash Chowk, Dalli Rajhara\n` +
+        `📦 *Total Products:* ${prods.length} items\n` +
+        `🟢 *Active Online Now:* ${Math.max(1, active.length)} visitor(s)\n` +
+        `👥 *Total Tracked Visits:* ${vists.length}\n` +
+        `🌐 *Website:* https://chintus-gift-store.vercel.app\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `_Rate badalne ke liye: \`/rate <ID/Naam> <Price>\`_`;
+      await reply(statusMsg);
+      return res.status(200).json({ ok: true });
+    }
+
+    // 3. VISITORS
+    if (lower === '/visitors' || lower === 'visitors') {
+      const vists = readJSON(VISITORS_FILE, []);
+      const fiveMinAgo = Date.now() - 5 * 60 * 1000;
+      const active = vists.filter(v => v.timestamp > fiveMinAgo);
+      const recent = vists.slice(0, 5);
+
+      let text = 
+        `👥 *LIVE VISITOR RADAR* 👥\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `🟢 *Active Online Now:* ${Math.max(1, active.length)}\n` +
+        `📊 *Total Tracked:* ${vists.length}\n\n` +
+        `*Latest Visitors:*\n`;
+
+      if (recent.length === 0) {
+        text += `_No recent visits recorded yet._\n`;
+      } else {
+        recent.forEach((v, i) => {
+          const t = new Date(v.timestamp || v.time).toLocaleTimeString('en-IN', {
+            timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: true
+          });
+          const dev = (v.device && (v.device.includes('Phone') || v.device.includes('Android') || v.device.includes('Mobile'))) ? '📱 Mobile' : '💻 PC';
+          text += `${i+1}. ${dev} • ${v.page || 'Home'} • ${t}\n   ↳ _${v.referrer || 'Direct'}_ \n`;
+        });
+      }
+      text += `\n🌐 *Store:* https://chintus-gift-store.vercel.app`;
+      await reply(text);
+      return res.status(200).json({ ok: true });
+    }
+
+    // 4. PRODUCTS LIST
+    if (lower === '/products' || lower === '/list' || lower === 'products' || lower === 'list') {
+      const prods = readJSON(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+      const sample = prods.slice(0, 10);
+
+      let text = 
+        `📦 *PRODUCT CATALOG (TOP 10)* 📦\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n`;
+      sample.forEach((p, i) => {
+        text += `${i+1}. *${p.name}*\n   🆔 \`${p.id}\` | 💰 *₹${p.price}*\n\n`;
+      });
+      text += 
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `🔍 *Search:* \`/find <naam>\`\n` +
+        `💰 *Rate Update:* \`/rate <ID> <Price>\`\n` +
+        `_Example:_ \`/rate ${sample[0]?.id || 'cosm-001'} 299\``;
+      await reply(text);
+      return res.status(200).json({ ok: true });
+    }
+
+    // 5. FIND / SEARCH PRODUCT
+    if (lower.startsWith('/find') || lower.startsWith('/search') || lower.startsWith('find ')) {
+      const query = rawText.replace(/^\/(find|search)\s*/i, '').replace(/^find\s+/i, '').trim();
+      if (!query) {
+        await reply(`🔍 *Product Khojne Ke Liye:*\n\`/find <product naam>\` likhein.\n_Example:_ \`/find gloss\` ya \`/find mug\``);
+        return res.status(200).json({ ok: true });
+      }
+
+      const prods = readJSON(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+      const qLower = query.toLowerCase();
+      const matches = prods.filter(p => 
+        (p.name && p.name.toLowerCase().includes(qLower)) ||
+        (p.id && p.id.toLowerCase().includes(qLower)) ||
+        (p.category && p.category.toLowerCase().includes(qLower)) ||
+        (p.subcategory && p.subcategory.toLowerCase().includes(qLower))
+      ).slice(0, 6);
+
+      if (matches.length === 0) {
+        await reply(`❌ *Koi product nahi mila!* "${query}" ke liye koi result nahi hai.\nSabhi dekhne ke liye \`/products\` likhein.`);
+        return res.status(200).json({ ok: true });
+      }
+
+      let text = `🔍 *RESULTS FOR "${query}" (${matches.length})*\n━━━━━━━━━━━━━━━━━━━━━━\n`;
+      matches.forEach((p, i) => {
+        text += `${i+1}. *${p.name}*\n   🆔 \`${p.id}\` | 💰 *₹${p.price}*\n   _Update:_ \`/rate ${p.id} ${p.price}\`\n\n`;
+      });
+      text += `💡 Rate badalne ke liye upar wala \`/rate\` command bhejein!`;
+      await reply(text);
+      return res.status(200).json({ ok: true });
+    }
+
+    // 6. RATE / PRICE UPDATE COMMAND
+    const isRateCmd = lower.startsWith('/rate') || lower.startsWith('/price') || lower.startsWith('rate ') || lower.startsWith('price ');
+    if (isRateCmd) {
+      const cleanArgs = rawText
+        .replace(/^\/(rate|price)\s*/i, '')
+        .replace(/^(rate|price)\s+/i, '')
+        .trim();
+
+      const parts = cleanArgs.split(/\s+/).filter(Boolean);
+
+      if (parts.length < 2) {
+        await reply(
+          `💰 *RATE KAISE UPDATE KAREIN:*\n` +
+          `━━━━━━━━━━━━━━━━━━━━━━\n` +
+          `Format: \`/rate <ID ya Naam> <Naya Price>\`\n\n` +
+          `_Examples:_\n` +
+          `• \`/rate cosm-001 499\`\n` +
+          `• \`/rate lip gloss 249\`\n` +
+          `• \`rate magic mug 350\`\n` +
+          `• \`rate led lamp 450\``
+        );
+        return res.status(200).json({ ok: true });
+      }
+
+      let newPrice = null;
+      let query = '';
+
+      const lastNum = Number(parts[parts.length - 1].replace(/[₹,\s\/-]/g, ''));
+      const firstNum = Number(parts[0].replace(/[₹,\s\/-]/g, ''));
+
+      if (!isNaN(lastNum) && lastNum > 0) {
+        newPrice = lastNum;
+        query = parts.slice(0, parts.length - 1).join(' ').trim();
+      } else if (!isNaN(firstNum) && firstNum > 0) {
+        newPrice = firstNum;
+        query = parts.slice(1).join(' ').trim();
+      }
+
+      if (!newPrice || !query) {
+        await reply(`❌ Price sahi number hona chahiye! Example: \`/rate cosm-001 399\``);
+        return res.status(200).json({ ok: true });
+      }
+
+      const products = readJSON(PRODUCTS_FILE, DEFAULT_PRODUCTS);
+      const qLower = query.toLowerCase();
+
+      // Match Strategy:
+      let targetProduct = products.find(p => String(p.id).toLowerCase() === qLower);
+      if (!targetProduct) {
+        targetProduct = products.find(p => String(p.sku || '').toLowerCase() === qLower);
+      }
+      if (!targetProduct) {
+        targetProduct = products.find(p => (p.name || '').toLowerCase() === qLower);
+      }
+      if (!targetProduct) {
+        const matches = products.filter(p => (p.name || '').toLowerCase().includes(qLower));
+        if (matches.length === 1) {
+          targetProduct = matches[0];
+        } else if (matches.length > 1) {
+          const exactPrefix = matches.filter(p => (p.name || '').toLowerCase().startsWith(qLower));
+          if (exactPrefix.length === 1) {
+            targetProduct = exactPrefix[0];
+          } else {
+            let disambiguate = 
+              `⚠️ *MULTIPLE PRODUCTS FOUND FOR "${query}":*\n` +
+              `━━━━━━━━━━━━━━━━━━━━━━\n` +
+              `Kripya exact ID use karein:\n\n`;
+            matches.slice(0, 5).forEach((p, idx) => {
+              disambiguate += `${idx+1}. *${p.name}*\n   🆔 \`${p.id}\` (Current: ₹${p.price})\n   👉 \`/rate ${p.id} ${newPrice}\`\n\n`;
+            });
+            await reply(disambiguate);
+            return res.status(200).json({ ok: true });
+          }
+        }
+      }
+
+      if (!targetProduct) {
+        await reply(
+          `❌ *Product nahi mila!* "${query}" naam ya ID ka koi product nahi mila.\n` +
+          `List dekhne ke liye \`/find ${query}\` ya \`/products\` use karein.`
+        );
+        return res.status(200).json({ ok: true });
+      }
+
+      // Update product rate
+      const oldPrice = targetProduct.price;
+      targetProduct.price = Number(newPrice);
+      if (targetProduct.originalPrice && targetProduct.originalPrice < targetProduct.price) {
+        targetProduct.originalPrice = Math.round(targetProduct.price * 1.25);
+      }
+
+      writeJSON(PRODUCTS_FILE, products);
+
+      const successMsg = 
+        `✅ *RATE UPDATED IN REAL-TIME!* 🚀\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `🛍️ *Product:* ${targetProduct.name}\n` +
+        `🆔 *ID:* \`${targetProduct.id}\`\n` +
+        `🏷️ *Category:* ${targetProduct.categoryName || targetProduct.category || 'Store Item'}\n` +
+        `💰 *Purana Rate:* ₹${oldPrice}\n` +
+        `✨ *Naya Rate:* ₹${newPrice}\n` +
+        `━━━━━━━━━━━━━━━━━━━━━━\n` +
+        `⚡ *Website par turant live ho gaya hai!*\n` +
+        `🌐 https://chintus-gift-store.vercel.app`;
+      await reply(successMsg);
+      return res.status(200).json({ ok: true });
+    }
+
+    // Default response
+    await reply(
+      `🤖 *Chintu's Assistant Bot*\n` +
+      `Command samajh nahi aaya!\n\n` +
+      `💡 *Aap ye kar sakte hain:*\n` +
+      `• Rate badalne ke liye: \`/rate <ID/Naam> <Price>\`\n` +
+      `• Products dekhne ke liye: \`/products\`\n` +
+      `• Live visitors ke liye: \`/visitors\`\n` +
+      `• Sabhi commands ke liye: \`/help\``
+    );
+    res.status(200).json({ ok: true });
+  } catch (err) {
+    console.error('Telegram webhook error:', err);
+    res.status(200).json({ ok: false, error: err.message });
+  }
+});
+
+// Endpoint to automatically register Telegram Webhook with Telegram servers
+app.get('/api/telegram/setup-webhook', async (req, res) => {
+  const settings = readJSON(SETTINGS_FILE, {});
+  const token = (settings.telegramBotToken || process.env.TELEGRAM_BOT_TOKEN || '8283649128:AAHWOe9ae7oC-aeTDFVZjMNYm-zvFoaiFOo').trim();
+  const host = req.headers.host || 'chintus-gift-store.vercel.app';
+  const protocol = host.includes('localhost') ? 'http' : 'https';
+  const webhookUrl = `${protocol}://${host}/api/telegram-webhook`;
+
+  try {
+    const tgRes = await fetch(`https://api.telegram.org/bot${token}/setWebhook?url=${encodeURIComponent(webhookUrl)}`);
+    const tgData = await tgRes.json();
+    res.json({
+      success: tgData.ok,
+      webhookUrl,
+      telegramResponse: tgData
+    });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // Serve Static Files
 app.use(express.static(__dirname));
 

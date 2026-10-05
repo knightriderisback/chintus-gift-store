@@ -1624,93 +1624,99 @@
       </div>
     </div>
 
-    <!-- REAL-TIME LIVE VISITORS RADAR MODAL (REDESIGNED: CLEAN, READABLE & BEAUTIFULLY ARRANGED) -->
-    <div id="visitors-modal" class="hidden fixed inset-0 z-[1250] bg-purple-950/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
-      <div class="pink-acrylic w-full max-w-2xl max-h-[92vh] flex flex-col p-5 sm:p-6 relative shadow-2xl rounded-3xl border-2 border-pink-300 bg-white/95">
+    <!-- REAL-TIME LIVE VISITORS RADAR MODAL (SLIM, COMPACT & ICON-DRIVEN) -->
+    <div id="visitors-modal" class="hidden fixed inset-0 z-[1250] bg-purple-950/60 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-4">
+      <div class="pink-acrylic w-full max-w-xl max-h-[92vh] flex flex-col p-4 sm:p-5 relative shadow-2xl rounded-3xl border-2 border-pink-300 bg-white/95">
         
-        <!-- Header -->
-        <div class="flex items-start justify-between gap-3 mb-4 pb-3 border-b border-pink-200">
-          <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-xl shadow-inner shrink-0">
+        <!-- Slim Header -->
+        <div class="flex items-center justify-between gap-2.5 mb-3 pb-2.5 border-b border-pink-200">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm shadow-inner shrink-0">
               <i class="fa-solid fa-satellite-dish animate-pulse"></i>
             </div>
-            <div>
-              <h3 class="text-base sm:text-lg font-black text-pink-700 font-fun flex items-center gap-2">
-                <span>Live Customer Visitors Log</span>
-                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300">
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> Live Radar
+            <div class="min-w-0">
+              <h3 class="text-sm sm:text-base font-black text-pink-700 font-fun flex items-center gap-1.5 leading-none truncate">
+                <span>Live Visitor Radar</span>
+                <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[9px] font-black border border-emerald-300 shrink-0">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span> LIVE
                 </span>
               </h3>
-              <p class="text-[11px] text-pink-900/80 font-medium">वेबसाइट पर आए ग्राहकों का लाइव रिकॉर्ड व पेज ट्रैकिंग</p>
+              <p class="text-[10px] text-pink-900/70 font-medium mt-0.5 truncate">लाइव ग्राहक गतिविधि व पेज ट्रैकिंग</p>
             </div>
           </div>
           
-          <button onclick="closeVisitorsModal()" class="w-8 h-8 rounded-full bg-pink-100 hover:bg-rose-100 text-pink-700 hover:text-rose-700 flex items-center justify-center font-bold text-sm transition cursor-pointer shrink-0" title="Close (बंद करें ✕)">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <button onclick="playVisitorChime()" class="px-2 py-1 rounded-lg bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 text-[10px] font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer" title="Test Web Bell Sound">
+              <i class="fa-solid fa-bell text-amber-500 text-xs"></i>
+              <span class="hidden sm:inline">Bell</span>
+            </button>
+            <button onclick="fetchLiveVisitors()" class="px-2 py-1 rounded-lg bg-white hover:bg-pink-50 border border-pink-300 text-pink-800 text-[10px] font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer" title="Refresh Live Visitors">
+              <i class="fa-solid fa-arrows-rotate text-xs"></i>
+              <span class="hidden sm:inline">Sync</span>
+            </button>
+            <button onclick="closeVisitorsModal()" class="w-7 h-7 rounded-lg bg-pink-100 hover:bg-rose-100 text-pink-700 hover:text-rose-700 flex items-center justify-center font-bold text-xs transition cursor-pointer shrink-0 ml-0.5" title="Close (बंद करें ✕)">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
         </div>
 
-        <!-- Stat Summary Bar -->
-        <div class="grid grid-cols-3 gap-2.5 sm:gap-3 mb-4">
+        <!-- Slim Stat Pill Bar (Ultra-compact) -->
+        <div class="grid grid-cols-3 gap-1.5 sm:gap-2 mb-3">
           <!-- Active Now -->
-          <div class="p-3 rounded-2xl bg-emerald-50/90 border border-emerald-200 text-center">
-            <div class="text-[10px] font-bold text-emerald-800 flex items-center justify-center gap-1">
+          <div class="px-2.5 py-1.5 rounded-xl bg-emerald-50/90 border border-emerald-200 flex items-center justify-between">
+            <div class="flex items-center gap-1 text-[10px] font-bold text-emerald-800">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Online Now</span>
+              <span>Online</span>
             </div>
-            <div id="modal-active-visitors" class="text-2xl font-black text-emerald-700 font-fun mt-0.5">1</div>
-            <div class="text-[9px] text-emerald-600 font-medium">ग्राहक एक्टिव हैं</div>
+            <div id="modal-active-visitors" class="text-sm sm:text-base font-black text-emerald-700 font-mono">1</div>
           </div>
 
           <!-- Total Visits -->
-          <div class="p-3 rounded-2xl bg-pink-50/90 border border-pink-200 text-center">
-            <div class="text-[10px] font-bold text-pink-800">Recent Visits</div>
-            <div id="modal-total-tracked" class="text-2xl font-black text-pink-600 font-fun mt-0.5">0</div>
-            <div class="text-[9px] text-pink-600 font-medium">कुल विज़िटर लॉग</div>
+          <div class="px-2.5 py-1.5 rounded-xl bg-pink-50/90 border border-pink-200 flex items-center justify-between">
+            <div class="flex items-center gap-1 text-[10px] font-bold text-pink-800">
+              <i class="fa-solid fa-users text-pink-500 text-[10px]"></i>
+              <span>Visits</span>
+            </div>
+            <div id="modal-total-tracked" class="text-sm sm:text-base font-black text-pink-600 font-mono">0</div>
           </div>
 
           <!-- Telegram Bot Connection Status -->
-          <div class="p-3 rounded-2xl bg-purple-50/90 border border-purple-200 text-center">
-            <div class="text-[10px] font-bold text-purple-800">Telegram Bot</div>
-            <div id="modal-telegram-status" class="text-xs font-black text-purple-700 mt-1 flex items-center justify-center gap-1">
-              <i class="fa-brands fa-telegram text-purple-600"></i>
-              <span>@Chin2s_bot</span>
+          <div class="px-2.5 py-1.5 rounded-xl bg-purple-50/90 border border-purple-200 flex items-center justify-between">
+            <div class="flex items-center gap-1 text-[10px] font-bold text-purple-800 truncate">
+              <i class="fa-brands fa-telegram text-purple-600 text-xs"></i>
+              <span>Bot</span>
             </div>
-            <div class="text-[9px] text-emerald-700 font-bold mt-0.5">✅ Active & Connected</div>
+            <div class="flex items-center gap-1 text-[10px] font-black text-emerald-700">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <span>Active</span>
+            </div>
           </div>
         </div>
 
-        <!-- Action Bar: Sound Bell + Refresh -->
-        <div class="flex items-center justify-between gap-2 mb-3 px-1">
-          <div class="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-            <i class="fa-solid fa-list-check text-pink-500"></i>
-            <span>Customer Visit History (ग्राहक एक्टिविटी):</span>
-          </div>
-          <div class="flex items-center gap-1.5">
-            <button onclick="playVisitorChime()" class="px-2.5 py-1 rounded-xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 text-[11px] font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer" title="Test Web Bell">
-              <i class="fa-solid fa-bell text-amber-500"></i>
-              <span>Test Bell 🔔</span>
-            </button>
-            <button onclick="fetchLiveVisitors()" class="px-2.5 py-1 rounded-xl bg-white hover:bg-pink-50 border border-pink-300 text-pink-800 text-[11px] font-bold transition flex items-center gap-1 shadow-2xs cursor-pointer">
-              <i class="fa-solid fa-arrows-rotate"></i>
-              <span>Refresh</span>
-            </button>
-          </div>
+        <!-- Feed Subheading -->
+        <div class="flex items-center justify-between text-[11px] font-bold text-slate-600 mb-2 px-1">
+          <span class="flex items-center gap-1">
+            <i class="fa-solid fa-stream text-pink-500 text-xs"></i> Activity Stream
+          </span>
+          <span class="text-[10px] text-slate-400 font-normal">Auto-refreshes live</span>
         </div>
 
-        <!-- Activity Feed List (Clean & Readable Card Layout) -->
-        <div id="visitors-feed-container" class="overflow-y-auto max-h-[50vh] pr-1 space-y-2.5">
+        <!-- Activity Feed List (Slim & Icon-focused Rows) -->
+        <div id="visitors-feed-container" class="overflow-y-auto max-h-[52vh] pr-1 space-y-1.5">
           <div class="p-6 text-center text-pink-700 text-xs bg-pink-50/50 rounded-2xl border border-pink-200">
             <i class="fa-solid fa-spinner fa-spin text-pink-500 mr-2 text-sm"></i>
-            <span>Listening for real-time customer visits... (ग्राहक के आने का इंतज़ार है)</span>
+            <span>Listening for real-time customer visits...</span>
           </div>
         </div>
 
-        <!-- Footer Notice -->
-        <div class="mt-4 pt-3 border-t border-pink-200 flex items-center justify-between text-[11px] text-pink-800/80">
-          <span>🔔 Telegram alerts are sent automatically on customer visits.</span>
-          <button onclick="testTelegramNotification()" class="font-bold text-purple-700 hover:text-purple-900 underline cursor-pointer">
-            Send Test Alert 🚀
+        <!-- Slim Footer: Interactive Telegram Bot Notice -->
+        <div class="mt-3 pt-2.5 border-t border-pink-200 flex items-center justify-between text-[10px] text-pink-800/80">
+          <span class="flex items-center gap-1 truncate mr-2">
+            <i class="fa-brands fa-telegram text-purple-600 text-xs shrink-0"></i>
+            <span class="truncate">Telegram <strong>@Chin2s_bot</strong> par <code>/rate</code> likhkar price badlein!</span>
+          </span>
+          <button onclick="testTelegramNotification()" class="font-bold text-purple-700 hover:text-purple-900 underline shrink-0 cursor-pointer">
+            Test Ping 🚀
           </button>
         </div>
 
@@ -4781,13 +4787,13 @@
 
       if (!visitors || visitors.length === 0) {
         container.innerHTML = `
-          <div class="p-8 text-center bg-pink-50/40 rounded-2xl border border-pink-200 shadow-2xs">
-            <div class="w-12 h-12 mx-auto rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl mb-3 shadow-inner">
+          <div class="p-6 text-center bg-pink-50/40 rounded-xl border border-pink-200 shadow-2xs">
+            <div class="w-10 h-10 mx-auto rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-base mb-2 shadow-inner">
               <i class="fa-solid fa-users"></i>
             </div>
-            <h4 class="text-sm font-black text-slate-800 font-fun">Abhi koi naya customer nahi aaya hai</h4>
-            <p class="text-xs text-pink-800/80 mt-1 max-w-sm mx-auto leading-relaxed">
-              Jaise hi koi customer website open karega, yahan unka live record aayega aur Telegram (@Chin2s_bot) par instant notification aayega!
+            <h4 class="text-xs font-black text-slate-800 font-fun">Abhi koi naya visitor nahi hai</h4>
+            <p class="text-[11px] text-pink-800/80 mt-0.5">
+              Live customer visits yahan stream hongi aur Telegram (@Chin2s_bot) par instant notify hongi!
             </p>
           </div>
         `;
@@ -4800,76 +4806,92 @@
 
         // Calculate relative time
         const diffSec = Math.max(0, Math.floor((Date.now() - d.getTime()) / 1000));
-        let relTime = 'Just now (अभी)';
+        let relTime = 'Just now';
         if (diffSec >= 60 && diffSec < 3600) {
-          relTime = `${Math.floor(diffSec / 60)} min ago`;
+          relTime = `${Math.floor(diffSec / 60)}m ago`;
         } else if (diffSec >= 3600) {
-          relTime = `${Math.floor(diffSec / 3600)} hr ago`;
+          relTime = `${Math.floor(diffSec / 3600)}h ago`;
         }
 
         const isNew = Boolean(v.isNewSession);
         const isMobile = Boolean(v.device && (v.device.includes('Phone') || v.device.includes('Android') || v.device.includes('iPhone') || v.device.includes('Mobile')));
         const deviceIcon = isMobile ? 'fa-mobile-screen' : 'fa-laptop';
-        const deviceColor = isMobile ? 'text-pink-600 bg-pink-100 border border-pink-200' : 'text-blue-600 bg-blue-100 border border-blue-200';
+        const deviceColor = isMobile ? 'text-pink-600 bg-pink-50 border-pink-200' : 'text-blue-600 bg-blue-50 border-blue-200';
+        const deviceLabel = isMobile ? 'Mobile' : 'PC';
 
-        // Clean user-friendly readable page label
-        let cleanPage = v.page || 'Storefront Homepage';
+        // Clean user-friendly readable page label & icon
+        let cleanPage = v.page || 'Storefront';
         let pageIcon = '🏠';
-        if (cleanPage.toLowerCase().includes('homepage') || cleanPage.toLowerCase().includes('front')) {
-          cleanPage = 'Storefront Homepage (मुख्य पेज)';
-          pageIcon = '🏠';
-        } else if (cleanPage.toLowerCase().includes('cosmetics')) {
-          cleanPage = 'Beauty & Cosmetics (कॉस्मेटिक्स)';
+        let shortPage = 'Home';
+        const lowerPage = cleanPage.toLowerCase();
+        if (lowerPage.includes('cosmetics')) {
           pageIcon = '💄';
-        } else if (cleanPage.toLowerCase().includes('stationery')) {
-          cleanPage = 'Stationery & Supplies (फैंसी स्टेशनरी)';
+          shortPage = 'Cosmetics';
+        } else if (lowerPage.includes('stationery')) {
           pageIcon = '✏️';
-        } else if (cleanPage.toLowerCase().includes('skincare')) {
-          cleanPage = 'Skincare & Personal Care (स्किनकेयर)';
+          shortPage = 'Stationery';
+        } else if (lowerPage.includes('skincare')) {
           pageIcon = '🧴';
-        } else if (cleanPage.toLowerCase().includes('lifestyle')) {
-          cleanPage = 'Kids & Lifestyle (लाइफस्टाइल व सिपर)';
+          shortPage = 'Skincare';
+        } else if (lowerPage.includes('lifestyle')) {
           pageIcon = '🎒';
+          shortPage = 'Lifestyle';
+        } else if (lowerPage.includes('admin')) {
+          pageIcon = '⚙️';
+          shortPage = 'Admin';
+        }
+
+        // Source icon & label
+        let sourceIcon = 'fa-solid fa-compass text-slate-400';
+        let sourceLabel = 'Direct';
+        const refLower = (v.referrer || '').toLowerCase();
+        if (refLower.includes('whatsapp')) {
+          sourceIcon = 'fa-brands fa-whatsapp text-emerald-500';
+          sourceLabel = 'WhatsApp';
+        } else if (refLower.includes('google')) {
+          sourceIcon = 'fa-brands fa-google text-blue-500';
+          sourceLabel = 'Google';
+        } else if (refLower.includes('instagram')) {
+          sourceIcon = 'fa-brands fa-instagram text-pink-500';
+          sourceLabel = 'Instagram';
         }
 
         return `
-          <div class="p-3.5 sm:p-4 rounded-2xl bg-white border border-pink-200/90 shadow-2xs hover:shadow-md transition">
-            <!-- Top Row: Device, Session Badge, Time -->
-            <div class="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-pink-100/70">
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="w-7 h-7 rounded-xl ${deviceColor} flex items-center justify-center text-xs shrink-0 shadow-2xs">
-                  <i class="fa-solid ${deviceIcon}"></i>
-                </span>
-                <span class="text-xs font-black text-slate-800 truncate">${v.device || 'Mobile Customer'}</span>
-                ${isNew 
-                  ? '<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-black border border-emerald-300 shrink-0">New Visitor 🌟</span>' 
-                  : '<span class="px-2 py-0.5 rounded-full bg-purple-50 text-purple-700 text-[10px] font-bold border border-purple-200 shrink-0">Browsing 🔄</span>'}
-              </div>
-              <div class="text-right shrink-0">
-                <div class="text-xs font-black text-pink-700 font-fun">${timeStr}</div>
-                <div class="text-[10px] text-slate-500 font-medium">${relTime}</div>
-              </div>
-            </div>
-
-            <!-- Middle Row: Page and Source -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <div class="flex items-start gap-1.5 min-w-0">
-                <span class="text-slate-500 font-bold shrink-0">📄 Page:</span>
-                <span class="font-bold text-pink-950 break-words">${pageIcon} ${cleanPage}</span>
-              </div>
-              <div class="flex items-start gap-1.5 min-w-0">
-                <span class="text-slate-500 font-bold shrink-0">🌐 Source:</span>
-                <span class="font-medium text-slate-800 truncate">${v.referrer || 'Direct / WhatsApp Link'}</span>
-              </div>
-            </div>
-
-            <!-- Bottom Row: Telegram Notification Alert Status -->
-            <div class="mt-2.5 pt-2 border-t border-dashed border-pink-100 flex items-center justify-between text-[11px]">
-              <span class="text-emerald-700 font-bold flex items-center gap-1">
-                <i class="fa-brands fa-telegram text-emerald-600 text-sm"></i>
-                <span>Telegram Alert: Sent to @Chin2s_bot</span>
+          <div class="px-3 py-2 rounded-xl bg-white border border-pink-200/80 hover:border-pink-300 hover:shadow-xs flex items-center justify-between gap-2.5 transition">
+            <!-- Left: Device Icon + Page + Source -->
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span class="w-7 h-7 rounded-lg ${deviceColor} border flex items-center justify-center text-xs shrink-0" title="${v.device || deviceLabel}">
+                <i class="fa-solid ${deviceIcon}"></i>
               </span>
-              <span class="text-slate-400 font-mono text-[10px]">ID: ${v.id ? String(v.id).slice(-6) : 'log'}</span>
+              <div class="min-w-0">
+                <div class="flex items-center gap-1.5 flex-wrap leading-tight">
+                  <span class="text-xs font-black text-slate-800 flex items-center gap-1 truncate">
+                    <span>${pageIcon}</span>
+                    <span>${shortPage}</span>
+                  </span>
+                  ${isNew 
+                    ? '<span class="px-1.5 py-0.2 rounded-md bg-emerald-100 text-emerald-800 text-[9px] font-black border border-emerald-300 shrink-0" title="New Visitor">🌟 New</span>' 
+                    : '<span class="px-1.5 py-0.2 rounded-md bg-slate-100 text-slate-600 text-[9px] font-bold border border-slate-200 shrink-0" title="Returning Visitor">🔄 Return</span>'}
+                </div>
+                <div class="text-[10px] text-slate-500 flex items-center gap-1 mt-0.5 truncate">
+                  <i class="${sourceIcon}"></i>
+                  <span class="truncate">${sourceLabel}</span>
+                  <span class="text-slate-300">•</span>
+                  <span class="font-mono text-[9px] text-slate-400">#${v.id ? String(v.id).slice(-4) : 'log'}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Exact Time + Relative Time + Telegram Status Icon -->
+            <div class="text-right shrink-0">
+              <div class="text-xs font-black text-pink-700 font-mono leading-none">${timeStr}</div>
+              <div class="text-[10px] text-slate-400 flex items-center justify-end gap-1.5 mt-1">
+                <span>${relTime}</span>
+                <span title="Telegram Alert Sent" class="inline-flex items-center gap-0.5 text-emerald-600 bg-emerald-50 px-1 py-0.2 rounded border border-emerald-200 text-[9px] font-bold">
+                  <i class="fa-brands fa-telegram text-[11px]"></i>
+                  <i class="fa-solid fa-check text-[8px]"></i>
+                </span>
+              </div>
             </div>
           </div>
         `;
