@@ -14,19 +14,22 @@ const PRODUCTS_FILE = path.join(__dirname, 'data', 'products.json');
 const ORDERS_FILE = path.join(__dirname, 'data', 'orders.json');
 const SETTINGS_FILE = path.join(__dirname, 'data', 'settings.json');
 const CATEGORIES_FILE = path.join(__dirname, 'data', 'categories.json');
+const VISITORS_FILE = path.join(__dirname, 'data', 'visitors.json');
 
 // Memory Cache and /tmp resilience
 let memoryCache = {
   products: null,
   orders: null,
   settings: null,
-  categories: null
+  categories: null,
+  visitors: null
 };
 
 const TMP_PRODUCTS = path.join('/tmp', 'chintus_products.json');
 const TMP_ORDERS = path.join('/tmp', 'chintus_orders.json');
 const TMP_SETTINGS = path.join('/tmp', 'chintus_settings.json');
 const TMP_CATEGORIES = path.join('/tmp', 'chintus_categories.json');
+const TMP_VISITORS = path.join('/tmp', 'chintus_visitors.json');
 
 // Load default orders
 let DEFAULT_ORDERS = [];
@@ -41,6 +44,7 @@ function getTmpFile(file) {
   if (file === ORDERS_FILE) return TMP_ORDERS;
   if (file === SETTINGS_FILE) return TMP_SETTINGS;
   if (file === CATEGORIES_FILE) return TMP_CATEGORIES;
+  if (file === VISITORS_FILE) return TMP_VISITORS;
   return null;
 }
 
@@ -51,6 +55,7 @@ function readJSON(file, defaultVal = []) {
     if (file === ORDERS_FILE && memoryCache.orders) return memoryCache.orders;
     if (file === SETTINGS_FILE && memoryCache.settings) return memoryCache.settings;
     if (file === CATEGORIES_FILE && memoryCache.categories) return memoryCache.categories;
+    if (file === VISITORS_FILE && memoryCache.visitors) return memoryCache.visitors;
 
     // 1. Check /tmp first for runtime state persistence
     const tmpFile = getTmpFile(file);
@@ -61,6 +66,7 @@ function readJSON(file, defaultVal = []) {
         if (file === ORDERS_FILE) memoryCache.orders = data;
         if (file === SETTINGS_FILE) memoryCache.settings = data;
         if (file === CATEGORIES_FILE) memoryCache.categories = data;
+        if (file === VISITORS_FILE) memoryCache.visitors = data;
         return data;
       } catch (_) {}
     }
@@ -76,6 +82,7 @@ function readJSON(file, defaultVal = []) {
     if (file === ORDERS_FILE) memoryCache.orders = parsed;
     if (file === SETTINGS_FILE) memoryCache.settings = parsed;
     if (file === CATEGORIES_FILE) memoryCache.categories = parsed;
+    if (file === VISITORS_FILE) memoryCache.visitors = parsed;
 
     return parsed;
   } catch (err) {
@@ -90,6 +97,7 @@ function writeJSON(file, data) {
   if (file === ORDERS_FILE) memoryCache.orders = data;
   if (file === SETTINGS_FILE) memoryCache.settings = data;
   if (file === CATEGORIES_FILE) memoryCache.categories = data;
+  if (file === VISITORS_FILE) memoryCache.visitors = data;
 
   try {
     fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
@@ -703,8 +711,10 @@ app.post('/api/track-visitor', async (req, res) => {
     isNewSession: Boolean(isNewSession)
   };
 
+  const recentVisitors = readJSON(VISITORS_FILE, []);
   recentVisitors.unshift(record);
   if (recentVisitors.length > 50) recentVisitors.pop();
+  writeJSON(VISITORS_FILE, recentVisitors);
 
   let telegramAlertSent = false;
   let telegramAlertError = null;
@@ -749,6 +759,7 @@ app.post('/api/track-visitor', async (req, res) => {
 });
 
 app.get('/api/live-visitors', (req, res) => {
+  const recentVisitors = readJSON(VISITORS_FILE, []);
   const fiveMinAgo = Date.now() - 5 * 60 * 1000;
   const activeVisitors = recentVisitors.filter(v => v.timestamp > fiveMinAgo);
 
@@ -756,7 +767,7 @@ app.get('/api/live-visitors', (req, res) => {
     success: true,
     activeCount: Math.max(1, activeVisitors.length),
     totalRecent: recentVisitors.length,
-    visitors: recentVisitors.slice(0, 15)
+    visitors: recentVisitors.slice(0, 20)
   });
 });
 
